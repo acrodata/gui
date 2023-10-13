@@ -1,0 +1,5 @@
+<mat-slide-toggle [(ngModel)]="value" [disabled]="disabled" (change)="onValueChange()">
+</mat-slide-toggle>
+<mat-hint *ngIf="config.parentType==='inline'">
+  <gui-field-label [config]="config"></gui-field-label>
+</mat-hint>

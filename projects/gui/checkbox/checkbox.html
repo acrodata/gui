@@ -1,0 +1,9 @@
+<mtx-checkbox-group color="primary"
+                    [(ngModel)]="value"
+                    [disabled]="disabled"
+                    [items]="config.options!"
+                    (change)="onValueChange()">
+</mtx-checkbox-group>
+<mat-hint *ngIf="config.parentType==='inline'">
+  <gui-field-label [config]="config"></gui-field-label>
+</mat-hint>

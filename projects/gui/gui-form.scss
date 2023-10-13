@@ -1,0 +1,43 @@
+@use '@angular/material' as mat;
+
+.gui-form {
+  .mat-expansion-panel .mat-expansion-panel {
+    background-color: transparent;
+  }
+
+  .mat-icon-button i,
+  .mat-icon-button .mat-icon {
+    width: 14px;
+    height: 14px;
+    font-size: 14px;
+    line-height: 14px;
+  }
+}
+
+.gui-tabs,
+.gui-tabs .mat-expansion-panel-body,
+.gui-tab-list,
+.gui-tab-list .mat-expansion-panel-body, {
+  // background-color: rgba(0, 0, 0, .24);
+}
+
+.gui-tab-item-heading {
+  position: relative;
+  padding-right: 30px;
+  padding-left: 12px;
+  line-height: 30px;
+  border-bottom: 1px solid transparent;
+
+  &::before {
+    position: absolute;
+    left: 0;
+    width: 2px;
+    height: 100%;
+    background-color: mat.get-color-from-palette(mat.$blue-palette, 500);
+    content: '';
+  }
+}
+
+.gui-tabs-empty > .mat-tab-header {
+  display: none;
+}

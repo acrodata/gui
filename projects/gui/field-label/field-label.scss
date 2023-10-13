@@ -1,0 +1,17 @@
+.gui-label {
+  display: inline-block;
+  width: 120px;
+  height: 28px;
+  padding-right: 8px;
+  padding-left: 16px;
+  overflow: hidden;
+  line-height: 28px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  vertical-align: middle;
+}
+
+.gui-label-with-description {
+  text-decoration: underline dotted;
+  cursor: help;
+}

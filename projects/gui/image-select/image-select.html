@@ -1,0 +1,22 @@
+<button class="gui-image-select-button" [matMenuTriggerFor]="menu" [disabled]="disabled">
+  <div class="gui-image-select-value" *ngIf="selectedOption">
+    <img class="gui-image-select-img"
+         [src]="selectedOption.src"
+         [alt]="selectedOption.label" />
+    <div class="gui-image-select-txt">{{selectedOption.label}}</div>
+  </div>
+</button>
+<mat-menu #menu="matMenu" class="gui-image-select-panel">
+  <ng-container *ngFor="let option of config.options">
+    <div class="gui-image-select-item" mat-menu-item
+         [class.selected]="option.value===value"
+         [style.flex]="option.col"
+         (click)="onImageSelect(option)">
+      <img class="gui-image-select-img" [src]="option.src" [alt]="option.label" />
+      <div class="gui-image-select-txt">{{option.label}}</div>
+    </div>
+  </ng-container>
+</mat-menu>
+<mat-hint *ngIf="config.parentType==='inline'">
+  <gui-field-label [config]="config"></gui-field-label>
+</mat-hint>

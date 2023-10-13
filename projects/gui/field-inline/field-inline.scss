@@ -1,0 +1,12 @@
+.gui-inline {
+  display: inline-flex;
+  flex: 1;
+  flex-flow: row wrap;
+  width: 0;
+  margin: 0 -4px;
+
+  > .gui-field-group,
+  > .gui-field {
+    padding: 0 4px;
+  }
+}

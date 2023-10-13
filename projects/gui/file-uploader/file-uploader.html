@@ -1,0 +1,33 @@
+<mat-form-field>
+  <mat-icon matPrefix svgIcon="link"></mat-icon>
+
+  <input matInput type="text" [ngModel]="url" [disabled]="disabled"
+         (change)="onUrlChange($event)" (blur)="onBlur()">
+
+  <button *ngIf="url" matSuffix mat-icon-button color="warn"
+          [disabled]="disabled" (click)="onClear()">
+    <mat-icon svgIcon="close"></mat-icon>
+  </button>
+</mat-form-field>
+
+<figure class="gui-file-content">
+  <ng-container *ngIf="url" [ngSwitch]="type">
+    <img *ngSwitchCase="'image'" [src]="url">
+
+    <video *ngSwitchCase="'video'" [src]="url"></video>
+
+    <audio *ngSwitchCase="'audio'" [src]="url" controls></audio>
+
+    <svg *ngSwitchDefault
+         viewBox="0 0 24 24" width="24px" height="24px" fill="currentColor" focusable="false">
+      <path
+            d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z">
+      </path>
+    </svg>
+  </ng-container>
+
+  <div *ngIf="!url" class="gui-file-placeholder">选择上传文件</div>
+
+  <input #fileInput type="file" [accept]="accept" [name]="name" tabindex="-1"
+         [disabled]="disabled" (change)="onFileChange($event)">
+</figure>

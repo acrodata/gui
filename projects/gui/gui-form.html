@@ -1,0 +1,222 @@
+<form [formGroup]="form">
+  <div *ngFor="let item of formFields">
+    <ng-template [ngTemplateOutlet]="controlType"
+                 [ngTemplateOutletContext]="{$implicit: item, formGroup: form}">
+    </ng-template>
+  </div>
+</form>
+
+<ng-template #controlType let-item let-parent="parent" let-form="formGroup">
+  <ng-container [ngSwitch]="item.type" [formGroup]="form">
+    <!-- 文本 -->
+    <gui-field-group *ngSwitchCase="'text'" [config]="ejs(item)">
+      <gui-input-text [formControlName]="item.key" [config]="item"></gui-input-text>
+    </gui-field-group>
+    <!-- 数字 -->
+    <gui-field-group *ngSwitchCase="'number'" [config]="ejs(item)">
+      <gui-input-number [formControlName]="item.key" [config]="item"></gui-input-number>
+    </gui-field-group>
+    <!-- 选择框 -->
+    <gui-field-group *ngSwitchCase="'select'" [config]="ejs(item)">
+      <gui-select [formControlName]="item.key" [config]="item"></gui-select>
+    </gui-field-group>
+    <!-- 复合选择框 -->
+    <gui-field-group *ngSwitchCase="'combobox'" [config]="ejs(item)">
+      <gui-combobox [formControlName]="item.key" [config]="item"></gui-combobox>
+    </gui-field-group>
+    <!-- 开关 -->
+    <gui-field-group *ngSwitchCase="'switch'" [config]="ejs(item)">
+      <gui-switch [formControlName]="item.key" [config]="item"></gui-switch>
+    </gui-field-group>
+    <!-- 滑块 -->
+    <gui-field-group *ngSwitchCase="'slider'" [config]="ejs(item)">
+      <gui-slider [formControlName]="item.key" [config]="item"></gui-slider>
+    </gui-field-group>
+    <!-- 按钮开关 -->
+    <gui-field-group *ngSwitchCase="'buttonToggle'" [config]="ejs(item)">
+      <gui-button-toggle [formControlName]="item.key" [config]="item"></gui-button-toggle>
+    </gui-field-group>
+    <!-- 单选 -->
+    <gui-field-group *ngSwitchCase="'radio'" [config]="ejs(item)">
+      <gui-radio [formControlName]="item.key" [config]="item"></gui-radio>
+    </gui-field-group>
+    <!-- 多选 -->
+    <gui-field-group *ngSwitchCase="'checkbox'" [config]="ejs(item)">
+      <gui-checkbox [formControlName]="item.key" [config]="item"></gui-checkbox>
+    </gui-field-group>
+    <!-- 颜色 -->
+    <gui-field-group *ngSwitchCase="'fill'" [config]="ejs(item)">
+      <gui-fill [formControlName]="item.key" [config]="item"></gui-fill>
+    </gui-field-group>
+    <!-- 文件上传 -->
+    <gui-field-group *ngSwitchCase="'file'" [config]="ejs(item)">
+      <gui-file-uploader [formControlName]="item.key"></gui-file-uploader>
+    </gui-field-group>
+    <!-- 图片上传 -->
+    <gui-field-group *ngSwitchCase="'image'" [config]="ejs(item)">
+      <gui-file-uploader type="image" [formControlName]="item.key"></gui-file-uploader>
+    </gui-field-group>
+    <!-- 视频上传 -->
+    <gui-field-group *ngSwitchCase="'video'" [config]="ejs(item)">
+      <gui-file-uploader type="video" [formControlName]="item.key"></gui-file-uploader>
+    </gui-field-group>
+    <!-- 音频上传 -->
+    <gui-field-group *ngSwitchCase="'audio'" [config]="ejs(item)">
+      <gui-file-uploader type="audio" [formControlName]="item.key"></gui-file-uploader>
+    </gui-field-group>
+    <!-- 图片选择 -->
+    <gui-field-group *ngSwitchCase="'imageSelect'" [config]="ejs(item)">
+      <gui-image-select [formControlName]="item.key" [config]="item"></gui-image-select>
+    </gui-field-group>
+    <!-- 文本区 -->
+    <gui-field-group *ngSwitchCase="'textarea'" [config]="ejs(item)">
+      <gui-textarea [formControlName]="item.key" [config]="item"></gui-textarea>
+    </gui-field-group>
+    <!-- 隐藏项 -->
+    <input *ngSwitchCase="'hidden'" type="hidden" [formControlName]="item.key">
+
+    <!-- 行内组 -->
+    <gui-field-group *ngSwitchCase="'inline'" [config]="ejs(item)">
+      <gui-field-inline [formGroupName]="item.key">
+        <ng-container *ngFor="let child of item.children">
+          <ng-template [ngTemplateOutlet]="controlType"
+                       [ngTemplateOutletContext]="{$implicit: child, parent: item, formGroup: form.get(item.key)}">
+          </ng-template>
+        </ng-container>
+      </gui-field-inline>
+    </gui-field-group>
+
+    <!-- 可展开组 -->
+    <mat-expansion-panel *ngSwitchCase="'group'" [formGroupName]="item.key"
+                         [(expanded)]="item.expanded" [disabled]="item.disabled">
+      <mat-expansion-panel-header>
+        <gui-field-label [config]="ejs(item)"></gui-field-label>
+      </mat-expansion-panel-header>
+      <!-- 使用惰性加载可显著提高渲染效率 -->
+      <ng-template matExpansionPanelContent>
+        <div *ngFor="let child of item.children">
+          <ng-template [ngTemplateOutlet]="controlType"
+                       [ngTemplateOutletContext]="{$implicit: child, parent: item, formGroup: form.get(item.key)}">
+          </ng-template>
+        </div>
+      </ng-template>
+    </mat-expansion-panel>
+
+    <!-- 动态数组 -->
+    <mat-expansion-panel *ngSwitchCase="'tabs'" [formArrayName]="item.key"
+                         [(expanded)]="item.expanded" [disabled]="item.disabled">
+      <mat-expansion-panel-header>
+        <gui-field-label [config]="ejs(item)"></gui-field-label>
+        <span fxFlex></span>
+        <!-- 只有展开面板之后才显示操作按钮 -->
+        <ng-container *ngIf="item.expanded">
+          <button mat-icon-button (click)="changeTabsMode($event, item, 'nav')"
+                  [color]="item.mode!=='list'?'primary':''" type="button">
+            <mat-icon svgIcon="dots_horizontal"></mat-icon>
+          </button>
+          <button mat-icon-button (click)="changeTabsMode($event, item, 'list')"
+                  [color]="item.mode==='list'?'primary':''" type="button">
+            <mat-icon svgIcon="dots_vertical"></mat-icon>
+          </button>
+          <!-- 有 template 并且 addable 才可以新增和删除 -->
+          <ng-container *ngIf="item.template && (item.addable || item.addable===undefined)">
+            <button mat-icon-button (click)="addTab($event, form.get(item.key), item)"
+                    type="button" [disabled]="item.disabled">
+              <mat-icon svgIcon="plus"></mat-icon>
+            </button>
+            <button mat-icon-button (click)="removeTab($event, form.get(item.key), item)"
+                    type="button" [disabled]="item.disabled">
+              <mat-icon svgIcon="delete"></mat-icon>
+            </button>
+          </ng-container>
+        </ng-container>
+      </mat-expansion-panel-header>
+      <ng-template matExpansionPanelContent>
+        <!-- 横向导航模式显示（标准模式） -->
+        <mat-tab-group *ngIf="item.mode!=='list'" class="gui-tabs" [mat-stretch-tabs]="false"
+                       [class.gui-tabs-empty]="item.children.length===0">
+          <mat-tab *ngFor="let tab of item.children; index as i" [disabled]="tab.disabled">
+            <ng-template mat-tab-label>
+              <div>{{tab.name | ejs:{i} }}</div>
+            </ng-template>
+            <!-- FormControl & FormArray -->
+            <ng-container *ngIf="!tab.children || tab.children.length===0 || tab.type==='tabs'">
+              <ng-template [ngTemplateOutlet]="controlType"
+                           [ngTemplateOutletContext]="{$implicit: tab, parent: item, formGroup: form.get([item.key])}">
+              </ng-template>
+            </ng-container>
+            <!-- FormGroup -->
+            <ng-container *ngIf="tab.children?.length>0 && tab.type!=='tabs'">
+              <div *ngFor="let child of tab.children">
+                <ng-template [ngTemplateOutlet]="controlType"
+                             [ngTemplateOutletContext]="{$implicit: child, parent: item, formGroup: form.get([item.key, i])}">
+                </ng-template>
+              </div>
+            </ng-container>
+          </mat-tab>
+        </mat-tab-group>
+
+        <!-- 纵向列表模式显示 -->
+        <div class="gui-tab-list" *ngIf="item.mode==='list'">
+          <div class="gui-tab-item" *ngFor="let tab of item.children; index as i">
+            <div class="gui-tab-item-heading">
+              <span>{{tab.name | ejs:{i} }}</span>
+              <span fxFlex></span>
+              <!-- 有 template 并且 addable 才可以新增和删除 -->
+              <ng-container *ngIf="item.template && (item.addable || item.addable===undefined)">
+                <button mat-icon-button (click)="addTab($event, form.get(item.key), item, i)"
+                        type="button" [disabled]="item.disabled">
+                  <mat-icon svgIcon="plus"></mat-icon>
+                </button>
+                <button mat-icon-button (click)="removeTab($event, form.get(item.key), item, i)"
+                        type="button" [disabled]="item.disabled">
+                  <mat-icon svgIcon="delete"></mat-icon>
+                </button>
+              </ng-container>
+            </div>
+            <div class="gui-tab-item-content">
+              <!-- FormControl & FormArray -->
+              <ng-container *ngIf="!tab.children || tab.children.length===0 || tab.type==='tabs'">
+                <ng-template [ngTemplateOutlet]="controlType"
+                             [ngTemplateOutletContext]="{$implicit: tab, parent: item, formGroup: form.get([item.key])}">
+                </ng-template>
+              </ng-container>
+              <!-- FormGroup -->
+              <ng-container *ngIf="tab.children?.length>0 && tab.type!=='tabs'">
+                <div *ngFor="let child of tab.children">
+                  <ng-template [ngTemplateOutlet]="controlType"
+                               [ngTemplateOutletContext]="{$implicit: child, parent: item, formGroup: form.get([item.key, i])}">
+                  </ng-template>
+                </div>
+              </ng-container>
+            </div>
+          </div>
+        </div>
+      </ng-template>
+    </mat-expansion-panel>
+
+    <!-- 菜单组 -->
+    <mat-tab-group class="gui-menu" *ngSwitchCase="'menu'" [formGroupName]="item.key">
+      <mat-tab *ngFor="let menuChild of item.children" [label]="menuChild.name"
+               [disabled]="menuChild.disabled">
+        <ng-template matTabContent>
+          <ng-container *ngIf="menuChild.type==='menuItem'">
+            <!-- 必须用 div 包裹 -->
+            <div *ngFor="let controlItem of menuChild.children" [formGroupName]="menuChild.key">
+              <ng-template [ngTemplateOutlet]="controlType"
+                           [ngTemplateOutletContext]="{$implicit: controlItem, formGroup: form.get([item.key, menuChild.key])}">
+              </ng-template>
+            </div>
+          </ng-container>
+          <!-- 支持无限嵌套 -->
+          <ng-container *ngIf="menuChild.type==='menu'">
+            <ng-template [ngTemplateOutlet]="controlType"
+                         [ngTemplateOutletContext]="{$implicit: menuChild, formGroup: form.get(item.key)}">
+            </ng-template>
+          </ng-container>
+        </ng-template>
+      </mat-tab>
+    </mat-tab-group>
+
+  </ng-container>
+</ng-template>

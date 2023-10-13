@@ -1,0 +1,9 @@
+<mat-radio-group [(ngModel)]="value" [disabled]="disabled" (change)="onValueChange()">
+  <mat-radio-button *ngFor="let option of config.options"
+                    [disabled]="option.disabled"
+                    [value]="option.value"
+                    [style.flex]="option.col">{{option.label}}</mat-radio-button>
+</mat-radio-group>
+<mat-hint *ngIf="config.parentType==='inline'">
+  <gui-field-label [config]="config"></gui-field-label>
+</mat-hint>

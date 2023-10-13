@@ -16,7 +16,6 @@
         "plugin:@angular-eslint/template/process-inline-templates"
       ],
       "rules": {
-        "dot-notation": ["warn"],
         "max-len": [
           "warn",
           {

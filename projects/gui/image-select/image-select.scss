@@ -1,0 +1,98 @@
+@use '@angular/material' as mat;
+
+.gui-image-select-panel {
+  &.mat-menu-panel {
+    max-height: 480px;
+  }
+
+  .mat-menu-content {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 8px;
+  }
+}
+
+.gui-image-select-item.mat-menu-item {
+  height: unset;
+  padding: 4px;
+  line-height: unset;
+  text-align: center;
+  border: 1px solid transparent;
+
+  &:hover,
+  &.selected {
+    .gui-image-select-img {
+      border-color: mat.get-color-from-palette(mat.$blue-palette, 500);
+    }
+
+    .gui-image-select-txt {
+      color: mat.get-color-from-palette(mat.$blue-palette, 500);
+    }
+  }
+}
+
+.gui-image-select-button {
+  position: relative;
+  width: 100%;
+  height: 64px;
+  padding: 4px 24px 4px 4px;
+  color: #fff;
+  background-color: transparent;
+  border: 1px solid rgba(255, 255, 255, .3);
+  outline: none;
+  cursor: pointer;
+  transition: box-shadow;
+
+  .gui-image-select-img {
+    flex: 2;
+    width: 0;
+    height: 100%;
+    border: none;
+  }
+
+  .gui-image-select-txt {
+    flex: 1;
+    text-align: left;
+  }
+
+  &:hover,
+  &:focus {
+    border-color: #fff;
+    box-shadow: inset 0 0 0 1px #fff;
+  }
+
+  &::after {
+    position: absolute;
+    top: 50%;
+    right: 2px;
+    width: 0;
+    height: 0;
+    margin: 0 4px;
+    color: rgba(255, 255, 255, .54);
+    border-top: 5px solid;
+    border-right: 5px solid transparent;
+    border-left: 5px solid transparent;
+    content: '';
+  }
+}
+
+.gui-image-select-value {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  height: 100%;
+}
+
+.gui-image-select-img {
+  display: block;
+  width: 100%;
+  height: 64px;
+  object-fit: contain;
+  border: 1px solid rgba(255, 255, 255, .3);
+}
+
+.gui-image-select-txt {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}

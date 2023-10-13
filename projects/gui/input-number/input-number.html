@@ -1,0 +1,15 @@
+<mat-form-field>
+  <span *ngIf="config.prefix" matPrefix>{{config.prefix}}</span>
+  <input matInput type="number"
+         [(ngModel)]="value"
+         [disabled]="disabled"
+         [placeholder]="config.placeholder||''"
+         [step]="config.step"
+         [min]="config.min!"
+         [max]="config.max!"
+         (change)="onValueChange()">
+  <span *ngIf="config.suffix" matSuffix>{{config.suffix}}</span>
+  <mat-hint *ngIf="config.parentType === 'inline'">
+    <gui-field-label [config]="config"></gui-field-label>
+  </mat-hint>
+</mat-form-field>

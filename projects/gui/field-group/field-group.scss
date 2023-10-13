@@ -1,0 +1,39 @@
+@use '@angular/material' as mat;
+
+.gui-field-group {
+  display: flex;
+  flex: 1;
+  min-height: 36px;
+  padding: 4px 8px;
+}
+
+.gui-field {
+  display: inline-flex;
+  flex: 1;
+  flex-wrap: wrap;
+
+  > .mat-form-field {
+    flex: 1;
+    width: 0;
+    max-width: 100%;
+
+    .mat-form-field-wrapper {
+      padding-bottom: 0;
+    }
+
+    .mat-form-field-underline {
+      position: relative;
+      bottom: 0;
+    }
+
+    .mat-form-field-subscript-wrapper {
+      position: relative;
+      margin-top: 0 !important;
+    }
+  }
+
+  .mat-hint {
+    width: 100%;
+    margin: 4px 0;
+  }
+}

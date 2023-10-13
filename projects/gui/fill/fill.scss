@@ -1,0 +1,30 @@
+// 预览颜色块
+.gui-color-block,
+.gui-color-block-empty {
+  position: relative;
+  display: block;
+  width: 18px;
+  height: 18px;
+  border: 1px solid #000;
+}
+
+// 透明颜色棋盘格效果
+.gui-color-block-empty {
+  position: absolute;
+  background-color: #fff;
+  background-image:
+    linear-gradient(45deg, #ccc 25%, transparent 25%),
+    linear-gradient(-45deg, #ccc 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, #ccc 75%),
+    linear-gradient(-45deg, transparent 75%, #ccc 75%);
+  background-position: 0 0, 0 4px, 4px -4px, -4px 0;
+  background-size: 8px 8px;
+}
+
+// 解决垂直居中问题
+.gui-fill {
+  .gui-colorpicker-toggle {
+    display: flex;
+    color: #fff;
+  }
+}

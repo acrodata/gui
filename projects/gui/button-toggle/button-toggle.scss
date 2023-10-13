@@ -1,0 +1,17 @@
+.gui-icon-toggle {
+  .mat-button-toggle-button {
+    height: 100%;
+  }
+
+  &.mat-button-toggle {
+    .mat-button-toggle-label-content {
+      padding: 0;
+      line-height: normal;
+    }
+  }
+
+  // 图片图标选中时的样式
+  &.mat-button-toggle-checked img {
+    opacity: .64;
+  }
+}
