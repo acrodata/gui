@@ -125,9 +125,9 @@ export class ExamplesComponent implements OnInit {
               type: 'buttonToggle',
               useIcon: true,
               options: [
-                { value: 'left', label: '左侧', src: 'format_align_left' },
-                { value: 'center', label: '居中', src: 'format_align_center' },
-                { value: 'right', label: '右侧', src: 'format_align_right' },
+                { value: 'left', label: '左侧', src: 'mdi mdi-format-align-left' },
+                { value: 'center', label: '居中', src: 'mdi mdi-format-align-center' },
+                { value: 'right', label: '右侧', src: 'mdi mdi-format-align-right' },
               ],
             },
             direction: {

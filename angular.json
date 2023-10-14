@@ -61,7 +61,17 @@
             "inlineStyleLanguage": "scss",
             "assets": [
               "projects/dev-app/src/favicon.ico",
-              "projects/dev-app/src/assets"
+              "projects/dev-app/src/assets",
+              {
+                "glob": "*",
+                "input": "node_modules/@mdi/font/fonts",
+                "output": "assets/fonts"
+              },
+              {
+                "glob": "*.min.css",
+                "input": "node_modules/@mdi/font/css",
+                "output": "assets/fonts"
+              }
             ],
             "styles": [
               "projects/dev-app/src/styles.scss"
@@ -73,13 +83,11 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumWarning": "2mb"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "2kb",
-                  "maximumError": "4kb"
+                  "maximumWarning": "2kb"
                 }
               ],
               "outputHashing": "all"
