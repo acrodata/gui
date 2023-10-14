@@ -29,6 +29,10 @@ export type GuiSliderMode = 'normal' | 'range';
 
 export type GuiTabsMode = 'nav' | 'list';
 
+export type GuiBasicValue = boolean | number | string;
+
+export type GuiDefaultValue = boolean | number | string | any[] | Record<string, any>;
+
 export interface GuiConfig {
   type: GuiConfigType;
   name: string;
@@ -73,8 +77,6 @@ export interface GuiConfig {
 export interface GuiConfigs {
   [key: string]: GuiConfig;
 }
-
-export type GuiDefaultValue = boolean | number | string | any[] | Record<string, any>;
 
 export interface GuiConfigOption {
   label: string;

@@ -57,6 +57,7 @@ export class GuiSlider implements ControlValueAccessor {
 
   setDisabledState(isDisabled: boolean) {
     this.disabled = isDisabled;
+    this.cdr.markForCheck();
   }
 
   onValueChange() {

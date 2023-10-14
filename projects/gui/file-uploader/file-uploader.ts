@@ -106,6 +106,7 @@ export class GuiFileUploader implements ControlValueAccessor, OnInit, OnChanges 
 
   setDisabledState(isDisabled: boolean) {
     this.disabled = isDisabled;
+    this.cdr.markForCheck();
   }
 
   upload(file: FileUploadContent) {

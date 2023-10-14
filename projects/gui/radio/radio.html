@@ -1,4 +1,5 @@
-<mat-radio-group [(ngModel)]="value" [disabled]="disabled" (change)="onValueChange()">
+<mat-radio-group [(ngModel)]="value" [disabled]="disabled"
+                 (change)="onValueChange()">
   <mat-radio-button *ngFor="let option of config.options"
                     [disabled]="option.disabled"
                     [value]="option.value"

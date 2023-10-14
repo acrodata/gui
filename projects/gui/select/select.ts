@@ -7,7 +7,7 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { GuiControl } from '../interface';
+import { GuiBasicValue, GuiControl } from '../interface';
 
 @Component({
   selector: 'gui-select',
@@ -30,9 +30,9 @@ export class GuiSelect implements ControlValueAccessor {
   @Input() config: Partial<GuiControl> = {};
   @Input() disabled = false;
 
-  value!: string | number | boolean;
+  value: GuiBasicValue = '';
 
-  private onChange: (value: string | number | boolean) => void = () => {};
+  private onChange: (value: GuiBasicValue) => void = () => {};
   private onTouched: () => void = () => {};
 
   constructor(private cdr: ChangeDetectorRef) {}
@@ -42,7 +42,7 @@ export class GuiSelect implements ControlValueAccessor {
     this.cdr.markForCheck();
   }
 
-  registerOnChange(fn: (value: string | number | boolean) => void) {
+  registerOnChange(fn: (value: GuiBasicValue) => void) {
     this.onChange = fn;
   }
 
@@ -52,6 +52,7 @@ export class GuiSelect implements ControlValueAccessor {
 
   setDisabledState(isDisabled: boolean) {
     this.disabled = isDisabled;
+    this.cdr.markForCheck();
   }
 
   onValueChange() {
