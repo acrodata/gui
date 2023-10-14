@@ -21,5 +21,6 @@ export * from './select/select';
 export * from './slider/slider';
 export * from './switch/switch';
 export * from './textarea/textarea';
-export * from './pipes';
+export * from './gui-pipes';
+export * from './gui-utils';
 export * from './interface';

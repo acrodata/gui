@@ -20,7 +20,7 @@ import { MtxSelectModule } from '@ng-matero/extensions/select';
 import { MtxCheckboxGroupModule } from '@ng-matero/extensions/checkbox-group';
 import { MtxColorpickerModule } from '@ng-matero/extensions/colorpicker';
 
-import { GuiEjsPipe } from './pipes';
+import { GuiEjsPipe } from './gui-pipes';
 import { GuiFieldGroup } from './field-group/field-group';
 import { GuiFieldLabel } from './field-label/field-label';
 import { GuiFieldInline } from './field-inline/field-inline';
@@ -41,7 +41,7 @@ import { GuiFileUploader } from './file-uploader/file-uploader';
 import { GuiFileUploaderService } from './file-uploader/file-uploader.service';
 import { GuiForm } from './gui-form';
 
-import { svgIcons } from './svg-icons';
+import { svgIcons } from './gui-icons';
 
 @NgModule({
   imports: [
@@ -107,7 +107,7 @@ import { svgIcons } from './svg-icons';
     GuiFileUploader,
     GuiForm,
   ],
-  providers: [GuiEjsPipe, GuiFileUploaderService],
+  providers: [GuiFileUploaderService],
 })
 export class GuiModule {
   constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer) {

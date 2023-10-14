@@ -8,8 +8,8 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { FormArray, FormControl, FormGroup } from '@angular/forms';
+import { ejsTmpl } from './gui-utils';
 import { GuiConfigType, GuiConfigs, GuiControl, GuiTabsMode } from './interface';
-import { GuiEjsPipe } from './pipes';
 
 @Component({
   selector: 'gui-form',
@@ -29,10 +29,7 @@ export class GuiForm implements OnChanges {
 
   formFields: GuiControl[] = [];
 
-  constructor(
-    private cdr: ChangeDetectorRef,
-    private ejsPipe: GuiEjsPipe
-  ) {}
+  constructor(private cdr: ChangeDetectorRef) {}
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes['config']) {
@@ -233,7 +230,7 @@ export class GuiForm implements OnChanges {
   ejs(item: GuiControl) {
     const { name, index, description, type, parentType } = item;
     return {
-      name: index != null && !isNaN(index) ? this.ejsPipe.transform(name, { i: index }) : name,
+      name: index != null && !isNaN(index) ? ejsTmpl(name, { i: index }) : name,
       description,
       type,
       parentType,

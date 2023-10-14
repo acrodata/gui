@@ -1,2 +1,1 @@
-export * from './interface';
-export * from './gui-module';
+export * from './public-api';
