@@ -2,3 +2,9 @@
 
 @import '@angular/material/prebuilt-themes/indigo-pink.css';
 @import '@ng-matero/extensions/prebuilt-themes/indigo-pink.css';
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}

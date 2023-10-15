@@ -1,24 +1,15 @@
 .gui-file-uploader {
   display: block;
   overflow: auto;
+  flex: 1;
 
-  .mat-form-field {
+  .mat-mdc-form-field {
     width: 100%;
 
-    .mat-form-field-wrapper {
-      padding-bottom: 0;
+    .mat-icon {
+      height: 14px;
+      line-height: 14px;
     }
-
-    .mat-form-field-underline,
-    .mat-form-field-subscript-wrapper {
-      position: relative;
-      bottom: 0;
-    }
-  }
-
-  .mat-form-field-suffix .mat-icon-button .mat-icon {
-    height: 14px;
-    line-height: 14px;
   }
 
   .gui-file-content {

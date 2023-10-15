@@ -1,43 +1,94 @@
-@use '@angular/material' as mat;
-
 .gui-form {
-  .mat-expansion-panel .mat-expansion-panel {
-    background-color: transparent;
+  font-size: 12px;
+
+  --mat-form-field-container-text-size: 12px;
+  --mat-select-trigger-text-size: 12px;
+  --mat-option-label-text-size: 12px;
+  --mat-expansion-header-text-size: 12px;
+  --mat-expansion-container-text-size: 12px;
+  --mat-standard-button-toggle-height: 24px;
+  --mat-expansion-header-collapsed-state-height: 40px;
+  --mat-expansion-header-expanded-state-height: 40px;
+
+  .mat-expansion-panel {
+    --mat-expansion-container-shape: 0;
   }
 
-  .mat-icon-button i,
-  .mat-icon-button .mat-icon {
-    width: 14px;
-    height: 14px;
-    font-size: 14px;
-    line-height: 14px;
+  .mat-mdc-tab-header {
+    --mat-tab-header-label-text-size: 12px;
+    --mdc-secondary-navigation-tab-container-height: 24px;
+  }
+
+  .mat-icon {
+    padding: 0 !important;
+    line-height: var(--mdc-icon-button-state-layer-size);
+    vertical-align: middle;
+  }
+
+  .mat-mdc-icon-button {
+    --mdc-icon-button-state-layer-size: 24px;
+    --mdc-icon-button-icon-size: 14px;
+
+    padding: 0;
+
+    .mat-mdc-button-touch-target {
+      width: var(--mdc-icon-button-state-layer-size);
+      height: var(--mdc-icon-button-state-layer-size);
+    }
+  }
+
+  .mat-mdc-text-field-wrapper,
+  .mat-mdc-form-field-hint-wrapper {
+    position: relative;
+    padding: 0 8px;
+  }
+
+  .mat-mdc-form-field-infix {
+    min-height: auto;
+    padding: 0 !important;
+  }
+
+  .mat-mdc-form-field-hint-spacer,
+  .mat-mdc-form-field-bottom-align::before {
+    display: none;
+  }
+
+  .mat-mdc-option {
+    min-height: var(--mat-option-label-text-line-height);
+    padding: 0 8px;
+  }
+
+  .mat-mdc-tab {
+    min-width: auto;
   }
 }
 
 .gui-tabs,
 .gui-tabs .mat-expansion-panel-body,
 .gui-tab-list,
-.gui-tab-list .mat-expansion-panel-body, {
-  // background-color: rgba(0, 0, 0, .24);
+.gui-tab-list .mat-expansion-panel-body,
+{
+// background-color: rgba(0, 0, 0, .24);
 }
 
 .gui-tab-item-heading {
+  display: flex;
+  align-items: center;
   position: relative;
   padding-right: 30px;
   padding-left: 12px;
-  line-height: 30px;
-  border-bottom: 1px solid transparent;
+  line-height: var(--mdc-secondary-navigation-tab-container-height);
 
   &::before {
     position: absolute;
     left: 0;
     width: 2px;
     height: 100%;
-    background-color: mat.get-color-from-palette(mat.$blue-palette, 500);
+    background-color: var(--mdc-tab-indicator-active-indicator-color);
     content: '';
   }
 }
 
-.gui-tabs-empty > .mat-tab-header {
+.gui-tabs-empty>.mat-tab-header {
   display: none;
 }

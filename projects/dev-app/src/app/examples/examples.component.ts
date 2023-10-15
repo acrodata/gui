@@ -119,6 +119,7 @@ export class ExamplesComponent implements OnInit {
                 { value: 'top', label: '上对齐', col: 50 },
                 { value: 'bottom', label: '下对齐', col: 50 },
               ],
+              multiple: true,
             },
             alignIcon: {
               name: '对齐方式',
@@ -157,31 +158,31 @@ export class ExamplesComponent implements OnInit {
                 },
               ],
             },
-            alignRadio: {
-              name: '对齐方式',
-              type: 'radio',
-              default: 'left',
-              options: [
-                { label: '左对齐', value: 'left', col: 50 },
-                { label: '居中对齐', value: 'center', col: 50 },
-                { label: '右对齐', value: 'right', col: 50 },
-              ],
-            },
+            // alignRadio: {
+            //   name: '对齐方式',
+            //   type: 'radio',
+            //   default: 'left',
+            //   options: [
+            //     { label: '左对齐', value: 'left', col: 50 },
+            //     { label: '居中对齐', value: 'center', col: 50 },
+            //     { label: '右对齐', value: 'right', col: 50 },
+            //   ],
+            // },
             hiddenInput: {
               name: '值',
               type: 'hidden',
               default: 22,
             },
-            checkbox: {
-              name: '地图内容',
-              type: 'checkbox',
-              options: [
-                { value: 'bg', label: '背景' },
-                { value: 'building', label: '建筑物' },
-                { value: 'road', label: '道路' },
-                { value: 'label', label: '标注' },
-              ],
-            },
+            // checkbox: {
+            //   name: '地图内容',
+            //   type: 'checkbox',
+            //   options: [
+            //     { value: 'bg', label: '背景' },
+            //     { value: 'building', label: '建筑物' },
+            //     { value: 'road', label: '道路' },
+            //     { value: 'label', label: '标注' },
+            //   ],
+            // },
             group: {
               type: 'group',
               name: '分组',
@@ -347,6 +348,7 @@ export class ExamplesComponent implements OnInit {
                   min: 0,
                   max: 1,
                   suffix: 'α',
+                  mode: 'range',
                 },
               },
             },

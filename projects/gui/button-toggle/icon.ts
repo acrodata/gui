@@ -4,7 +4,7 @@ import { ChangeDetectionStrategy, Component, Input, ViewEncapsulation } from '@a
   selector: 'gui-icon',
   styleUrls: ['./icon.scss'],
   template: `
-    <img *ngIf="isUrl()" [src]="src" width="26" height="26" />
+    <img *ngIf="isUrl()" [src]="src" />
     <i *ngIf="!isUrl()" [ngClass]="src"></i>
   `,
   host: {

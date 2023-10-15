@@ -1,6 +1,7 @@
 <mat-form-field>
   <span *ngIf="config.prefix" matPrefix>{{config.prefix}}</span>
-  <mat-select [(ngModel)]="value"
+  <mat-select panelClass="gui-form"
+              [(ngModel)]="value"
               [disabled]="disabled"
               [placeholder]="config.placeholder||''"
               (selectionChange)="onValueChange()">

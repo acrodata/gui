@@ -1,22 +1,22 @@
 .gui-slider {
-  .mat-slider {
+  .mat-mdc-slider {
     flex: 1;
     min-width: 0;
     margin-left: -8px;
 
-    + .mat-form-field {
+    +.mat-mdc-form-field {
       width: 68px;
       max-width: 68px;
     }
+
+    &.mdc-slider--range {
+      flex: 2;
+      min-width: 0;
+      margin-left: -8px;
+    }
   }
 
-  .mtx-slider {
-    flex: 2;
-    min-width: 0;
-    margin-left: -8px;
-  }
-
-  .mat-form-field {
+  .mat-mdc-form-field {
     input::-webkit-outer-spin-button,
     input::-webkit-inner-spin-button {
       appearance: none;
