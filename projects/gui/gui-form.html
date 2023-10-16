@@ -9,67 +9,59 @@
 <ng-template #controlType let-item let-parent="parent" let-form="formGroup">
   <ng-container [ngSwitch]="item.type" [formGroup]="form">
     <!-- 文本 -->
-    <gui-field-group *ngSwitchCase="'text'" [config]="ejs(item)">
+    <gui-field-group *ngSwitchCase="'text'" [config]="ejs(item)" [flex]="item.col">
       <gui-input-text [formControlName]="item.key" [config]="item"></gui-input-text>
     </gui-field-group>
     <!-- 数字 -->
-    <gui-field-group *ngSwitchCase="'number'" [config]="ejs(item)">
+    <gui-field-group *ngSwitchCase="'number'" [config]="ejs(item)" [flex]="item.col">
       <gui-input-number [formControlName]="item.key" [config]="item"></gui-input-number>
     </gui-field-group>
     <!-- 选择框 -->
-    <gui-field-group *ngSwitchCase="'select'" [config]="ejs(item)">
+    <gui-field-group *ngSwitchCase="'select'" [config]="ejs(item)" [flex]="item.col">
       <gui-select [formControlName]="item.key" [config]="item"></gui-select>
     </gui-field-group>
     <!-- 复合选择框 -->
-    <gui-field-group *ngSwitchCase="'combobox'" [config]="ejs(item)">
+    <gui-field-group *ngSwitchCase="'combobox'" [config]="ejs(item)" [flex]="item.col">
       <gui-combobox [formControlName]="item.key" [config]="item"></gui-combobox>
     </gui-field-group>
     <!-- 开关 -->
-    <gui-field-group *ngSwitchCase="'switch'" [config]="ejs(item)">
+    <gui-field-group *ngSwitchCase="'switch'" [config]="ejs(item)" [flex]="item.col">
       <gui-switch [formControlName]="item.key" [config]="item"></gui-switch>
     </gui-field-group>
     <!-- 滑块 -->
-    <gui-field-group *ngSwitchCase="'slider'" [config]="ejs(item)">
+    <gui-field-group *ngSwitchCase="'slider'" [config]="ejs(item)" [flex]="item.col">
       <gui-slider [formControlName]="item.key" [config]="item"></gui-slider>
     </gui-field-group>
     <!-- 按钮开关 -->
-    <gui-field-group *ngSwitchCase="'buttonToggle'" [config]="ejs(item)">
+    <gui-field-group *ngSwitchCase="'buttonToggle'" [config]="ejs(item)" [flex]="item.col">
       <gui-button-toggle [formControlName]="item.key" [config]="item"></gui-button-toggle>
     </gui-field-group>
-    <!-- 单选 -->
-    <gui-field-group *ngSwitchCase="'radio'" [config]="ejs(item)">
-      <gui-radio [formControlName]="item.key" [config]="item"></gui-radio>
-    </gui-field-group>
-    <!-- 多选 -->
-    <gui-field-group *ngSwitchCase="'checkbox'" [config]="ejs(item)">
-      <gui-checkbox [formControlName]="item.key" [config]="item"></gui-checkbox>
-    </gui-field-group>
     <!-- 颜色 -->
-    <gui-field-group *ngSwitchCase="'fill'" [config]="ejs(item)">
+    <gui-field-group *ngSwitchCase="'fill'" [config]="ejs(item)" [flex]="item.col">
       <gui-fill [formControlName]="item.key" [config]="item"></gui-fill>
     </gui-field-group>
     <!-- 文件上传 -->
-    <gui-field-group *ngSwitchCase="'file'" [config]="ejs(item)">
+    <gui-field-group *ngSwitchCase="'file'" [config]="ejs(item)" [flex]="item.col">
       <gui-file-uploader [formControlName]="item.key"></gui-file-uploader>
     </gui-field-group>
     <!-- 图片上传 -->
-    <gui-field-group *ngSwitchCase="'image'" [config]="ejs(item)">
+    <gui-field-group *ngSwitchCase="'image'" [config]="ejs(item)" [flex]="item.col">
       <gui-file-uploader type="image" [formControlName]="item.key"></gui-file-uploader>
     </gui-field-group>
     <!-- 视频上传 -->
-    <gui-field-group *ngSwitchCase="'video'" [config]="ejs(item)">
+    <gui-field-group *ngSwitchCase="'video'" [config]="ejs(item)" [flex]="item.col">
       <gui-file-uploader type="video" [formControlName]="item.key"></gui-file-uploader>
     </gui-field-group>
     <!-- 音频上传 -->
-    <gui-field-group *ngSwitchCase="'audio'" [config]="ejs(item)">
+    <gui-field-group *ngSwitchCase="'audio'" [config]="ejs(item)" [flex]="item.col">
       <gui-file-uploader type="audio" [formControlName]="item.key"></gui-file-uploader>
     </gui-field-group>
     <!-- 图片选择 -->
-    <gui-field-group *ngSwitchCase="'imageSelect'" [config]="ejs(item)">
+    <gui-field-group *ngSwitchCase="'imageSelect'" [config]="ejs(item)" [flex]="item.col">
       <gui-image-select [formControlName]="item.key" [config]="item"></gui-image-select>
     </gui-field-group>
     <!-- 文本区 -->
-    <gui-field-group *ngSwitchCase="'textarea'" [config]="ejs(item)">
+    <gui-field-group *ngSwitchCase="'textarea'" [config]="ejs(item)" [flex]="item.col">
       <gui-textarea [formControlName]="item.key" [config]="item"></gui-textarea>
     </gui-field-group>
     <!-- 隐藏项 -->

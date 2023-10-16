@@ -1,8 +1,8 @@
 <mat-button-toggle-group [(ngModel)]="value" [disabled]="disabled" [multiple]="config.multiple"
                          (change)="onValueChange()">
   <mat-button-toggle *ngFor="let option of config.options"
+                     [flex]="option.col"
                      [value]="option.value"
-                     [style.flex]="option.col"
                      [class]="{'gui-icon-toggle': config.useIcon}"
                      [disabled]="option.disabled"
                      [title]="config.useIcon ? option.label : ''">

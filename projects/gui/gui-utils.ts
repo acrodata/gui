@@ -1,3 +1,5 @@
+import { Directive, ElementRef, Input, OnInit, Pipe, PipeTransform } from '@angular/core';
+
 /**
  * 轻量级类 EJS 模板引擎
  *
@@ -40,4 +42,27 @@ export function ejsTmpl(str: string, data: any) {
 
   // Provide some basic currying to the user
   return data ? fn(data) : fn;
+}
+
+@Pipe({
+  name: 'ejs',
+})
+export class GuiEjsPipe implements PipeTransform {
+  transform(value: string, data = {}): string {
+    return ejsTmpl(value, data);
+  }
+}
+
+@Directive({
+  selector: '[flex]',
+})
+export class GuiFlexDirective implements OnInit {
+  @Input() flex: number | undefined = 100;
+
+  constructor(private el: ElementRef) {}
+
+  ngOnInit(): void {
+    this.el.nativeElement.style.flex = `1 1 ${this.flex}%`;
+    this.el.nativeElement.style.maxWidth = `${this.flex}%`;
+  }
 }

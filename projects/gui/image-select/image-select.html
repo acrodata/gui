@@ -10,7 +10,7 @@
   <ng-container *ngFor="let option of config.options">
     <div class="gui-image-select-item" mat-menu-item
          [class.selected]="option.value===value"
-         [style.flex]="option.col"
+         [flex]="option.col"
          (click)="onImageSelect(option)">
       <img class="gui-image-select-img" [src]="option.src" [alt]="option.label" />
       <div class="gui-image-select-txt">{{option.label}}</div>

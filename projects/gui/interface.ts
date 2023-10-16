@@ -13,8 +13,6 @@ export type GuiConfigType =
   | 'combobox'
   | 'slider'
   | 'buttonToggle'
-  | 'radio'
-  | 'checkbox'
   | 'fill'
   | 'image'
   | 'video'
@@ -52,11 +50,11 @@ export interface GuiConfig {
   // text & number & slider & select & combobox
   prefix?: string;
   suffix?: string;
-  // select & combobox & radio & checkbox & buttonToggle & imageSelect
+  // select & combobox & buttonToggle & imageSelect
   options?: GuiConfigOption[];
   // select
   useFont?: boolean;
-  // combobox & buttonToggle
+  // select & combobox & buttonToggle
   multiple?: boolean;
   // combobox
   maxSelectedItems?: number;
