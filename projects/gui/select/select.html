@@ -1,13 +1,13 @@
 <mat-form-field>
   <span *ngIf="config.prefix" matPrefix>{{config.prefix}}</span>
-  <mat-select panelClass="gui-form"
+  <mat-select panelClass="gui-select" hideSingleSelectionIndicator
               [(ngModel)]="value"
               [disabled]="disabled"
               [placeholder]="config.placeholder||''"
+              [multiple]="config.multiple || false"
               (selectionChange)="onValueChange()">
-    <mat-option *ngFor="let option of config.options" [value]="option.value"
-                [disabled]="option.disabled">
-      <span [style]="{fontFamily: config.useFont ? option.value : ''}">{{option.label}}</span>
+    <mat-option *ngFor="let opt of config.options" [value]="opt.value" [disabled]="opt.disabled">
+      <span [style]="{fontFamily: config.useFont ? opt.value : ''}">{{opt.label}}</span>
     </mat-option>
   </mat-select>
   <span *ngIf="config.suffix" matSuffix>{{config.suffix}}</span>

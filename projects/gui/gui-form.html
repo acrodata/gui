@@ -107,7 +107,6 @@
                          [(expanded)]="item.expanded" [disabled]="item.disabled">
       <mat-expansion-panel-header>
         <gui-field-label [config]="ejs(item)"></gui-field-label>
-        <span fxFlex></span>
         <!-- 只有展开面板之后才显示操作按钮 -->
         <ng-container *ngIf="item.expanded">
           <button mat-icon-button (click)="changeTabsMode($event, item, 'nav')"
@@ -160,8 +159,7 @@
         <div class="gui-tab-list" *ngIf="item.mode==='list'">
           <div class="gui-tab-item" *ngFor="let tab of item.children; index as i">
             <div class="gui-tab-item-heading">
-              <span>{{tab.name | ejs:{i} }}</span>
-              <span fxFlex></span>
+              <span class="gui-tab-item-title">{{tab.name | ejs:{i} }}</span>
               <!-- 有 template 并且 addable 才可以新增和删除 -->
               <ng-container *ngIf="item.template && (item.addable || item.addable===undefined)">
                 <button mat-icon-button (click)="addTab($event, form.get(item.key), item, i)"

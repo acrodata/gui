@@ -5,7 +5,7 @@
                      [style.flex]="option.col"
                      [class]="{'gui-icon-toggle': config.useIcon}"
                      [disabled]="option.disabled"
-                     [matTooltip]="config.useIcon ? option.label : ''">
+                     [title]="config.useIcon ? option.label : ''">
     <gui-icon *ngIf="config.useIcon; else textLabel" [src]="option.src!"></gui-icon>
     <ng-template #textLabel>{{option.label}}</ng-template>
   </mat-button-toggle>

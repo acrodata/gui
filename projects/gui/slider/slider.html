@@ -3,8 +3,7 @@
   <mat-slider [disabled]="disabled"
               [step]="config.step"
               [min]="config.min"
-              [max]="config.max"
-              [discrete]="true">
+              [max]="config.max">
     <input matSliderThumb [(ngModel)]="value" (valueChange)="onValueChange()">
   </mat-slider>
   <mat-form-field>
@@ -25,8 +24,7 @@
   <mat-slider [disabled]="disabled"
               [step]="config.step"
               [min]="config.min"
-              [max]="config.max"
-              [discrete]="true">
+              [max]="config.max">
     <input matSliderStartThumb [(ngModel)]="minValue" (valueChange)="onRangeInputChange()">
     <input matSliderEndThumb [(ngModel)]="maxValue" (valueChange)="onRangeInputChange()">
   </mat-slider>

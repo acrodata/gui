@@ -1,0 +1,9 @@
+.gui-select {
+  --mat-select-trigger-text-size: 12px;
+  --mat-option-label-text-size: 12px;
+
+  .mat-mdc-option {
+    min-height: var(--mat-option-label-text-line-height);
+    padding: 0 8px;
+  }
+}

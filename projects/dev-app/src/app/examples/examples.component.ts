@@ -85,21 +85,21 @@ export class ExamplesComponent implements OnInit {
               ],
               description: '请选择您系统有的字体,如果您系统无此字体,标题将会显示默认字体',
             },
-            search: {
-              name: '搜索',
-              type: 'combobox',
-              prefix: '$',
-              options: [
-                { value: 1, label: 'Apple' },
-                { value: 2, label: 'Lemon' },
-                { value: 3, label: 'Lime' },
-                { value: 4, label: 'Orange', disabled: true },
-                { value: 5, label: 'Strawberry' },
-              ],
-            },
+            // search: {
+            //   name: '搜索',
+            //   type: 'combobox',
+            //   prefix: '$',
+            //   options: [
+            //     { value: 1, label: 'Apple' },
+            //     { value: 2, label: 'Lemon' },
+            //     { value: 3, label: 'Lime' },
+            //     { value: 4, label: 'Orange', disabled: true },
+            //     { value: 5, label: 'Strawberry' },
+            //   ],
+            // },
             searchMulti: {
               name: '搜索多项',
-              type: 'combobox',
+              type: 'select',
               multiple: true,
               options: [
                 { value: 1, label: 'Apple' },
@@ -349,6 +349,7 @@ export class ExamplesComponent implements OnInit {
                   max: 1,
                   suffix: 'α',
                   mode: 'range',
+                  default: [0.2, 0.6],
                 },
               },
             },

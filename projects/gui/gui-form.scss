@@ -1,17 +1,26 @@
 .gui-form {
-  font-size: 12px;
-
   --mat-form-field-container-text-size: 12px;
-  --mat-select-trigger-text-size: 12px;
-  --mat-option-label-text-size: 12px;
   --mat-expansion-header-text-size: 12px;
   --mat-expansion-container-text-size: 12px;
-  --mat-standard-button-toggle-height: 24px;
   --mat-expansion-header-collapsed-state-height: 40px;
   --mat-expansion-header-expanded-state-height: 40px;
 
+  font-size: 12px;
+
   .mat-expansion-panel {
     --mat-expansion-container-shape: 0;
+
+    box-shadow: none !important;
+  }
+
+  .mat-expansion-panel-body {
+    padding: 0;
+  }
+
+  .mat-expansion-panel-header {
+    .mat-content {
+      align-items: center;
+    }
   }
 
   .mat-mdc-tab-header {
@@ -19,10 +28,15 @@
     --mdc-secondary-navigation-tab-container-height: 24px;
   }
 
+  .mat-mdc-tab {
+    min-width: auto;
+  }
+
   .mat-icon {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
     padding: 0 !important;
-    line-height: var(--mdc-icon-button-state-layer-size);
-    vertical-align: middle;
   }
 
   .mat-mdc-icon-button {
@@ -41,6 +55,7 @@
   .mat-mdc-form-field-hint-wrapper {
     position: relative;
     padding: 0 8px;
+    border-radius: var(--mdc-filled-text-field-container-shape);
   }
 
   .mat-mdc-form-field-infix {
@@ -49,26 +64,10 @@
   }
 
   .mat-mdc-form-field-hint-spacer,
-  .mat-mdc-form-field-bottom-align::before {
+  .mat-mdc-form-field-bottom-align::before,
+  .mdc-line-ripple {
     display: none;
   }
-
-  .mat-mdc-option {
-    min-height: var(--mat-option-label-text-line-height);
-    padding: 0 8px;
-  }
-
-  .mat-mdc-tab {
-    min-width: auto;
-  }
-}
-
-.gui-tabs,
-.gui-tabs .mat-expansion-panel-body,
-.gui-tab-list,
-.gui-tab-list .mat-expansion-panel-body,
-{
-// background-color: rgba(0, 0, 0, .24);
 }
 
 .gui-tab-item-heading {
