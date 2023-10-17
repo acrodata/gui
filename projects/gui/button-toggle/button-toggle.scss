@@ -3,16 +3,13 @@
 
   .mat-button-toggle-group {
     flex-wrap: wrap;
-
-    .mat-button-toggle-label-content {
-      padding: 0;
-    }
   }
 }
 
 .gui-icon-toggle {
   &.mat-button-toggle {
     .mat-button-toggle-label-content {
+      padding: 0;
       line-height: normal;
     }
   }

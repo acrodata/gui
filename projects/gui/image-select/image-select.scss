@@ -1,33 +1,31 @@
-@use '@angular/material' as mat;
-
 .gui-image-select-panel {
-  &.mat-menu-panel {
+  --mat-menu-item-label-text-size: 12px;
+
+  &.mat-mdc-menu-panel {
     max-height: 480px;
   }
 
-  .mat-menu-content {
+  .mat-mdc-menu-content {
     display: flex;
     flex-wrap: wrap;
     padding: 8px;
   }
 }
 
-.gui-image-select-item.mat-menu-item {
+.gui-image-select-item.mat-mdc-menu-item {
   height: unset;
-  padding: 4px;
   line-height: unset;
   text-align: center;
   border: 1px solid transparent;
+  border-radius: 4px;
+
+  .mat-mdc-menu-item-text {
+    width: 100%;
+  }
 
   &:hover,
   &.selected {
-    .gui-image-select-img {
-      border-color: mat.get-color-from-palette(mat.$blue-palette, 500);
-    }
-
-    .gui-image-select-txt {
-      color: mat.get-color-from-palette(mat.$blue-palette, 500);
-    }
+    border-color: var(--mdc-filled-text-field-focus-active-indicator-color);
   }
 }
 
@@ -36,9 +34,9 @@
   width: 100%;
   height: 64px;
   padding: 4px 24px 4px 4px;
-  color: #fff;
-  background-color: transparent;
-  border: 1px solid rgba(255, 255, 255, .3);
+  background-color: var(--mdc-filled-text-field-container-color);
+  border: 1px solid transparent;
+  border-radius: 4px;
   outline: none;
   cursor: pointer;
   transition: box-shadow;
@@ -57,18 +55,16 @@
 
   &:hover,
   &:focus {
-    border-color: #fff;
-    box-shadow: inset 0 0 0 1px #fff;
+    background-color: var(--mdc-filled-text-field-container-color);
   }
 
   &::after {
     position: absolute;
     top: 50%;
-    right: 2px;
+    right: 6px;
     width: 0;
     height: 0;
-    margin: 0 4px;
-    color: rgba(255, 255, 255, .54);
+    color: var(--mat-select-enabled-arrow-color);
     border-top: 5px solid;
     border-right: 5px solid transparent;
     border-left: 5px solid transparent;
@@ -78,7 +74,6 @@
 
 .gui-image-select-value {
   display: flex;
-  flex: 1;
   align-items: center;
   height: 100%;
 }
@@ -88,7 +83,6 @@
   width: 100%;
   height: 64px;
   object-fit: contain;
-  border: 1px solid rgba(255, 255, 255, .3);
 }
 
 .gui-image-select-txt {

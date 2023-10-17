@@ -1,16 +1,15 @@
 export type GuiConfigType =
-  | 'menu'
-  | 'menuItem'
   | 'group'
   | 'inline'
   | 'tabs'
   | 'tab'
+  | 'menu'
+  | 'menuItem'
   | 'text'
   | 'number'
   | 'switch'
   | 'select'
   | 'imageSelect'
-  | 'combobox'
   | 'slider'
   | 'buttonToggle'
   | 'fill'
@@ -47,20 +46,15 @@ export interface GuiConfig {
   min?: number;
   max?: number;
   step?: number;
-  // text & number & slider & select & combobox
+  // text & number & slider & select
   prefix?: string;
   suffix?: string;
-  // select & combobox & buttonToggle & imageSelect
+  // select & buttonToggle & imageSelect
   options?: GuiConfigOption[];
   // select
   useFont?: boolean;
-  // select & combobox & buttonToggle
+  // select & buttonToggle
   multiple?: boolean;
-  // combobox
-  maxSelectedItems?: number;
-  bindValue?: string;
-  bindLabel?: string;
-  addTag?: boolean;
   // buttonToggle
   useIcon?: boolean;
   // tabs

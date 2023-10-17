@@ -15,7 +15,6 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { MtxSelectModule } from '@ng-matero/extensions/select';
 import { MtxColorpickerModule } from '@ng-matero/extensions/colorpicker';
 
 import { GuiForm } from './gui-form';
@@ -30,7 +29,6 @@ import { GuiSlider } from './slider/slider';
 import { GuiIcon } from './button-toggle/icon';
 import { GuiButtonToggle } from './button-toggle/button-toggle';
 import { GuiFill } from './fill/fill';
-import { GuiCombobox } from './combobox/combobox';
 import { GuiImageSelect } from './image-select/image-select';
 import { GuiTextarea } from './textarea/textarea';
 import { GuiFileUploader } from './file-uploader/file-uploader';
@@ -55,7 +53,6 @@ import { svgIcons } from './gui-icons';
     MatTabsModule,
     MatExpansionModule,
     MatTooltipModule,
-    MtxSelectModule,
     MtxColorpickerModule,
   ],
   declarations: [
@@ -68,7 +65,6 @@ import { svgIcons } from './gui-icons';
     GuiIcon,
     GuiButtonToggle,
     GuiFill,
-    GuiCombobox,
     GuiFieldGroup,
     GuiFieldLabel,
     GuiFieldInline,
@@ -88,7 +84,6 @@ import { svgIcons } from './gui-icons';
     GuiIcon,
     GuiButtonToggle,
     GuiFill,
-    GuiCombobox,
     GuiFieldGroup,
     GuiFieldLabel,
     GuiFieldInline,

@@ -20,10 +20,6 @@
     <gui-field-group *ngSwitchCase="'select'" [config]="ejs(item)" [flex]="item.col">
       <gui-select [formControlName]="item.key" [config]="item"></gui-select>
     </gui-field-group>
-    <!-- 复合选择框 -->
-    <gui-field-group *ngSwitchCase="'combobox'" [config]="ejs(item)" [flex]="item.col">
-      <gui-combobox [formControlName]="item.key" [config]="item"></gui-combobox>
-    </gui-field-group>
     <!-- 开关 -->
     <gui-field-group *ngSwitchCase="'switch'" [config]="ejs(item)" [flex]="item.col">
       <gui-switch [formControlName]="item.key" [config]="item"></gui-switch>
