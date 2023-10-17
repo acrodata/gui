@@ -1,22 +1,20 @@
-<button class="gui-image-select-button" [matMenuTriggerFor]="menu" [disabled]="disabled">
-  <div class="gui-image-select-value" *ngIf="selectedOption">
-    <img class="gui-image-select-img"
-         [src]="selectedOption.src"
-         [alt]="selectedOption.label" />
-    <div class="gui-image-select-txt">{{selectedOption.label}}</div>
-  </div>
-</button>
-<mat-menu #menu="matMenu" class="gui-image-select-panel">
-  <ng-container *ngFor="let opt of config.options">
-    <div class="gui-image-select-item" mat-menu-item disableRipple
-         [class.selected]="opt.value===value"
-         [flex]="opt.col"
-         (click)="onImageSelect(opt)">
-      <img class="gui-image-select-img" [src]="opt.src" [alt]="opt.label" />
-      <div class="gui-image-select-txt">{{opt.label}}</div>
-    </div>
-  </ng-container>
-</mat-menu>
-<mat-hint *ngIf="config.parentType==='inline'">
-  <gui-field-label [config]="config"></gui-field-label>
-</mat-hint>
+<mat-form-field>
+  <span *ngIf="config.prefix" matPrefix>{{config.prefix}}</span>
+  <mtx-select [items]="config.options||[]" appendTo=".gui-form" bindValue="value"
+              [(ngModel)]="value"
+              (change)="onValueChange()"
+              (open)="onPanelOpened()">
+    <ng-template ng-label-tmp let-opt="item">
+      <img [src]="opt.src" [alt]="opt.label" />
+      <span>{{opt.label}}</span>
+    </ng-template>
+    <ng-template ng-option-tmp let-opt="item" let-index="index" let-search="searchTerm">
+      <img [src]="opt.src" [alt]="opt.label" />
+      <span>{{opt.label}}</span>
+    </ng-template>
+  </mtx-select>
+  <span *ngIf="config.suffix" matSuffix>{{config.suffix}}</span>
+  <mat-hint *ngIf="config.parentType==='inline'">
+    <gui-field-label [config]="config"></gui-field-label>
+  </mat-hint>
+</mat-form-field>

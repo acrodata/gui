@@ -4,6 +4,7 @@ import {
   Component,
   forwardRef,
   Input,
+  ViewChild,
   ViewEncapsulation,
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
@@ -32,8 +33,6 @@ export class GuiImageSelect implements ControlValueAccessor {
 
   value: unknown;
 
-  selectedOption?: GuiConfigOption;
-
   private onChange: (value: unknown) => void = () => {};
   private onTouched: () => void = () => {};
 
@@ -41,9 +40,6 @@ export class GuiImageSelect implements ControlValueAccessor {
 
   writeValue(value: unknown) {
     this.value = value;
-    if (this.value) {
-      this.selectedOption = this.config.options?.find(opt => opt.value === this.value);
-    }
     this.cdr.markForCheck();
   }
 
@@ -64,9 +60,5 @@ export class GuiImageSelect implements ControlValueAccessor {
     this.onChange(this.value);
   }
 
-  onImageSelect(option: GuiConfigOption) {
-    this.value = option.value;
-    this.selectedOption = option;
-    this.onChange(this.value);
-  }
+  onPanelOpened() {}
 }

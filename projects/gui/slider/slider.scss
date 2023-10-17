@@ -17,7 +17,8 @@
     &.mdc-slider--range {
       flex: 2;
 
-      +.mat-mdc-form-field {
+      +.mat-mdc-form-field,
+      +.mat-mdc-form-field+.mat-mdc-form-field {
         width: 60px;
         max-width: 60px;
       }

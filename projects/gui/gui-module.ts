@@ -16,6 +16,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MtxColorpickerModule } from '@ng-matero/extensions/colorpicker';
+import { MtxSelectModule } from '@ng-matero/extensions/select';
 
 import { GuiForm } from './gui-form';
 import { GuiFieldGroup } from './field-group/field-group';
@@ -54,6 +55,7 @@ import { svgIcons } from './gui-icons';
     MatExpansionModule,
     MatTooltipModule,
     MtxColorpickerModule,
+    MtxSelectModule,
   ],
   declarations: [
     GuiForm,

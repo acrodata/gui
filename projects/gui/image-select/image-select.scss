@@ -1,92 +1,57 @@
-.gui-image-select-panel {
-  --mat-menu-item-label-text-size: 12px;
+.gui-image-select {
+  .ng-select {
+    padding: 0 8px;
+    margin: 0 -8px;
 
-  &.mat-mdc-menu-panel {
-    max-height: 480px;
-  }
+    .ng-value-container {
+      height: 64px;
+    }
 
-  .mat-mdc-menu-content {
-    display: flex;
-    flex-wrap: wrap;
-    padding: 8px;
-  }
-}
+    .ng-value {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      height: 100%;
+      padding: 8px 0;
 
-.gui-image-select-item.mat-mdc-menu-item {
-  height: unset;
-  line-height: unset;
-  text-align: center;
-  border: 1px solid transparent;
-  border-radius: 4px;
+      img {
+        height: 100%;
+        width: 120px;
+        object-fit: contain;
+        border-radius: 4px;
+        background-color: var(--mdc-filled-text-field-disabled-active-indicator-color);
+      }
+    }
 
-  .mat-mdc-menu-item-text {
-    width: 100%;
-  }
-
-  &:hover,
-  &.selected {
-    border-color: var(--mdc-filled-text-field-focus-active-indicator-color);
-  }
-}
-
-.gui-image-select-button {
-  position: relative;
-  width: 100%;
-  height: 64px;
-  padding: 4px 24px 4px 4px;
-  background-color: var(--mdc-filled-text-field-container-color);
-  border: 1px solid transparent;
-  border-radius: 4px;
-  outline: none;
-  cursor: pointer;
-  transition: box-shadow;
-
-  .gui-image-select-img {
-    flex: 2;
-    width: 0;
-    height: 100%;
-    border: none;
-  }
-
-  .gui-image-select-txt {
-    flex: 1;
-    text-align: left;
-  }
-
-  &:hover,
-  &:focus {
-    background-color: var(--mdc-filled-text-field-container-color);
-  }
-
-  &::after {
-    position: absolute;
-    top: 50%;
-    right: 6px;
-    width: 0;
-    height: 0;
-    color: var(--mat-select-enabled-arrow-color);
-    border-top: 5px solid;
-    border-right: 5px solid transparent;
-    border-left: 5px solid transparent;
-    content: '';
+    .ng-arrow-wrapper {
+      width: 24px;
+      margin-right: -8px;
+    }
   }
 }
 
-.gui-image-select-value {
-  display: flex;
-  align-items: center;
-  height: 100%;
-}
+.gui-form {
+  .ng-dropdown-panel {
+    .ng-dropdown-panel-items {
+      >div+div {
+        // display: flex;
+      }
 
-.gui-image-select-img {
-  display: block;
-  width: 100%;
-  height: 64px;
-  object-fit: contain;
-}
+      .ng-option {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        height: 64px;
+        padding: 8px;
 
-.gui-image-select-txt {
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
+        img {
+          height: 100%;
+          width: 120px;
+          object-fit: contain;
+          border-radius: 4px;
+          background-color: var(--mdc-filled-text-field-disabled-active-indicator-color);
+        }
+      }
+    }
+  }
 }
