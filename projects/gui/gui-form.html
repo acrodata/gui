@@ -121,7 +121,7 @@
       <ng-template matExpansionPanelContent>
         <!-- 横向导航模式显示（标准模式） -->
         <mat-tab-group *ngIf="item.mode!=='list'" class="gui-tabs" [mat-stretch-tabs]="false"
-                       [class.gui-tabs-empty]="item.children.length===0">
+                       [class.gui-tabs-empty]="item.children.length===0" disableRipple>
           <mat-tab *ngFor="let tab of item.children; index as i" [disabled]="tab.disabled">
             <ng-template mat-tab-label>
               <div>{{tab.name | ejs:{i} }}</div>
@@ -182,7 +182,7 @@
     </mat-expansion-panel>
 
     <!-- 菜单组 -->
-    <mat-tab-group class="gui-menu" *ngSwitchCase="'menu'" [formGroupName]="item.key">
+    <mat-tab-group class="gui-menu" *ngSwitchCase="'menu'" [formGroupName]="item.key" disableRipple>
       <mat-tab *ngFor="let menuChild of item.children" [label]="menuChild.name"
                [disabled]="menuChild.disabled">
         <ng-template matTabContent>

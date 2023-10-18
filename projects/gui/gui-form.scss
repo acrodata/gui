@@ -21,7 +21,16 @@
   .mat-expansion-panel-header {
     .mat-content {
       align-items: center;
+      padding-right: 8px;
+
+      gui-field-label {
+        flex: 1;
+      }
     }
+  }
+
+  .mat-expansion-indicator::after {
+    vertical-align: 2px;
   }
 
   .mat-mdc-tab-header {
@@ -75,20 +84,44 @@
   display: flex;
   align-items: center;
   position: relative;
-  padding-right: 30px;
-  padding-left: 12px;
-  line-height: var(--mdc-secondary-navigation-tab-container-height);
+  padding: 0 12px;
+
+  .gui-tab-item-title {
+    flex: 1;
+  }
 
   &::before {
     position: absolute;
     left: 0;
     width: 2px;
-    height: 100%;
-    background-color: var(--mdc-tab-indicator-active-indicator-color);
+    height: 16px;
+    background-color: var(--mat-expansion-header-text-color);
     content: '';
   }
 }
 
 .gui-tabs-empty>.mat-tab-header {
   display: none;
+}
+
+.gui-menu {
+  .mat-mdc-tab-header {
+    --mdc-tab-indicator-active-indicator-shape: 4px;
+
+    padding: 2px;
+    border-radius: calc(var(--mdc-tab-indicator-active-indicator-shape) + 2px);
+    background-color: rgba(0, 0, 0, .04);
+
+    .mat-mdc-tab-ripple,
+    .mdc-tab__ripple::before {
+      border-radius: var(--mdc-tab-indicator-active-indicator-shape);
+    }
+  }
+
+  .mdc-tab-indicator .mdc-tab-indicator__content {
+    height: 100%;
+    border-width: 0;
+    border-radius: var(--mdc-tab-indicator-active-indicator-shape);
+    background-color: white;
+  }
 }

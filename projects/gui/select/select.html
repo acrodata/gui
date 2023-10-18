@@ -1,6 +1,6 @@
 <mat-form-field>
   <span *ngIf="config.prefix" matPrefix>{{config.prefix}}</span>
-  <mat-select panelClass="gui-select" hideSingleSelectionIndicator
+  <mat-select panelClass="gui-select" hideSingleSelectionIndicator disableRipple
               [(ngModel)]="value"
               [disabled]="disabled"
               [placeholder]="config.placeholder||''"

@@ -4,11 +4,10 @@ import {
   Component,
   forwardRef,
   Input,
-  ViewChild,
   ViewEncapsulation,
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { GuiConfigOption, GuiControl } from '../interface';
+import { GuiControl } from '../interface';
 
 @Component({
   selector: 'gui-image-select',
