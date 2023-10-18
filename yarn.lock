@@ -2746,10 +2746,10 @@
   resolved "https://registry.yarnpkg.com/@mdi/font/-/font-7.3.67.tgz#faa344a04c9d02f608c891a01134084febeb42db"
   integrity sha512-SWxvzRbUQRfewlIV+OF4/YF4DkeTjMWoT8Hh9yeU/5UBVdJZj9Uf4a9+cXjknSIhIaMxZ/4N1O/s7ojApOOGjg==
 
-"@ng-matero/extensions@^16.1.1":
-  version "16.1.1"
-  resolved "https://registry.yarnpkg.com/@ng-matero/extensions/-/extensions-16.1.1.tgz#dc21d471a58fcebe835fd43b1f58ab22e54b7e2d"
-  integrity sha512-xopN5S+fXLF7oTdO6T8333DTOVs21zqMxojCKvfes7G6cgPvrAchGaCgz44LKbILVojb2rO/+27iI5x9Y3cing==
+"@ng-matero/extensions@^16.1.2":
+  version "16.1.2"
+  resolved "https://registry.yarnpkg.com/@ng-matero/extensions/-/extensions-16.1.2.tgz#46f7a30231012efccfd5d728e0e7fe9b060ae564"
+  integrity sha512-GKpKwSZTzSPkFrMB99cSXlwxfnZIbjT+SsqOhQqLBKIJddtzj4Pxx7wIqzfb/q3SROWlQpg72kGeUfiR5Z5FCA==
   dependencies:
     "@ng-select/ng-select" "^11.0.0"
     ngx-color "^9.0.0"

@@ -5,7 +5,6 @@ import {
   Component,
   ElementRef,
   EventEmitter,
-  forwardRef,
   Input,
   OnChanges,
   OnInit,
@@ -13,6 +12,7 @@ import {
   SimpleChanges,
   ViewChild,
   ViewEncapsulation,
+  forwardRef,
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
