@@ -30,6 +30,7 @@ import { GuiSlider } from './slider/slider';
 import { GuiIcon } from './button-toggle/icon';
 import { GuiButtonToggle } from './button-toggle/button-toggle';
 import { GuiFill } from './fill/fill';
+import { GuiColorPalette } from './fill/color-palette';
 import { GuiImageSelect } from './image-select/image-select';
 import { GuiTextarea } from './textarea/textarea';
 import { GuiFileUploader } from './file-uploader/file-uploader';
@@ -67,6 +68,7 @@ import { svgIcons } from './gui-icons';
     GuiIcon,
     GuiButtonToggle,
     GuiFill,
+    GuiColorPalette,
     GuiFieldGroup,
     GuiFieldLabel,
     GuiFieldInline,
@@ -86,6 +88,7 @@ import { svgIcons } from './gui-icons';
     GuiIcon,
     GuiButtonToggle,
     GuiFill,
+    GuiColorPalette,
     GuiFieldGroup,
     GuiFieldLabel,
     GuiFieldInline,

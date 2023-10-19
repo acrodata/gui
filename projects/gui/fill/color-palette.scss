@@ -1,0 +1,59 @@
+/* stylelint-disable no-invalid-position-at-import-rule */
+@import '@easylogic/colorpicker/src/scss/common';
+@import '@easylogic/colorpicker/src/scss/mixins';
+
+.easylogic-colorpicker {
+  position: relative;
+  width: 224px;
+  z-index: 1000;
+  display: inline-block;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  background-color: #fff;
+  border-radius: 3px;
+  box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.12);
+  outline: none;
+
+  >.arrow {
+    position: absolute;
+    top: -10px;
+    left: 7px;
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    display: none;
+    border-bottom: 10px solid rgba(0, 0, 0, 0.2);
+    pointer-events: none;
+
+    &::after {
+      position: absolute;
+      content: "";
+      top: 1px;
+      left: -9px;
+      width: 0;
+      height: 0;
+      border-left: 9px solid transparent;
+      border-right: 9px solid transparent;
+      border-bottom: 9px solid white;
+    }
+  }
+
+  .colorpicker-body {
+    @import '@easylogic/colorpicker/src/scss/component/button';
+    @import '@easylogic/colorpicker/src/scss/component/palette';
+    @import '@easylogic/colorpicker/src/scss/component/control';
+    @import '@easylogic/colorpicker/src/scss/component/information';
+  }
+
+  @import '@easylogic/colorpicker/src/scss/component/gradient-editor';
+  @import '@easylogic/colorpicker/src/scss/component/gradient-picker';
+
+  .hue-scale,
+  .empty2,
+  .color2,
+  .colorsets,
+  .color-chooser,
+  .colorsets-contextmenu {
+    display: none;
+  }
+}

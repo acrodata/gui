@@ -1577,6 +1577,11 @@
   resolved "https://registry.yarnpkg.com/@discoveryjs/json-ext/-/json-ext-0.5.7.tgz#1d572bfbbe14b7704e0ba0f39b74815b84870d70"
   integrity sha512-dBVuXR082gk3jsFp7Rd/JI4kytwGHecnCoTtXFb7DB6CNHp4rg5k1bhg0nWdLGLnOV71lmDzGQaLMy8iPLY0pw==
 
+"@easylogic/colorpicker@^1.10.11":
+  version "1.10.11"
+  resolved "https://registry.yarnpkg.com/@easylogic/colorpicker/-/colorpicker-1.10.11.tgz#87f925b500a5e5898e950ed1a6756e239d40b5a6"
+  integrity sha512-CHN/WTk0d1LH7Jzep7fjPkUe73XjZ6zQCFH/rhpHf1e06TDJQ0D9lRfJgtBjLsEZqKfAIP6C8q9MEt9cxh3Y/A==
+
 "@esbuild/android-arm64@0.18.17":
   version "0.18.17"
   resolved "https://registry.yarnpkg.com/@esbuild/android-arm64/-/android-arm64-0.18.17.tgz#9e00eb6865ed5f2dbe71a1e96f2c52254cd92903"

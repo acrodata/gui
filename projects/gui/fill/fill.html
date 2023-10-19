@@ -9,9 +9,18 @@
          [placeholder]="config.placeholder||''"
          [mtxColorpicker]="cp"
          (colorChange)="onValueChange()">
-  <mtx-colorpicker #cp></mtx-colorpicker>
+  <mtx-colorpicker [content]="customPickerContent" #cp></mtx-colorpicker>
   <mtx-colorpicker-toggle matSuffix [for]="cp"></mtx-colorpicker-toggle>
   <mat-hint *ngIf="config.parentType==='inline'">
     <gui-field-label [config]="config"></gui-field-label>
   </mat-hint>
 </mat-form-field>
+
+<ng-template #customPickerContent>
+  <gui-color-palette [showGradient]="config.mode==='gradient'"
+                     [color]="cp.selected"
+                     (colorChange)="cp.select($event)"
+                     [gradient]="cp.selected"
+                     (gradientChange)="cp.select($event)">
+  </gui-color-palette>
+</ng-template>
