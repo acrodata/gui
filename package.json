@@ -33,6 +33,9 @@
     "@angular/router": "^16.2.0",
     "@mdi/font": "^7.3.67",
     "@ng-matero/extensions": "^16.1.2",
+    "lodash-es": "^4.17.21",
+    "monaco-editor": "^0.44.0",
+    "ng-monaco-editor": "^5.1.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.13.0"
@@ -49,6 +52,7 @@
     "@commitlint/cli": "^17.7.0",
     "@commitlint/config-conventional": "^17.7.0",
     "@types/jasmine": "~4.3.0",
+    "@types/lodash-es": "^4.17.10",
     "@types/node": "^20.8.0",
     "@typescript-eslint/eslint-plugin": "^6.7.0",
     "@typescript-eslint/parser": "^6.7.0",

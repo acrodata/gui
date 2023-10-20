@@ -1,1 +1,15 @@
-<p>playground works!</p>
+<main>
+  <section>
+    <ng-monaco-editor [style]="{height:'100%',width:'100%'}"
+                      [options]="{language:'json'}"
+                      [(ngModel)]="configStr"
+                      [ngModelOptions]="{updateOn:'blur'}"
+                      (ngModelChange)="onConfigChange()"></ng-monaco-editor>
+  </section>
+  <section>
+    <gui-form [config]="config" [form]="form"></gui-form>
+  </section>
+  <section>
+    <textarea [value]="value|json"></textarea>
+  </section>
+</main>
