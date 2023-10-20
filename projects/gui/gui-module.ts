@@ -11,7 +11,6 @@ import { MatSliderModule } from '@angular/material/slider';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatButtonModule } from '@angular/material/button';
-import { MatMenuModule } from '@angular/material/menu';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatTooltipModule } from '@angular/material/tooltip';
@@ -50,7 +49,6 @@ import { svgIcons } from './gui-icons';
     MatButtonToggleModule,
     MatIconModule,
     MatButtonModule,
-    MatMenuModule,
     MatTabsModule,
     MatExpansionModule,
     MatTooltipModule,

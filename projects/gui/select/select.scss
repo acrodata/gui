@@ -5,5 +5,14 @@
   .mat-mdc-option {
     min-height: var(--mat-option-label-text-line-height);
     padding: 0 8px;
+
+    .mat-pseudo-checkbox-full {
+      margin-right: 8px;
+    }
+  }
+
+  .mat-pseudo-checkbox {
+    width: 16px;
+    height: 16px;
   }
 }

@@ -19,6 +19,8 @@
   }
 
   .mat-expansion-panel-header {
+    padding: 0 12px;
+
     .mat-content {
       align-items: center;
       padding-right: 8px;
@@ -48,6 +50,11 @@
     justify-content: center;
     align-items: center;
     padding: 0 !important;
+
+    svg {
+      width: 14px;
+      height: 14px;
+    }
   }
 
   .mat-mdc-icon-button {

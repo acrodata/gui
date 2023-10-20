@@ -1,11 +1,10 @@
 .gui-label {
   display: inline-block;
-  width: 120px;
+  width: 64px;
   height: 24px;
-  padding-right: 8px;
-  padding-left: 16px;
-  overflow: hidden;
+  padding: 0 4px;
   line-height: 24px;
+  overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
