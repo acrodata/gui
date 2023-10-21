@@ -1,10 +1,10 @@
 import { Directive, ElementRef, Input, OnInit, Pipe, PipeTransform } from '@angular/core';
 
 /**
- * 轻量级类 EJS 模板引擎
+ * Lightweight EJS template engine
  *
- * @param str  模板字符串
- * @param data 模板数据
+ * @param str  template string
+ * @param data data passed to the template
  * @returns
  *
  * ### Example

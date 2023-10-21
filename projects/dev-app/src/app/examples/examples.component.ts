@@ -1,4 +1,4 @@
-import { GuiConfigs, GuiModule } from '@acrodata/gui';
+import { GuiConfigs, GuiFileUploaderConfig, GuiModule } from '@acrodata/gui';
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
@@ -397,6 +397,8 @@ export class ExamplesComponent implements OnInit {
     },
   };
   model = {};
+
+  constructor(private fileUploaderCfg: GuiFileUploaderConfig) {}
 
   ngOnInit(): void {
     this.form.valueChanges.subscribe(v => {

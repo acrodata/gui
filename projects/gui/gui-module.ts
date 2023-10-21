@@ -32,7 +32,7 @@ import { GuiFill } from './fill/fill';
 import { GuiImageSelect } from './image-select/image-select';
 import { GuiTextarea } from './textarea/textarea';
 import { GuiFileUploader } from './file-uploader/file-uploader';
-import { GuiFileUploaderService } from './file-uploader/file-uploader.service';
+import { GuiFileUploaderConfig } from './file-uploader/file-uploader-config';
 import { GuiEjsPipe, GuiFlexDirective } from './gui-utils';
 import { svgIcons } from './gui-icons';
 
@@ -93,7 +93,7 @@ import { svgIcons } from './gui-icons';
     GuiEjsPipe,
     GuiFlexDirective,
   ],
-  providers: [GuiFileUploaderService],
+  providers: [GuiFileUploaderConfig],
 })
 export class GuiModule {
   constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer) {

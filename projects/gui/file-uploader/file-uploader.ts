@@ -7,7 +7,6 @@ import {
   EventEmitter,
   Input,
   OnChanges,
-  OnInit,
   Output,
   SimpleChanges,
   ViewChild,
@@ -15,17 +14,11 @@ import {
   forwardRef,
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
 import { of } from 'rxjs';
 import { catchError, finalize } from 'rxjs/operators';
-import { GuiFileUploaderService } from './file-uploader.service';
+import { GuiFileUploaderConfig } from './file-uploader-config';
 
 export type FileUploadType = 'image' | 'video' | 'audio' | '*';
-
-export interface FileUploadParams {
-  type: 1 | 2 | 3 | 5 | 6; // 业务类型 1: 大屏; 2: 报告; 3: 插件; 5: 模板; 6: 全局
-  id: number | string; // 大屏 ID、组件 ID、模板 ID 等
-}
 
 export interface FileUploadContent {
   data: File;
@@ -50,13 +43,12 @@ export interface FileUploadContent {
     },
   ],
 })
-export class GuiFileUploader implements ControlValueAccessor, OnInit, OnChanges {
+export class GuiFileUploader implements ControlValueAccessor, OnChanges {
   @ViewChild('fileInput') fileInput!: ElementRef<HTMLInputElement>;
 
   @Input() type: FileUploadType = '*';
   @Input() name = '';
   @Input() accept = '';
-  @Input() params: FileUploadParams = { type: 1, id: 0 };
   @Input() disabled = false;
 
   @Output() fileChange = new EventEmitter<string>();
@@ -71,8 +63,7 @@ export class GuiFileUploader implements ControlValueAccessor, OnInit, OnChanges 
   private onTouched: () => void = () => {};
 
   constructor(
-    private route: ActivatedRoute,
-    private fileUploaderSrv: GuiFileUploaderService,
+    private fileUploaderCfg: GuiFileUploaderConfig,
     private cdr: ChangeDetectorRef
   ) {}
 
@@ -80,15 +71,6 @@ export class GuiFileUploader implements ControlValueAccessor, OnInit, OnChanges 
     if (changes['type']) {
       this.accept = this.type + '/*';
     }
-  }
-
-  ngOnInit() {
-    this.route.params.subscribe(params => {
-      // 默认从 URL 获取大屏 ID
-      if (params['id']) {
-        this.params.id = params['id'];
-      }
-    });
   }
 
   writeValue(value: string) {
@@ -115,8 +97,8 @@ export class GuiFileUploader implements ControlValueAccessor, OnInit, OnChanges 
 
     file.inProgress = true;
 
-    this.fileUploaderSrv
-      .upload(this.params.type, this.params.id, formData)
+    this.fileUploaderCfg
+      .upload(formData)
       .pipe(
         catchError((error: HttpErrorResponse) => {
           file.inProgress = false;

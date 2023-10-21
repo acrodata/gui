@@ -10,6 +10,7 @@ export * from './field-group/field-group';
 export * from './field-inline/field-inline';
 export * from './field-label/field-label';
 export * from './file-uploader/file-uploader';
+export * from './file-uploader/file-uploader-config';
 export * from './fill/fill';
 export * from './image-select/image-select';
 export * from './input-number/input-number';

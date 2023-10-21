@@ -52,6 +52,7 @@ export class GuiSwitch implements ControlValueAccessor {
 
   setDisabledState(isDisabled: boolean) {
     this.disabled = isDisabled;
+    this.cdr.markForCheck();
   }
 
   onValueChange() {
