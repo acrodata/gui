@@ -9,7 +9,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve dev-app",
-    "build": "ng build dev-app",
+    "build": "ng build dev-app --base-href=/gui/",
     "watch": "ng build dev-app --watch --configuration development",
     "test": "ng test dev-app",
     "lint": "npm run lint:ts && npm run lint:scss",
@@ -17,6 +17,8 @@
     "lint:scss": "stylelint \"**/*.scss\" --fix",
     "build:lib": "ng build gui",
     "publish": "npm run build:lib && cd dist/gui && npm publish",
+    "predeploy": "npm run build",
+    "deploy": "angular-cli-ghpages --no-silent --dir=dist/dev-app",
     "prepare": "husky install"
   },
   "private": true,
