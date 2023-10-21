@@ -15,9 +15,35 @@ export class PlaygroundComponent implements OnInit {
   form = new FormGroup({});
   config: GuiConfigs = {
     title: {
-      name: '标题',
       type: 'text',
+      name: '标题',
       default: '我是标题',
+    },
+    align: {
+      type: 'buttonToggle',
+      name: '对齐方式',
+      options: [
+        { value: 'left', label: '左对齐' },
+        { value: 'center', label: '居中对齐' },
+        { value: 'right', label: '右对齐' },
+      ],
+      default: 'center',
+    },
+    size: {
+      type: 'group',
+      name: '尺寸',
+      children: {
+        width: {
+          type: 'number',
+          name: '宽度',
+          default: 100,
+        },
+        height: {
+          type: 'number',
+          name: '高度',
+          default: 100,
+        },
+      },
     },
   };
   model: any = {};
