@@ -4,10 +4,13 @@ import {
   Component,
   Input,
   OnChanges,
+  OnDestroy,
+  OnInit,
   SimpleChanges,
   ViewEncapsulation,
 } from '@angular/core';
 import { FormArray, FormControl, FormGroup } from '@angular/forms';
+import { Subscription } from 'rxjs';
 import { ejsTmpl } from './gui-utils';
 import { GuiConfigType, GuiConfigs, GuiControl, GuiTabsMode } from './interface';
 
@@ -21,17 +24,20 @@ import { GuiConfigType, GuiConfigs, GuiControl, GuiTabsMode } from './interface'
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class GuiForm implements OnChanges {
+export class GuiForm implements OnChanges, OnInit, OnDestroy {
   @Input() form = new FormGroup({});
+
   @Input() config: GuiConfigs = {};
-  // TODO: 动态表单中的 model 需要自动更新
+
   @Input() model: Record<string, any> = {};
 
   formFields: GuiControl[] = [];
 
+  formSubscription = Subscription.EMPTY;
+
   constructor(private cdr: ChangeDetectorRef) {}
 
-  ngOnChanges(changes: SimpleChanges) {
+  ngOnChanges(changes: SimpleChanges): void {
     if (changes['config']) {
       this.form.controls = {}; // 重置表单控件
       this.formFields = this.getFormFieldConfig(this.form, this.config, this.model);
@@ -40,6 +46,16 @@ export class GuiForm implements OnChanges {
     if (changes['model'] && this.model && Object.keys(this.model).length > 0) {
       this.form.patchValue(this.model);
     }
+  }
+
+  ngOnInit(): void {
+    this.formSubscription = this.form.valueChanges.subscribe(value => {
+      Object.assign(this.model, value);
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.formSubscription.unsubscribe();
   }
 
   /**
@@ -85,8 +101,9 @@ export class GuiForm implements OnChanges {
       if (item.children && model[key] == null && item.default == null) {
         item.model = model[key] = item._type === 'array' ? [] : {};
       }
+
       // 根据 config 中的 default 生成 model
-      if (model[key] == null) {
+      if (typeof model === 'object' && model[key] == null) {
         model[key] = item.default;
       }
 

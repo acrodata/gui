@@ -20,8 +20,7 @@ export class PlaygroundComponent implements OnInit {
       default: '我是标题',
     },
   };
-  model = {};
-  value = {};
+  model: any = {};
 
   configStr = '';
 
@@ -29,12 +28,11 @@ export class PlaygroundComponent implements OnInit {
     this.configStr = JSON.stringify(this.config, null, 2);
 
     this.form.valueChanges.subscribe(v => {
-      this.value = v;
+      console.log(v);
     });
   }
 
   onConfigChange() {
     this.config = JSON.parse(this.configStr);
-    this.model = this.value;
   }
 }

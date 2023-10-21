@@ -397,12 +397,10 @@ export class ExamplesComponent implements OnInit {
     },
   };
   model = {};
-  value = {};
 
   ngOnInit(): void {
     this.form.valueChanges.subscribe(v => {
       console.log(v);
-      this.value = v;
     });
   }
 }
