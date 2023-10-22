@@ -1,27 +1,68 @@
 # GUI
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.5.
+A lightweight GUI library for Angular.
 
-## Development server
+## Installation
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+```bash
+npm install @angular/material @ng-matero/extensions @acrodata/gui --save
+```
 
-## Code scaffolding
+## Setup
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+```ts
+import { GuiModule } from '@acrodata/gui';
 
-## Build
+@NgModule({
+  ...
+  imports: [GuiModule, ...],
+  ...
+})
+export class YourAppModule {
+}
+```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+You should define a theme for Material and Material Extensions by yourself.
 
-## Running unit tests
+```scss
+@use '@angular/material' as mat;
+@use '@ng-matero/extensions' as mtx;
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+$theme: mat.define-light-theme(...);
 
-## Running end-to-end tests
+@include mat.all-component-themes($theme);
+@include mtx.all-component-themes($theme);
+```
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Or you can also import the prebuilt themes.
 
-## Further help
+```css
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
+@import '@ng-matero/extensions/prebuilt-themes/indigo-pink.css';
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Usage
+
+```ts
+import { Component } from '@angular/core';
+import { GuiConfigs } from '@acrodata/gui';
+
+@Component({
+  selector: 'your-app',
+  template: `<gui-form [config]="config" [model]="model"></gui-form>`,
+})
+export class YourAppComponent {
+  config: GuiConfigs = {
+    title: {
+      type: 'text',
+      name: 'Title',
+      default: 'I am title',
+    },
+  };
+  model = {};
+}
+```
+
+## License
+
+MIT
