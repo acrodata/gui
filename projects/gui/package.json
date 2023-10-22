@@ -1,13 +1,32 @@
 {
   "name": "@acrodata/gui",
   "version": "0.1.0",
+  "description": "A lightweight GUI library for Angular",
+  "publishConfig": {
+    "access": "public"
+  },
+  "author": "nzbin<nzb329@163.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/acrodata/gui.git"
+  },
+  "homepage": "https://acrodata.github.io/gui/",
+  "keywords": [
+    "gui",
+    "angular",
+    "typescript",
+    "creative-coding"
+  ],
   "peerDependencies": {
-    "@angular/common": "^16.2.0",
-    "@angular/core": "^16.2.0"
+    "@angular/cdk": ">=15.0.0",
+    "@angular/common": ">=15.0.0",
+    "@angular/core": ">=15.0.0",
+    "@angular/form": ">=15.0.0",
+    "@angular/material": ">=15.0.0",
+    "@ng-matero/extensions": ">=15.0.0"
   },
   "dependencies": {
-    "@angular/material": "^16.2.0",
-    "@ng-matero/extensions": "^16.1.0",
     "tslib": "^2.3.0"
   },
   "sideEffects": false
