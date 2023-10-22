@@ -16,7 +16,6 @@ import { ChangeDetectionStrategy, Component, Input, ViewEncapsulation } from '@a
 export class GuiIcon {
   @Input() src = '';
 
-  // 简易判断是否是 URL 地址
   isUrl() {
     return /https?:\/\/.+/.test(this.src);
   }

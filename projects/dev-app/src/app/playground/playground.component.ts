@@ -1,4 +1,4 @@
-import { GuiConfigs, GuiModule } from '@acrodata/gui';
+import { GuiFields, GuiModule } from '@acrodata/gui';
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormsModule } from '@angular/forms';
@@ -13,7 +13,7 @@ import { MonacoEditorModule } from 'ng-monaco-editor';
 })
 export class PlaygroundComponent implements OnInit {
   form = new FormGroup({});
-  config: GuiConfigs = {
+  config: GuiFields = {
     title: {
       type: 'text',
       name: '标题',

@@ -53,10 +53,10 @@ export class GuiFileUploader implements ControlValueAccessor, OnChanges {
 
   @Output() fileChange = new EventEmitter<string>();
 
-  // 图片或视频链接
+  // media src
   url = '';
 
-  // 上传的文件
+  // file to upload
   file!: FileUploadContent;
 
   private onChange: (value: string) => void = () => {};
@@ -137,7 +137,7 @@ export class GuiFileUploader implements ControlValueAccessor, OnChanges {
 
     this.upload(this.file);
 
-    // 重置输入框
+    // reset input value
     (e.target as HTMLInputElement).value = '';
   }
 

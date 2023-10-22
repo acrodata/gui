@@ -32,7 +32,7 @@ export class GuiSlider implements ControlValueAccessor {
 
   value!: number | number[];
 
-  // 区间滑块的输入框绑定值
+  // The input binding value for range slider
   minValue!: number;
   maxValue!: number;
 

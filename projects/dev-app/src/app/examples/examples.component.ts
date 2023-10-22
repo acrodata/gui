@@ -1,4 +1,4 @@
-import { GuiConfigs, GuiFileUploaderConfig, GuiModule } from '@acrodata/gui';
+import { GuiFields, GuiFileUploaderConfig, GuiModule } from '@acrodata/gui';
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
@@ -12,7 +12,7 @@ import { FormGroup } from '@angular/forms';
 })
 export class ExamplesComponent implements OnInit {
   form = new FormGroup({});
-  config: GuiConfigs = {
+  config: GuiFields = {
     size: {
       type: 'inline',
       name: '屏幕大小',

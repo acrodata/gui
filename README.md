@@ -45,14 +45,14 @@ Or you can also import the prebuilt themes.
 
 ```ts
 import { Component } from '@angular/core';
-import { GuiConfigs } from '@acrodata/gui';
+import { GuiFields } from '@acrodata/gui';
 
 @Component({
   selector: 'your-app',
   template: `<gui-form [config]="config" [model]="model"></gui-form>`,
 })
 export class YourAppComponent {
-  config: GuiConfigs = {
+  config: GuiFields = {
     title: {
       type: 'text',
       name: 'Title',

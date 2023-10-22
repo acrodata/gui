@@ -12,24 +12,24 @@ import {
 import { FormArray, FormControl, FormGroup } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { ejsTmpl } from './gui-utils';
-import { GuiConfigType, GuiConfigs, GuiControl, GuiTabsMode } from './interface';
+import { GuiFieldType, GuiFields, GuiControl, GuiTabsMode } from './interface';
 
 @Component({
   selector: 'gui-form',
+  templateUrl: './gui-form.html',
+  styleUrls: ['./gui-form.scss'],
   host: {
     class: 'gui-form',
   },
-  templateUrl: './gui-form.html',
-  styleUrls: ['./gui-form.scss'],
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class GuiForm implements OnChanges, OnInit, OnDestroy {
-  @Input() form = new FormGroup({});
+  @Input() form = new FormGroup<any>({});
 
-  @Input() config: GuiConfigs = {};
+  @Input() config: GuiFields = {};
 
-  @Input() model: Record<string, any> = {};
+  @Input() model: any = {};
 
   formFields: GuiControl[] = [];
 
@@ -40,7 +40,7 @@ export class GuiForm implements OnChanges, OnInit, OnDestroy {
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['config']) {
       this.form.controls = {}; // 重置表单控件
-      this.formFields = this.getFormFieldConfig(this.form, this.config, this.model);
+      this.formFields = this.getFormFieldArray(this.form, this.config, this.model);
     }
 
     if (changes['model'] && this.model && Object.keys(this.model).length > 0) {
@@ -69,12 +69,12 @@ export class GuiForm implements OnChanges, OnInit, OnDestroy {
    * @param options      响应式表单配置
    * @returns            表单配置数组
    */
-  getFormFieldConfig(
+  getFormFieldArray(
     form: FormGroup | FormArray,
-    config: GuiConfigs | GuiControl[] = {},
+    config: GuiFields | GuiControl[] = {},
     model: Record<string, any> = {},
     defaultValue: any = null,
-    parentType: GuiConfigType = 'group',
+    parentType: GuiFieldType = 'group',
     options: { onlySelf?: boolean; emitEvent?: boolean } = { emitEvent: false }
   ) {
     const tempArr = [];
@@ -142,7 +142,7 @@ export class GuiForm implements OnChanges, OnInit, OnDestroy {
           form.insert(item.index || form.length, formArray, options);
         }
 
-        item.children = this.getFormFieldConfig(
+        item.children = this.getFormFieldArray(
           formArray,
           item.children,
           item.model,
@@ -157,7 +157,7 @@ export class GuiForm implements OnChanges, OnInit, OnDestroy {
           form.insert(item.index || form.length, formGroup, options);
         }
 
-        item.children = this.getFormFieldConfig(
+        item.children = this.getFormFieldArray(
           formGroup,
           item.children,
           item.model,
@@ -193,9 +193,9 @@ export class GuiForm implements OnChanges, OnInit, OnDestroy {
       }
     });
     // 构造出来的对象 [{ key: 'tab', children: template }]，key 最好为 null
-    const newTab = this.getFormFieldConfig(
+    const newTab = this.getFormFieldArray(
       form,
-      { [insertIndex]: tabs.template } as GuiConfigs,
+      { [insertIndex]: tabs.template } as GuiFields,
       {},
       null,
       'tabs',

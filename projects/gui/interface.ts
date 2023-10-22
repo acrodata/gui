@@ -1,4 +1,4 @@
-export type GuiConfigType =
+export type GuiFieldType =
   | 'group'
   | 'inline'
   | 'tabs'
@@ -30,16 +30,16 @@ export type GuiBasicValue = boolean | number | string;
 
 export type GuiDefaultValue = boolean | number | string | any[] | Record<string, any>;
 
-export interface GuiConfig {
-  type: GuiConfigType;
+export interface GuiField {
+  type: GuiFieldType;
   name: string;
   default?: GuiDefaultValue;
-  col?: number;
   description?: string;
   placeholder?: string;
   disabled?: boolean;
+  col?: number;
   // group & subgroup & menu & tabs & inline
-  children?: GuiConfigs | GuiConfig[];
+  children?: GuiFields | GuiField[];
   // group & tabs
   expanded?: boolean;
   // number & slider
@@ -50,7 +50,7 @@ export interface GuiConfig {
   prefix?: string;
   suffix?: string;
   // select & buttonToggle & imageSelect
-  options?: GuiConfigOption[];
+  options?: GuiFieldOption[];
   // select
   useFont?: boolean;
   // select & buttonToggle
@@ -58,7 +58,7 @@ export interface GuiConfig {
   // buttonToggle
   useIcon?: boolean;
   // tabs
-  template?: Partial<GuiConfig>;
+  template?: Partial<GuiField>;
   addable?: boolean;
   // fill & slider & tabs
   mode?: GuiFillMode | GuiSliderMode | GuiTabsMode;
@@ -66,11 +66,11 @@ export interface GuiConfig {
   rows?: number;
 }
 
-export interface GuiConfigs {
-  [key: string]: GuiConfig;
+export interface GuiFields {
+  [key: string]: GuiField;
 }
 
-export interface GuiConfigOption {
+export interface GuiFieldOption {
   label: string;
   value: string | number | boolean;
   disabled?: boolean;
@@ -78,10 +78,10 @@ export interface GuiConfigOption {
   col?: number;
 }
 
-export interface GuiControl extends GuiConfig {
+export interface GuiControl extends GuiField {
   _type: 'control' | 'group' | 'array';
   key: string;
-  parentType: GuiConfigType;
+  parentType: GuiFieldType;
   model?: any;
   default?: any;
   index?: number;
