@@ -9,62 +9,62 @@
 <ng-template #controlType let-item let-parent="parent" let-form="formGroup">
   <ng-container [ngSwitch]="item.type" [formGroup]="form">
     <!-- 文本 -->
-    <gui-field-group *ngSwitchCase="'text'" [config]="ejs(item)" [flex]="item.col">
+    <gui-field-group *ngSwitchCase="'text'" [config]="item" [flex]="item.col">
       <gui-input-text [formControlName]="item.key" [config]="item"></gui-input-text>
     </gui-field-group>
     <!-- 数字 -->
-    <gui-field-group *ngSwitchCase="'number'" [config]="ejs(item)" [flex]="item.col">
+    <gui-field-group *ngSwitchCase="'number'" [config]="item" [flex]="item.col">
       <gui-input-number [formControlName]="item.key" [config]="item"></gui-input-number>
     </gui-field-group>
     <!-- 选择框 -->
-    <gui-field-group *ngSwitchCase="'select'" [config]="ejs(item)" [flex]="item.col">
+    <gui-field-group *ngSwitchCase="'select'" [config]="item" [flex]="item.col">
       <gui-select [formControlName]="item.key" [config]="item"></gui-select>
     </gui-field-group>
     <!-- 开关 -->
-    <gui-field-group *ngSwitchCase="'switch'" [config]="ejs(item)" [flex]="item.col">
+    <gui-field-group *ngSwitchCase="'switch'" [config]="item" [flex]="item.col">
       <gui-switch [formControlName]="item.key" [config]="item"></gui-switch>
     </gui-field-group>
     <!-- 滑块 -->
-    <gui-field-group *ngSwitchCase="'slider'" [config]="ejs(item)" [flex]="item.col">
+    <gui-field-group *ngSwitchCase="'slider'" [config]="item" [flex]="item.col">
       <gui-slider [formControlName]="item.key" [config]="item"></gui-slider>
     </gui-field-group>
     <!-- 按钮开关 -->
-    <gui-field-group *ngSwitchCase="'buttonToggle'" [config]="ejs(item)" [flex]="item.col">
+    <gui-field-group *ngSwitchCase="'buttonToggle'" [config]="item" [flex]="item.col">
       <gui-button-toggle [formControlName]="item.key" [config]="item"></gui-button-toggle>
     </gui-field-group>
     <!-- 颜色 -->
-    <gui-field-group *ngSwitchCase="'fill'" [config]="ejs(item)" [flex]="item.col">
+    <gui-field-group *ngSwitchCase="'fill'" [config]="item" [flex]="item.col">
       <gui-fill [formControlName]="item.key" [config]="item"></gui-fill>
     </gui-field-group>
     <!-- 文件上传 -->
-    <gui-field-group *ngSwitchCase="'file'" [config]="ejs(item)" [flex]="item.col">
+    <gui-field-group *ngSwitchCase="'file'" [config]="item" [flex]="item.col">
       <gui-file-uploader [formControlName]="item.key"></gui-file-uploader>
     </gui-field-group>
     <!-- 图片上传 -->
-    <gui-field-group *ngSwitchCase="'image'" [config]="ejs(item)" [flex]="item.col">
+    <gui-field-group *ngSwitchCase="'image'" [config]="item" [flex]="item.col">
       <gui-file-uploader type="image" [formControlName]="item.key"></gui-file-uploader>
     </gui-field-group>
     <!-- 视频上传 -->
-    <gui-field-group *ngSwitchCase="'video'" [config]="ejs(item)" [flex]="item.col">
+    <gui-field-group *ngSwitchCase="'video'" [config]="item" [flex]="item.col">
       <gui-file-uploader type="video" [formControlName]="item.key"></gui-file-uploader>
     </gui-field-group>
     <!-- 音频上传 -->
-    <gui-field-group *ngSwitchCase="'audio'" [config]="ejs(item)" [flex]="item.col">
+    <gui-field-group *ngSwitchCase="'audio'" [config]="item" [flex]="item.col">
       <gui-file-uploader type="audio" [formControlName]="item.key"></gui-file-uploader>
     </gui-field-group>
     <!-- 图片选择 -->
-    <gui-field-group *ngSwitchCase="'imageSelect'" [config]="ejs(item)" [flex]="item.col">
+    <gui-field-group *ngSwitchCase="'imageSelect'" [config]="item" [flex]="item.col">
       <gui-image-select [formControlName]="item.key" [config]="item"></gui-image-select>
     </gui-field-group>
     <!-- 文本区 -->
-    <gui-field-group *ngSwitchCase="'textarea'" [config]="ejs(item)" [flex]="item.col">
+    <gui-field-group *ngSwitchCase="'textarea'" [config]="item" [flex]="item.col">
       <gui-textarea [formControlName]="item.key" [config]="item"></gui-textarea>
     </gui-field-group>
     <!-- 隐藏项 -->
     <input *ngSwitchCase="'hidden'" type="hidden" [formControlName]="item.key">
 
     <!-- 行内组 -->
-    <gui-field-group *ngSwitchCase="'inline'" [config]="ejs(item)">
+    <gui-field-group *ngSwitchCase="'inline'" [config]="item">
       <gui-field-inline [formGroupName]="item.key">
         <ng-container *ngFor="let child of item.children">
           <ng-template [ngTemplateOutlet]="controlType"
@@ -78,7 +78,7 @@
     <mat-expansion-panel *ngSwitchCase="'group'" [formGroupName]="item.key"
                          [(expanded)]="item.expanded" [disabled]="item.disabled">
       <mat-expansion-panel-header>
-        <gui-field-label [config]="ejs(item)"></gui-field-label>
+        <gui-field-label [config]="item"></gui-field-label>
       </mat-expansion-panel-header>
       <!-- 使用惰性加载可显著提高渲染效率 -->
       <ng-template matExpansionPanelContent>
@@ -94,7 +94,7 @@
     <mat-expansion-panel *ngSwitchCase="'tabs'" [formArrayName]="item.key"
                          [(expanded)]="item.expanded" [disabled]="item.disabled">
       <mat-expansion-panel-header>
-        <gui-field-label [config]="ejs(item)"></gui-field-label>
+        <gui-field-label [config]="item"></gui-field-label>
         <!-- 只有展开面板之后才显示操作按钮 -->
         <ng-container *ngIf="item.expanded">
           <button mat-icon-button (click)="changeTabsMode($event, item, 'nav')"

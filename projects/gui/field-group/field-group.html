@@ -1,4 +1,4 @@
 <gui-field-label *ngIf="config.parentType !== 'inline' && config.name"
-                 [config]="config">
+                 [config]="config" [index]="config.index">
 </gui-field-label>
 <ng-content></ng-content>

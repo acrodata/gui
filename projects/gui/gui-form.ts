@@ -11,8 +11,7 @@ import {
 } from '@angular/core';
 import { FormArray, FormControl, FormGroup } from '@angular/forms';
 import { Subscription } from 'rxjs';
-import { ejsTmpl } from './gui-utils';
-import { GuiFieldType, GuiFields, GuiControl, GuiTabsMode } from './interface';
+import { GuiControl, GuiFieldType, GuiFields, GuiTabsMode } from './interface';
 
 @Component({
   selector: 'gui-form',
@@ -235,22 +234,5 @@ export class GuiForm implements OnChanges, OnInit, OnDestroy {
   changeTabsMode(e: MouseEvent, item: GuiControl, mode?: GuiTabsMode) {
     e.stopPropagation();
     item.mode = mode;
-  }
-
-  /**
-   * EJS 模板转换函数，只有标题需要处理
-   *
-   * @description 转换之后的配置对象变更会触发视图更新
-   * @param item 配置项
-   * @returns
-   */
-  ejs(item: GuiControl) {
-    const { name, index, description, type, parentType } = item;
-    return {
-      name: index != null && !isNaN(index) ? ejsTmpl(name, { i: index }) : name,
-      description,
-      type,
-      parentType,
-    };
   }
 }

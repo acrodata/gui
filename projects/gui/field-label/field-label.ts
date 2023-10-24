@@ -1,4 +1,11 @@
-import { ChangeDetectionStrategy, Component, Input, ViewEncapsulation } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Input,
+  OnChanges,
+  ViewEncapsulation,
+} from '@angular/core';
+import { ejsTmpl } from '../gui-utils';
 import { GuiControl } from '../interface';
 
 @Component({
@@ -6,20 +13,24 @@ import { GuiControl } from '../interface';
   templateUrl: './field-label.html',
   styleUrls: ['./field-label.scss'],
   host: {
-    '[class.gui-label]': '!noLabelClass()',
-    '[title]': 'config.name',
+    '[class.gui-label]': '!styless',
+    '[title]': 'title',
   },
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class GuiFieldLabel {
+export class GuiFieldLabel implements OnChanges {
   @Input() config: Partial<GuiControl> = {};
 
-  noLabelClass() {
-    return (
-      this.config.parentType === 'inline' ||
-      this.config.type === 'group' ||
-      this.config.type === 'tabs'
-    );
+  @Input() index?: number;
+
+  title = '';
+
+  styless = false;
+
+  ngOnChanges(): void {
+    const { index, name, parentType, type } = this.config;
+    this.title = index != null && !isNaN(index) ? ejsTmpl(name || '', { i: index }) : name;
+    this.styless = parentType === 'inline' || type === 'group' || type === 'tabs';
   }
 }

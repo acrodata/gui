@@ -1,6 +1,6 @@
-<span *ngIf="!config.description">{{config.name}}</span>
+<span *ngIf="!config.description">{{title}}</span>
 <span *ngIf="config.description"
       [class.gui-label-with-description]="config.description"
       [matTooltip]="config.description"
       matTooltipPosition="above"
-      matTooltipClass="gui-label-tooltip">{{config.name}}</span>
+      matTooltipClass="gui-label-tooltip">{{title}}</span>
