@@ -20,7 +20,7 @@ import { MtxSelectModule } from '@ng-matero/extensions/select';
 import { GuiForm } from './gui-form';
 import { GuiFieldGroup } from './field-group/field-group';
 import { GuiFieldLabel } from './field-label/field-label';
-import { GuiFieldInline } from './field-inline/field-inline';
+import { GuiInlineGroup } from './inline-group/inline-group';
 import { GuiInputText } from './input-text/input-text';
 import { GuiInputNumber } from './input-number/input-number';
 import { GuiSelect } from './select/select';
@@ -67,7 +67,7 @@ import { svgIcons } from './gui-icons';
     GuiFill,
     GuiFieldGroup,
     GuiFieldLabel,
-    GuiFieldInline,
+    GuiInlineGroup,
     GuiImageSelect,
     GuiTextarea,
     GuiFileUploader,
@@ -86,7 +86,7 @@ import { svgIcons } from './gui-icons';
     GuiFill,
     GuiFieldGroup,
     GuiFieldLabel,
-    GuiFieldInline,
+    GuiInlineGroup,
     GuiImageSelect,
     GuiTextarea,
     GuiFileUploader,

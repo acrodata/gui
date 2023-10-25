@@ -64,15 +64,13 @@
     <input *ngSwitchCase="'hidden'" type="hidden" [formControlName]="item.key">
 
     <!-- 行内组 -->
-    <gui-field-group *ngSwitchCase="'inline'" [config]="item">
-      <gui-field-inline [formGroupName]="item.key">
-        <ng-container *ngFor="let child of item.children">
-          <ng-template [ngTemplateOutlet]="controlType"
-                       [ngTemplateOutletContext]="{$implicit: child, parent: item, formGroup: form.get(item.key)}">
-          </ng-template>
-        </ng-container>
-      </gui-field-inline>
-    </gui-field-group>
+    <gui-inline-group *ngSwitchCase="'inline'" [config]="item" [formGroupName]="item.key">
+      <ng-container *ngFor="let child of item.children">
+        <ng-template [ngTemplateOutlet]="controlType"
+                     [ngTemplateOutletContext]="{$implicit: child, parent: item, formGroup: form.get(item.key)}">
+        </ng-template>
+      </ng-container>
+    </gui-inline-group>
 
     <!-- 可展开组 -->
     <mat-expansion-panel *ngSwitchCase="'group'" [formGroupName]="item.key"
