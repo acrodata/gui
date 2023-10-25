@@ -13,7 +13,7 @@ import { GuiControl } from '../interface';
   templateUrl: './field-label.html',
   styleUrls: ['./field-label.scss'],
   host: {
-    '[class.gui-label]': '!styless',
+    '[class.gui-field-label]': '!styless',
     '[title]': 'title',
   },
   encapsulation: ViewEncapsulation.None,
@@ -31,6 +31,7 @@ export class GuiFieldLabel implements OnChanges {
   ngOnChanges(): void {
     const { index, name, parentType, type } = this.config;
     this.title = index != null && !isNaN(index) ? ejsTmpl(name || '', { i: index }) : name;
-    this.styless = parentType === 'inline' || type === 'group' || type === 'tabs';
+    this.styless =
+      (parentType === 'inline' && type !== 'inline') || type === 'group' || type === 'tabs';
   }
 }

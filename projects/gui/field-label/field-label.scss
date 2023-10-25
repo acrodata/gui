@@ -1,4 +1,4 @@
-.gui-label {
+.gui-field-label {
   display: inline-block;
   width: 64px;
   height: 24px;
@@ -9,7 +9,7 @@
   text-overflow: ellipsis;
 }
 
-.gui-label-with-description {
+.gui-field-label-with-description {
   text-decoration: underline dotted;
   cursor: help;
 }
