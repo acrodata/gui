@@ -1,24 +1,71 @@
-# Gui
+# GUI
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.0.
+[![npm](https://img.shields.io/npm/v/@acrodata/gui.svg)](https://www.npmjs.com/package/@acrodata/gui)
+[![license](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/acrodata/gui/blob/main/LICENSE)
 
-## Code scaffolding
+A lightweight GUI library for Angular.
 
-Run `ng generate component component-name --project gui` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project gui`.
-> Note: Don't forget to add `--project gui` or else it will be added to the default project in your `angular.json` file. 
+## Installation
 
-## Build
+```bash
+npm install @angular/material @ng-matero/extensions @acrodata/gui --save
+```
 
-Run `ng build gui` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Setup
 
-## Publishing
+```ts
+import { GuiModule } from '@acrodata/gui';
 
-After building your library with `ng build gui`, go to the dist folder `cd dist/gui` and run `npm publish`.
+@NgModule({
+  ...
+  imports: [GuiModule, ...],
+  ...
+})
+export class YourAppModule {
+}
+```
 
-## Running unit tests
+You should define a theme for Material and Material Extensions by yourself.
 
-Run `ng test gui` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```scss
+@use '@angular/material' as mat;
+@use '@ng-matero/extensions' as mtx;
 
-## Further help
+$theme: mat.define-light-theme(...);
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+@include mat.all-component-themes($theme);
+@include mtx.all-component-themes($theme);
+```
+
+Or you can also import the prebuilt themes.
+
+```css
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
+@import '@ng-matero/extensions/prebuilt-themes/indigo-pink.css';
+```
+
+## Usage
+
+```ts
+import { Component } from '@angular/core';
+import { GuiFields } from '@acrodata/gui';
+
+@Component({
+  selector: 'your-app',
+  template: `<gui-form [config]="config" [model]="model"></gui-form>`,
+})
+export class YourAppComponent {
+  config: GuiFields = {
+    title: {
+      type: 'text',
+      name: 'Title',
+      default: 'I am title',
+    },
+  };
+  model = {};
+}
+```
+
+## License
+
+MIT
