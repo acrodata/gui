@@ -24,10 +24,19 @@ import { GuiControl, GuiFieldType, GuiFields, GuiTabsMode } from './interface';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class GuiForm implements OnChanges, OnInit, OnDestroy {
+  /**
+   * The form instance which allow to track model value and validation status.
+   */
   @Input() form = new FormGroup<any>({});
 
+  /**
+   * The field configurations for building the form.
+   */
   @Input() config: GuiFields = {};
 
+  /**
+   * The model to be represented by the form.
+   */
   @Input() model: any = {};
 
   formFields: GuiControl[] = [];
@@ -38,7 +47,7 @@ export class GuiForm implements OnChanges, OnInit, OnDestroy {
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['config']) {
-      this.form.controls = {}; // 重置表单控件
+      this.form.controls = {}; // reset controls
       this.formFields = this.getFormFieldArray(this.form, this.config, this.model);
     }
 
@@ -58,15 +67,15 @@ export class GuiForm implements OnChanges, OnInit, OnDestroy {
   }
 
   /**
-   * 将动态表单的对象配置转换为数组配置，并注册到响应式表单中
+   * Convert the object config to array config and register into the reactive form.
    *
-   * @param form         响应式表单实例
-   * @param config       动态表单配置
-   * @param model        动态表单模型
-   * @param defaultValue 配置项中的默认值
-   * @param parentType   父组件类型
-   * @param options      响应式表单配置
-   * @returns            表单配置数组
+   * @param form         The reactive form instance
+   * @param config       The config of the form fields
+   * @param model        The value of the form control
+   * @param defaultValue The default value of the form field
+   * @param parentType   The type of the form field parent
+   * @param options      The reactive form options
+   * @returns
    */
   getFormFieldArray(
     form: FormGroup | FormArray,
@@ -79,10 +88,10 @@ export class GuiForm implements OnChanges, OnInit, OnDestroy {
     const tempArr = [];
 
     for (const key of Object.keys(config)) {
-      // 根据 children 类型推测表单类型
-      // 1. undefined: FormControl
-      // 2. array: FormArray
-      // 3. object: FormGroup
+      // Inferring the form type by the data type of `children`
+      // 1. `undefined` => FormControl
+      // 2. `array`     => FormArray
+      // 3. `object`    => FormGroup
       const _children = (config as any)[key].template ? [] : (config as any)[key].children;
       const _type = !_children ? 'control' : Array.isArray(_children) ? 'array' : 'group';
 
@@ -92,29 +101,31 @@ export class GuiForm implements OnChanges, OnInit, OnDestroy {
         parentType,
         model: model[key],
         default: defaultValue?.[key],
-        index: Number(key), // 字符串 key 为 NaN
+        index: Number(key), // the string key will be `NaN`
         ...(config as any)[key],
       };
 
-      // group 类型控件一般没有 default，必须手动设置默认值
+      // The `group` type generally have no `default`, so we should
+      // set the default value manually
       if (item.children && model[key] == null && item.default == null) {
         item.model = model[key] = item._type === 'array' ? [] : {};
       }
 
-      // 根据 config 中的 default 生成 model
+      // Generate model by the `default` key of the field config
       if (typeof model === 'object' && model[key] == null) {
         model[key] = item.default;
       }
 
-      // tabs 类型特殊判断，有 template 的情况下 children 定义无效
+      // Special judgment on `tabs` type, the `children` key will be ignored if
+      // there has a `template` key
       if (item.template) {
-        // 如果 model 是数组且存在值则表单项的默认值优先使用 model 的值
+        // If model is an array and not empty, the default value of the form field
+        // will use the model's value
         if (Array.isArray(item.model) && item.model.length > 0) {
           item.default = item.model;
         }
         if (item.default?.length) {
           item.children = item.default.map((value: any) => {
-            // 合并 template 中的默认值
             Object.assign(value, item.template?.default);
             return {
               default: value,
@@ -172,26 +183,27 @@ export class GuiForm implements OnChanges, OnInit, OnDestroy {
   }
 
   /**
-   * 添加数组项
+   * Add a tab item.
    *
-   * @param e     鼠标事件
-   * @param form  表单实例
-   * @param tabs  动态数组的配置项
-   * @param index 数组索引
+   * @param e     The mouse event
+   * @param form  The reactive form instance
+   * @param tabs  The config of the tabs field
+   * @param index The index of the tabs array
    */
   addTab(e: MouseEvent, form: FormArray, tabs: GuiControl, index?: number) {
     e.stopPropagation();
     const insertIndex = index === void 0 ? tabs.children!.length : index + 1;
-    // 将插入位置的 index 保存在配置中
+    // Save the index of the insertion in the config
     tabs.template!.index = insertIndex;
-    // 对象中的 key 和数组中的 index 要保持一致
+    // The key in the object and the index in the array should be the same
     tabs.children!.forEach((child, index) => {
       if (index >= insertIndex) {
         child.index! += 1;
         child.key = child.index!.toString();
       }
     });
-    // 构造出来的对象 [{ key: 'tab', children: template }]，key 最好为 null
+    // The constructed object looks like this `[{ key: 'tab', children: template }]`
+    // The key should preferably be `null`
     const newTab = this.getFormFieldArray(
       form,
       { [insertIndex]: tabs.template } as GuiFields,
@@ -204,12 +216,12 @@ export class GuiForm implements OnChanges, OnInit, OnDestroy {
   }
 
   /**
-   * 删除数组项
+   * Remove a tab item.
    *
-   * @param e     鼠标事件
-   * @param form  表单实例
-   * @param tabs  动态数组的配置项
-   * @param index 数组索引
+   * @param e     The mouse event
+   * @param form  The reactive form instance
+   * @param tabs  The config of the tabs field
+   * @param index The index of the tabs array
    */
   removeTab(e: MouseEvent, form: FormArray, tabs: GuiControl, index?: number) {
     e.stopPropagation();
@@ -225,14 +237,14 @@ export class GuiForm implements OnChanges, OnInit, OnDestroy {
   }
 
   /**
-   * 切换 tabs 显示模式
+   * Change the display mode of tabs.
    *
-   * @param e    鼠标事件
-   * @param item 配置项
-   * @param mode tabs 显示模式
+   * @param e    The mouse event
+   * @param tabs The config of the tabs field
+   * @param mode The display mode of tabs
    */
-  changeTabsMode(e: MouseEvent, item: GuiControl, mode?: GuiTabsMode) {
+  changeTabsMode(e: MouseEvent, tabs: GuiControl, mode?: GuiTabsMode) {
     e.stopPropagation();
-    item.mode = mode;
+    tabs.mode = mode;
   }
 }
