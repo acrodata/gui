@@ -18,6 +18,11 @@
     "typescript",
     "creative-coding"
   ],
+  "exports": {
+    ".": {
+      "sass": "./_index.scss"
+    }
+  },
   "peerDependencies": {
     "@angular/cdk": ">=15.0.0",
     "@angular/common": ">=15.0.0",

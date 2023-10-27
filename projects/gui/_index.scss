@@ -1,0 +1,18 @@
+@use '@angular/material' as mat;
+@use '@ng-matero/extensions' as mtx;
+
+@mixin all-control-themes($theme) {
+  @include mat.core-theme($theme);
+  @include mat.form-field-theme($theme);
+  @include mat.input-theme($theme);
+  @include mat.button-toggle-theme($theme);
+  @include mat.select-theme($theme);
+  @include mat.slider-theme($theme);
+  @include mat.icon-theme($theme);
+  @include mat.icon-button-theme($theme);
+  @include mat.tabs-theme($theme);
+  @include mat.expansion-theme($theme);
+  @include mat.tooltip-theme($theme);
+  @include mtx.colorpicker-theme($theme);
+  @include mtx.select-theme($theme);
+}
