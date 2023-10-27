@@ -25,23 +25,19 @@ export class YourAppModule {
 }
 ```
 
-You should define a theme for Material and Material Extensions by yourself.
+Define a theme with Angular Material's theming system. [Guide about theming](https://material.angular.io/guide/theming).
 
 ```scss
 @use '@angular/material' as mat;
-@use '@ng-matero/extensions' as mtx;
+@use '@acrodata/gui' as gui;
 
+@include mat.core();
+
+$primary: mat.define-palette(...);
+$accent: mat.define-palette(...);
 $theme: mat.define-light-theme(...);
 
-@include mat.all-component-themes($theme);
-@include mtx.all-component-themes($theme);
-```
-
-Or you can also import the prebuilt themes.
-
-```css
-@import '@angular/material/prebuilt-themes/indigo-pink.css';
-@import '@ng-matero/extensions/prebuilt-themes/indigo-pink.css';
+@include gui.all-control-themes($theme);
 ```
 
 ## Usage
@@ -52,7 +48,7 @@ import { GuiFields } from '@acrodata/gui';
 
 @Component({
   selector: 'your-app',
-  template: `<gui-form [config]="config" [model]="model"></gui-form>`,
+  template: `<gui-form [config]="config" [model]="model" [form]="form"></gui-form>`,
 })
 export class YourAppComponent {
   config: GuiFields = {
@@ -63,6 +59,7 @@ export class YourAppComponent {
     },
   };
   model = {};
+  form = new FormGroup({});
 }
 ```
 
