@@ -118,8 +118,8 @@
       <!-- Lazy rendering -->
       <ng-template matExpansionPanelContent>
         <!-- Horizontal nav mode -->
-        <mat-tab-group *ngIf="item.mode!=='list'" class="gui-tabs" [mat-stretch-tabs]="false"
-                       [class.gui-tabs-empty]="item.children.length===0" disableRipple>
+        <mat-tab-group *ngIf="item.mode!=='list'" class="gui-tabs"
+                       [mat-stretch-tabs]="false" disableRipple>
           <mat-tab *ngFor="let tab of item.children; index as i" [disabled]="tab.disabled">
             <ng-template mat-tab-label>
               <div>{{tab.name | ejs:{i} }}</div>
@@ -142,10 +142,10 @@
         </mat-tab-group>
 
         <!-- Vertical list mode -->
-        <div class="gui-tab-list" *ngIf="item.mode==='list'">
-          <div class="gui-tab-item" *ngFor="let tab of item.children; index as i">
-            <div class="gui-tab-item-heading">
-              <span class="gui-tab-item-title">{{tab.name | ejs:{i} }}</span>
+        <div class="gui-list" *ngIf="item.mode==='list'">
+          <div class="gui-list-item" *ngFor="let tab of item.children; index as i">
+            <div class="gui-list-item-heading">
+              <span class="gui-list-item-title">{{tab.name | ejs:{i} }}</span>
               <ng-container *ngIf="item.template && (item.addable || item.addable===undefined)">
                 <button mat-icon-button (click)="addTab($event, form.get(item.key), item, i)"
                         type="button" [disabled]="item.disabled">
@@ -157,7 +157,7 @@
                 </button>
               </ng-container>
             </div>
-            <div class="gui-tab-item-content">
+            <div class="gui-list-item-content">
               <!-- FormControl & FormArray -->
               <ng-container *ngIf="!tab.children || tab.children.length===0 || tab.type==='tabs'">
                 <ng-template [ngTemplateOutlet]="controlType"

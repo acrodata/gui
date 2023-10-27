@@ -88,14 +88,14 @@
   }
 }
 
-.gui-tab-item-heading {
+.gui-list-item-heading {
   display: flex;
   align-items: center;
   position: relative;
   padding: 0 12px;
   line-height: 24px;
 
-  .gui-tab-item-title {
+  .gui-list-item-title {
     flex: 1;
   }
 
@@ -107,10 +107,6 @@
     background-color: var(--mat-expansion-header-text-color);
     content: '';
   }
-}
-
-.gui-tabs-empty>.mat-tab-header {
-  display: none;
 }
 
 .gui-menu {
