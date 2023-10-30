@@ -6,6 +6,7 @@
   @include mat.form-field-theme($theme);
   @include mat.input-theme($theme);
   @include mat.button-toggle-theme($theme);
+  @include mat.slide-toggle-theme($theme);
   @include mat.select-theme($theme);
   @include mat.slider-theme($theme);
   @include mat.icon-theme($theme);
