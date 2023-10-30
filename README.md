@@ -25,7 +25,7 @@ export class YourAppModule {
 }
 ```
 
-Define a theme with Angular Material's theming system. [Guide about theming](https://material.angular.io/guide/theming).
+Define a theme with Angular Material's theming system. [More about theming](https://material.angular.io/guide/theming).
 
 ```scss
 @use '@angular/material' as mat;
@@ -33,8 +33,6 @@ Define a theme with Angular Material's theming system. [Guide about theming](htt
 
 @include mat.core();
 
-$primary: mat.define-palette(...);
-$accent: mat.define-palette(...);
 $theme: mat.define-light-theme(...);
 
 @include gui.all-control-themes($theme);
