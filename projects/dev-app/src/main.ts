@@ -1,18 +1,18 @@
-import { HttpClientModule } from '@angular/common/http';
 import { importProvidersFrom } from '@angular/core';
-import { BrowserModule, bootstrapApplication } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { bootstrapApplication } from '@angular/platform-browser';
+import { provideHttpClient } from '@angular/common/http';
+import { provideAnimations } from '@angular/platform-browser/animations';
+import { provideRouter } from '@angular/router';
 import { MonacoEditorModule } from 'ng-monaco-editor';
-import { AppRoutingModule } from './app/app-routing.module';
 import { AppComponent } from './app/app.component';
+import { APP_ROUTES } from './app/routes';
 
 bootstrapApplication(AppComponent, {
   providers: [
+    provideRouter(APP_ROUTES),
+    provideAnimations(),
+    provideHttpClient(),
     importProvidersFrom(
-      BrowserModule,
-      BrowserAnimationsModule,
-      HttpClientModule,
-      AppRoutingModule,
       MonacoEditorModule.forRoot({
         baseUrl: 'assets/lib',
       })
