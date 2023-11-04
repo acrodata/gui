@@ -12,6 +12,8 @@
     "build": "ng build dev-app --base-href=/gui/",
     "watch": "ng build dev-app --watch --configuration development",
     "test": "ng test dev-app",
+    "serve:docs": "ng serve docs",
+    "build:docs": "ng build docs --base-href=/gui/",
     "lint": "npm run lint:ts && npm run lint:scss",
     "lint:ts": "eslint \"**/*.ts\" --fix",
     "lint:scss": "stylelint \"**/*.scss\" --fix",
