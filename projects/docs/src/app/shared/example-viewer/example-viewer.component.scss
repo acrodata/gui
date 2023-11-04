@@ -1,0 +1,50 @@
+.demo-wrapper {
+  position: relative;
+  display: flex;
+  margin: 24px 0;
+  background-color: hsl(230deg, 7%, 95%);
+  border-radius: 6px;
+}
+
+.demo-code {
+  flex: 1;
+  overflow: auto;
+
+  pre {
+    padding: 32px;
+  }
+}
+
+.demo-result {
+  width: 320px;
+  padding: 32px;
+
+  gui-form {
+    display: block;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .2);
+    border-radius: 4px;
+    overflow: auto;
+  }
+
+}
+
+.demo-console {
+  padding: 4px;
+  margin-top: 16px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+
+  textarea {
+    display: block;
+    width: 100%;
+    padding: 0 4px;
+    background-color: rgba(0, 0, 0, 0.04);
+    color: rgba(0, 0, 0, 0.4);
+    border-width: 0;
+    font-size: 12px;
+    line-height: 20px;
+    appearance: none;
+    outline: none;
+  }
+}
