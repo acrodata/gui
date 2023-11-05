@@ -8,9 +8,27 @@ export const routes: Routes = [
     component: LayoutComponent,
     children: [
       { path: '', redirectTo: 'home', pathMatch: 'full' },
+      { path: 'home', component: HomeComponent },
       {
-        path: 'home',
-        component: HomeComponent,
+        path: 'getting-started',
+        loadComponent: () =>
+          import('./pages/getting-started/getting-started.component').then(
+            m => m.GettingStartedComponent
+          ),
+      },
+      {
+        path: 'basic-controls',
+        loadComponent: () =>
+          import('./pages/basic-controls/basic-controls.component').then(
+            m => m.BasicControlsComponent
+          ),
+      },
+      {
+        path: 'group-controls',
+        loadComponent: () =>
+          import('./pages/group-controls/group-controls.component').then(
+            m => m.GroupControlsComponent
+          ),
       },
     ],
   },

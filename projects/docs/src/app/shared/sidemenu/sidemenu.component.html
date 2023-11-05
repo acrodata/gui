@@ -1,11 +1,10 @@
 <div class="logo-wrapper">
-  <div>Acrodata GUI</div>
+  <a mat-button routerLink="/">Acrodata GUI</a>
 </div>
 
 <mat-divider></mat-divider>
 
 <mat-nav-list>
-  <a mat-list-item>1</a>
-  <a mat-list-item>2</a>
-  <a mat-list-item>3</a>
+  <a mat-list-item *ngFor="let item of menu"
+     [routerLink]="item.route">{{item.name}}</a>
 </mat-nav-list>
