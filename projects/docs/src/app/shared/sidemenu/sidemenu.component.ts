@@ -26,5 +26,9 @@ export class SidemenuComponent {
       name: 'Group controls',
       route: 'group-controls',
     },
+    {
+      name: 'Media controls',
+      route: 'media-controls',
+    },
   ];
 }

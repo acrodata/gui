@@ -24,6 +24,13 @@ export const routes: Routes = [
           ),
       },
       {
+        path: 'media-controls',
+        loadComponent: () =>
+          import('./pages/media-controls/media-controls.component').then(
+            m => m.MediaControlsComponent
+          ),
+      },
+      {
         path: 'group-controls',
         loadComponent: () =>
           import('./pages/group-controls/group-controls.component').then(
