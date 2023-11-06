@@ -1,0 +1,37 @@
+.logo-wrapper {
+  padding: 0 16px 16px;
+  text-align: center;
+}
+
+.menu {
+  a {
+    display: block;
+    padding: 8px 16px;
+    border-radius: 6px;
+    text-decoration: none;
+
+    &:hover {
+      background-color: hsl(230deg, 7%, 95%);
+    }
+  }
+}
+
+.menu-item {
+  >a {
+    margin-top: 24px;
+    font-weight: 500;
+    color: hsl(230deg, 5%, 35%);
+  }
+
+  &:first-child {
+    >a {
+      margin-top: 0;
+    }
+  }
+}
+
+.submenu-item {
+  >a {
+    color: hsla(230deg, 5%, 35%, 0.7);
+  }
+}

@@ -6,6 +6,14 @@
 
 html,
 body {
-  height: 100%;
+  padding: 0;
   margin: 0;
+}
+
+dl,
+ol,
+ul {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
 }

@@ -1,17 +1,26 @@
-mat-sidenav-container {
-  --mat-sidenav-content-background-color: transparent;
-  --mat-sidenav-container-divider-color: transparent;
-
-  max-width: 1080px;
-  height: 100%;
+.container-wrap {
+  display: block;
+  max-width: 1280px;
+  padding: 0 64px;
   margin: 0 auto;
 }
 
-app-sidemenu {
+.container {
+  display: flex;
+  margin-top: 32px;
+}
+
+aside {
+  position: sticky;
+  top: 0;
   display: block;
-  padding: 32px 0;
+  width: 240px;
+  height: 100vh;
+  margin-right: 32px;
+  overflow: auto;
 }
 
 main {
-  padding: 32px 64px;
+  flex: 1;
+  overflow: auto;
 }
