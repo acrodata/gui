@@ -1,3 +1,15 @@
+:root {
+  --bg-color: white;
+  --bg-translucent-color: rgba(255, 255, 255, 0.9);
+  --bg-secondary-color: rgba(240, 240, 240, 1);
+  --fg-color: rgba(85, 85, 90, 1);
+  --fg-secondary-color: rgba(85, 85, 90, .7);
+  --border-color: rgba(0, 0, 0, .1);
+  --heading-color: rgba(50, 50, 55, 1);
+  --console-color: rgba(0, 0, 0, .4);
+  --console-bg-color: rgba(0, 0, 0, .04);
+}
+
 *,
 *::before,
 *::after {
@@ -8,6 +20,8 @@ html,
 body {
   padding: 0;
   margin: 0;
+  color: var(--fg-color);
+  background-color: var(--bg-color);
 }
 
 dl,
@@ -16,4 +30,20 @@ ul {
   padding: 0;
   margin: 0;
   list-style-type: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  a {
+    color: var(--heading-color);
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 }

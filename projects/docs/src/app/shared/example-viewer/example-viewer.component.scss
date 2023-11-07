@@ -2,7 +2,7 @@
   position: relative;
   display: flex;
   margin: 24px 0;
-  background-color: hsl(230deg, 7%, 95%);
+  background-color: var(--bg-secondary-color);
   border-radius: 6px;
 }
 
@@ -22,7 +22,7 @@
 
   gui-form {
     display: block;
-    background-color: white;
+    background-color: var(--bg-color);
     box-shadow: 0 2px 4px rgba(0, 0, 0, .2);
     border-radius: 4px;
     overflow: auto;
@@ -33,15 +33,15 @@
 .demo-console {
   padding: 4px;
   margin-top: 16px;
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--border-color);
   border-radius: 4px;
 
   textarea {
     display: block;
     width: 100%;
     padding: 0 4px;
-    background-color: rgba(0, 0, 0, 0.04);
-    color: rgba(0, 0, 0, 0.4);
+    background-color: var(--console-bg-color);
+    color: var(--console-color);
     border-width: 0;
     font-size: 12px;
     line-height: 20px;
