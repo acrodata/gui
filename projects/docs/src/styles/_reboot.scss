@@ -50,6 +50,35 @@ h6 {
   }
 }
 
+code, kbd, pre, samp {
+  font-family: "Roboto Mono",monospace;
+  font-size: 1em;
+}
+
+pre {
+  padding: 32px;
+  overflow: auto;
+  border-radius: 6px;
+  background-color: var(--bg-secondary-color);
+  font-size: 0.875em;
+}
+
+code {
+  font-size: 0.875em;
+  word-wrap: break-word;
+}
+
+table {
+  width: 100%;
+  caption-side: bottom;
+  border-collapse: collapse;
+
+  th, td {
+    padding: 8px;
+    border: 1px solid var(--border-color);
+  }
+}
+
 .gui-form {
   display: block;
   background-color: var(--bg-color);
