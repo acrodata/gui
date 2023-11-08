@@ -35,6 +35,13 @@ main {
   overflow: auto;
 }
 
+footer {
+  padding: 16px 0;
+  margin-top: 64px;
+  font-size: .75em;
+  text-align: center;
+}
+
 .spacer {
   flex-grow: 1;
 }

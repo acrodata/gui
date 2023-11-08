@@ -8,6 +8,7 @@
   --heading-color: rgba(50, 50, 55, 1);
   --console-color: rgba(0, 0, 0, .4);
   --console-bg-color: rgba(0, 0, 0, .04);
+  --a-color: rgba(65, 105, 190, 1);
 }
 
 *,
@@ -42,23 +43,30 @@ h6 {
 
   a {
     color: var(--heading-color);
-    text-decoration: none;
-
-    &:hover {
-      text-decoration: underline;
-    }
   }
 }
 
-code, kbd, pre, samp {
-  font-family: "Roboto Mono",monospace;
+a {
+  color: var(--a-color);
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+code,
+kbd,
+pre,
+samp {
+  font-family: "Roboto Mono", monospace;
   font-size: 1em;
 }
 
 pre {
   padding: 32px;
   overflow: auto;
-  border-radius: 6px;
+  border-radius: 8px;
   background-color: var(--bg-secondary-color);
   font-size: 0.875em;
 }
@@ -73,7 +81,8 @@ table {
   caption-side: bottom;
   border-collapse: collapse;
 
-  th, td {
+  th,
+  td {
     padding: 8px;
     border: 1px solid var(--border-color);
   }
