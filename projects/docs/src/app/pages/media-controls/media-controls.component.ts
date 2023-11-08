@@ -1,16 +1,17 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ExampleViewerComponent } from '../../shared';
+import { GuiFields } from '@acrodata/gui';
+import { ExampleViewerComponent, PageHeaderComponent } from '../../shared';
 
 @Component({
   selector: 'app-media-controls',
   standalone: true,
-  imports: [CommonModule, ExampleViewerComponent],
+  imports: [CommonModule, ExampleViewerComponent, PageHeaderComponent],
   templateUrl: './media-controls.component.html',
   styleUrls: ['./media-controls.component.scss'],
 })
 export class MediaControlsComponent {
-  imageConfig = {
+  imageConfig: GuiFields = {
     image: {
       type: 'image',
       name: 'Upload Image',
@@ -19,7 +20,7 @@ export class MediaControlsComponent {
     },
   };
 
-  videoConfig = {
+  videoConfig: GuiFields = {
     video: {
       type: 'video',
       name: 'Upload Video',
@@ -27,7 +28,7 @@ export class MediaControlsComponent {
     },
   };
 
-  audioConfig = {
+  audioConfig: GuiFields = {
     audio: {
       type: 'audio',
       name: 'Upload Audio',
@@ -35,7 +36,7 @@ export class MediaControlsComponent {
     },
   };
 
-  fileConfig = {
+  fileConfig: GuiFields = {
     file: {
       type: 'file',
       name: 'Upload File',

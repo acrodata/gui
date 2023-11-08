@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { GuiFields } from '@acrodata/gui';
-import { ExampleViewerComponent } from '../../shared';
+import { ExampleViewerComponent, PageHeaderComponent } from '../../shared';
 
 @Component({
   selector: 'app-basic-controls',
   standalone: true,
-  imports: [CommonModule, ExampleViewerComponent],
+  imports: [CommonModule, ExampleViewerComponent, PageHeaderComponent],
   templateUrl: './basic-controls.component.html',
   styleUrls: ['./basic-controls.component.scss'],
 })

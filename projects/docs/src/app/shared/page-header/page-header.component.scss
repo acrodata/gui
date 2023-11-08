@@ -1,0 +1,19 @@
+.page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 64px;
+  margin: 16px 0;
+  background-color: var(--bg-secondary-color);
+  border-radius: 6px;
+}
+
+.page-header-text {
+  h1 {
+    margin: 0;
+  }
+
+  p {
+    margin-top: 16px;
+  }
+}

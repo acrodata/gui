@@ -1,12 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { GuiFields } from '@acrodata/gui';
-import { ExampleViewerComponent } from '../../shared';
+import { ExampleViewerComponent, PageHeaderComponent } from '../../shared';
 
 @Component({
   selector: 'app-group-controls',
   standalone: true,
-  imports: [CommonModule, ExampleViewerComponent],
+  imports: [CommonModule, ExampleViewerComponent, PageHeaderComponent],
   templateUrl: './group-controls.component.html',
   styleUrls: ['./group-controls.component.scss'],
 })

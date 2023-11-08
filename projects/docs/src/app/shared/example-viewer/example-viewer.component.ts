@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { GuiModule } from '@acrodata/gui';
+import { GuiFields, GuiModule } from '@acrodata/gui';
 import { TextFieldModule } from '@angular/cdk/text-field';
 import { MatInputModule } from '@angular/material/input';
 
@@ -12,7 +12,7 @@ import { MatInputModule } from '@angular/material/input';
   styleUrls: ['./example-viewer.component.scss'],
 })
 export class ExampleViewerComponent {
-  @Input() config = {};
+  @Input() config: GuiFields = {};
 
   model = {};
 }

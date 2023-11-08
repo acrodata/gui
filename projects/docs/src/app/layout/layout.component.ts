@@ -2,11 +2,12 @@ import { CommonModule } from '@angular/common';
 import { Component, ViewEncapsulation } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { SidemenuComponent } from './sidemenu/sidemenu.component';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-layout',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, RouterLink, SidemenuComponent],
+  imports: [CommonModule, RouterOutlet, RouterLink, SidemenuComponent, MatButtonModule],
   templateUrl: './layout.component.html',
   styleUrls: ['./layout.component.scss'],
   host: {

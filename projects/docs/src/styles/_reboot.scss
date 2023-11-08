@@ -38,6 +38,8 @@ h3,
 h4,
 h5,
 h6 {
+  color: var(--heading-color);
+
   a {
     color: var(--heading-color);
     text-decoration: none;
@@ -46,4 +48,12 @@ h6 {
       text-decoration: underline;
     }
   }
+}
+
+.gui-form {
+  display: block;
+  background-color: var(--bg-color);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, .2);
+  border-radius: 4px;
+  overflow: auto;
 }
