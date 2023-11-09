@@ -1,4 +1,9 @@
-.menu {
+.menu,
+.submenu {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+
   a {
     display: block;
     padding: 8px 16px;
