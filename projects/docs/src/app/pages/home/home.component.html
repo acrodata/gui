@@ -1,1 +1,17 @@
-<app-page-header></app-page-header>
+<div class="jumbotron" [style]="{
+  'background-image': bgGradient,
+  'background-position': bgPosition,
+  'background-size': bgSize,
+  'background-blend-mode': bgBlendMode,
+  'background-repeat': bgRepeat,
+}">
+  <div class="text">
+    <h1>Acrodata GUI</h1>
+    <p>A lightweight GUI library for Angular</p>
+  </div>
+
+  <div class="gui-wrapper">
+    <div class="gui-heading">Gradient Generator</div>
+    <gui-form [config]="config" [model]="model"></gui-form>
+  </div>
+</div>
