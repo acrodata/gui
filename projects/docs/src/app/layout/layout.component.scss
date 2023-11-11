@@ -9,14 +9,8 @@
   display: flex;
 }
 
-header {
-  display: flex;
-  align-items: center;
-  height: 64px;
-  padding: 0 16px;
-  border-bottom: 1px solid var(--border-color);
-  background-color: var(--bg-translucent-color);
-  backdrop-filter: blur(6px);
+main {
+  flex: 1;
 }
 
 aside {
@@ -30,8 +24,14 @@ aside {
   overflow: auto;
 }
 
-main {
-  flex: 1;
+header {
+  display: flex;
+  align-items: center;
+  height: 64px;
+  padding: 0 16px;
+  border-bottom: 1px solid var(--border-color);
+  background-color: var(--bg-translucent-color);
+  backdrop-filter: blur(6px);
 }
 
 footer {
@@ -39,6 +39,44 @@ footer {
   margin-top: 64px;
   font-size: .75em;
   text-align: center;
+}
+
+.menu,
+.submenu {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+
+  a {
+    display: block;
+    padding: 8px 16px;
+    border-radius: 8px;
+    text-decoration: none;
+
+    &:hover {
+      background-color: var(--bg-secondary-color);
+    }
+  }
+}
+
+.menu-item {
+  >a {
+    margin-top: 24px;
+    font-weight: 500;
+    color: var(--fg-color);
+  }
+
+  &:first-child {
+    >a {
+      margin-top: 0;
+    }
+  }
+}
+
+.submenu-item {
+  >a {
+    color: var(--fg-secondary-color);
+  }
 }
 
 .spacer {
