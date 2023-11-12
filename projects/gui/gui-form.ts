@@ -2,10 +2,12 @@ import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
+  EventEmitter,
   Input,
   OnChanges,
   OnDestroy,
   OnInit,
+  Output,
   SimpleChanges,
   ViewEncapsulation,
 } from '@angular/core';
@@ -39,6 +41,11 @@ export class GuiForm implements OnChanges, OnInit, OnDestroy {
    */
   @Input() model: any = {};
 
+  /**
+   * Fired on model value change
+   */
+  @Output() modelChange = new EventEmitter();
+
   formFields: GuiControl[] = [];
 
   formSubscription = Subscription.EMPTY;
@@ -59,6 +66,7 @@ export class GuiForm implements OnChanges, OnInit, OnDestroy {
   ngOnInit(): void {
     this.formSubscription = this.form.valueChanges.subscribe(value => {
       Object.assign(this.model, value);
+      this.modelChange.emit(value);
     });
   }
 
