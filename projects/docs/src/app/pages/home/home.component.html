@@ -1,9 +1,9 @@
 <div class="jumbotron" [style]="{
-  'background-image': bgGradient,
-  'background-position': bgPosition,
-  'background-size': bgSize,
-  'background-blend-mode': bgBlendMode,
-  'background-repeat': bgRepeat,
+  'background-image': background.image,
+  'background-position': background.position,
+  'background-size': background.size,
+  'background-blend-mode': background.blendMode,
+  'background-repeat': background.repeat
 }">
   <div class="text">
     <h1>Acrodata GUI</h1>
@@ -12,7 +12,7 @@
 
   <div class="gui-wrapper">
     <div class="gui-heading">Gradient Generator</div>
-    <gui-form [config]="config" [model]="model"></gui-form>
+    <gui-form [config]="config" [model]="model" (modelChange)="getBackground()"></gui-form>
   </div>
 </div>
 

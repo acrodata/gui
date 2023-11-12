@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ExampleViewerComponent, PageHeaderComponent } from '../../shared';
 import { GuiFields, GuiModule } from '@acrodata/gui';
@@ -10,7 +10,7 @@ import { GuiFields, GuiModule } from '@acrodata/gui';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
   config: GuiFields = {
     background: {
       type: 'tabs',
@@ -161,37 +161,39 @@ export class HomeComponent {
     repeat: 'repeat',
   };
 
-  get bgGradient() {
-    return this.model.background
-      .map(g => {
-        const type = g.repeat ? 'repeating-linear-gradient' : 'linear-gradient';
-        const angle = g.angle ? `${g.angle}deg,` : '';
-        const stops = g.stops?.map(s => `${s.color} ${s.offset}`).join(',');
-        return stops ? `${type}(${angle}${stops})` : '';
-      })
-      .filter(g => g.trim())
-      .join(',');
+  background = {
+    image: '',
+    position: '',
+    size: '',
+    blendMode: '',
+    repeat: '',
+  };
+
+  ngOnInit(): void {
+    this.getBackground();
   }
 
-  get bgPosition() {
-    return this.model.background
-      .map(g => `${g.position?.x || ''} ${g.position?.y || ''}`)
-      .filter(g => g.trim())
-      .join(',');
-  }
-
-  get bgSize() {
-    return this.model.background
-      .map(g => `${g.size?.w || ''} ${g.size?.h || ''}`)
-      .filter(g => g.trim())
-      .join(',');
-  }
-
-  get bgBlendMode() {
-    return this.model.blendMode.join(',');
-  }
-
-  get bgRepeat() {
-    return this.model.repeat;
+  getBackground() {
+    this.background = {
+      image: this.model.background
+        .map(g => {
+          const type = g.repeat ? 'repeating-linear-gradient' : 'linear-gradient';
+          const angle = g.angle ? `${g.angle}deg,` : '';
+          const stops = g.stops?.map(s => `${s.color} ${s.offset}`).join(',');
+          return stops ? `${type}(${angle}${stops})` : '';
+        })
+        .filter(g => g.trim())
+        .join(','),
+      position: this.model.background
+        .map(g => `${g.position?.x || ''} ${g.position?.y || ''}`)
+        .filter(g => g.trim())
+        .join(','),
+      size: this.model.background
+        .map(g => `${g.size?.w || ''} ${g.size?.h || ''}`)
+        .filter(g => g.trim())
+        .join(','),
+      blendMode: this.model.blendMode.join(','),
+      repeat: this.model.repeat,
+    };
   }
 }

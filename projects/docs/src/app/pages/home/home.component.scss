@@ -27,9 +27,11 @@ p {
 }
 
 .gui-heading {
-  padding: 8px 12px;
+  padding: 0 12px;
   border-radius: 4px 4px 0 0;
   background-color: var(--bg-color);
   border-bottom: 1px solid var(--border-color);
   text-align: center;
+  line-height: 32px;
+  font-size: 12px;
 }
