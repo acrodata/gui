@@ -1,14 +1,11 @@
-// 预览颜色块
 .gui-color-block,
 .gui-color-block-empty {
   position: relative;
   display: block;
-  width: 18px;
-  height: 18px;
-  border: 1px solid #000;
+  width: 24px;
+  height: 24px;
 }
 
-// 透明颜色棋盘格效果
 .gui-color-block-empty {
   position: absolute;
   background-color: #fff;
@@ -21,10 +18,11 @@
   background-size: 8px 8px;
 }
 
-// 解决垂直居中问题
+// fix icon vertical align
 .gui-fill {
-  .gui-colorpicker-toggle {
-    display: flex;
-    color: #fff;
+  .mat-mdc-icon-button {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
   }
 }

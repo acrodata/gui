@@ -2,8 +2,8 @@
   --mat-form-field-container-text-size: 12px;
   --mat-expansion-header-text-size: 12px;
   --mat-expansion-container-text-size: 12px;
-  --mat-expansion-header-collapsed-state-height: 40px;
-  --mat-expansion-header-expanded-state-height: 40px;
+  --mat-expansion-header-collapsed-state-height: 32px;
+  --mat-expansion-header-expanded-state-height: 32px;
 
   position: relative;
   font-size: 12px;
@@ -74,6 +74,10 @@
     position: relative;
     padding: 0 8px;
     border-radius: var(--mdc-filled-text-field-container-shape);
+
+    [dir="rtl"] & {
+      padding: 0 8px;
+    }
   }
 
   .mat-mdc-form-field-infix {
@@ -106,5 +110,29 @@
     height: 16px;
     background-color: var(--mat-expansion-header-text-color);
     content: '';
+  }
+}
+
+.gui-menu {
+  .mat-mdc-tab-header {
+    --mdc-tab-indicator-active-indicator-shape: 4px;
+
+    padding: 2px;
+    background-color: var(--mat-expansion-header-hover-state-layer-color);
+
+    .mdc-tab__ripple::before {
+      border-radius: var(--mdc-tab-indicator-active-indicator-shape);
+    }
+  }
+
+  .mdc-tab-indicator .mdc-tab-indicator__content {
+    height: 100%;
+    border-width: 0;
+    border-radius: var(--mdc-tab-indicator-active-indicator-shape);
+    background-color: var(--mdc-tab-indicator-active-indicator-color);
+  }
+
+  .mdc-tab-indicator--active .mdc-tab-indicator__content {
+    opacity: .24;
   }
 }
