@@ -118,11 +118,15 @@
     --mdc-tab-indicator-active-indicator-shape: 4px;
 
     padding: 2px;
-    background-color: var(--mat-expansion-header-hover-state-layer-color);
+    background-color: var(--mdc-filled-text-field-container-color);
 
     .mdc-tab__ripple::before {
       border-radius: var(--mdc-tab-indicator-active-indicator-shape);
     }
+  }
+
+  .mat-mdc-tab-labels {
+    gap: 2px;
   }
 
   .mdc-tab-indicator .mdc-tab-indicator__content {

@@ -1,8 +1,14 @@
 .gui-button-toggle {
-  --mat-standard-button-toggle-height: 22px;
+  --mat-standard-button-toggle-height: 24px;
 
   .mat-button-toggle-group {
     flex-wrap: wrap;
+    border-width: 0;
+  }
+
+  .mat-button-toggle-appearance-standard {
+    border-width: 0 !important;
+    background-color: var(--mdc-filled-text-field-container-color);
   }
 }
 
@@ -14,7 +20,6 @@
     }
   }
 
-  // 图片图标选中时的样式
   &.mat-button-toggle-checked img {
     opacity: .64;
   }

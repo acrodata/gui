@@ -4,8 +4,8 @@
   img,
   i {
     display: block;
-    width: 22px;
-    height: 22px;
-    line-height: 22px;
+    width: var(--mat-standard-button-toggle-height);
+    height: var(--mat-standard-button-toggle-height);
+    line-height: var(--mat-standard-button-toggle-height);
   }
 }

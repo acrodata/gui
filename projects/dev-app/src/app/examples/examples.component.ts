@@ -93,11 +93,11 @@ export class ExamplesComponent implements OnInit {
       name: '对齐方式',
       type: 'buttonToggle',
       options: [
-        { value: 'left', label: '左对齐', col: 20 },
-        { value: 'center', label: '居中对齐', col: 20 },
-        { value: 'right', label: '右对齐', col: 20 },
-        { value: 'top', label: '上对齐', col: 20 },
-        { value: 'bottom', label: '下对齐', col: 20 },
+        { value: 'left', label: '左对齐', col: 50 },
+        { value: 'center', label: '居中对齐', col: 50 },
+        { value: 'right', label: '右对齐', col: 50 },
+        { value: 'top', label: '上对齐', col: 50 },
+        { value: 'bottom', label: '下对齐', col: 50 },
       ],
     },
     alignIcon: {
