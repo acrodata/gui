@@ -18,15 +18,12 @@
 
     <audio *ngSwitchCase="'audio'" [src]="url" controls></audio>
 
-    <svg *ngSwitchDefault
-         viewBox="0 0 24 24" width="24px" height="24px" fill="currentColor" focusable="false">
-      <path
-            d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z">
-      </path>
-    </svg>
+    <mat-icon *ngSwitchDefault svgIcon="file_outline"></mat-icon>
   </ng-container>
 
-  <div *ngIf="!url" class="gui-file-placeholder">选择上传文件</div>
+  <div *ngIf="!url" class="gui-file-placeholder">
+    <mat-icon svgIcon="file_upload"></mat-icon>
+  </div>
 
   <input #fileInput type="file" [accept]="accept" [name]="name" tabindex="-1"
          [disabled]="disabled" (change)="onFileChange($event)">

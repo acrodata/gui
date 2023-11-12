@@ -29,4 +29,14 @@ export const svgIcons: { [key: string]: string } = {
     <path d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z"></path>
   </svg>
   `,
+  file_outline: `
+  <svg viewBox="0 0 24 24">
+    <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z" />
+  </svg>
+  `,
+  file_upload: `
+  <svg viewBox="0 0 24 24">
+    <path d="M2 12H4V17H20V12H22V17C22 18.11 21.11 19 20 19H4C2.9 19 2 18.11 2 17V12M12 2L6.46 7.46L7.88 8.88L11 5.75V15H13V5.75L16.13 8.88L17.55 7.45L12 2Z" />
+  </svg>
+  `,
 };
