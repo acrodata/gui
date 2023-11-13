@@ -19,3 +19,11 @@
     margin-bottom: 0;
   }
 }
+
+@media (width < 600px){
+  .page-header {
+    flex-direction: column;
+    padding: 64px 16px;
+    text-align: center;
+  }
+}

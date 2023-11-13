@@ -11,7 +11,6 @@
   overflow: auto;
 
   pre {
-    padding: 32px;
     margin: 0;
   }
 }
@@ -19,6 +18,7 @@
 .demo-result {
   width: 320px;
   padding: 32px;
+  margin: 0 auto;
 }
 
 .demo-console {
@@ -38,5 +38,11 @@
     line-height: 20px;
     appearance: none;
     outline: none;
+  }
+}
+
+@media (width < 600px){
+  .demo-wrapper {
+    flex-direction: column;
   }
 }

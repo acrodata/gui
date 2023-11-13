@@ -1,4 +1,6 @@
 <header>
+  <button (click)="menuOpened = !menuOpened">toggle</button>
+
   <a class="logo" routerLink="/">Acrodata GUI</a>
 
   <span class="spacer"></span>
@@ -7,7 +9,7 @@
 </header>
 
 <div class="container">
-  <aside>
+  <aside [class.show]="menuOpened">
     <ul class="menu" role="navigation">
       <li class="menu-item" *ngFor="let item of menu">
         <a role="button" [routerLink]="item.route">{{item.name}}</a>
@@ -28,3 +30,5 @@
     </footer>
   </main>
 </div>
+
+<div class="backdrop" [class.show]="menuOpened" (click)="menuOpened = false"></div>

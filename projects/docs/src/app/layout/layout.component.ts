@@ -57,4 +57,6 @@ export class LayoutComponent {
       ],
     },
   ];
+
+  menuOpened = false;
 }

@@ -87,3 +87,9 @@ table {
   border-radius: 4px;
   overflow: auto;
 }
+
+@media (width < 600px){
+  pre {
+    padding: 16px;
+  }
+}

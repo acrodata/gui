@@ -7,6 +7,7 @@
 
 .container {
   display: flex;
+  gap: 32px;
 }
 
 main {
@@ -21,8 +22,8 @@ aside {
   width: 240px;
   height: 100vh;
   padding: 16px 0;
-  margin-right: 32px;
   overflow: auto;
+  background-color: var(--bg-color);
 }
 
 header {
@@ -82,4 +83,54 @@ footer {
 
 .spacer {
   flex-grow: 1;
+}
+
+@media (width <=960px) {
+  .container-wrap {
+    padding: 0 32px;
+  }
+
+  aside {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 20;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out;
+
+    &.show {
+      transform: none;
+    }
+  }
+
+  .backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 19;
+    width: 100vw;
+    height: 100vh;
+    visibility: hidden;
+    transition-duration: 400ms;
+    transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+    transition-property: background-color,visibility;
+
+    &.show {
+      background-color: rgba(0, 0, 0, .5);
+      visibility: visible;
+    }
+  }
+
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+}
+
+@media (width <=600px) {
+  .container-wrap {
+    padding: 0 16px;
+  }
 }
