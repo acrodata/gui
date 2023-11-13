@@ -1,5 +1,7 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { MatIconRegistry } from '@angular/material/icon';
+import { DomSanitizer } from '@angular/platform-browser';
 import { RouterOutlet } from '@angular/router';
 
 @Component({
@@ -12,4 +14,12 @@ import { RouterOutlet } from '@angular/router';
 })
 export class AppComponent {
   title = 'docs';
+
+  icons = ['menu', 'github'];
+
+  constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer) {
+    for (const i of this.icons) {
+      iconRegistry.addSvgIcon(i, sanitizer.bypassSecurityTrustResourceUrl(`assets/icons/${i}.svg`));
+    }
+  }
 }

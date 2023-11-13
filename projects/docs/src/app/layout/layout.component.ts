@@ -1,12 +1,21 @@
 import { CommonModule } from '@angular/common';
 import { Component, ViewEncapsulation } from '@angular/core';
-import { RouterLink, RouterOutlet } from '@angular/router';
+import { NavigationEnd, Router, RouterLink, RouterOutlet } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { filter } from 'rxjs';
 
 @Component({
   selector: 'app-layout',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, RouterLink, MatButtonModule],
+  imports: [
+    CommonModule,
+    RouterOutlet,
+    RouterLink,
+    MatButtonModule,
+    MatIconModule,
+    MatButtonModule,
+  ],
   templateUrl: './layout.component.html',
   styleUrls: ['./layout.component.scss'],
   host: {
@@ -59,4 +68,10 @@ export class LayoutComponent {
   ];
 
   menuOpened = false;
+
+  constructor(private router: Router) {
+    this.router.events.pipe(filter(event => event instanceof NavigationEnd)).subscribe(e => {
+      this.menuOpened = false;
+    });
+  }
 }

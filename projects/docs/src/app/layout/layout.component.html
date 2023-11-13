@@ -1,11 +1,15 @@
 <header>
-  <button (click)="menuOpened = !menuOpened">toggle</button>
+  <button class="menu-toggle" mat-icon-button (click)="menuOpened = !menuOpened">
+    <mat-icon svgIcon="menu" />
+  </button>
 
-  <a class="logo" routerLink="/">Acrodata GUI</a>
+  <a class="brand" routerLink="/">Acrodata GUI</a>
 
   <span class="spacer"></span>
 
-  <a href="https://github.com/acrodata/gui" target="_blank">GitHub</a>
+  <a mat-icon-button href="https://github.com/acrodata/gui" target="_blank">
+    <mat-icon svgIcon="github" />
+  </a>
 </header>
 
 <div class="container">
