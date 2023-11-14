@@ -28,6 +28,7 @@ body {
   margin: 0;
   color: var(--fg-color);
   background-color: var(--bg-color);
+  line-height: 1.5;
 }
 
 h1,
@@ -57,7 +58,6 @@ kbd,
 pre,
 samp {
   font-family: "Roboto Mono", monospace;
-  font-size: 1em;
 }
 
 pre {
@@ -65,7 +65,12 @@ pre {
   overflow: auto;
   border-radius: 8px;
   background-color: var(--bg-secondary-color);
-  font-size: 0.875em;
+  line-height: 1.2;
+
+  code {
+    display: inline;
+    padding: 0;
+  }
 }
 
 @media (width < 600px) {
@@ -75,8 +80,12 @@ pre {
 }
 
 code {
-  font-size: 0.875em;
+  display: inline-block;
+  padding: 0 4px;
+  font-size: 0.75rem;
   word-wrap: break-word;
+  background-color: var(--bg-secondary-color);
+  border-radius: 4px;
 }
 
 table {

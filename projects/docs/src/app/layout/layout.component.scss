@@ -8,6 +8,7 @@
 .container {
   display: flex;
   gap: 32px;
+  margin-top: 16px;
 }
 
 main {
@@ -21,7 +22,7 @@ aside {
   display: block;
   width: 240px;
   height: 100vh;
-  padding: 16px 0;
+  padding: 0 0 32px;
   overflow: auto;
   background-color: var(--bg-color);
 }
@@ -36,9 +37,9 @@ header {
 }
 
 footer {
-  padding: 16px 0;
+  padding: 32px 0;
   margin-top: 64px;
-  font-size: .75em;
+  font-size: 0.75rem;
   text-align: center;
 }
 
@@ -102,6 +103,7 @@ footer {
     bottom: 0;
     left: 0;
     z-index: 20;
+    padding: 16px 0;
     transform: translateX(-100%);
     transition: transform 0.3s ease-in-out;
 
