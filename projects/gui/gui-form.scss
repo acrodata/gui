@@ -117,7 +117,7 @@
   .mat-mdc-tab-header {
     --mdc-tab-indicator-active-indicator-shape: 4px;
 
-    padding: 2px;
+    padding: 4px;
     background-color: var(--mdc-filled-text-field-container-color);
 
     .mdc-tab__ripple::before {
@@ -126,7 +126,7 @@
   }
 
   .mat-mdc-tab-labels {
-    gap: 2px;
+    gap: 4px;
   }
 
   .mdc-tab-indicator .mdc-tab-indicator__content {

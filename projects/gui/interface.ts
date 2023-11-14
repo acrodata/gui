@@ -8,17 +8,17 @@ export type GuiFieldType =
   | 'text'
   | 'number'
   | 'switch'
-  | 'select'
-  | 'imageSelect'
-  | 'buttonToggle'
   | 'slider'
   | 'fill'
+  | 'select'
+  | 'buttonToggle'
+  | 'imageSelect'
+  | 'textarea'
+  | 'hidden'
   | 'image'
   | 'video'
   | 'audio'
-  | 'file'
-  | 'textarea'
-  | 'hidden';
+  | 'file';
 
 export type GuiFillMode = 'flat' | 'gradient' | 'image';
 
