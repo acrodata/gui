@@ -1,12 +1,20 @@
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { GuiFields } from '@acrodata/gui';
+import { CommonModule } from '@angular/common';
+import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { ExampleViewerComponent, PageHeaderComponent } from '../../shared';
 
 @Component({
   selector: 'app-basic-controls',
   standalone: true,
-  imports: [CommonModule, ExampleViewerComponent, PageHeaderComponent],
+  imports: [
+    CommonModule,
+    ExampleViewerComponent,
+    PageHeaderComponent,
+    MatSlideToggleModule,
+    FormsModule,
+  ],
   templateUrl: './basic-controls.component.html',
   styleUrls: ['./basic-controls.component.scss'],
 })
@@ -52,6 +60,16 @@ export class BasicControlsComponent {
     },
   };
 
+  sliderRangeConfig: GuiFields = {
+    temperature: {
+      type: 'slider',
+      name: 'Temperature',
+      mode: 'range',
+      default: [16, 64],
+      suffix: '°C',
+    },
+  };
+
   fillConfig: GuiFields = {
     color: {
       type: 'fill',
@@ -60,25 +78,34 @@ export class BasicControlsComponent {
     },
   };
 
+  isMultiSelect = false;
   selectConfig: GuiFields = {
     font: {
       type: 'select',
       name: 'Font',
       default: 'arial',
+      multiple: false,
+      useFont: true,
       options: [
         { value: 'arial', label: 'Arial' },
         { value: 'fantasy', label: 'Fantasy' },
         { value: 'monospace', label: 'Monospace' },
       ],
-      useFont: true,
     },
   };
+  onSelectMultiChange() {
+    this.selectConfig['font'].multiple = this.isMultiSelect;
+    this.selectConfig['font'].default = this.isMultiSelect ? [] : 'arial';
+    this.selectConfig = { ...this.selectConfig };
+  }
 
+  isMultiButtonToggle = false;
   buttonToggleConfig: GuiFields = {
     textAlign: {
       type: 'buttonToggle',
       name: 'Align',
       default: 'right',
+      multiple: false,
       options: [
         { value: 'left', label: 'Left' },
         { value: 'center', label: 'Center' },
@@ -86,6 +113,11 @@ export class BasicControlsComponent {
       ],
     },
   };
+  onButtonToggleMultiChange() {
+    this.buttonToggleConfig['textAlign'].multiple = this.isMultiButtonToggle;
+    this.buttonToggleConfig['textAlign'].default = this.isMultiButtonToggle ? [] : 'right';
+    this.buttonToggleConfig = { ...this.buttonToggleConfig };
+  }
 
   imageSelectConfig: GuiFields = {
     background: {
@@ -96,17 +128,17 @@ export class BasicControlsComponent {
         {
           label: 'img1',
           value: 'img1',
-          src: 'https://iconfont.alicdn.com/p/illus_3d/file/4YT18QCAgs2C/01d188be-0beb-4461-9273-b7c53fd65ca6.png',
+          src: './assets/images/icon3d1.webp',
         },
         {
           label: 'img2',
           value: 'img2',
-          src: 'https://iconfont.alicdn.com/p/illus_3d/file/4YT18QCAgs2C/e565a17b-e0f8-4672-9eb9-de99df82b7a9.png',
+          src: './assets/images/icon3d2.webp',
         },
         {
           label: 'img3',
           value: 'img3',
-          src: 'https://iconfont.alicdn.com/p/illus_3d/file/4YT18QCAgs2C/e4390f23-e442-4db1-b723-1e5d84c7a8fa.png',
+          src: './assets/images/icon3d3.webp',
         },
       ],
     },

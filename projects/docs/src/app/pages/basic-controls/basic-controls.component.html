@@ -24,6 +24,12 @@
 
 <app-example-viewer [config]="sliderConfig"></app-example-viewer>
 
+<h3 id="slider_range">
+  <a href="basic-controls#slider_range">Range Slider</a>
+</h3>
+
+<app-example-viewer [config]="sliderRangeConfig"></app-example-viewer>
+
 <h2 id="fill">
   <a href="basic-controls#fill">Fill</a>
 </h2>
@@ -34,11 +40,21 @@
   <a href="basic-controls#select">Select</a>
 </h2>
 
+<div>
+  <mat-slide-toggle [(ngModel)]="isMultiSelect"
+                    (ngModelChange)="onSelectMultiChange()">Multiple choice</mat-slide-toggle>
+</div>
+
 <app-example-viewer [config]="selectConfig"></app-example-viewer>
 
 <h2 id="button_toggle">
   <a href="basic-controls#button_toggle">Button Toggle</a>
 </h2>
+
+<div>
+  <mat-slide-toggle [(ngModel)]="isMultiButtonToggle"
+                    (ngModelChange)="onButtonToggleMultiChange()">Multiple choice</mat-slide-toggle>
+</div>
 
 <app-example-viewer [config]="buttonToggleConfig"></app-example-viewer>
 

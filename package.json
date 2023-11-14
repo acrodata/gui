@@ -19,7 +19,7 @@
     "lint:scss": "stylelint \"**/*.scss\" --fix",
     "build:lib": "ng build gui",
     "publish": "npm run build:lib && cd dist/gui && npm publish",
-    "predeploy": "npm run build",
+    "predeploy": "npm run build:docs",
     "deploy": "angular-cli-ghpages --no-silent --dir=dist/docs",
     "prepare": "husky install"
   },

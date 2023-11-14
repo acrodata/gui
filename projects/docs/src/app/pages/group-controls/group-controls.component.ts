@@ -29,6 +29,7 @@ export class GroupControlsComponent {
           suffix: 'px',
         },
       },
+      expanded: true,
     },
   };
 
@@ -75,6 +76,7 @@ export class GroupControlsComponent {
           },
         },
       },
+      expanded: true,
     },
   };
 
@@ -82,6 +84,7 @@ export class GroupControlsComponent {
     misc: {
       type: 'tabs',
       name: 'Misc',
+      mode: 'list',
       children: [
         {
           type: 'tab',
@@ -111,6 +114,7 @@ export class GroupControlsComponent {
           },
         },
       ],
+      expanded: true,
     },
   };
 
