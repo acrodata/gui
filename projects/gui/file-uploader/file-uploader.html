@@ -2,6 +2,7 @@
   <mat-icon matPrefix svgIcon="link"></mat-icon>
 
   <input matInput type="text" [ngModel]="url" [disabled]="disabled"
+         [placeholder]="config.placeholder||''"
          (change)="onUrlChange($event)" (blur)="onBlur()">
 
   <button *ngIf="url" matSuffix mat-icon-button color="warn"

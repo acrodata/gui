@@ -17,6 +17,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { of } from 'rxjs';
 import { catchError, finalize } from 'rxjs/operators';
 import { GuiFileUploaderConfig } from './file-uploader-config';
+import { GuiControl } from '../interface';
 
 export type FileUploadType = 'image' | 'video' | 'audio' | '*';
 
@@ -46,10 +47,11 @@ export interface FileUploadContent {
 export class GuiFileUploader implements ControlValueAccessor, OnChanges {
   @ViewChild('fileInput') fileInput!: ElementRef<HTMLInputElement>;
 
+  @Input() config: Partial<GuiControl> = {};
+  @Input() disabled = false;
   @Input() type: FileUploadType = '*';
   @Input() name = '';
   @Input() accept = '';
-  @Input() disabled = false;
 
   @Output() fileChange = new EventEmitter<string>();
 

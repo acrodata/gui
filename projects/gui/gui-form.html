@@ -38,19 +38,22 @@
     </gui-field-group>
     <!-- File -->
     <gui-field-group *ngSwitchCase="'file'" [config]="item" [flex]="item.col">
-      <gui-file-uploader [formControlName]="item.key"></gui-file-uploader>
+      <gui-file-uploader [formControlName]="item.key" [config]="item"></gui-file-uploader>
     </gui-field-group>
     <!-- Image -->
     <gui-field-group *ngSwitchCase="'image'" [config]="item" [flex]="item.col">
-      <gui-file-uploader type="image" [formControlName]="item.key"></gui-file-uploader>
+      <gui-file-uploader type="image"
+                         [formControlName]="item.key" [config]="item"></gui-file-uploader>
     </gui-field-group>
     <!-- Video -->
     <gui-field-group *ngSwitchCase="'video'" [config]="item" [flex]="item.col">
-      <gui-file-uploader type="video" [formControlName]="item.key"></gui-file-uploader>
+      <gui-file-uploader type="video"
+                         [formControlName]="item.key" [config]="item"></gui-file-uploader>
     </gui-field-group>
     <!-- Audio -->
     <gui-field-group *ngSwitchCase="'audio'" [config]="item" [flex]="item.col">
-      <gui-file-uploader type="audio" [formControlName]="item.key"></gui-file-uploader>
+      <gui-file-uploader type="audio"
+                         [formControlName]="item.key" [config]="item"></gui-file-uploader>
     </gui-field-group>
     <!-- Image Select -->
     <gui-field-group *ngSwitchCase="'imageSelect'" [config]="item" [flex]="item.col">
