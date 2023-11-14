@@ -9,6 +9,11 @@
   --console-color: rgba(0, 0, 0, .4);
   --console-bg-color: rgba(0, 0, 0, .04);
   --a-color: rgba(65, 105, 190, 1);
+  --hl-keyword: rgb(85, 140, 180);
+  --hl-string: rgb(115, 105, 175);
+  --hl-number: rgb(50, 160, 85);
+  --hl-comment: rgba(100, 100, 100);
+  --hl-title: rgb(165, 120, 20);
 }
 
 *,
@@ -63,6 +68,12 @@ pre {
   font-size: 0.875em;
 }
 
+@media (width < 600px) {
+  pre {
+    padding: 16px;
+  }
+}
+
 code {
   font-size: 0.875em;
   word-wrap: break-word;
@@ -88,8 +99,23 @@ table {
   overflow: auto;
 }
 
-@media (width < 600px){
-  pre {
-    padding: 16px;
-  }
+.hljs-keyword {
+  color: var(--hl-keyword);
+}
+
+.hljs-number {
+  color: var(--hl-number);
+}
+
+.hljs-string {
+  color: var(--hl-string);
+}
+
+.hljs-comment,
+.hljs-quote {
+  color: var(--hl-comment);
+}
+
+.hljs-title {
+  color: var(--hl-title);
 }
