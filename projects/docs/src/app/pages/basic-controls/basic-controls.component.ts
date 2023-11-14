@@ -16,6 +16,9 @@ export class BasicControlsComponent {
       type: 'text',
       name: 'Content',
       default: 'Hello world',
+      description: 'I am description',
+      prefix: '👋',
+      suffix: '💖',
     },
   };
 
@@ -84,11 +87,37 @@ export class BasicControlsComponent {
     },
   };
 
+  imageSelectConfig: GuiFields = {
+    background: {
+      type: 'imageSelect',
+      name: 'Background',
+      default: 'img1',
+      options: [
+        {
+          label: 'img1',
+          value: 'img1',
+          src: 'https://iconfont.alicdn.com/p/illus_3d/file/4YT18QCAgs2C/01d188be-0beb-4461-9273-b7c53fd65ca6.png',
+        },
+        {
+          label: 'img2',
+          value: 'img2',
+          src: 'https://iconfont.alicdn.com/p/illus_3d/file/4YT18QCAgs2C/e565a17b-e0f8-4672-9eb9-de99df82b7a9.png',
+        },
+        {
+          label: 'img3',
+          value: 'img3',
+          src: 'https://iconfont.alicdn.com/p/illus_3d/file/4YT18QCAgs2C/e4390f23-e442-4db1-b723-1e5d84c7a8fa.png',
+        },
+      ],
+    },
+  };
+
   textareaConfig: GuiFields = {
     foo: {
       type: 'textarea',
       name: 'Foo',
       default: 'I am a textarea',
+      rows: 3,
     },
   };
 

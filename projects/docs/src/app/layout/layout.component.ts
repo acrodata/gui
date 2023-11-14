@@ -41,6 +41,7 @@ export class LayoutComponent {
         { name: 'Fill', route: 'fill' },
         { name: 'Select', route: 'select' },
         { name: 'Button Toggle', route: 'button_toggle' },
+        { name: 'Image Select', route: 'image_select' },
         { name: 'Textarea', route: 'textarea' },
         { name: 'Hidden', route: 'hidden' },
       ],
