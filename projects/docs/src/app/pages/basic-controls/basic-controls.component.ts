@@ -1,9 +1,10 @@
 import { GuiFields } from '@acrodata/gui';
-import { CommonModule } from '@angular/common';
+import { CommonModule, Location } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { ExampleViewerComponent, PageHeaderComponent } from '../../shared';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
 
 @Component({
   selector: 'app-basic-controls',
@@ -13,6 +14,7 @@ import { ExampleViewerComponent, PageHeaderComponent } from '../../shared';
     ExampleViewerComponent,
     PageHeaderComponent,
     MatSlideToggleModule,
+    MatButtonToggleModule,
     FormsModule,
   ],
   templateUrl: './basic-controls.component.html',
@@ -50,25 +52,24 @@ export class BasicControlsComponent {
   };
 
   sliderConfig: GuiFields = {
-    opacity: {
-      type: 'slider',
-      name: 'Opacity',
-      default: 0.33,
-      min: 0,
-      max: 1,
-      step: 0.01,
-    },
-  };
-
-  sliderRangeConfig: GuiFields = {
     temperature: {
       type: 'slider',
       name: 'Temperature',
-      mode: 'range',
-      default: [16, 64],
+      mode: 'normal',
+      default: 30,
+      min: 0,
+      max: 100,
+      step: 5,
       suffix: '°C',
     },
   };
+  isRangeSlider = false;
+  toggleRangeSlider() {
+    const { temperature } = this.sliderConfig;
+    temperature.mode = this.isRangeSlider ? 'range' : 'normal';
+    temperature.default = this.isRangeSlider ? [20, 60] : 30;
+    this.sliderConfig = { ...this.sliderConfig };
+  }
 
   fillConfig: GuiFields = {
     color: {
@@ -78,7 +79,6 @@ export class BasicControlsComponent {
     },
   };
 
-  isMultiSelect = false;
   selectConfig: GuiFields = {
     font: {
       type: 'select',
@@ -93,13 +93,14 @@ export class BasicControlsComponent {
       ],
     },
   };
-  onSelectMultiChange() {
-    this.selectConfig['font'].multiple = this.isMultiSelect;
-    this.selectConfig['font'].default = this.isMultiSelect ? [] : 'arial';
+  isMultiSelect = false;
+  toggleMultiSelect() {
+    const { font } = this.selectConfig;
+    font.multiple = this.isMultiSelect;
+    font.default = this.isMultiSelect ? [] : 'arial';
     this.selectConfig = { ...this.selectConfig };
   }
 
-  isMultiButtonToggle = false;
   buttonToggleConfig: GuiFields = {
     textAlign: {
       type: 'buttonToggle',
@@ -113,11 +114,49 @@ export class BasicControlsComponent {
       ],
     },
   };
-  onButtonToggleMultiChange() {
-    this.buttonToggleConfig['textAlign'].multiple = this.isMultiButtonToggle;
-    this.buttonToggleConfig['textAlign'].default = this.isMultiButtonToggle ? [] : 'right';
+  isMultiButtonToggle = false;
+  toggleMultiButtonToggle() {
+    const { textAlign } = this.buttonToggleConfig;
+    textAlign.multiple = this.isMultiButtonToggle;
+    textAlign.default = this.isMultiButtonToggle ? [] : 'right';
     this.buttonToggleConfig = { ...this.buttonToggleConfig };
   }
+  useIcon = 0;
+  toggleIconButtonToggle() {
+    const { textAlign } = this.buttonToggleConfig;
+    textAlign.useIcon = this.useIcon > 0 ? true : false;
+    textAlign.options = textAlign.options?.map(opt => {
+      return {
+        ...opt,
+        src:
+          this.useIcon == 1
+            ? 'mdi mdi-format-align-' + opt.value
+            : this.useIcon == 2
+            ? './assets/images/align_' + opt.value + '.png'
+            : undefined,
+      };
+    });
+    this.buttonToggleConfig = { ...this.buttonToggleConfig };
+  }
+
+  buttonToggleConfig2: GuiFields = {
+    direction: {
+      type: 'buttonToggle',
+      name: 'Direction',
+      default: 'c',
+      options: [
+        { value: 'nw', label: 'NW', col: 33.33 },
+        { value: 'n', label: 'N', col: 33.33 },
+        { value: 'ne', label: 'NE', col: 33.33 },
+        { value: 'w', label: 'W', col: 33.33 },
+        { value: 'c', label: 'C', col: 33.33 },
+        { value: 'e', label: 'E', col: 33.33 },
+        { value: 'sw', label: 'SW', col: 33.33 },
+        { value: 's', label: 'S', col: 33.33 },
+        { value: 'se', label: 'SE', col: 33.33 },
+      ],
+    },
+  };
 
   imageSelectConfig: GuiFields = {
     background: {

@@ -92,7 +92,7 @@
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "2kb"
+                  "maximumWarning": "4kb"
                 }
               ],
               "outputHashing": "all"
@@ -178,7 +178,17 @@
             "inlineStyleLanguage": "scss",
             "assets": [
               "projects/docs/src/favicon.ico",
-              "projects/docs/src/assets"
+              "projects/docs/src/assets",
+              {
+                "glob": "*",
+                "input": "node_modules/@mdi/font/fonts",
+                "output": "assets/fonts"
+              },
+              {
+                "glob": "*.min.css",
+                "input": "node_modules/@mdi/font/css",
+                "output": "assets/fonts"
+              }
             ],
             "styles": [
               "projects/docs/src/styles.scss"
@@ -194,7 +204,7 @@
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "2kb"
+                  "maximumWarning": "4kb"
                 }
               ],
               "outputHashing": "all"

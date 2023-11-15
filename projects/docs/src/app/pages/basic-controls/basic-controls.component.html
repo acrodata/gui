@@ -22,13 +22,12 @@
   <a href="basic-controls#slider">Slider</a>
 </h2>
 
+<div>
+  <mat-slide-toggle [(ngModel)]="isRangeSlider"
+                    (ngModelChange)="toggleRangeSlider()">Range slider</mat-slide-toggle>
+</div>
+
 <app-example-viewer [config]="sliderConfig"></app-example-viewer>
-
-<h3 id="slider_range">
-  <a href="basic-controls#slider_range">Range Slider</a>
-</h3>
-
-<app-example-viewer [config]="sliderRangeConfig"></app-example-viewer>
 
 <h2 id="fill">
   <a href="basic-controls#fill">Fill</a>
@@ -42,7 +41,7 @@
 
 <div>
   <mat-slide-toggle [(ngModel)]="isMultiSelect"
-                    (ngModelChange)="onSelectMultiChange()">Multiple choice</mat-slide-toggle>
+                    (ngModelChange)="toggleMultiSelect()">Multiple choice</mat-slide-toggle>
 </div>
 
 <app-example-viewer [config]="selectConfig"></app-example-viewer>
@@ -53,10 +52,18 @@
 
 <div>
   <mat-slide-toggle [(ngModel)]="isMultiButtonToggle"
-                    (ngModelChange)="onButtonToggleMultiChange()">Multiple choice</mat-slide-toggle>
+                    (ngModelChange)="toggleMultiButtonToggle()">Multiple choice</mat-slide-toggle>
+
+  <mat-button-toggle-group [(ngModel)]="useIcon" (ngModelChange)="toggleIconButtonToggle()">
+    <mat-button-toggle [value]="0">Text</mat-button-toggle>
+    <mat-button-toggle [value]="1">Font icon</mat-button-toggle>
+    <mat-button-toggle [value]="2">Image icon</mat-button-toggle>
+  </mat-button-toggle-group>
 </div>
 
 <app-example-viewer [config]="buttonToggleConfig"></app-example-viewer>
+
+<app-example-viewer [config]="buttonToggleConfig2"></app-example-viewer>
 
 <h2 id="image_select">
   <a href="basic-controls#image_select">Image Select</a>
