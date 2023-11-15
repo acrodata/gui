@@ -17,6 +17,6 @@ export class GuiIcon {
   @Input() src = '';
 
   isUrl() {
-    return /https?:\/\/.+/.test(this.src);
+    return /^(https?:\/\/|\.?\/)\w+/.test(this.src);
   }
 }
