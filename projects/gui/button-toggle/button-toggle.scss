@@ -9,6 +9,10 @@
   .mat-button-toggle-appearance-standard {
     border-width: 0 !important;
     background-color: var(--mdc-filled-text-field-container-color);
+
+    &.mat-button-toggle-checked {
+      background-color: var(--mat-standard-button-toggle-selected-state-background-color);
+    }
   }
 }
 
