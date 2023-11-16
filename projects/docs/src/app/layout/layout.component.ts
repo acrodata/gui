@@ -60,6 +60,7 @@ export class LayoutComponent {
       name: 'Media controls',
       route: 'media-controls',
       children: [
+        { name: 'Upload Settings', route: 'upload_settings' },
         { name: 'Image', route: 'image' },
         { name: 'Video', route: 'video' },
         { name: 'Audio', route: 'audio' },

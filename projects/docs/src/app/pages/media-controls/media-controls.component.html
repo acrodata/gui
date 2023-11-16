@@ -1,4 +1,38 @@
-<app-page-header [title]="'Media controls'"></app-page-header>
+<app-page-header [title]="'Media controls'"
+                 subtitle="Used for uploading and displaying files."></app-page-header>
+
+<h2 id="upload_settings">
+  <a href="media-controls#upload_settings">Upload Settings</a>
+</h2>
+
+<p>If you want to use the upload feature, you should replace the <code>GuiFileUploaderConfig</code>
+  with your own uploading logic.</p>
+
+<pre><code highlight="@Injectable()
+export class YourUploadService {
+  constructor(private http: HttpClient) {}
+
+  upload(file: FormData) {
+    return this.http.post<any>('your_url', file, {
+      reportProgress: true,
+      observe: 'events',
+    });
+  }
+}
+
+@Component({
+  ...
+  imports: [GuiModule],
+  providers: [
+    {
+      provide: GuiFileUploaderConfig,
+      useClass: YourUploadService
+    },
+  ],
+})
+export class YourComponent {
+}"
+  [languages]="['ts']"></code></pre>
 
 <h2 id="image">
   <a href="media-controls#image">Image</a>
