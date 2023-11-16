@@ -176,21 +176,27 @@ export class HomeComponent implements OnInit {
   getBackground() {
     this.background = {
       image: this.model.background
-        .map(g => {
-          const type = g.repeat ? 'repeating-linear-gradient' : 'linear-gradient';
-          const angle = g.angle ? `${g.angle}deg,` : '';
-          const stops = g.stops?.map(s => `${s.color} ${s.offset}`).join(',');
+        .map(b => {
+          const type = b.repeat ? 'repeating-linear-gradient' : 'linear-gradient';
+          const angle = b.angle ? `${b.angle}deg,` : '';
+          const stops = b.stops
+            .map((s, i) => ({
+              ...s,
+              color: b.reverse ? b.stops[b.stops.length - 1 - i].color : s.color,
+            }))
+            .map(s => `${s.color} ${s.offset}`)
+            .join(',');
           return stops ? `${type}(${angle}${stops})` : '';
         })
-        .filter(g => g.trim())
+        .filter(b => b.trim())
         .join(','),
       position: this.model.background
-        .map(g => `${g.position?.x || ''} ${g.position?.y || ''}`)
-        .filter(g => g.trim())
+        .map(b => `${b.position?.x || ''} ${b.position?.y || ''}`)
+        .filter(b => b.trim())
         .join(','),
       size: this.model.background
-        .map(g => `${g.size?.w || ''} ${g.size?.h || ''}`)
-        .filter(g => g.trim())
+        .map(b => `${b.size?.w || ''} ${b.size?.h || ''}`)
+        .filter(b => b.trim())
         .join(','),
       blendMode: this.model.blendMode.join(','),
       repeat: this.model.repeat,

@@ -107,11 +107,51 @@ export class GroupControlsComponent {
           name: 'Contact',
           children: {
             phone: {
-              type: 'number',
+              type: 'text',
               name: 'Phone',
-              default: 5550100,
+              default: '5550100',
             },
           },
+        },
+      ],
+      expanded: true,
+    },
+  };
+
+  tabs3Config: GuiFields = {
+    transitionProperty: {
+      type: 'tabs',
+      name: 'Transition property',
+      default: ['color', 'width'],
+      template: {
+        type: 'text',
+        name: 'Prop <%= i + 1 %>',
+      },
+      expanded: true,
+    },
+  };
+
+  tabs4Config: GuiFields = {
+    coordinate: {
+      name: 'Coordinate',
+      type: 'tabs',
+      mode: 'list',
+      children: [
+        {
+          type: 'slider',
+          name: 'Latitude',
+          min: -90,
+          max: 90,
+          step: 0.01,
+          default: 39.92,
+        },
+        {
+          type: 'slider',
+          name: 'Longitude',
+          min: -180,
+          max: 180,
+          step: 0.01,
+          default: 116.41,
         },
       ],
       expanded: true,
@@ -131,6 +171,11 @@ export class GroupControlsComponent {
               type: 'textarea',
               name: 'Comments',
               default: 'Hello world',
+            },
+            color: {
+              type: 'fill',
+              name: 'Color',
+              default: '#50b4ff99',
             },
           },
         },

@@ -1,4 +1,5 @@
-<app-page-header [title]="'Group controls'"></app-page-header>
+<app-page-header [title]="'Group controls'"
+                 subtitle="Used for binding object or array."></app-page-header>
 
 <h2 id="group">
   <a href="group-controls#group">Group</a>
@@ -16,9 +17,29 @@
   <a href="group-controls#tabs">Tabs</a>
 </h2>
 
+<h3 id="tabs_object_template">
+  <a href="group-controls#tabs_object_template">Array of objects with template</a>
+</h3>
+
 <app-example-viewer [config]="tabs1Config"></app-example-viewer>
 
+<h3 id="tabs_object_no_template">
+  <a href="group-controls#tabs_object_no_template">Array of objects without template</a>
+</h3>
+
 <app-example-viewer [config]="tabs2Config"></app-example-viewer>
+
+<h3 id="tabs_primitive_template">
+  <a href="group-controls#tabs_primitive_template">Array of primitive value with template</a>
+</h3>
+
+<app-example-viewer [config]="tabs3Config"></app-example-viewer>
+
+<h3 id="tabs_primitive_no_template">
+  <a href="group-controls#tabs_primitive_no_template">Array of primitive value without template</a>
+</h3>
+
+<app-example-viewer [config]="tabs4Config"></app-example-viewer>
 
 <h2 id="menu">
   <a href="group-controls#menu">Menu</a>
