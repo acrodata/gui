@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, ViewEncapsulation } from '@angular/core';
-import { NavigationEnd, Router, RouterLink, RouterOutlet } from '@angular/router';
+import { NavigationEnd, Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { filter } from 'rxjs';
@@ -12,6 +12,7 @@ import { filter } from 'rxjs';
     CommonModule,
     RouterOutlet,
     RouterLink,
+    RouterLinkActive,
     MatButtonModule,
     MatIconModule,
     MatButtonModule,
