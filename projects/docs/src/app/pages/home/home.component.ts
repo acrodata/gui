@@ -180,7 +180,7 @@ export class HomeComponent implements OnInit {
           const type = b.repeat ? 'repeating-linear-gradient' : 'linear-gradient';
           const angle = b.angle ? `${b.angle}deg,` : '';
           const stops = b.stops
-            .map((s, i) => ({
+            ?.map((s, i) => ({
               ...s,
               color: b.reverse ? b.stops[b.stops.length - 1 - i].color : s.color,
             }))
