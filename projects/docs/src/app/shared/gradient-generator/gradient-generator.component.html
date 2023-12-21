@@ -1,0 +1,17 @@
+<div class="jumbotron" [style]="{
+  'background-image': background.image,
+  'background-position': background.position,
+  'background-size': background.size,
+  'background-blend-mode': background.blendMode,
+  'background-repeat': background.repeat
+}">
+  <div class="text">
+    <h1>Acrodata GUI</h1>
+    <p>A lightweight GUI library for Angular</p>
+  </div>
+
+  <div class="gui-wrapper">
+    <div class="gui-heading">Gradient Generator</div>
+    <gui-form [config]="config" [model]="model" (modelChange)="getBackground()"></gui-form>
+  </div>
+</div>
