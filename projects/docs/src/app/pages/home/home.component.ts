@@ -18,20 +18,42 @@ export class HomeComponent implements OnInit {
       template: {
         name: 'Gradient <%= i + 1 %>',
         children: {
+          type: {
+            type: 'buttonToggle',
+            name: 'Type',
+            options: [
+              { label: 'linear', value: 'linear' },
+              { label: 'radial', value: 'radial' },
+              { label: 'conic', value: 'conic' },
+            ],
+          },
+          repeating: {
+            type: 'switch',
+            name: 'Repeating',
+          },
+          reverse: {
+            type: 'switch',
+            name: 'Reverse',
+          },
           angle: {
             type: 'slider',
             name: 'Angle',
             min: 0,
             max: 360,
             suffix: 'deg',
+            description: 'Only support for linear-gradient',
           },
-          repeat: {
-            type: 'switch',
-            name: 'Repeat',
+          radialBase: {
+            type: 'text',
+            name: 'Radial',
+            placeholder: '<shape> <size> at <position>',
+            description: 'Only support for radial-gradient',
           },
-          reverse: {
-            type: 'switch',
-            name: 'Reverse',
+          conicBase: {
+            type: 'text',
+            name: 'Conic',
+            placeholder: 'from <angle> at <position>',
+            description: 'Only support for conic-gradient',
           },
           stops: {
             type: 'tabs',
@@ -135,9 +157,12 @@ export class HomeComponent implements OnInit {
   model = {
     background: [
       {
-        angle: 45,
-        repeat: true,
+        type: 'linear',
+        repeating: true,
         reverse: false,
+        angle: 45,
+        radialBase: '',
+        conicBase: '',
         stops: [
           { color: 'rgba(75, 75, 75, 0.5)', offset: '0%' },
           { color: 'rgba(220, 235, 255, 0.75)', offset: '50%' },
@@ -146,9 +171,12 @@ export class HomeComponent implements OnInit {
         size: { w: '100px', h: '100px' },
       },
       {
-        angle: 135,
-        repeat: true,
+        type: 'linear',
+        repeating: true,
         reverse: false,
+        angle: 135,
+        radialBase: '',
+        conicBase: '',
         stops: [
           { color: 'rgba(5, 30, 50, 0.75)', offset: '0%' },
           { color: 'rgba(115, 150, 255, 0.5)', offset: '50%' },
@@ -177,8 +205,13 @@ export class HomeComponent implements OnInit {
     this.background = {
       image: this.model.background
         .map(b => {
-          const type = b.repeat ? 'repeating-linear-gradient' : 'linear-gradient';
+          const type = b.repeating ? `repeating-${b.type}-gradient` : `${b.type}-gradient`;
           const angle = b.angle ? `${b.angle}deg,` : '';
+          const base: any = {
+            linear: angle,
+            radial: b.radialBase ? `${b.radialBase},` : '',
+            conic: b.conicBase ? `${b.conicBase},` : '',
+          };
           const stops = b.stops
             ?.map((s, i) => ({
               ...s,
@@ -186,7 +219,7 @@ export class HomeComponent implements OnInit {
             }))
             .map(s => `${s.color} ${s.offset}`)
             .join(',');
-          return stops ? `${type}(${angle}${stops})` : '';
+          return stops ? `${type}(${base[b.type]}${stops})` : '';
         })
         .filter(b => b.trim())
         .join(','),
@@ -201,5 +234,8 @@ export class HomeComponent implements OnInit {
       blendMode: this.model.blendMode.join(','),
       repeat: this.model.repeat,
     };
+
+    // Print the model object
+    console.log(this.model);
   }
 }
