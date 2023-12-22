@@ -2,7 +2,7 @@
   display: flex;
   min-height: 30vw;
   padding: 64px;
-  margin-bottom: 48px;
+  margin-bottom: 24px;
   border-radius: 8px;
 }
 
@@ -46,4 +46,8 @@ p {
     margin-bottom: 32px;
     text-align: center;
   }
+}
+
+button + button {
+  margin-left: 8px;
 }

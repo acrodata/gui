@@ -1,19 +1,24 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { GuiFields, GuiModule } from '@acrodata/gui';
+import { MatButtonModule } from '@angular/material/button';
+import { IBackground, gradientPresets } from './gradient-presets';
 
 @Component({
   selector: 'app-gradient-generator',
   standalone: true,
-  imports: [CommonModule, GuiModule],
+  imports: [CommonModule, GuiModule, MatButtonModule],
   templateUrl: './gradient-generator.component.html',
   styleUrls: ['./gradient-generator.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class GradientGeneratorComponent implements OnInit {
+  demoStyle = {};
+
   config: GuiFields = {
-    background: {
+    gradients: {
       type: 'tabs',
-      name: 'Background',
+      name: 'Bg gradients',
       template: {
         name: 'Gradient <%= i + 1 %>',
         children: {
@@ -153,56 +158,23 @@ export class GradientGeneratorComponent implements OnInit {
     },
   };
 
-  model = {
-    background: [
-      {
-        type: 'linear',
-        repeating: true,
-        reverse: false,
-        angle: 45,
-        radialBase: '',
-        conicBase: '',
-        stops: [
-          { color: 'rgba(75, 75, 75, 0.5)', offset: '0%' },
-          { color: 'rgba(220, 235, 255, 0.75)', offset: '50%' },
-        ],
-        position: { x: null, y: null },
-        size: { w: '100px', h: '100px' },
-      },
-      {
-        type: 'linear',
-        repeating: true,
-        reverse: false,
-        angle: 135,
-        radialBase: '',
-        conicBase: '',
-        stops: [
-          { color: 'rgba(5, 30, 50, 0.75)', offset: '0%' },
-          { color: 'rgba(115, 150, 255, 0.5)', offset: '50%' },
-        ],
-        position: { x: null, y: null },
-        size: { w: '100px', h: '100px' },
-      },
-    ],
-    blendMode: ['overlay'],
-    repeat: 'repeat',
-  };
+  model = gradientPresets[0];
 
-  background = {
-    image: '',
-    position: '',
-    size: '',
-    blendMode: '',
-    repeat: '',
-  };
+  presets = gradientPresets;
+
+  presetStyles: any[] = [];
 
   ngOnInit(): void {
-    this.getBackground();
+    this.demoStyle = this.getBgStyle(this.model);
+    this.presetStyles = this.presets.map(m => this.getBgStyle(m));
   }
 
-  getBackground() {
-    this.background = {
-      image: this.model.background
+  getBackground(model: IBackground) {
+    // Print the model object
+    console.log(model);
+
+    return {
+      image: model.gradients
         .map(b => {
           const type = b.repeating ? `repeating-${b.type}-gradient` : `${b.type}-gradient`;
           const angle = b.angle ? `${b.angle}deg,` : '';
@@ -214,7 +186,7 @@ export class GradientGeneratorComponent implements OnInit {
           const stops = b.stops
             ?.map((s, i) => ({
               ...s,
-              color: b.reverse ? b.stops[b.stops.length - 1 - i].color : s.color,
+              color: b.reverse ? b.stops![b.stops!.length - 1 - i].color : s.color,
             }))
             .map(s => `${s.color} ${s.offset}`)
             .join(',');
@@ -222,19 +194,32 @@ export class GradientGeneratorComponent implements OnInit {
         })
         .filter(b => b.trim())
         .join(','),
-      position: this.model.background
+      position: model.gradients
         .map(b => `${b.position?.x || ''} ${b.position?.y || ''}`)
         .filter(b => b.trim())
         .join(','),
-      size: this.model.background
+      size: model.gradients
         .map(b => `${b.size?.w || ''} ${b.size?.h || ''}`)
         .filter(b => b.trim())
         .join(','),
-      blendMode: this.model.blendMode.join(','),
-      repeat: this.model.repeat,
+      blendMode: model.blendMode.join(','),
+      repeat: model.repeat,
     };
+  }
 
-    // Print the model object
-    console.log(this.model);
+  getBgStyle(model: IBackground) {
+    const { image, position, size, blendMode, repeat } = this.getBackground(model);
+    return {
+      'background-image': image,
+      'background-position': position,
+      'background-size': size,
+      'background-blend-mode': blendMode,
+      'background-repeat': repeat,
+    };
+  }
+
+  selectPreset(model: IBackground) {
+    this.model = model;
+    this.config = JSON.parse(JSON.stringify(this.config));
   }
 }
