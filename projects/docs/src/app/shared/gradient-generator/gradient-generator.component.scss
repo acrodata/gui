@@ -13,16 +13,11 @@
 h1,
 p {
   color: rgba(255, 255, 255, 1);
-  text-shadow: 4px 4px 6px rgba(0, 0, 0, .85);
+  text-shadow: 4px 4px 6px rgba(0, 0, 0, 0.85);
 }
 
 .gui-wrapper {
-  width: 256px;
-
-  gui-form {
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
-  }
+  width: 260px;
 }
 
 .gui-heading {
@@ -50,4 +45,29 @@ p {
 
 button + button {
   margin-left: 8px;
+}
+
+:host ::ng-deep {
+  .gui-form {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+
+    .mat-expansion-panel {
+      position: relative;
+      padding-left: 4px;
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: 10px;
+        bottom: 10px;
+        left: 2px;
+        z-index: 2;
+        display: block;
+        width: 4px;
+        border: 2px solid rgba(0, 0, 0, 0.4);
+        border-right: none;
+      }
+    }
+  }
 }

@@ -3,6 +3,7 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { GuiFields, GuiModule } from '@acrodata/gui';
 import { MatButtonModule } from '@angular/material/button';
 import { IBackground, gradientPresets } from './gradient-presets';
+import { cloneDeep } from 'lodash-es';
 
 @Component({
   selector: 'app-gradient-generator',
@@ -158,7 +159,7 @@ export class GradientGeneratorComponent implements OnInit {
     },
   };
 
-  model = gradientPresets[0];
+  model = cloneDeep(gradientPresets[0]);
 
   presets = gradientPresets;
 
@@ -169,12 +170,12 @@ export class GradientGeneratorComponent implements OnInit {
     this.presetStyles = this.presets.map(m => this.getBgStyle(m));
   }
 
-  getBackground(model: IBackground) {
+  getBgStyle(model: IBackground) {
     // Print the model object
     console.log(model);
 
     return {
-      image: model.gradients
+      'background-image': model.gradients
         .map(b => {
           const type = b.repeating ? `repeating-${b.type}-gradient` : `${b.type}-gradient`;
           const angle = b.angle ? `${b.angle}deg,` : '';
@@ -194,32 +195,21 @@ export class GradientGeneratorComponent implements OnInit {
         })
         .filter(b => b.trim())
         .join(','),
-      position: model.gradients
+      'background-position': model.gradients
         .map(b => `${b.position?.x || ''} ${b.position?.y || ''}`)
         .filter(b => b.trim())
         .join(','),
-      size: model.gradients
+      'background-size': model.gradients
         .map(b => `${b.size?.w || ''} ${b.size?.h || ''}`)
         .filter(b => b.trim())
         .join(','),
-      blendMode: model.blendMode.join(','),
-      repeat: model.repeat,
-    };
-  }
-
-  getBgStyle(model: IBackground) {
-    const { image, position, size, blendMode, repeat } = this.getBackground(model);
-    return {
-      'background-image': image,
-      'background-position': position,
-      'background-size': size,
-      'background-blend-mode': blendMode,
-      'background-repeat': repeat,
+      'background-blend-mode': model.blendMode.join(','),
+      'background-repeat': model.repeat,
     };
   }
 
   selectPreset(model: IBackground) {
-    this.model = model;
-    this.config = JSON.parse(JSON.stringify(this.config));
+    this.model = cloneDeep(model);
+    this.config = cloneDeep(this.config);
   }
 }
