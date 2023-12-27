@@ -1,0 +1,19 @@
+<mtx-split [direction]="isMobile?'vertical':'horizontal'">
+  <mtx-split-pane [size]="60">
+    <ng-monaco-editor [style]="{position:'relative',height:'100%',width:'100%'}"
+                      [options]="{language:'json'}"
+                      [(ngModel)]="configStr"
+                      [ngModelOptions]="{updateOn:'blur'}"
+                      (ngModelChange)="onConfigChange()"></ng-monaco-editor>
+  </mtx-split-pane>
+  <mtx-split-pane class="preview" [size]="40">
+    <mtx-split [direction]="isMobile?'horizontal':'vertical'">
+      <mtx-split-pane>
+        <gui-form [config]="config" [model]="model"></gui-form>
+      </mtx-split-pane>
+      <mtx-split-pane>
+        <textarea [value]="model|json" readonly></textarea>
+      </mtx-split-pane>
+    </mtx-split>
+  </mtx-split-pane>
+</mtx-split>

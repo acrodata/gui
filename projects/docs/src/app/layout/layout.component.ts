@@ -68,6 +68,11 @@ export class LayoutComponent {
         { name: 'File', route: 'file' },
       ],
     },
+    {
+      name: 'Playground',
+      route: 'playground',
+      children: [],
+    },
   ];
 
   menuOpened = false;

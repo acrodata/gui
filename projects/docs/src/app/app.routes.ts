@@ -37,6 +37,11 @@ export const routes: Routes = [
             m => m.GroupControlsComponent
           ),
       },
+      {
+        path: 'playground',
+        loadComponent: () =>
+          import('./pages/playground/playground.component').then(m => m.PlaygroundComponent),
+      },
     ],
   },
 ];
