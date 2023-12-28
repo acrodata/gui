@@ -3,6 +3,8 @@
 [![npm](https://img.shields.io/npm/v/@acrodata/gui.svg)](https://www.npmjs.com/package/@acrodata/gui)
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/acrodata/gui/blob/main/LICENSE)
 
+![cover](https://github.com/acrodata/gui/assets/20625845/275f7f08-7971-4a4d-8fe8-ff8ead67beac)
+
 A lightweight GUI library for Angular.
 
 ## Installation
