@@ -66,6 +66,7 @@ pre {
   border-radius: 8px;
   background-color: var(--bg-secondary-color);
   line-height: 1.2;
+  overflow: auto;
 
   code {
     display: inline;
@@ -105,7 +106,10 @@ table {
   background-color: var(--bg-color);
   box-shadow: 0 2px 4px rgba(0, 0, 0, .2);
   border-radius: 4px;
-  overflow: hidden;
+
+  .mat-expansion-panel {
+    border-radius: 4px;
+  }
 }
 
 .hljs-keyword {

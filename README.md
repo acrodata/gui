@@ -7,6 +7,11 @@
 
 A lightweight GUI library for Angular.
 
+#### Quick links
+
+[Documentation](https://acrodata.github.io/gui/) | 
+[Playground](https://acrodata.github.io/gui/playground)
+
 ## Installation
 
 ```bash

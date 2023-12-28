@@ -1,8 +1,10 @@
-:host>mtx-split {
-  position: relative;
-  height: calc(100vh - 96px);
-  border: 1px solid var(--border-color);
-  border-radius: 8px;
+:host {
+  >mtx-split {
+    position: relative;
+    height: calc(100vh - 96px);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+  }
 }
 
 .preview {
