@@ -1,0 +1,12 @@
+mat-sidenav-container {
+  height: 100%;
+}
+
+mat-toolbar {
+  justify-content: space-between;
+}
+
+.demo-content {
+  height: calc(100% - 64px);
+  padding: 16px;
+}

@@ -1,0 +1,20 @@
+<mat-sidenav-container [dir]="isRtl?'rtl':'ltr'">
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <div class="demo-links">
+        <a mat-button routerLink="/home">Home</a>
+        <a mat-button routerLink="/examples">Examples</a>
+        <a mat-button routerLink="/playground">Playground</a>
+      </div>
+
+      <div class="demo-config">
+        <button mat-button (click)="toggleThemeClass()">{{isDark ? 'Light' : 'Dark'}} theme</button>
+        <button mat-button (click)="toggleRtl()">{{isRtl ? 'LTR' : 'RTL'}}</button>
+      </div>
+    </mat-toolbar>
+
+    <div class="demo-content">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

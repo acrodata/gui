@@ -4,22 +4,45 @@
 // @import '@ng-matero/extensions/prebuilt-themes/indigo-pink.css';
 
 @use '@angular/material' as mat;
+@use '@ng-matero/extensions' as mtx;
 @use '../../gui' as gui;
 
 @include mat.core();
 
 $my-primary: mat.define-palette(mat.$indigo-palette, 500);
 $my-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
-$my-theme: mat.define-light-theme((
- color: (
-   primary: $my-primary,
-   accent: $my-accent,
- ),
- typography: mat.define-typography-config(),
- density: 0,
-));
+$my-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $my-primary,
+      accent: $my-accent,
+    ),
+    typography: mat.define-typography-config(),
+    density: 0,
+  )
+);
 
-@include gui.all-control-themes($my-theme);
+@include mat.all-component-themes($my-theme);
+@include mtx.all-component-themes($my-theme);
+// @include gui.all-control-themes($my-theme);
+
+.dark-theme {
+  $dark-primary: mat.define-palette(mat.$blue-grey-palette);
+  $dark-accent: mat.define-palette(mat.$amber-palette, A200, A100, A400);
+  $dark-theme: mat.define-dark-theme(
+    (
+      color: (
+        primary: $dark-primary,
+        accent: $dark-accent,
+      ),
+      typography: mat.define-typography-config(),
+      density: 0,
+    )
+  );
+
+  @include mat.all-component-colors($dark-theme);
+  @include mtx.all-component-colors($dark-theme);
+}
 
 *,
 *::before,
@@ -31,4 +54,24 @@ html,
 body {
   height: 100%;
   margin: 0;
+}
+
+textarea {
+  display: block;
+  width: 100%;
+  height: 100%;
+  font-size: 12px;
+  border: none;
+  outline: none;
+  resize: vertical;
+  background: transparent;
+  color: inherit;
+}
+
+.gui-form {
+  background-color: white;
+
+  .dark-theme & {
+    background-color: transparent;
+  }
 }

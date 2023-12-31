@@ -1,8 +1,6 @@
-<main>
-  <section>
-    <gui-form [config]="config" [model]="model" [form]="form"></gui-form>
-  </section>
-  <section>
-    <textarea [value]="model|json"></textarea>
-  </section>
-</main>
+<section>
+  <gui-form [config]="config" [model]="model" [form]="form"></gui-form>
+</section>
+<section>
+  <textarea [value]="model|json" readonly></textarea>
+</section>

@@ -1,8 +1,10 @@
 import { GuiFields, GuiModule } from '@acrodata/gui';
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, DestroyRef, OnInit } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormGroup, FormsModule } from '@angular/forms';
-import { MonacoEditorModule } from 'ng-monaco-editor';
+import { MonacoEditorModule, MonacoProviderService } from 'ng-monaco-editor';
+import { SettingsService } from '../settings.service';
 
 @Component({
   standalone: true,
@@ -50,11 +52,25 @@ export class PlaygroundComponent implements OnInit {
 
   configStr = '';
 
+  constructor(
+    private destroyRef: DestroyRef,
+    private settings: SettingsService,
+    private monacoProvider: MonacoProviderService
+  ) {}
+
   ngOnInit(): void {
     this.configStr = JSON.stringify(this.config, null, 2);
 
     this.form.valueChanges.subscribe(v => {
       console.log(v);
+    });
+
+    this.settings.themeChange.pipe(takeUntilDestroyed(this.destroyRef)).subscribe(theme => {
+      if (theme === 'dark') {
+        this.monacoProvider.changeTheme('vs-dark');
+      } else {
+        this.monacoProvider.changeTheme('vs');
+      }
     });
   }
 

@@ -1,15 +1,14 @@
-<main>
-  <section>
-    <ng-monaco-editor [style]="{height:'100%',width:'100%'}"
-                      [options]="{language:'json'}"
-                      [(ngModel)]="configStr"
-                      [ngModelOptions]="{updateOn:'blur'}"
-                      (ngModelChange)="onConfigChange()"></ng-monaco-editor>
-  </section>
-  <section>
-    <gui-form [config]="config" [model]="model" [form]="form"></gui-form>
-  </section>
-  <section>
-    <textarea [value]="model|json"></textarea>
-  </section>
-</main>
+<section>
+  <ng-monaco-editor dir="ltr"
+                    [style]="{height:'100%',width:'100%'}"
+                    [options]="{language:'json'}"
+                    [(ngModel)]="configStr"
+                    [ngModelOptions]="{updateOn:'blur'}"
+                    (ngModelChange)="onConfigChange()"></ng-monaco-editor>
+</section>
+<section>
+  <gui-form [config]="config" [model]="model" [form]="form"></gui-form>
+</section>
+<section>
+  <textarea [value]="model|json" readonly></textarea>
+</section>
