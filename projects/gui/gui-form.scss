@@ -40,6 +40,10 @@
     --mdc-secondary-navigation-tab-container-height: 24px;
   }
 
+  .mat-mdc-tab-header-pagination {
+    min-width: var(--mdc-secondary-navigation-tab-container-height);
+  }
+
   .mat-mdc-tab {
     min-width: auto;
     padding: 0 12px;
