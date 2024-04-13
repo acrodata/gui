@@ -25,7 +25,11 @@ export class ExamplesComponent implements OnInit {
           col: 50,
           suffix: 'px',
           showIf: {
-            conditions: [['size.height', '$gt', 0]],
+            conditions: [
+              ['size.height', '$gt', 0],
+              ['size.amount', '$gt', 0],
+            ],
+            logicalType: '$or',
           },
         },
         height: {

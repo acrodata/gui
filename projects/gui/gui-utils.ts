@@ -94,3 +94,9 @@ export function compareValues(
       return false;
   }
 }
+
+export function getValueByPath(config: Record<string, any>, path: string) {
+  return path.split('.').reduce((acc: any, key: string) => {
+    return acc?.children?.[key] ? acc.children[key] : acc?.[key];
+  }, config);
+}

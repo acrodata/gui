@@ -13,8 +13,8 @@ import {
 } from '@angular/core';
 import { FormArray, FormControl, FormGroup } from '@angular/forms';
 import { Subscription, mergeWith, of } from 'rxjs';
-import { compareValues } from './gui-utils';
-import { GuiControl, GuiFieldType, GuiFields, GuiTabsMode } from './interface';
+import { compareValues, getValueByPath } from './gui-utils';
+import { GuiCondition, GuiControl, GuiFieldType, GuiFields, GuiTabsMode } from './interface';
 
 @Component({
   selector: 'gui-form',
@@ -151,27 +151,33 @@ export class GuiForm implements OnChanges, OnInit, OnDestroy {
       }
 
       if (item.showIf) {
+        const setVisibility = (callback: (condition: GuiCondition) => boolean) => {
+          if (item.showIf!.logicalType === '$or') {
+            item.show = item.showIf!.conditions.some(c => callback(c));
+          } else {
+            item.show = item.showIf!.conditions.every(c => callback(c));
+          }
+        };
+
+        // Set the init visibility of the field
+        setVisibility(c => {
+          const field = getValueByPath(this.config, c[0]) || getValueByPath(config, c[0]);
+          const value = getValueByPath(this.model, c[0]) || getValueByPath(model, c[0]);
+          return compareValues(field?.default || value, c[2], c[1]);
+        });
+
+        // Delay the subscription to avoid the form control not being created
         setTimeout(() => {
           const getControl = (path: string) => this.form.get(path) || form.get(path);
 
           const controls = item.showIf!.conditions.map(c => getControl(c[0]));
-          const valueChanges$ = controls.map(control => control?.valueChanges);
+          const valueChanges$ = controls.map(control => control?.valueChanges || of());
 
           const subscription = of()
             .pipe(mergeWith(valueChanges$))
             .subscribe(() => {
-              if (item.showIf!.logicalType === '$or') {
-                item.show = item.showIf!.conditions.some(c =>
-                  compareValues(getControl(c[0])?.value, c[2], c[1])
-                );
-              } else {
-                item.show = item.showIf!.conditions.every(c =>
-                  compareValues(getControl(c[0])?.value, c[2], c[1])
-                );
-              }
+              setVisibility(c => compareValues(getControl(c[0])?.value, c[2], c[1]));
             });
-
-          controls.forEach(control => control?.patchValue(control?.value));
 
           this.controlSubscriptions.push(subscription);
         });
