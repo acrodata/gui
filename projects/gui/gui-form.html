@@ -7,7 +7,7 @@
 </form>
 
 <ng-template #controlType let-item let-parent="parent" let-form="formGroup">
-  <ng-container [ngSwitch]="item.type" [formGroup]="form">
+  <ng-container *ngIf="item.show" [ngSwitch]="item.type" [formGroup]="form">
     <!-- Text -->
     <gui-field-group *ngSwitchCase="'text'" [config]="item" [flex]="item.col">
       <gui-input-text [formControlName]="item.key" [config]="item"></gui-input-text>

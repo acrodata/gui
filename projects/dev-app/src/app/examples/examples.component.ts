@@ -1,6 +1,6 @@
 import { GuiFields, GuiFileUploaderConfig, GuiModule } from '@acrodata/gui';
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 
 @Component({
@@ -24,6 +24,9 @@ export class ExamplesComponent implements OnInit {
           description: '',
           col: 50,
           suffix: 'px',
+          showIf: {
+            conditions: [['size.height', '$gt', 0]],
+          },
         },
         height: {
           name: '高度',
@@ -42,6 +45,9 @@ export class ExamplesComponent implements OnInit {
             { value: '90', label: '垂直', src: 'vertical' },
           ],
           col: 50,
+          showIf: {
+            conditions: [['size.height', '$eq', 0]],
+          },
         },
         amount: {
           name: '数量',
@@ -59,6 +65,9 @@ export class ExamplesComponent implements OnInit {
       type: 'text',
       default: '',
       name: '轴单位',
+      showIf: {
+        conditions: [['size.amount', '$gt', 0]],
+      },
     },
     font: {
       name: '字体',
@@ -207,6 +216,13 @@ export class ExamplesComponent implements OnInit {
           seriesName: {
             type: 'text',
             name: '系列名',
+            showIf: {
+              conditions: [['seriesId', '$eq', 1]],
+            },
+          },
+          seriesId: {
+            type: 'number',
+            name: '数值',
           },
         },
       },
@@ -244,6 +260,9 @@ export class ExamplesComponent implements OnInit {
                   type: 'text',
                   name: '名',
                   col: 50,
+                  showIf: {
+                    conditions: [['firstName', '$eq', 'jack']],
+                  },
                 },
               },
             },

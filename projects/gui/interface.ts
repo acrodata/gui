@@ -30,6 +30,15 @@ export type GuiBasicValue = boolean | number | string;
 
 export type GuiDefaultValue = boolean | number | string | any[] | Record<string, any>;
 
+export type GuiOperator = '$eq' | '$ne' | '$gt' | '$lt' | '$gte' | '$lte' | '$in' | '$nin';
+
+export type GuiCondition = [string, GuiOperator, GuiDefaultValue];
+
+export interface GuiFieldShowIf {
+  conditions: GuiCondition[];
+  logicalType?: '$and' | '$or';
+}
+
 export interface GuiField {
   type: GuiFieldType;
   name: string;
@@ -38,6 +47,8 @@ export interface GuiField {
   placeholder?: string;
   disabled?: boolean;
   col?: number;
+  showIf?: GuiFieldShowIf;
+  show?: boolean;
   // group & subgroup & menu & tabs & inline
   children?: GuiFields | GuiField[];
   // group & tabs

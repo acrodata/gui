@@ -12,7 +12,8 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { FormArray, FormControl, FormGroup } from '@angular/forms';
-import { Subscription } from 'rxjs';
+import { Subscription, mergeWith, of } from 'rxjs';
+import { compareValues } from './gui-utils';
 import { GuiControl, GuiFieldType, GuiFields, GuiTabsMode } from './interface';
 
 @Component({
@@ -50,6 +51,8 @@ export class GuiForm implements OnChanges, OnInit, OnDestroy {
 
   formSubscription = Subscription.EMPTY;
 
+  controlSubscriptions: Subscription[] = [];
+
   constructor(private cdr: ChangeDetectorRef) {}
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -72,6 +75,7 @@ export class GuiForm implements OnChanges, OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.formSubscription.unsubscribe();
+    this.controlSubscriptions.forEach(s => s.unsubscribe());
   }
 
   /**
@@ -110,6 +114,7 @@ export class GuiForm implements OnChanges, OnInit, OnDestroy {
         model: model[key],
         default: defaultValue?.[key],
         index: Number(key), // the string key will be `NaN`
+        show: true,
         ...(config as any)[key],
       };
 
@@ -143,6 +148,33 @@ export class GuiForm implements OnChanges, OnInit, OnDestroy {
         } else {
           item.children = [];
         }
+      }
+
+      if (item.showIf) {
+        setTimeout(() => {
+          const getControl = (path: string) => this.form.get(path) || form.get(path);
+
+          const controls = item.showIf!.conditions.map(c => getControl(c[0]));
+          const valueChanges$ = controls.map(control => control?.valueChanges);
+
+          const subscription = of()
+            .pipe(mergeWith(valueChanges$))
+            .subscribe(() => {
+              if (item.showIf!.logicalType === '$or') {
+                item.show = item.showIf!.conditions.some(c =>
+                  compareValues(getControl(c[0])?.value, c[2], c[1])
+                );
+              } else {
+                item.show = item.showIf!.conditions.every(c =>
+                  compareValues(getControl(c[0])?.value, c[2], c[1])
+                );
+              }
+            });
+
+          controls.forEach(control => control?.patchValue(control?.value));
+
+          this.controlSubscriptions.push(subscription);
+        });
       }
 
       if (item._type === 'control') {

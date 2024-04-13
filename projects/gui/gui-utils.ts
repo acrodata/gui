@@ -1,4 +1,5 @@
 import { Directive, ElementRef, Input, OnInit, Pipe, PipeTransform } from '@angular/core';
+import { GuiDefaultValue, GuiOperator } from './interface';
 
 /**
  * Lightweight EJS template engine
@@ -64,5 +65,32 @@ export class GuiFlexDirective implements OnInit {
   ngOnInit(): void {
     this.el.nativeElement.style.flex = `1 1 ${this.flex}%`;
     this.el.nativeElement.style.maxWidth = `${this.flex}%`;
+  }
+}
+
+export function compareValues(
+  value1: GuiDefaultValue,
+  value2: GuiDefaultValue,
+  operator: GuiOperator
+) {
+  switch (operator) {
+    case '$eq':
+      return value1 === value2;
+    case '$ne':
+      return value1 !== value2;
+    case '$gt':
+      return value1 > value2;
+    case '$lt':
+      return value1 < value2;
+    case '$gte':
+      return value1 >= value2;
+    case '$lte':
+      return value1 <= value2;
+    case '$in':
+      return Array.isArray(value2) && value2.includes(value1);
+    case '$nin':
+      return Array.isArray(value2) && !value2.includes(value1);
+    default:
+      return false;
   }
 }
