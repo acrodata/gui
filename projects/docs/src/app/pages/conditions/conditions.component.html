@@ -1,0 +1,88 @@
+<app-page-header [title]="'Conditions'"
+                 subtitle="Used for controling the visibility of fields."></app-page-header>
+
+<h2 id="rule">
+  <a href="conditions#rule">Rule</a>
+</h2>
+
+<pre><code [highlight]="ruleJson" [languages]="['json']"></code></pre>
+
+<table>
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td align="center">path</td>
+      <td>
+        At first, it will find the condition control from its parent form group. <br>
+        If it cannot be found, it will find from the root form group.
+      </td>
+    </tr>
+    <tr>
+      <td align="center">operator</td>
+      <td>
+        <li>
+          <code>$eq</code> -
+          <span>equal</span>
+        </li>
+        <li>
+          <code>$ne</code> -
+          <span>not eaqual</span>
+        </li>
+        <li>
+          <code>$gt</code> -
+          <span>greater than</span>
+        </li>
+        <li>
+          <code>$lt</code> -
+          <span>less than</span>
+        </li>
+        <li>
+          <code>$gte</code> -
+          <span>greater than or equal</span>
+        </li>
+        <li>
+          <code>$lte</code> -
+          <span>less than or equal</span>
+        </li>
+        <li>
+          <code>$in</code> -
+          <span>in the set</span>
+        </li>
+        <li>
+          <code>$nin</code> -
+          <span>not in the set</span>
+        </li>
+      </td>
+    </tr>
+    <tr>
+      <td align="center">logicalType</td>
+      <td>
+        <li>
+          <code>$and</code> -
+          <span>All the conditions should be true</span>
+        </li>
+        <li>
+          <code>$or</code> -
+          <span>As long as one condition is true</span>
+        </li>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="demo1">
+  <a href="conditions#demo1">Demo1</a>
+</h2>
+
+<app-example-viewer [config]="demo1"></app-example-viewer>
+
+<h2 id="demo2">
+  <a href="conditions#demo2">Demo2</a>
+</h2>
+
+<app-example-viewer [config]="demo2"></app-example-viewer>

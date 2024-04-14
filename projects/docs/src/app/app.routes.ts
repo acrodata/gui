@@ -38,6 +38,11 @@ export const routes: Routes = [
           ),
       },
       {
+        path: 'conditions',
+        loadComponent: () =>
+          import('./pages/conditions/conditions.component').then(m => m.ConditionsComponent),
+      },
+      {
         path: 'playground',
         loadComponent: () =>
           import('./pages/playground/playground.component').then(m => m.PlaygroundComponent),

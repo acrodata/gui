@@ -69,6 +69,11 @@ export class LayoutComponent {
       ],
     },
     {
+      name: 'Conditions',
+      route: 'conditions',
+      children: [],
+    },
+    {
       name: 'Playground',
       route: 'playground',
       children: [],

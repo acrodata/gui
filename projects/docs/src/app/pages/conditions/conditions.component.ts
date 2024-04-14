@@ -1,0 +1,97 @@
+import { CommonModule } from '@angular/common';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { GuiFields } from '@acrodata/gui';
+import { HighlightModule } from 'ngx-highlightjs';
+import { ExampleViewerComponent, PageHeaderComponent } from '../../shared';
+
+@Component({
+  selector: 'app-conditions',
+  standalone: true,
+  imports: [CommonModule, PageHeaderComponent, ExampleViewerComponent, HighlightModule],
+  templateUrl: './conditions.component.html',
+  styleUrls: ['./conditions.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class ConditionsComponent {
+  ruleJson = `{
+  "type": "...",
+  "name": "...",
+  "showIf": {
+    "conditions": [
+      [ "path", "operator", "value" ],
+      ...
+    ],
+    "logicalType": "$or"
+  },
+}`;
+
+  demo1: GuiFields = {
+    a: {
+      type: 'group',
+      name: 'suiteA',
+      children: {
+        switchA: {
+          type: 'switch',
+          name: 'switchA',
+          default: true,
+        },
+        textA: {
+          type: 'text',
+          name: 'textA',
+          default: 'A',
+          showIf: {
+            conditions: [
+              ['a.switchA', '$ne', false],
+              ['b.switchB', '$eq', true],
+            ],
+            logicalType: '$or',
+          },
+        },
+      },
+      expanded: true,
+    },
+    b: {
+      type: 'group',
+      name: 'suiteB',
+      children: {
+        switchB: {
+          type: 'switch',
+          name: 'switchB',
+          default: false,
+        },
+        textB: {
+          type: 'text',
+          name: 'textB',
+          default: 'B',
+        },
+      },
+      expanded: true,
+    },
+  };
+
+  demo2: GuiFields = {
+    array: {
+      name: 'Array',
+      type: 'tabs',
+      default: [{ switch: true, text: 'A' }],
+      template: {
+        name: 'No.<%= i + 1%>',
+        children: {
+          switch: {
+            type: 'switch',
+            name: 'switch',
+            default: true,
+          },
+          text: {
+            type: 'text',
+            name: 'text',
+            showIf: {
+              conditions: [['switch', '$eq', true]],
+            },
+          },
+        },
+      },
+      expanded: true,
+    },
+  };
+}
