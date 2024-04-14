@@ -68,35 +68,31 @@ export class GuiFlexDirective implements OnInit {
   }
 }
 
-export function compareValues(
-  value1: GuiDefaultValue,
-  value2: GuiDefaultValue,
-  operator: GuiOperator
-) {
+export function compareValues(a: GuiDefaultValue, b: GuiDefaultValue, operator: GuiOperator) {
   switch (operator) {
     case '$eq':
-      return value1 === value2;
+      return a === b;
     case '$ne':
-      return value1 !== value2;
+      return a !== b;
     case '$gt':
-      return value1 > value2;
+      return (a ?? 0) > (b ?? 0);
     case '$lt':
-      return value1 < value2;
+      return (a ?? 0) < (b ?? 0);
     case '$gte':
-      return value1 >= value2;
+      return (a ?? 0) >= (b ?? 0);
     case '$lte':
-      return value1 <= value2;
+      return (a ?? 0) <= (b ?? 0);
     case '$in':
-      return Array.isArray(value2) && value2.includes(value1);
+      return Array.isArray(b) && b.includes(a);
     case '$nin':
-      return Array.isArray(value2) && !value2.includes(value1);
+      return Array.isArray(b) && !b.includes(a);
     default:
       return false;
   }
 }
 
-export function getValueByPath(config: Record<string, any>, path: string) {
-  return path.split('.').reduce((acc: any, key: string) => {
-    return acc?.children?.[key] ? acc.children[key] : acc?.[key];
-  }, config);
+export function getValueByPath(obj: Record<string, any>, path: string) {
+  return path.split('.').reduce((acc: Record<string, any> | undefined, key) => {
+    return acc?.['children']?.[key] ? acc['children'][key] : acc?.[key];
+  }, obj);
 }

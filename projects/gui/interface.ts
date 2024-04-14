@@ -28,7 +28,7 @@ export type GuiTabsMode = 'nav' | 'list';
 
 export type GuiBasicValue = boolean | number | string;
 
-export type GuiDefaultValue = boolean | number | string | any[] | Record<string, any>;
+export type GuiDefaultValue = boolean | number | string | any[] | Record<string, any> | null;
 
 export type GuiOperator = '$eq' | '$ne' | '$gt' | '$lt' | '$gte' | '$lte' | '$in' | '$nin';
 

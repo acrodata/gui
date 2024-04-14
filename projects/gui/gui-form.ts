@@ -150,29 +150,29 @@ export class GuiForm implements OnChanges, OnInit, OnDestroy {
         }
       }
 
+      // Parse the `showIf` conditions
       if (item.showIf) {
-        const setVisibility = (callback: (condition: GuiCondition) => boolean) => {
+        const setVisibility = (compareWith: (condition: GuiCondition) => boolean) => {
           if (item.showIf!.logicalType === '$or') {
-            item.show = item.showIf!.conditions.some(c => callback(c));
+            item.show = item.showIf!.conditions.some(c => compareWith(c));
           } else {
-            item.show = item.showIf!.conditions.every(c => callback(c));
+            item.show = item.showIf!.conditions.every(c => compareWith(c));
           }
         };
 
         // Set the init visibility of the field
         setVisibility(c => {
-          const field = getValueByPath(this.config, c[0]) || getValueByPath(config, c[0]);
-          const value = getValueByPath(this.model, c[0]) || getValueByPath(model, c[0]);
-          return compareValues(field?.default || value, c[2], c[1]);
+          const cfg = getValueByPath(this.config, c[0]) || getValueByPath(config, c[0]);
+          const val = getValueByPath(this.model, c[0]) || getValueByPath(model, c[0]);
+          return compareValues(cfg?.['default'] || val, c[2], c[1]);
         });
 
-        // Delay the subscription to avoid the form control not being created
+        // Delay the subscription to make sure all the form controls have been created
         setTimeout(() => {
           const getControl = (path: string) => this.form.get(path) || form.get(path);
 
           const controls = item.showIf!.conditions.map(c => getControl(c[0]));
           const valueChanges$ = controls.map(control => control?.valueChanges || of());
-
           const subscription = of()
             .pipe(mergeWith(valueChanges$))
             .subscribe(() => {
