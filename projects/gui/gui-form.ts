@@ -162,14 +162,14 @@ export class GuiForm implements OnChanges, OnInit, OnDestroy {
 
         // Set the init visibility of the field
         setVisibility(c => {
-          const cfg = getValueByPath(this.config, c[0]) || getValueByPath(config, c[0]);
-          const val = getValueByPath(this.model, c[0]) || getValueByPath(model, c[0]);
+          const cfg = getValueByPath(config, c[0]) || getValueByPath(this.config, c[0]);
+          const val = getValueByPath(model, c[0]) || getValueByPath(this.model, c[0]);
           return compareValues(cfg?.['default'] || val, c[2], c[1]);
         });
 
         // Delay the subscription to make sure all the form controls have been created
         setTimeout(() => {
-          const getControl = (path: string) => this.form.get(path) || form.get(path);
+          const getControl = (path: string) => form.get(path) || this.form.get(path);
 
           const controls = item.showIf!.conditions.map(c => getControl(c[0]));
           const valueChanges$ = controls.map(control => control?.valueChanges || of());
