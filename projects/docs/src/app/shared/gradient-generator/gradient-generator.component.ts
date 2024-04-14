@@ -46,19 +46,25 @@ export class GradientGeneratorComponent implements OnInit {
             min: 0,
             max: 360,
             suffix: 'deg',
-            description: 'Only support for linear-gradient',
+            showIf: {
+              conditions: [['type', '$eq', 'linear']],
+            },
           },
           radialBase: {
             type: 'text',
             name: 'Radial',
             placeholder: '<shape> <size> at <position>',
-            description: 'Only support for radial-gradient',
+            showIf: {
+              conditions: [['type', '$eq', 'radial']],
+            },
           },
           conicBase: {
             type: 'text',
             name: 'Conic',
             placeholder: 'from <angle> at <position>',
-            description: 'Only support for conic-gradient',
+            showIf: {
+              conditions: [['type', '$eq', 'conic']],
+            },
           },
           stops: {
             type: 'tabs',
