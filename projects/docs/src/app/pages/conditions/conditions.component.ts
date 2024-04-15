@@ -14,11 +14,10 @@ import { ExampleViewerComponent, PageHeaderComponent } from '../../shared';
 })
 export class ConditionsComponent {
   ruleJson = `{
-  "type": "...",
-  "name": "...",
+  ...
   "showIf": {
     "conditions": [
-      [ "path", "operator", "value" ],
+      ["path", "operator", "value"],
       ...
     ],
     "logicalType": "$or"
