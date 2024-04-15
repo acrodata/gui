@@ -5,6 +5,10 @@
   <a href="conditions#rule">Rule</a>
 </h2>
 
+<p>
+  Add <code>showIf</code> to control the visibility of the field.
+</p>
+
 <pre><code [highlight]="ruleJson" [languages]="['json']"></code></pre>
 
 <table>
@@ -16,14 +20,16 @@
   </thead>
   <tbody>
     <tr>
-      <td align="center">path</td>
+      <td>path</td>
       <td>
-        At first, it will find the condition control from its parent form group. <br>
-        If it cannot be found, it will find from the root form group.
+        At first, it will find the condition form control from the parent form group of current
+        field.
+        <br>
+        If the control cannot be found, it will continue to find from the root form group.
       </td>
     </tr>
     <tr>
-      <td align="center">operator</td>
+      <td>operator</td>
       <td>
         <li>
           <code>$eq</code> -
@@ -60,7 +66,11 @@
       </td>
     </tr>
     <tr>
-      <td align="center">logicalType</td>
+      <td>value</td>
+      <td>The value of condition form control.</td>
+    </tr>
+    <tr>
+      <td>logicalType</td>
       <td>
         <li>
           <code>$and</code> -

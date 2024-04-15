@@ -28,7 +28,7 @@ export class ConditionsComponent {
   demo1: GuiFields = {
     a: {
       type: 'group',
-      name: 'suiteA',
+      name: 'groupA',
       children: {
         switchA: {
           type: 'switch',
@@ -52,7 +52,7 @@ export class ConditionsComponent {
     },
     b: {
       type: 'group',
-      name: 'suiteB',
+      name: 'groupB',
       children: {
         switchB: {
           type: 'switch',
@@ -73,7 +73,10 @@ export class ConditionsComponent {
     array: {
       name: 'Array',
       type: 'tabs',
-      default: [{ switch: true, text: 'A' }],
+      default: [
+        { switch: true, text: 'A' },
+        { switch: true, text: 'B' },
+      ],
       template: {
         name: 'No.<%= i + 1%>',
         children: {
@@ -92,6 +95,7 @@ export class ConditionsComponent {
         },
       },
       expanded: true,
+      mode: 'list',
     },
   };
 }
