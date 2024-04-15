@@ -24,7 +24,7 @@ export type GuiFillMode = 'flat' | 'gradient' | 'image';
 
 export type GuiSliderMode = 'normal' | 'range';
 
-export type GuiTabsMode = 'nav' | 'list';
+export type GuiTabsMode = 'normal' | 'list';
 
 export type GuiBasicValue = boolean | number | string;
 

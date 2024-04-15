@@ -98,7 +98,7 @@
         <gui-field-label [config]="item"></gui-field-label>
         <!-- Show operation buttons after panel opened -->
         <ng-container *ngIf="item.expanded">
-          <button mat-icon-button (click)="changeTabsMode($event, item, 'nav')"
+          <button mat-icon-button (click)="changeTabsMode($event, item, 'normal')"
                   [color]="item.mode!=='list'?'primary':''" type="button">
             <mat-icon svgIcon="dots_horizontal"></mat-icon>
           </button>
@@ -120,7 +120,7 @@
       </mat-expansion-panel-header>
       <!-- Lazy rendering -->
       <ng-template matExpansionPanelContent>
-        <!-- Horizontal nav mode -->
+        <!-- Horizontal mode -->
         <mat-tab-group *ngIf="item.mode!=='list'" class="gui-tabs"
                        [mat-stretch-tabs]="false" disableRipple>
           <mat-tab *ngFor="let tab of item.children; index as i" [disabled]="tab.disabled">
@@ -144,7 +144,7 @@
           </mat-tab>
         </mat-tab-group>
 
-        <!-- Vertical list mode -->
+        <!-- Vertical mode -->
         <div class="gui-list" *ngIf="item.mode==='list'">
           <div class="gui-list-item" *ngFor="let tab of item.children; index as i">
             <div class="gui-list-item-heading">
