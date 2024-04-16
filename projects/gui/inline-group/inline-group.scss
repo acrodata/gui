@@ -1,6 +1,12 @@
 .gui-inline-group {
   display: flex;
   padding: 4px 8px;
+
+  mat-hint {
+    width: 100%;
+    line-height: var(--mat-form-field-subscript-text-line-height);
+    -webkit-font-smoothing: antialiased;
+  }
 }
 
 .gui-inline-group-content {

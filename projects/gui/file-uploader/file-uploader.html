@@ -29,3 +29,7 @@
   <input #fileInput type="file" [accept]="accept" [name]="name"
          [disabled]="disabled" (change)="onFileChange($event)">
 </figure>
+
+<mat-hint *ngIf="config.parentType==='inline'">
+  <gui-field-label [config]="config"></gui-field-label>
+</mat-hint>
