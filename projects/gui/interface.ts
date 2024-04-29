@@ -98,6 +98,7 @@ export interface GuiControl extends GuiField {
   index?: number;
   children?: GuiControl[];
   template?: Partial<GuiControl>;
+  selectedIndex?: number;
 }
 
 export interface GuiControls {

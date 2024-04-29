@@ -121,8 +121,8 @@
       <!-- Lazy rendering -->
       <ng-template matExpansionPanelContent>
         <!-- Horizontal mode -->
-        <mat-tab-group *ngIf="item.mode!=='list'" class="gui-tabs"
-                       [mat-stretch-tabs]="false" disableRipple>
+        <mat-tab-group *ngIf="item.mode!=='list'" class="gui-tabs" disableRipple
+                       [mat-stretch-tabs]="false" [(selectedIndex)]="item.selectedIndex">
           <mat-tab *ngFor="let tab of item.children; index as i" [disabled]="tab.disabled">
             <ng-template mat-tab-label>
               <div>{{tab.name | ejs:{i} }}</div>
@@ -146,9 +146,11 @@
 
         <!-- Vertical mode -->
         <div class="gui-list" *ngIf="item.mode==='list'">
-          <div class="gui-list-item" *ngFor="let tab of item.children; index as i">
+          <div class="gui-list-item" *ngFor="let tab of item.children; index as i"
+               [class.gui-list-item-active]="item.selectedIndex===i">
             <div class="gui-list-item-heading">
-              <span class="gui-list-item-title">{{tab.name | ejs:{i} }}</span>
+              <span class="gui-list-item-title"
+                    (click)="item.selectedIndex=i">{{tab.name | ejs:{i} }}</span>
               <ng-container *ngIf="item.template && (item.addable || item.addable===undefined)">
                 <button mat-icon-button (click)="addTab($event, form.get(item.key), item, i)"
                         type="button" [disabled]="item.disabled">

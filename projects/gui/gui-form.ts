@@ -205,6 +205,8 @@ export class GuiForm implements OnChanges, OnInit, OnDestroy {
           item.default,
           item.type
         );
+
+        item.selectedIndex = 0;
       } else if (item._type === 'group') {
         let formGroup = new FormGroup({});
         if (form instanceof FormGroup) {

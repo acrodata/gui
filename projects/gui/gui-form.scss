@@ -104,10 +104,6 @@
   padding: 0 12px;
   line-height: 24px;
 
-  .gui-list-item-title {
-    flex: 1;
-  }
-
   &::before {
     position: absolute;
     left: 0;
@@ -115,6 +111,15 @@
     height: 16px;
     background-color: var(--mat-expansion-header-text-color);
     content: '';
+  }
+}
+
+.gui-list-item-title {
+  flex: 1;
+  cursor: pointer;
+
+  .gui-list-item-active & {
+    font-weight: bold;
   }
 }
 
