@@ -1,6 +1,5 @@
 import {
   ChangeDetectionStrategy,
-  ChangeDetectorRef,
   Component,
   EventEmitter,
   Input,
@@ -53,8 +52,6 @@ export class GuiForm implements OnChanges, OnInit, OnDestroy {
 
   controlSubscriptions: Subscription[] = [];
 
-  constructor(private cdr: ChangeDetectorRef) {}
-
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['config']) {
       this.form.controls = {}; // reset controls
@@ -86,7 +83,6 @@ export class GuiForm implements OnChanges, OnInit, OnDestroy {
    * @param model        The value of the form control
    * @param defaultValue The default value of the form field
    * @param parentType   The type of the form field parent
-   * @param options      The reactive form options
    * @returns
    */
   getFormFieldArray(
@@ -94,8 +90,7 @@ export class GuiForm implements OnChanges, OnInit, OnDestroy {
     config: GuiFields | GuiControl[] = {},
     model: Record<string, any> = {},
     defaultValue: any = null,
-    parentType: GuiFieldType = 'group',
-    options: { onlySelf?: boolean; emitEvent?: boolean } = { emitEvent: false }
+    parentType: GuiFieldType = 'group'
   ) {
     const tempArr = [];
 
@@ -188,14 +183,14 @@ export class GuiForm implements OnChanges, OnInit, OnDestroy {
         if (form instanceof FormGroup) {
           form.registerControl(item.key, new FormControl(formState));
         } else if (form instanceof FormArray) {
-          form.insert(item.index || form.length, new FormControl(formState), options);
+          form.insert(item.index || form.length, new FormControl(formState), { emitEvent: false });
         }
       } else if (item._type === 'array') {
         let formArray = new FormArray<any>([]);
         if (form instanceof FormGroup) {
           formArray = form.registerControl(item.key, new FormArray([])) as FormArray;
         } else if (form instanceof FormArray) {
-          form.insert(item.index || form.length, formArray, options);
+          form.insert(item.index || form.length, formArray, { emitEvent: false });
         }
 
         item.children = this.getFormFieldArray(
@@ -212,7 +207,7 @@ export class GuiForm implements OnChanges, OnInit, OnDestroy {
         if (form instanceof FormGroup) {
           formGroup = form.registerControl(item.key, new FormGroup({})) as FormGroup;
         } else if (form instanceof FormArray) {
-          form.insert(item.index || form.length, formGroup, options);
+          form.insert(item.index || form.length, formGroup, { emitEvent: false });
         }
 
         item.children = this.getFormFieldArray(
@@ -233,55 +228,61 @@ export class GuiForm implements OnChanges, OnInit, OnDestroy {
   /**
    * Add a tab item.
    *
-   * @param e     The mouse event
-   * @param form  The reactive form instance
-   * @param tabs  The config of the tabs field
-   * @param index The index of the tabs array
+   * @param e         The mouse event
+   * @param formArray The reactive form instance
+   * @param tabs      The config of the tabs field
+   * @param copy      Whether to copy the current tab
+   * @param index     The index of the tabs array
    */
-  addTab(e: MouseEvent, form: FormArray, tabs: GuiControl, index?: number) {
+  addTab(e: MouseEvent, formArray: FormArray, tabs: GuiControl, copy?: boolean, index?: number) {
     e.stopPropagation();
-    const insertIndex = index === void 0 ? tabs.children!.length : index + 1;
+    const insertIndex =
+      index !== void 0 ? index + 1 : copy ? tabs.selectedIndex! + 1 : tabs.children!.length;
     // Save the index of the insertion in the config
     tabs.template!.index = insertIndex;
     // The key in the object and the index in the array should be the same
     tabs.children!.forEach((child, index) => {
       if (index >= insertIndex) {
         child.index! += 1;
-        child.key = child.index!.toString();
+        child.key = child.index + ''; // convert to string
       }
     });
+
+    const formValue = formArray.get(insertIndex - 1 + '')?.value;
     // The constructed object looks like this `[{ key: 'tab', children: template }]`
     // The key should preferably be `null`
     const newTab = this.getFormFieldArray(
-      form,
+      formArray,
       { [insertIndex]: tabs.template } as GuiFields,
-      {},
-      null,
-      'tabs',
-      { emitEvent: true }
+      copy ? { [insertIndex]: formValue } : {},
+      copy ? { [insertIndex]: formValue } : null,
+      'tabs'
     );
     tabs.children!.splice(insertIndex, 0, newTab[0]);
+
+    // update the form model
+    formArray.patchValue(formArray.value);
   }
 
   /**
    * Remove a tab item.
    *
-   * @param e     The mouse event
-   * @param form  The reactive form instance
-   * @param tabs  The config of the tabs field
-   * @param index The index of the tabs array
+   * @param e         The mouse event
+   * @param formArray The reactive form instance
+   * @param tabs      The config of the tabs field
+   * @param index     The index of the tabs array
    */
-  removeTab(e: MouseEvent, form: FormArray, tabs: GuiControl, index?: number) {
+  removeTab(e: MouseEvent, formArray: FormArray, tabs: GuiControl, index?: number) {
     e.stopPropagation();
-    const removeIndex = index === void 0 ? tabs.children!.length - 1 : index;
+    const removeIndex = index === void 0 ? tabs.selectedIndex! : index;
     tabs.children!.forEach((child, index) => {
       if (index > removeIndex) {
         child.index! -= 1;
-        child.key = child.index!.toString();
+        child.key = child.index + ''; // convert to string
       }
     });
     tabs.children!.splice(removeIndex, 1);
-    form.removeAt(removeIndex);
+    formArray.removeAt(removeIndex);
   }
 
   /**

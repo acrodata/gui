@@ -98,21 +98,25 @@
         <gui-field-label [config]="item"></gui-field-label>
         <!-- Show operation buttons after panel opened -->
         <ng-container *ngIf="item.expanded">
-          <button mat-icon-button (click)="changeTabsMode($event, item, 'normal')"
-                  [color]="item.mode!=='list'?'primary':''" type="button">
+          <button mat-icon-button type="button" [color]="item.mode!=='list'?'primary':''"
+                  (click)="changeTabsMode($event, item, 'normal')">
             <mat-icon svgIcon="dots_horizontal"></mat-icon>
           </button>
-          <button mat-icon-button (click)="changeTabsMode($event, item, 'list')"
-                  [color]="item.mode==='list'?'primary':''" type="button">
+          <button mat-icon-button type="button" [color]="item.mode==='list'?'primary':''"
+                  (click)="changeTabsMode($event, item, 'list')">
             <mat-icon svgIcon="dots_vertical"></mat-icon>
           </button>
           <ng-container *ngIf="item.template && (item.addable || item.addable===undefined)">
-            <button mat-icon-button (click)="addTab($event, form.get(item.key), item)"
-                    type="button" [disabled]="item.disabled">
+            <button mat-icon-button type="button" [disabled]="item.disabled"
+                    (click)="addTab($event, form.get(item.key), item, true)">
+              <mat-icon svgIcon="content_copy"></mat-icon>
+            </button>
+            <button mat-icon-button type="button" [disabled]="item.disabled"
+                    (click)="addTab($event, form.get(item.key), item)">
               <mat-icon svgIcon="plus"></mat-icon>
             </button>
-            <button mat-icon-button (click)="removeTab($event, form.get(item.key), item)"
-                    type="button" [disabled]="item.disabled">
+            <button mat-icon-button type="button" [disabled]="item.disabled"
+                    (click)="removeTab($event, form.get(item.key), item)">
               <mat-icon svgIcon="delete"></mat-icon>
             </button>
           </ng-container>
@@ -152,12 +156,16 @@
               <span class="gui-list-item-title"
                     (click)="item.selectedIndex=i">{{tab.name | ejs:{i} }}</span>
               <ng-container *ngIf="item.template && (item.addable || item.addable===undefined)">
-                <button mat-icon-button (click)="addTab($event, form.get(item.key), item, i)"
-                        type="button" [disabled]="item.disabled">
+                <button mat-icon-button type="button" [disabled]="item.disabled"
+                        (click)="addTab($event, form.get(item.key), item, true, i)">
+                  <mat-icon svgIcon="content_copy"></mat-icon>
+                </button>
+                <button mat-icon-button type="button" [disabled]="item.disabled"
+                        (click)="addTab($event, form.get(item.key), item, false, i)">
                   <mat-icon svgIcon="plus"></mat-icon>
                 </button>
-                <button mat-icon-button (click)="removeTab($event, form.get(item.key), item, i)"
-                        type="button" [disabled]="item.disabled">
+                <button mat-icon-button type="button" [disabled]="item.disabled"
+                        (click)="removeTab($event, form.get(item.key), item, i)">
                   <mat-icon svgIcon="delete"></mat-icon>
                 </button>
               </ng-container>
