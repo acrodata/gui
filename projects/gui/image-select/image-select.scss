@@ -7,6 +7,8 @@
 }
 
 .gui-image-select {
+  --mat-form-field-container-vertical-padding: 0;
+
   .ng-select {
     padding: 0 8px;
     margin: 0 -8px;

@@ -3,14 +3,13 @@
   --mat-expansion-container-text-size: 12px;
   --mat-expansion-header-collapsed-state-height: 32px;
   --mat-expansion-header-expanded-state-height: 32px;
+  --mat-expansion-container-shape: 0;
 
   position: relative;
   display: block;
   font-size: 12px;
 
   .mat-expansion-panel {
-    --mat-expansion-container-shape: 0;
-
     box-shadow: none !important;
   }
 
