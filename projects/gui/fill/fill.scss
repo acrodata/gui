@@ -29,7 +29,7 @@
   opacity: .12;
   content: '';
 
-  [dir="rtl"] & {
+  [dir='rtl'] & {
     border-radius: 0;
     border-top-right-radius: var(--mdc-filled-text-field-container-shape);
     border-bottom-right-radius: var(--mdc-filled-text-field-container-shape);

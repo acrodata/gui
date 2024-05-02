@@ -4,10 +4,15 @@
 
   .mat-mdc-option {
     min-height: var(--mat-option-label-text-line-height);
-    padding: 0 8px;
+    padding: 0 8px !important;
 
     .mat-pseudo-checkbox-full {
       margin-right: 8px;
+
+      [dir='rtl'] & {
+        margin-right: 0;
+        margin-left: 8px;
+      }
     }
   }
 

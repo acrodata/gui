@@ -26,6 +26,11 @@
       align-items: center;
       padding-right: 8px;
 
+      [dir='rtl'] & {
+        padding-right: 0;
+        padding-left: 8px;
+      }
+
       gui-field-label {
         flex: 1;
         overflow: hidden;
@@ -83,7 +88,7 @@
     padding: 0 8px;
     border-radius: var(--mdc-filled-text-field-container-shape);
 
-    [dir="rtl"] & {
+    [dir='rtl'] & {
       padding: 0 8px;
     }
   }
@@ -114,6 +119,11 @@
     height: 16px;
     background-color: var(--mat-expansion-header-text-color);
     content: '';
+
+    [dir='rtl'] & {
+      left: auto;
+      right: 0;
+    }
   }
 }
 
