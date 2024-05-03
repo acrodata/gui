@@ -1,3 +1,4 @@
+import { NgIf, NgSwitch, NgSwitchCase, NgSwitchDefault } from '@angular/common';
 import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import {
   ChangeDetectionStrategy,
@@ -13,11 +14,21 @@ import {
   ViewEncapsulation,
   forwardRef,
 } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import {
+  ControlValueAccessor,
+  FormsModule,
+  NG_VALUE_ACCESSOR,
+  ReactiveFormsModule,
+} from '@angular/forms';
+import { MatIconButton } from '@angular/material/button';
+import { MatFormField, MatHint, MatPrefix, MatSuffix } from '@angular/material/form-field';
+import { MatIcon } from '@angular/material/icon';
+import { MatInput } from '@angular/material/input';
 import { of } from 'rxjs';
 import { catchError, finalize } from 'rxjs/operators';
-import { GuiFileUploaderConfig } from './file-uploader-config';
+import { GuiFieldLabel } from '../field-label/field-label';
 import { GuiControl } from '../interface';
+import { GuiFileUploaderConfig } from './file-uploader-config';
 
 export type FileUploadType = 'image' | 'video' | 'audio' | '*';
 
@@ -42,6 +53,23 @@ export interface FileUploadContent {
       useExisting: forwardRef(() => GuiFileUploader),
       multi: true,
     },
+  ],
+  standalone: true,
+  imports: [
+    ReactiveFormsModule,
+    FormsModule,
+    NgIf,
+    NgSwitch,
+    NgSwitchCase,
+    NgSwitchDefault,
+    MatFormField,
+    MatIcon,
+    MatPrefix,
+    MatInput,
+    MatIconButton,
+    MatSuffix,
+    MatHint,
+    GuiFieldLabel,
   ],
 })
 export class GuiFileUploader implements ControlValueAccessor, OnChanges {

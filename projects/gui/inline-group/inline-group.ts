@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input, ViewEncapsulation } from '@angular/core';
+import { GuiFieldLabel } from '../field-label/field-label';
 import { GuiControl } from '../interface';
 
 @Component({
@@ -10,6 +11,8 @@ import { GuiControl } from '../interface';
   },
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [GuiFieldLabel],
 })
 export class GuiInlineGroup {
   @Input() config: Partial<GuiControl> = {};

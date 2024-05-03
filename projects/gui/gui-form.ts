@@ -1,3 +1,4 @@
+import { NgFor, NgIf, NgSwitch, NgSwitchCase, NgTemplateOutlet } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -10,10 +11,31 @@ import {
   SimpleChanges,
   ViewEncapsulation,
 } from '@angular/core';
-import { FormArray, FormControl, FormGroup } from '@angular/forms';
+import { FormArray, FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { MatIconButton } from '@angular/material/button';
+import {
+  MatExpansionPanel,
+  MatExpansionPanelContent,
+  MatExpansionPanelHeader,
+} from '@angular/material/expansion';
+import { MatIcon } from '@angular/material/icon';
+import { MatTab, MatTabContent, MatTabGroup, MatTabLabel } from '@angular/material/tabs';
 import { Subscription, mergeWith, of } from 'rxjs';
-import { compareValues, getValueByPath } from './gui-utils';
+import { GuiButtonToggle } from './button-toggle/button-toggle';
+import { GuiFieldGroup } from './field-group/field-group';
+import { GuiFieldLabel } from './field-label/field-label';
+import { GuiFileUploader } from './file-uploader/file-uploader';
+import { GuiFill } from './fill/fill';
+import { GuiEjsPipe, GuiFlexDirective, compareValues, getValueByPath } from './gui-utils';
+import { GuiImageSelect } from './image-select/image-select';
+import { GuiInlineGroup } from './inline-group/inline-group';
+import { GuiInputNumber } from './input-number/input-number';
+import { GuiInputText } from './input-text/input-text';
 import { GuiCondition, GuiControl, GuiFieldType, GuiFields, GuiTabsMode } from './interface';
+import { GuiSelect } from './select/select';
+import { GuiSlider } from './slider/slider';
+import { GuiSwitch } from './switch/switch';
+import { GuiTextarea } from './textarea/textarea';
 
 let nextUniqueId = 0;
 
@@ -27,6 +49,39 @@ let nextUniqueId = 0;
   },
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [
+    ReactiveFormsModule,
+    NgTemplateOutlet,
+    NgFor,
+    NgIf,
+    NgSwitch,
+    NgSwitchCase,
+    MatExpansionPanel,
+    MatExpansionPanelHeader,
+    MatExpansionPanelContent,
+    MatIconButton,
+    MatIcon,
+    MatTabGroup,
+    MatTab,
+    MatTabLabel,
+    MatTabContent,
+    GuiFieldGroup,
+    GuiFlexDirective,
+    GuiInputText,
+    GuiInputNumber,
+    GuiSelect,
+    GuiSwitch,
+    GuiSlider,
+    GuiButtonToggle,
+    GuiFill,
+    GuiFileUploader,
+    GuiImageSelect,
+    GuiTextarea,
+    GuiInlineGroup,
+    GuiFieldLabel,
+    GuiEjsPipe,
+  ],
 })
 export class GuiForm implements OnChanges, OnInit, OnDestroy {
   /**

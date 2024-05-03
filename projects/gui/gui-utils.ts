@@ -47,6 +47,7 @@ export function ejsTmpl(str: string, data: any) {
 
 @Pipe({
   name: 'ejs',
+  standalone: true,
 })
 export class GuiEjsPipe implements PipeTransform {
   transform(value: string, data = {}): string {
@@ -56,6 +57,7 @@ export class GuiEjsPipe implements PipeTransform {
 
 @Directive({
   selector: '[flex]',
+  standalone: true,
 })
 export class GuiFlexDirective implements OnInit {
   @Input() flex: number | undefined = 100;

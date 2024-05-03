@@ -1,3 +1,4 @@
+import { NgIf } from '@angular/common';
 import {
   AfterViewInit,
   ChangeDetectionStrategy,
@@ -8,8 +9,19 @@ import {
   ViewChild,
   ViewEncapsulation,
 } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { MtxSelect } from '@ng-matero/extensions/select';
+import {
+  ControlValueAccessor,
+  FormsModule,
+  NG_VALUE_ACCESSOR,
+  ReactiveFormsModule,
+} from '@angular/forms';
+import { MatFormField, MatHint, MatPrefix, MatSuffix } from '@angular/material/form-field';
+import {
+  MtxSelect,
+  MtxSelectLabelTemplate,
+  MtxSelectOptionTemplate,
+} from '@ng-matero/extensions/select';
+import { GuiFieldLabel } from '../field-label/field-label';
 import { GuiControl } from '../interface';
 
 @Component({
@@ -27,6 +39,20 @@ import { GuiControl } from '../interface';
       useExisting: forwardRef(() => GuiImageSelect),
       multi: true,
     },
+  ],
+  standalone: true,
+  imports: [
+    ReactiveFormsModule,
+    FormsModule,
+    NgIf,
+    MatFormField,
+    MatPrefix,
+    MatSuffix,
+    MatHint,
+    MtxSelect,
+    MtxSelectLabelTemplate,
+    MtxSelectOptionTemplate,
+    GuiFieldLabel,
   ],
 })
 export class GuiImageSelect implements ControlValueAccessor, AfterViewInit {

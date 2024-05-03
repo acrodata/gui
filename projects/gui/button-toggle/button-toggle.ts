@@ -1,3 +1,4 @@
+import { NgFor, NgIf } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
@@ -6,8 +7,18 @@ import {
   Input,
   ViewEncapsulation,
 } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import {
+  ControlValueAccessor,
+  FormsModule,
+  NG_VALUE_ACCESSOR,
+  ReactiveFormsModule,
+} from '@angular/forms';
+import { MatButtonToggle, MatButtonToggleGroup } from '@angular/material/button-toggle';
+import { MatHint } from '@angular/material/form-field';
+import { GuiFieldLabel } from '../field-label/field-label';
+import { GuiFlexDirective } from '../gui-utils';
 import { GuiBasicValue, GuiControl } from '../interface';
+import { GuiIcon } from './icon';
 
 @Component({
   selector: 'gui-button-toggle',
@@ -24,6 +35,19 @@ import { GuiBasicValue, GuiControl } from '../interface';
       useExisting: forwardRef(() => GuiButtonToggle),
       multi: true,
     },
+  ],
+  standalone: true,
+  imports: [
+    ReactiveFormsModule,
+    FormsModule,
+    NgFor,
+    NgIf,
+    MatButtonToggleGroup,
+    MatButtonToggle,
+    MatHint,
+    GuiFlexDirective,
+    GuiIcon,
+    GuiFieldLabel,
   ],
 })
 export class GuiButtonToggle implements ControlValueAccessor {

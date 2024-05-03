@@ -1,3 +1,4 @@
+import { NgIf } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Input, ViewEncapsulation } from '@angular/core';
 
 @Component({
@@ -12,6 +13,8 @@ import { ChangeDetectionStrategy, Component, Input, ViewEncapsulation } from '@a
   },
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [NgIf],
 })
 export class GuiIcon {
   @Input() src = '';

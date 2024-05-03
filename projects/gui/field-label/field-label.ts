@@ -1,3 +1,4 @@
+import { NgIf } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -5,6 +6,7 @@ import {
   OnChanges,
   ViewEncapsulation,
 } from '@angular/core';
+import { MatTooltip } from '@angular/material/tooltip';
 import { ejsTmpl } from '../gui-utils';
 import { GuiControl } from '../interface';
 
@@ -18,6 +20,8 @@ import { GuiControl } from '../interface';
   },
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [NgIf, MatTooltip],
 })
 export class GuiFieldLabel implements OnChanges {
   @Input() config: Partial<GuiControl> = {};

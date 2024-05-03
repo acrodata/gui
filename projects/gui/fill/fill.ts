@@ -1,3 +1,4 @@
+import { NgIf } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
@@ -6,7 +7,20 @@ import {
   Input,
   ViewEncapsulation,
 } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import {
+  ControlValueAccessor,
+  FormsModule,
+  NG_VALUE_ACCESSOR,
+  ReactiveFormsModule,
+} from '@angular/forms';
+import { MatFormField, MatHint, MatPrefix, MatSuffix } from '@angular/material/form-field';
+import { MatInput } from '@angular/material/input';
+import {
+  MtxColorpicker,
+  MtxColorpickerInput,
+  MtxColorpickerToggle,
+} from '@ng-matero/extensions/colorpicker';
+import { GuiFieldLabel } from '../field-label/field-label';
 import { GuiControl } from '../interface';
 
 @Component({
@@ -24,6 +38,21 @@ import { GuiControl } from '../interface';
       useExisting: forwardRef(() => GuiFill),
       multi: true,
     },
+  ],
+  standalone: true,
+  imports: [
+    ReactiveFormsModule,
+    FormsModule,
+    NgIf,
+    MatFormField,
+    MatPrefix,
+    MatInput,
+    MatSuffix,
+    MatHint,
+    MtxColorpickerInput,
+    MtxColorpicker,
+    MtxColorpickerToggle,
+    GuiFieldLabel,
   ],
 })
 export class GuiFill implements ControlValueAccessor {

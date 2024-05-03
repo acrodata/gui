@@ -54,8 +54,6 @@ import { svgIcons } from './gui-icons';
     MatTooltipModule,
     MtxColorpickerModule,
     MtxSelectModule,
-  ],
-  declarations: [
     GuiForm,
     GuiInputText,
     GuiInputNumber,

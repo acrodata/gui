@@ -1,3 +1,4 @@
+import { NgIf } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
@@ -6,7 +7,15 @@ import {
   Input,
   ViewEncapsulation,
 } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import {
+  ControlValueAccessor,
+  FormsModule,
+  NG_VALUE_ACCESSOR,
+  ReactiveFormsModule,
+} from '@angular/forms';
+import { MatHint } from '@angular/material/form-field';
+import { MatSlideToggle } from '@angular/material/slide-toggle';
+import { GuiFieldLabel } from '../field-label/field-label';
 import { GuiControl } from '../interface';
 
 @Component({
@@ -25,6 +34,8 @@ import { GuiControl } from '../interface';
       multi: true,
     },
   ],
+  standalone: true,
+  imports: [ReactiveFormsModule, FormsModule, NgIf, MatSlideToggle, MatHint, GuiFieldLabel],
 })
 export class GuiSwitch implements ControlValueAccessor {
   @Input() config: Partial<GuiControl> = {};

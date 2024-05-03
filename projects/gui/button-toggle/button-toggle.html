@@ -1,5 +1,6 @@
 <mat-button-toggle-group [(ngModel)]="value" [disabled]="disabled" [multiple]="config.multiple"
-                         (change)="onValueChange()" hideSingleSelectionIndicator>
+                         hideSingleSelectionIndicator hideMultipleSelectionIndicator
+                         (change)="onValueChange()">
   <mat-button-toggle *ngFor="let opt of config.options" disableRipple
                      [class]="{'gui-icon-toggle': config.useIcon}"
                      [flex]="opt.col"
