@@ -1,11 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { DomSanitizer } from '@angular/platform-browser';
 
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { MatIconModule, MatIconRegistry } from '@angular/material/icon';
+import { MatIconModule } from '@angular/material/icon';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
@@ -32,9 +31,7 @@ import { GuiFill } from './fill/fill';
 import { GuiImageSelect } from './image-select/image-select';
 import { GuiTextarea } from './textarea/textarea';
 import { GuiFileUploader } from './file-uploader/file-uploader';
-import { GuiFileUploaderConfig } from './file-uploader/file-uploader-config';
 import { GuiEjsPipe, GuiFlexDirective } from './gui-utils';
-import { svgIcons } from './gui-icons';
 
 @NgModule({
   imports: [
@@ -91,12 +88,5 @@ import { svgIcons } from './gui-icons';
     GuiEjsPipe,
     GuiFlexDirective,
   ],
-  providers: [GuiFileUploaderConfig],
 })
-export class GuiModule {
-  constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer) {
-    for (const key of Object.keys(svgIcons)) {
-      iconRegistry.addSvgIconLiteral(key, sanitizer.bypassSecurityTrustHtml(svgIcons[key]));
-    }
-  }
-}
+export class GuiModule {}

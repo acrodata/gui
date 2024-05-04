@@ -18,9 +18,11 @@ import {
   MatExpansionPanelContent,
   MatExpansionPanelHeader,
 } from '@angular/material/expansion';
-import { MatIcon } from '@angular/material/icon';
+import { MatIcon, MatIconRegistry } from '@angular/material/icon';
 import { MatTab, MatTabContent, MatTabGroup, MatTabLabel } from '@angular/material/tabs';
+import { DomSanitizer } from '@angular/platform-browser';
 import { Subscription, mergeWith, of } from 'rxjs';
+
 import { GuiButtonToggle } from './button-toggle/button-toggle';
 import { GuiFieldGroup } from './field-group/field-group';
 import { GuiFieldLabel } from './field-label/field-label';
@@ -36,6 +38,8 @@ import { GuiSelect } from './select/select';
 import { GuiSlider } from './slider/slider';
 import { GuiSwitch } from './switch/switch';
 import { GuiTextarea } from './textarea/textarea';
+
+import { svgIcons } from './gui-icons';
 
 let nextUniqueId = 0;
 
@@ -112,6 +116,12 @@ export class GuiForm implements OnChanges, OnInit, OnDestroy {
 
   // Unique id for this form
   uid = `gui-form-${nextUniqueId++}`;
+
+  constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer) {
+    ['dots_horizontal', 'dots_vertical', 'content_copy', 'plus', 'delete'].forEach(k => {
+      iconRegistry.addSvgIconLiteral(k, sanitizer.bypassSecurityTrustHtml(svgIcons[k]));
+    });
+  }
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['config']) {
