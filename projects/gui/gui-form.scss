@@ -1,5 +1,4 @@
 .gui-form {
-  --mat-form-field-container-text-size: 12px;
   --mat-expansion-header-text-size: 12px;
   --mat-expansion-container-text-size: 12px;
   --mat-expansion-header-collapsed-state-height: 32px;
@@ -58,18 +57,6 @@
     padding: 0 12px;
   }
 
-  .mat-icon {
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    padding: 0 !important;
-
-    svg {
-      width: 14px;
-      height: 14px;
-    }
-  }
-
   .mat-mdc-icon-button {
     --mdc-icon-button-state-layer-size: 24px;
     --mdc-icon-button-icon-size: 14px;
@@ -80,28 +67,12 @@
       width: var(--mdc-icon-button-state-layer-size);
       height: var(--mdc-icon-button-state-layer-size);
     }
-  }
 
-  .mat-mdc-text-field-wrapper,
-  .mat-mdc-form-field-hint-wrapper {
-    position: relative;
-    padding: 0 8px;
-    border-radius: var(--mdc-filled-text-field-container-shape);
-
-    [dir='rtl'] & {
-      padding: 0 8px;
+    .mat-icon {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
     }
-  }
-
-  .mat-mdc-form-field-infix {
-    min-height: auto;
-    padding: 0 !important;
-  }
-
-  .mat-mdc-form-field-hint-spacer,
-  .mat-mdc-form-field-bottom-align::before,
-  .mdc-line-ripple {
-    display: none;
   }
 }
 

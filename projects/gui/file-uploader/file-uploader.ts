@@ -32,7 +32,7 @@ export interface FileUploadContent {
   templateUrl: './file-uploader.html',
   styleUrls: ['./file-uploader.scss'],
   host: {
-    class: 'gui-file-uploader',
+    class: 'gui-field gui-file-uploader',
   },
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,

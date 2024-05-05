@@ -4,6 +4,8 @@
 }
 
 .gui-field {
+  --mat-form-field-container-text-size: 12px;
+
   display: inline-flex;
   flex: 1;
   flex-wrap: wrap;
@@ -12,5 +14,52 @@
     flex: 1;
     width: 0;
     max-width: 100%;
+  }
+
+  .mat-mdc-text-field-wrapper,
+  .mat-mdc-form-field-hint-wrapper {
+    position: relative;
+    padding: 0 8px;
+    border-radius: var(--mdc-filled-text-field-container-shape);
+
+    [dir='rtl'] & {
+      padding: 0 8px;
+    }
+  }
+
+  .mat-mdc-form-field-infix {
+    min-height: auto;
+    padding: 0 !important;
+  }
+
+  .mat-mdc-form-field-hint-spacer,
+  .mat-mdc-form-field-bottom-align::before,
+  .mdc-line-ripple {
+    display: none;
+  }
+
+  .mat-mdc-icon-button {
+    --mdc-icon-button-state-layer-size: 24px;
+    --mdc-icon-button-icon-size: 14px;
+
+    padding: 0;
+
+    .mat-mdc-button-touch-target {
+      width: var(--mdc-icon-button-state-layer-size);
+      height: var(--mdc-icon-button-state-layer-size);
+    }
+  }
+
+  // fix mat-form-field prefix icon
+  .mat-icon {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 !important;
+
+    svg {
+      width: 14px;
+      height: 14px;
+    }
   }
 }
