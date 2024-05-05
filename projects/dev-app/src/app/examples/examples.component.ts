@@ -1,6 +1,6 @@
 import { GuiFields, GuiFileUploaderConfig, GuiModule } from '@acrodata/gui';
 import { CommonModule } from '@angular/common';
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 
 @Component({

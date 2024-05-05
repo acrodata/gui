@@ -1,0 +1,49 @@
+<gui-field-group>
+  <gui-button-toggle [config]="{options:[{label:'A',value:1},{label:'B',value:2}]}" />
+</gui-field-group>
+
+<gui-field-group>
+  <gui-file-uploader />
+</gui-field-group>
+
+<gui-field-group>
+  <gui-fill />
+</gui-field-group>
+
+<gui-field-group>
+  <gui-image-select />
+</gui-field-group>
+
+<gui-field-group>
+  <gui-input-number />
+</gui-field-group>
+
+<gui-field-group>
+  <gui-input-text />
+</gui-field-group>
+
+<gui-field-group>
+  <gui-select [config]="{options:[{label:'A',value:1},{label:'B',value:2}]}" />
+</gui-field-group>
+
+<gui-field-group>
+  <gui-slider />
+</gui-field-group>
+
+<gui-field-group>
+  <gui-switch />
+</gui-field-group>
+
+<gui-field-group>
+  <gui-textarea />
+</gui-field-group>
+
+<gui-inline-group>
+  <gui-field-group [flex]="50">
+    <gui-input-text [config]="{parentType:'inline',name:'A'}" />
+  </gui-field-group>
+
+  <gui-field-group [flex]="50">
+    <gui-input-text [config]="{parentType:'inline',name:'B'}" />
+  </gui-field-group>
+</gui-inline-group>
