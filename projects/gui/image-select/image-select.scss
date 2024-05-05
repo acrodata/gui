@@ -7,6 +7,8 @@
 }
 
 .gui-image-select {
+  position: relative;
+
   .ng-select {
     padding: 0 8px;
     margin: 0 -8px;
@@ -27,9 +29,7 @@
       }
     }
   }
-}
 
-.gui-form {
   .ng-dropdown-panel {
     .ng-dropdown-panel-items {
       .ng-option {

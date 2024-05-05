@@ -1,10 +1,9 @@
 <mat-form-field>
   <span *ngIf="config.prefix" matPrefix>{{config.prefix}}</span>
-  <mtx-select [items]="config.options||[]" appendTo=".gui-form" bindValue="value"
+  <mtx-select [items]="config.options||[]" [appendTo]="appendTo" bindValue="value"
               [(ngModel)]="value" [disabled]="disabled"
               [placeholder]="config.placeholder||''"
-              (change)="onValueChange()"
-              (open)="onPanelOpened()">
+              (change)="onValueChange()">
     <ng-template ng-label-tmp let-opt="item">
       <img [src]="opt.src" [alt]="opt.label" />
       <span>{{opt.label}}</span>

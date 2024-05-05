@@ -9,12 +9,15 @@ import {
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { GuiControl } from '../interface';
 
+let nextUniqueId = 0;
+
 @Component({
   selector: 'gui-image-select',
   templateUrl: './image-select.html',
   styleUrls: ['./image-select.scss'],
   host: {
-    class: 'gui-field gui-image-select',
+    '[attr.id]': 'uid',
+    'class': 'gui-field gui-image-select',
   },
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -29,6 +32,11 @@ import { GuiControl } from '../interface';
 export class GuiImageSelect implements ControlValueAccessor {
   @Input() config: Partial<GuiControl> = {};
   @Input() disabled = false;
+
+  // Unique id for this select
+  uid = `gui-image-select-${nextUniqueId++}`;
+  // The dropdown panel should be appended to the host element
+  @Input() appendTo = `#${this.uid}`;
 
   value: unknown;
 
@@ -58,6 +66,4 @@ export class GuiImageSelect implements ControlValueAccessor {
   onValueChange() {
     this.onChange(this.value);
   }
-
-  onPanelOpened() {}
 }
