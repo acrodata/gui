@@ -6,10 +6,10 @@
                      [value]="opt.value"
                      [disabled]="opt.disabled"
                      [title]="config.useIcon ? opt.label : ''">
-    <gui-icon *ngIf="config.useIcon; else textLabel" [src]="opt.src!"></gui-icon>
+    <gui-icon *ngIf="config.useIcon; else textLabel" [src]="opt.src!" />
     <ng-template #textLabel>{{opt.label}}</ng-template>
   </mat-button-toggle>
 </mat-button-toggle-group>
 <mat-hint *ngIf="config.parentType==='inline'">
-  <gui-field-label [config]="config"></gui-field-label>
+  <gui-field-label [config]="config" />
 </mat-hint>

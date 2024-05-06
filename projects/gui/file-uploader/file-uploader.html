@@ -1,5 +1,5 @@
 <mat-form-field>
-  <mat-icon matPrefix svgIcon="link"></mat-icon>
+  <mat-icon matPrefix svgIcon="link" />
 
   <input matInput type="text" [ngModel]="url" [disabled]="disabled"
          [placeholder]="config.placeholder||''"
@@ -7,23 +7,23 @@
 
   <button *ngIf="url" matSuffix mat-icon-button color="warn"
           [disabled]="disabled" (click)="onClear()">
-    <mat-icon svgIcon="close"></mat-icon>
+    <mat-icon svgIcon="close" />
   </button>
 </mat-form-field>
 
 <figure class="gui-file-content">
   <ng-container *ngIf="url" [ngSwitch]="type">
-    <img *ngSwitchCase="'image'" [src]="url">
+    <img *ngSwitchCase="'image'" [src]="url" />
 
     <video *ngSwitchCase="'video'" [src]="url"></video>
 
     <audio *ngSwitchCase="'audio'" [src]="url" controls></audio>
 
-    <mat-icon *ngSwitchDefault svgIcon="file_outline"></mat-icon>
+    <mat-icon *ngSwitchDefault svgIcon="file_outline" />
   </ng-container>
 
   <div *ngIf="!url" class="gui-file-placeholder">
-    <mat-icon svgIcon="file_upload"></mat-icon>
+    <mat-icon svgIcon="file_upload" />
   </div>
 
   <input #fileInput type="file" [accept]="accept" [name]="name"
@@ -31,5 +31,5 @@
 </figure>
 
 <mat-hint *ngIf="config.parentType==='inline'">
-  <gui-field-label [config]="config"></gui-field-label>
+  <gui-field-label [config]="config" />
 </mat-hint>

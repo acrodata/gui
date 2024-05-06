@@ -10,58 +10,55 @@
   <ng-container *ngIf="item.show" [ngSwitch]="item.type" [formGroup]="form">
     <!-- Text -->
     <gui-field-group *ngSwitchCase="'text'" [config]="item" [flex]="item.col">
-      <gui-input-text [formControlName]="item.key" [config]="item"></gui-input-text>
+      <gui-input-text [formControlName]="item.key" [config]="item" />
     </gui-field-group>
     <!-- Number -->
     <gui-field-group *ngSwitchCase="'number'" [config]="item" [flex]="item.col">
-      <gui-input-number [formControlName]="item.key" [config]="item"></gui-input-number>
+      <gui-input-number [formControlName]="item.key" [config]="item" />
     </gui-field-group>
     <!-- Select -->
     <gui-field-group *ngSwitchCase="'select'" [config]="item" [flex]="item.col">
-      <gui-select [formControlName]="item.key" [config]="item"></gui-select>
+      <gui-select [formControlName]="item.key" [config]="item" />
     </gui-field-group>
     <!-- Switch -->
     <gui-field-group *ngSwitchCase="'switch'" [config]="item" [flex]="item.col">
-      <gui-switch [formControlName]="item.key" [config]="item"></gui-switch>
+      <gui-switch [formControlName]="item.key" [config]="item" />
     </gui-field-group>
     <!-- Slider -->
     <gui-field-group *ngSwitchCase="'slider'" [config]="item" [flex]="item.col">
-      <gui-slider [formControlName]="item.key" [config]="item"></gui-slider>
+      <gui-slider [formControlName]="item.key" [config]="item" />
     </gui-field-group>
     <!-- Button Toggle -->
     <gui-field-group *ngSwitchCase="'buttonToggle'" [config]="item" [flex]="item.col">
-      <gui-button-toggle [formControlName]="item.key" [config]="item"></gui-button-toggle>
+      <gui-button-toggle [formControlName]="item.key" [config]="item" />
     </gui-field-group>
     <!-- Fill -->
     <gui-field-group *ngSwitchCase="'fill'" [config]="item" [flex]="item.col">
-      <gui-fill [formControlName]="item.key" [config]="item"></gui-fill>
+      <gui-fill [formControlName]="item.key" [config]="item" />
     </gui-field-group>
     <!-- File -->
     <gui-field-group *ngSwitchCase="'file'" [config]="item" [flex]="item.col">
-      <gui-file-uploader [formControlName]="item.key" [config]="item"></gui-file-uploader>
+      <gui-file-uploader [formControlName]="item.key" [config]="item" />
     </gui-field-group>
     <!-- Image -->
     <gui-field-group *ngSwitchCase="'image'" [config]="item" [flex]="item.col">
-      <gui-file-uploader type="image"
-                         [formControlName]="item.key" [config]="item"></gui-file-uploader>
+      <gui-file-uploader type="image" [formControlName]="item.key" [config]="item" />
     </gui-field-group>
     <!-- Video -->
     <gui-field-group *ngSwitchCase="'video'" [config]="item" [flex]="item.col">
-      <gui-file-uploader type="video"
-                         [formControlName]="item.key" [config]="item"></gui-file-uploader>
+      <gui-file-uploader type="video" [formControlName]="item.key" [config]="item" />
     </gui-field-group>
     <!-- Audio -->
     <gui-field-group *ngSwitchCase="'audio'" [config]="item" [flex]="item.col">
-      <gui-file-uploader type="audio"
-                         [formControlName]="item.key" [config]="item"></gui-file-uploader>
+      <gui-file-uploader type="audio" [formControlName]="item.key" [config]="item" />
     </gui-field-group>
     <!-- Image Select -->
     <gui-field-group *ngSwitchCase="'imageSelect'" [config]="item" [flex]="item.col">
-      <gui-image-select [formControlName]="item.key" [config]="item"></gui-image-select>
+      <gui-image-select [formControlName]="item.key" [config]="item" />
     </gui-field-group>
     <!-- Textarea -->
     <gui-field-group *ngSwitchCase="'textarea'" [config]="item" [flex]="item.col">
-      <gui-textarea [formControlName]="item.key" [config]="item"></gui-textarea>
+      <gui-textarea [formControlName]="item.key" [config]="item" />
     </gui-field-group>
     <!-- Hidden Input -->
     <input *ngSwitchCase="'hidden'" type="hidden" [formControlName]="item.key">
@@ -79,7 +76,7 @@
     <mat-expansion-panel *ngSwitchCase="'group'" [formGroupName]="item.key"
                          [(expanded)]="item.expanded" [disabled]="item.disabled">
       <mat-expansion-panel-header>
-        <gui-field-label [config]="item"></gui-field-label>
+        <gui-field-label [config]="item" />
       </mat-expansion-panel-header>
       <!-- Lazy rendering -->
       <ng-template matExpansionPanelContent>
@@ -95,29 +92,29 @@
     <mat-expansion-panel *ngSwitchCase="'tabs'" [formArrayName]="item.key"
                          [(expanded)]="item.expanded" [disabled]="item.disabled">
       <mat-expansion-panel-header>
-        <gui-field-label [config]="item"></gui-field-label>
-        <!-- Show operation buttons after panel opened -->
+        <gui-field-label [config]="item" />
+        <!-- Show operation buttons when panel opened -->
         <ng-container *ngIf="item.expanded">
           <button mat-icon-button type="button" [color]="item.mode!=='list'?'primary':''"
                   (click)="changeTabsMode($event, item, 'normal')">
-            <mat-icon svgIcon="dots_horizontal"></mat-icon>
+            <mat-icon svgIcon="dots_horizontal" />
           </button>
           <button mat-icon-button type="button" [color]="item.mode==='list'?'primary':''"
                   (click)="changeTabsMode($event, item, 'list')">
-            <mat-icon svgIcon="dots_vertical"></mat-icon>
+            <mat-icon svgIcon="dots_vertical" />
           </button>
           <ng-container *ngIf="item.template && (item.addable || item.addable===undefined)">
             <button mat-icon-button type="button" [disabled]="item.disabled"
                     (click)="addTab($event, form.get(item.key), item, true)">
-              <mat-icon svgIcon="content_copy"></mat-icon>
+              <mat-icon svgIcon="content_copy" />
             </button>
             <button mat-icon-button type="button" [disabled]="item.disabled"
                     (click)="addTab($event, form.get(item.key), item)">
-              <mat-icon svgIcon="plus"></mat-icon>
+              <mat-icon svgIcon="plus" />
             </button>
             <button mat-icon-button type="button" [disabled]="item.disabled"
                     (click)="removeTab($event, form.get(item.key), item)">
-              <mat-icon svgIcon="delete"></mat-icon>
+              <mat-icon svgIcon="delete" />
             </button>
           </ng-container>
         </ng-container>
@@ -158,15 +155,15 @@
               <ng-container *ngIf="item.template && (item.addable || item.addable===undefined)">
                 <button mat-icon-button type="button" [disabled]="item.disabled"
                         (click)="addTab($event, form.get(item.key), item, true, i)">
-                  <mat-icon svgIcon="content_copy"></mat-icon>
+                  <mat-icon svgIcon="content_copy" />
                 </button>
                 <button mat-icon-button type="button" [disabled]="item.disabled"
                         (click)="addTab($event, form.get(item.key), item, false, i)">
-                  <mat-icon svgIcon="plus"></mat-icon>
+                  <mat-icon svgIcon="plus" />
                 </button>
                 <button mat-icon-button type="button" [disabled]="item.disabled"
                         (click)="removeTab($event, form.get(item.key), item, i)">
-                  <mat-icon svgIcon="delete"></mat-icon>
+                  <mat-icon svgIcon="delete" />
                 </button>
               </ng-container>
             </div>

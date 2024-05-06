@@ -7,6 +7,6 @@
          (change)="onValueChange()">
   <span *ngIf="config.suffix" matSuffix>{{config.suffix}}</span>
   <mat-hint *ngIf="config.parentType === 'inline'">
-    <gui-field-label [config]="config"></gui-field-label>
+    <gui-field-label [config]="config" />
   </mat-hint>
 </mat-form-field>
