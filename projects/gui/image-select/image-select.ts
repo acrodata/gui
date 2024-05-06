@@ -1,23 +1,23 @@
 import {
+  AfterViewInit,
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
   forwardRef,
   Input,
+  ViewChild,
   ViewEncapsulation,
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { MtxSelect } from '@ng-matero/extensions/select';
 import { GuiControl } from '../interface';
-
-let nextUniqueId = 0;
 
 @Component({
   selector: 'gui-image-select',
   templateUrl: './image-select.html',
   styleUrls: ['./image-select.scss'],
   host: {
-    '[attr.id]': 'uid',
-    'class': 'gui-field gui-image-select',
+    class: 'gui-field gui-image-select',
   },
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -29,14 +29,12 @@ let nextUniqueId = 0;
     },
   ],
 })
-export class GuiImageSelect implements ControlValueAccessor {
+export class GuiImageSelect implements ControlValueAccessor, AfterViewInit {
+  @ViewChild(MtxSelect) mtxSelect!: MtxSelect;
+
   @Input() config: Partial<GuiControl> = {};
   @Input() disabled = false;
-
-  // Unique id for this select
-  uid = `gui-image-select-${nextUniqueId++}`;
-  // The dropdown panel should be appended to the host element
-  @Input() appendTo = `#${this.uid}`;
+  @Input() appendTo = 'body';
 
   value: unknown;
 
@@ -44,6 +42,12 @@ export class GuiImageSelect implements ControlValueAccessor {
   private onTouched: () => void = () => {};
 
   constructor(private cdr: ChangeDetectorRef) {}
+
+  ngAfterViewInit(): void {
+    // Add additional class for ng-select's dropdown panel
+    const { ngSelect } = this.mtxSelect;
+    ngSelect.classes = (ngSelect.classes || '') + ' gui-image-select';
+  }
 
   writeValue(value: unknown) {
     this.value = value;

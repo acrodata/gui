@@ -15,12 +15,15 @@ import { Subscription, mergeWith, of } from 'rxjs';
 import { compareValues, getValueByPath } from './gui-utils';
 import { GuiCondition, GuiControl, GuiFieldType, GuiFields, GuiTabsMode } from './interface';
 
+let nextUniqueId = 0;
+
 @Component({
   selector: 'gui-form',
   templateUrl: './gui-form.html',
   styleUrls: ['./gui-form.scss'],
   host: {
-    class: 'gui-form',
+    '[attr.id]': 'uid',
+    'class': 'gui-form',
   },
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -51,6 +54,9 @@ export class GuiForm implements OnChanges, OnInit, OnDestroy {
   formSubscription = Subscription.EMPTY;
 
   controlSubscriptions: Subscription[] = [];
+
+  // Unique id for this form
+  uid = `gui-form-${nextUniqueId++}`;
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['config']) {

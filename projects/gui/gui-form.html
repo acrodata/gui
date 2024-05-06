@@ -54,7 +54,7 @@
     </gui-field-group>
     <!-- Image Select -->
     <gui-field-group *ngSwitchCase="'imageSelect'" [config]="item" [flex]="item.col">
-      <gui-image-select [formControlName]="item.key" [config]="item" />
+      <gui-image-select [formControlName]="item.key" [config]="item" [appendTo]="'#'+uid" />
     </gui-field-group>
     <!-- Textarea -->
     <gui-field-group *ngSwitchCase="'textarea'" [config]="item" [flex]="item.col">
