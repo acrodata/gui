@@ -7,10 +7,10 @@
   <div class="gui-wrapper">
     <div class="gui-heading">Gradient Generator</div>
     <gui-form [config]="config" [model]="model"
-              (modelChange)="demoStyle = getBgStyle($event)"></gui-form>
+    (modelChange)="demoStyle = getBgStyle($event)"></gui-form>
   </div>
 </div>
 
-<button mat-stroked-button *ngFor="let m of presets; index as i"
-        [style]="presetStyles[i]"
-        (click)="selectPreset(m)"></button>
+@for (m of presets; track m; let i = $index) {
+  <button mat-stroked-button [style]="presetStyles[i]" (click)="selectPreset(m)"></button>
+}

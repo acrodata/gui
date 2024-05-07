@@ -1,13 +1,12 @@
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { GuiFields } from '@acrodata/gui';
+import { Component } from '@angular/core';
 import { HighlightModule } from 'ngx-highlightjs';
 import { ExampleViewerComponent, PageHeaderComponent } from '../../shared';
 
 @Component({
   selector: 'app-media-controls',
   standalone: true,
-  imports: [CommonModule, ExampleViewerComponent, PageHeaderComponent, HighlightModule],
+  imports: [ExampleViewerComponent, PageHeaderComponent, HighlightModule],
   templateUrl: './media-controls.component.html',
   styleUrl: './media-controls.component.scss',
 })

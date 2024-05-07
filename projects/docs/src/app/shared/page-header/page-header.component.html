@@ -1,5 +1,11 @@
 <div class="page-header-text">
-  <h1 *ngIf="title">{{title}}</h1>
-  <p *ngIf="subtitle">{{subtitle}}</p>
+  @if (title) {
+    <h1>{{title}}</h1>
+  }
+  @if (subtitle) {
+    <p>{{subtitle}}</p>
+  }
 </div>
-<div class="page-header-demo" *ngIf="config"></div>
+@if (config) {
+  <div class="page-header-demo"></div>
+}

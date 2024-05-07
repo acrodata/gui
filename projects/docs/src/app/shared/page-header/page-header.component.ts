@@ -1,11 +1,9 @@
-import { Component, Input, ViewEncapsulation } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { GuiFields } from '@acrodata/gui';
+import { Component, Input, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'app-page-header',
   standalone: true,
-  imports: [CommonModule],
   templateUrl: './page-header.component.html',
   styleUrl: './page-header.component.scss',
   encapsulation: ViewEncapsulation.None,

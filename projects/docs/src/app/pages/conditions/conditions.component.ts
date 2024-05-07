@@ -1,13 +1,12 @@
-import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { GuiFields } from '@acrodata/gui';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { HighlightModule } from 'ngx-highlightjs';
 import { ExampleViewerComponent, PageHeaderComponent } from '../../shared';
 
 @Component({
   selector: 'app-conditions',
   standalone: true,
-  imports: [CommonModule, PageHeaderComponent, ExampleViewerComponent, HighlightModule],
+  imports: [PageHeaderComponent, ExampleViewerComponent, HighlightModule],
   templateUrl: './conditions.component.html',
   styleUrl: './conditions.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
