@@ -1,17 +1,21 @@
 <mat-form-field>
   <ng-container matPrefix>
     <span class="gui-color-block-empty"></span>
-    <span class="gui-color-block" [style]="{background: value}"></span>
+    <span class="gui-color-block" [style.background]="value"></span>
   </ng-container>
+
   <input matInput
-         [(ngModel)]="value"
-         [disabled]="disabled"
-         [placeholder]="config.placeholder||''"
-         [mtxColorpicker]="cp"
-         (colorChange)="onValueChange()">
+    [(ngModel)]="value"
+    [disabled]="disabled"
+    [placeholder]="config.placeholder||''"
+    [mtxColorpicker]="cp"
+    (colorChange)="onValueChange()">
   <mtx-colorpicker #cp />
   <mtx-colorpicker-toggle matSuffix [for]="cp" />
-  <mat-hint *ngIf="config.parentType==='inline'">
-    <gui-field-label [config]="config" />
-  </mat-hint>
+
+  @if (config.parentType==='inline') {
+    <mat-hint>
+      <gui-field-label [config]="config" />
+    </mat-hint>
+  }
 </mat-form-field>

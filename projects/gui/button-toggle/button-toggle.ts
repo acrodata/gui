@@ -1,4 +1,3 @@
-import { NgFor, NgIf } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
@@ -40,8 +39,6 @@ import { GuiIcon } from './icon';
   imports: [
     ReactiveFormsModule,
     FormsModule,
-    NgFor,
-    NgIf,
     MatButtonToggleGroup,
     MatButtonToggle,
     MatHint,

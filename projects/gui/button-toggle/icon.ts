@@ -1,11 +1,13 @@
-import { NgIf } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Input, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'gui-icon',
   template: `
-    <img *ngIf="isUrl()" [src]="src" />
-    <i *ngIf="!isUrl()" [class]="src"></i>
+    @if (isUrl()) {
+      <img [src]="src" />
+    } @else {
+      <i [class]="src"></i>
+    }
   `,
   styleUrl: './icon.scss',
   host: {
@@ -14,7 +16,6 @@ import { ChangeDetectionStrategy, Component, Input, ViewEncapsulation } from '@a
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [NgIf],
 })
 export class GuiIcon {
   @Input() src = '';

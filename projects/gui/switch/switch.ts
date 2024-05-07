@@ -1,4 +1,3 @@
-import { NgIf } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
@@ -35,7 +34,7 @@ import { GuiControl } from '../interface';
     },
   ],
   standalone: true,
-  imports: [ReactiveFormsModule, FormsModule, NgIf, MatSlideToggle, MatHint, GuiFieldLabel],
+  imports: [ReactiveFormsModule, FormsModule, MatSlideToggle, MatHint, GuiFieldLabel],
 })
 export class GuiSwitch implements ControlValueAccessor {
   @Input() config: Partial<GuiControl> = {};

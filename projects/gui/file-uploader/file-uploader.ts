@@ -1,4 +1,3 @@
-import { NgIf, NgSwitch, NgSwitchCase, NgSwitchDefault } from '@angular/common';
 import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import {
   ChangeDetectionStrategy,
@@ -61,10 +60,6 @@ export interface FileUploadContent {
   imports: [
     ReactiveFormsModule,
     FormsModule,
-    NgIf,
-    NgSwitch,
-    NgSwitchCase,
-    NgSwitchDefault,
     MatFormField,
     MatIcon,
     MatPrefix,

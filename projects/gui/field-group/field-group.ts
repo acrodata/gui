@@ -1,4 +1,3 @@
-import { NgIf } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
@@ -23,7 +22,7 @@ import { GuiControl } from '../interface';
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [NgIf, GuiFieldLabel],
+  imports: [GuiFieldLabel],
 })
 export class GuiFieldGroup implements OnInit, DoCheck {
   @Input() config: Partial<GuiControl> = {};

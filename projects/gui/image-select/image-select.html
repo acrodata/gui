@@ -1,9 +1,11 @@
 <mat-form-field>
-  <span *ngIf="config.prefix" matPrefix>{{config.prefix}}</span>
+  @if (config.prefix) {
+    <span matPrefix>{{config.prefix}}</span>
+  }
   <mtx-select [items]="config.options||[]" [appendTo]="appendTo" bindValue="value"
-              [(ngModel)]="value" [disabled]="disabled"
-              [placeholder]="config.placeholder||''"
-              (change)="onValueChange()">
+    [(ngModel)]="value" [disabled]="disabled"
+    [placeholder]="config.placeholder||''"
+    (change)="onValueChange()">
     <ng-template ng-label-tmp let-opt="item">
       <img [src]="opt.src" [alt]="opt.label" />
       <span>{{opt.label}}</span>
@@ -13,8 +15,12 @@
       <span>{{opt.label}}</span>
     </ng-template>
   </mtx-select>
-  <span *ngIf="config.suffix" matSuffix>{{config.suffix}}</span>
-  <mat-hint *ngIf="config.parentType==='inline'">
-    <gui-field-label [config]="config" />
-  </mat-hint>
+  @if (config.suffix) {
+    <span matSuffix>{{config.suffix}}</span>
+  }
+  @if (config.parentType==='inline') {
+    <mat-hint>
+      <gui-field-label [config]="config" />
+    </mat-hint>
+  }
 </mat-form-field>

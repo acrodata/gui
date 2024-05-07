@@ -1,4 +1,4 @@
-import { NgFor, NgIf, NgSwitch, NgSwitchCase, NgTemplateOutlet } from '@angular/common';
+import { NgTemplateOutlet } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -57,10 +57,6 @@ let nextUniqueId = 0;
   imports: [
     ReactiveFormsModule,
     NgTemplateOutlet,
-    NgFor,
-    NgIf,
-    NgSwitch,
-    NgSwitchCase,
     MatExpansionPanel,
     MatExpansionPanelHeader,
     MatExpansionPanelContent,

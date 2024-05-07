@@ -1,16 +1,22 @@
 <mat-button-toggle-group [(ngModel)]="value" [disabled]="disabled" [multiple]="config.multiple"
-                         hideSingleSelectionIndicator hideMultipleSelectionIndicator
-                         (change)="onValueChange()">
-  <mat-button-toggle *ngFor="let opt of config.options" disableRipple
-                     [class]="{'gui-icon-toggle': config.useIcon}"
-                     [flex]="opt.col"
-                     [value]="opt.value"
-                     [disabled]="opt.disabled"
-                     [title]="config.useIcon ? opt.label : ''">
-    <gui-icon *ngIf="config.useIcon; else textLabel" [src]="opt.src!" />
-    <ng-template #textLabel>{{opt.label}}</ng-template>
-  </mat-button-toggle>
+  (change)="onValueChange()" hideSingleSelectionIndicator hideMultipleSelectionIndicator>
+  @for (opt of config.options; track opt) {
+    <mat-button-toggle disableRipple
+      [class.gui-icon-toggle]="config.useIcon"
+      [flex]="opt.col"
+      [value]="opt.value"
+      [disabled]="opt.disabled"
+      [title]="config.useIcon ? opt.label : ''">
+      @if (config.useIcon) {
+        <gui-icon [src]="opt.src!" />
+      } @else {
+        {{opt.label}}
+      }
+    </mat-button-toggle>
+  }
 </mat-button-toggle-group>
-<mat-hint *ngIf="config.parentType==='inline'">
-  <gui-field-label [config]="config" />
-</mat-hint>
+@if (config.parentType==='inline') {
+  <mat-hint>
+    <gui-field-label [config]="config" />
+  </mat-hint>
+}

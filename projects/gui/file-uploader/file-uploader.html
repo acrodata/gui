@@ -2,34 +2,44 @@
   <mat-icon matPrefix svgIcon="link" />
 
   <input matInput type="text" [ngModel]="url" [disabled]="disabled"
-         [placeholder]="config.placeholder||''"
-         (change)="onUrlChange($event)" (blur)="onBlur()">
+    [placeholder]="config.placeholder||''"
+    (change)="onUrlChange($event)" (blur)="onBlur()">
 
-  <button *ngIf="url" matSuffix mat-icon-button color="warn"
-          [disabled]="disabled" (click)="onClear()">
-    <mat-icon svgIcon="close" />
-  </button>
+  @if (url) {
+    <button matSuffix mat-icon-button color="warn" [disabled]="disabled" (click)="onClear()">
+      <mat-icon svgIcon="close" />
+    </button>
+  }
 </mat-form-field>
 
 <figure class="gui-file-content">
-  <ng-container *ngIf="url" [ngSwitch]="type">
-    <img *ngSwitchCase="'image'" [src]="url" />
-
-    <video *ngSwitchCase="'video'" [src]="url"></video>
-
-    <audio *ngSwitchCase="'audio'" [src]="url" controls></audio>
-
-    <mat-icon *ngSwitchDefault svgIcon="file_outline" />
-  </ng-container>
-
-  <div *ngIf="!url" class="gui-file-placeholder">
-    <mat-icon svgIcon="file_upload" />
-  </div>
+  @if (url) {
+    @switch (type) {
+      @case ('image') {
+        <img [src]="url" />
+      }
+      @case ('video') {
+        <video [src]="url"></video>
+      }
+      @case ('audio') {
+        <audio [src]="url" controls></audio>
+      }
+      @default {
+        <mat-icon svgIcon="file_outline" />
+      }
+    }
+  } @else {
+    <div class="gui-file-placeholder">
+      <mat-icon svgIcon="file_upload" />
+    </div>
+  }
 
   <input #fileInput type="file" [accept]="accept" [name]="name"
-         [disabled]="disabled" (change)="onFileChange($event)">
+    [disabled]="disabled" (change)="onFileChange($event)">
 </figure>
 
-<mat-hint *ngIf="config.parentType==='inline'">
-  <gui-field-label [config]="config" />
-</mat-hint>
+@if (config.parentType==='inline') {
+  <mat-hint>
+    <gui-field-label [config]="config" />
+  </mat-hint>
+}

@@ -1,4 +1,3 @@
-import { NgIf } from '@angular/common';
 import {
   AfterViewInit,
   ChangeDetectionStrategy,
@@ -44,7 +43,6 @@ import { GuiControl } from '../interface';
   imports: [
     ReactiveFormsModule,
     FormsModule,
-    NgIf,
     MatFormField,
     MatPrefix,
     MatSuffix,

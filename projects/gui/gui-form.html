@@ -1,215 +1,250 @@
 <form [formGroup]="form">
-  <div *ngFor="let item of formFields">
-    <ng-template [ngTemplateOutlet]="controlType"
-                 [ngTemplateOutletContext]="{$implicit: item, formGroup: form}">
-    </ng-template>
-  </div>
+  @for (item of formFields; track item) {
+    <div>
+      <ng-template [ngTemplateOutlet]="controlType"
+        [ngTemplateOutletContext]="{$implicit: item, formGroup: form}">
+      </ng-template>
+    </div>
+  }
 </form>
 
 <ng-template #controlType let-item let-parent="parent" let-form="formGroup">
-  <ng-container *ngIf="item.show" [ngSwitch]="item.type" [formGroup]="form">
-    <!-- Text -->
-    <gui-field-group *ngSwitchCase="'text'" [config]="item" [flex]="item.col">
-      <gui-input-text [formControlName]="item.key" [config]="item" />
-    </gui-field-group>
-    <!-- Number -->
-    <gui-field-group *ngSwitchCase="'number'" [config]="item" [flex]="item.col">
-      <gui-input-number [formControlName]="item.key" [config]="item" />
-    </gui-field-group>
-    <!-- Select -->
-    <gui-field-group *ngSwitchCase="'select'" [config]="item" [flex]="item.col">
-      <gui-select [formControlName]="item.key" [config]="item" />
-    </gui-field-group>
-    <!-- Switch -->
-    <gui-field-group *ngSwitchCase="'switch'" [config]="item" [flex]="item.col">
-      <gui-switch [formControlName]="item.key" [config]="item" />
-    </gui-field-group>
-    <!-- Slider -->
-    <gui-field-group *ngSwitchCase="'slider'" [config]="item" [flex]="item.col">
-      <gui-slider [formControlName]="item.key" [config]="item" />
-    </gui-field-group>
-    <!-- Button Toggle -->
-    <gui-field-group *ngSwitchCase="'buttonToggle'" [config]="item" [flex]="item.col">
-      <gui-button-toggle [formControlName]="item.key" [config]="item" />
-    </gui-field-group>
-    <!-- Fill -->
-    <gui-field-group *ngSwitchCase="'fill'" [config]="item" [flex]="item.col">
-      <gui-fill [formControlName]="item.key" [config]="item" />
-    </gui-field-group>
-    <!-- File -->
-    <gui-field-group *ngSwitchCase="'file'" [config]="item" [flex]="item.col">
-      <gui-file-uploader [formControlName]="item.key" [config]="item" />
-    </gui-field-group>
-    <!-- Image -->
-    <gui-field-group *ngSwitchCase="'image'" [config]="item" [flex]="item.col">
-      <gui-file-uploader type="image" [formControlName]="item.key" [config]="item" />
-    </gui-field-group>
-    <!-- Video -->
-    <gui-field-group *ngSwitchCase="'video'" [config]="item" [flex]="item.col">
-      <gui-file-uploader type="video" [formControlName]="item.key" [config]="item" />
-    </gui-field-group>
-    <!-- Audio -->
-    <gui-field-group *ngSwitchCase="'audio'" [config]="item" [flex]="item.col">
-      <gui-file-uploader type="audio" [formControlName]="item.key" [config]="item" />
-    </gui-field-group>
-    <!-- Image Select -->
-    <gui-field-group *ngSwitchCase="'imageSelect'" [config]="item" [flex]="item.col">
-      <gui-image-select [formControlName]="item.key" [config]="item" [appendTo]="'#'+uid" />
-    </gui-field-group>
-    <!-- Textarea -->
-    <gui-field-group *ngSwitchCase="'textarea'" [config]="item" [flex]="item.col">
-      <gui-textarea [formControlName]="item.key" [config]="item" />
-    </gui-field-group>
-    <!-- Hidden Input -->
-    <input *ngSwitchCase="'hidden'" type="hidden" [formControlName]="item.key">
-
-    <!-- Inline Group -->
-    <gui-inline-group *ngSwitchCase="'inline'" [config]="item" [formGroupName]="item.key">
-      <ng-container *ngFor="let child of item.children">
-        <ng-template [ngTemplateOutlet]="controlType"
-                     [ngTemplateOutletContext]="{$implicit: child, parent: item, formGroup: form.get(item.key)}">
-        </ng-template>
-      </ng-container>
-    </gui-inline-group>
-
-    <!-- Group -->
-    <mat-expansion-panel *ngSwitchCase="'group'" [formGroupName]="item.key"
-                         [(expanded)]="item.expanded" [disabled]="item.disabled">
-      <mat-expansion-panel-header>
-        <gui-field-label [config]="item" />
-      </mat-expansion-panel-header>
-      <!-- Lazy rendering -->
-      <ng-template matExpansionPanelContent>
-        <div *ngFor="let child of item.children">
-          <ng-template [ngTemplateOutlet]="controlType"
-                       [ngTemplateOutletContext]="{$implicit: child, parent: item, formGroup: form.get(item.key)}">
-          </ng-template>
-        </div>
-      </ng-template>
-    </mat-expansion-panel>
-
-    <!-- Tabs -->
-    <mat-expansion-panel *ngSwitchCase="'tabs'" [formArrayName]="item.key"
-                         [(expanded)]="item.expanded" [disabled]="item.disabled">
-      <mat-expansion-panel-header>
-        <gui-field-label [config]="item" />
-        <!-- Show operation buttons when panel opened -->
-        <ng-container *ngIf="item.expanded">
-          <button mat-icon-button type="button" [color]="item.mode!=='list'?'primary':''"
-                  (click)="changeTabsMode($event, item, 'normal')">
-            <mat-icon svgIcon="dots_horizontal" />
-          </button>
-          <button mat-icon-button type="button" [color]="item.mode==='list'?'primary':''"
-                  (click)="changeTabsMode($event, item, 'list')">
-            <mat-icon svgIcon="dots_vertical" />
-          </button>
-          <ng-container *ngIf="item.template && (item.addable || item.addable===undefined)">
-            <button mat-icon-button type="button" [disabled]="item.disabled"
-                    (click)="addTab($event, form.get(item.key), item, true)">
-              <mat-icon svgIcon="content_copy" />
-            </button>
-            <button mat-icon-button type="button" [disabled]="item.disabled"
-                    (click)="addTab($event, form.get(item.key), item)">
-              <mat-icon svgIcon="plus" />
-            </button>
-            <button mat-icon-button type="button" [disabled]="item.disabled"
-                    (click)="removeTab($event, form.get(item.key), item)">
-              <mat-icon svgIcon="delete" />
-            </button>
-          </ng-container>
-        </ng-container>
-      </mat-expansion-panel-header>
-      <!-- Lazy rendering -->
-      <ng-template matExpansionPanelContent>
-        <!-- Horizontal mode -->
-        <mat-tab-group *ngIf="item.mode!=='list'" class="gui-tabs" disableRipple
-                       [mat-stretch-tabs]="false" [(selectedIndex)]="item.selectedIndex">
-          <mat-tab *ngFor="let tab of item.children; index as i" [disabled]="tab.disabled">
-            <ng-template mat-tab-label>
-              <div>{{tab.name | ejs:{i} }}</div>
-            </ng-template>
-            <!-- FormControl & FormArray -->
-            <ng-container *ngIf="!tab.children || tab.children.length===0 || tab.type==='tabs'">
+  @if (item.show) {
+    <ng-container [formGroup]="form">
+      @switch (item.type) {
+        @case ('text') {
+          <gui-field-group [config]="item" [flex]="item.col">
+            <gui-input-text [formControlName]="item.key" [config]="item" />
+          </gui-field-group>
+        }
+        @case ('number') {
+          <gui-field-group [config]="item" [flex]="item.col">
+            <gui-input-number [formControlName]="item.key" [config]="item" />
+          </gui-field-group>
+        }
+        @case ('select') {
+          <gui-field-group [config]="item" [flex]="item.col">
+            <gui-select [formControlName]="item.key" [config]="item" />
+          </gui-field-group>
+        }
+        @case ('switch') {
+          <gui-field-group [config]="item" [flex]="item.col">
+            <gui-switch [formControlName]="item.key" [config]="item" />
+          </gui-field-group>
+        }
+        @case ('slider') {
+          <gui-field-group [config]="item" [flex]="item.col">
+            <gui-slider [formControlName]="item.key" [config]="item" />
+          </gui-field-group>
+        }
+        @case ('buttonToggle') {
+          <gui-field-group [config]="item" [flex]="item.col">
+            <gui-button-toggle [formControlName]="item.key" [config]="item" />
+          </gui-field-group>
+        }
+        @case ('fill') {
+          <gui-field-group [config]="item" [flex]="item.col">
+            <gui-fill [formControlName]="item.key" [config]="item" />
+          </gui-field-group>
+        }
+        @case ('file') {
+          <gui-field-group [config]="item" [flex]="item.col">
+            <gui-file-uploader [formControlName]="item.key" [config]="item" />
+          </gui-field-group>
+        }
+        @case ('image') {
+          <gui-field-group [config]="item" [flex]="item.col">
+            <gui-file-uploader type="image" [formControlName]="item.key" [config]="item" />
+          </gui-field-group>
+        }
+        @case ('video') {
+          <gui-field-group [config]="item" [flex]="item.col">
+            <gui-file-uploader type="video" [formControlName]="item.key" [config]="item" />
+          </gui-field-group>
+        }
+        @case ('audio') {
+          <gui-field-group [config]="item" [flex]="item.col">
+            <gui-file-uploader type="audio" [formControlName]="item.key" [config]="item" />
+          </gui-field-group>
+        }
+        @case ('imageSelect') {
+          <gui-field-group [config]="item" [flex]="item.col">
+            <gui-image-select [formControlName]="item.key" [config]="item" [appendTo]="'#'+uid" />
+          </gui-field-group>
+        }
+        @case ('textarea') {
+          <gui-field-group [config]="item" [flex]="item.col">
+            <gui-textarea [formControlName]="item.key" [config]="item" />
+          </gui-field-group>
+        }
+        @case ('hidden') {
+          <input type="hidden" [formControlName]="item.key">
+        }
+        @case ('inline') {
+          <gui-inline-group [config]="item" [formGroupName]="item.key">
+            @for (child of item.children; track child) {
               <ng-template [ngTemplateOutlet]="controlType"
-                           [ngTemplateOutletContext]="{$implicit: tab, parent: item, formGroup: form.get([item.key])}">
+                [ngTemplateOutletContext]="{$implicit: child, parent: item, formGroup: form.get(item.key)}">
               </ng-template>
-            </ng-container>
-            <!-- FormGroup -->
-            <ng-container *ngIf="tab.children?.length>0 && tab.type!=='tabs'">
-              <div *ngFor="let child of tab.children">
-                <ng-template [ngTemplateOutlet]="controlType"
-                             [ngTemplateOutletContext]="{$implicit: child, parent: item, formGroup: form.get([item.key, i])}">
-                </ng-template>
-              </div>
-            </ng-container>
-          </mat-tab>
-        </mat-tab-group>
-
-        <!-- Vertical mode -->
-        <div class="gui-list" *ngIf="item.mode==='list'">
-          <div class="gui-list-item" *ngFor="let tab of item.children; index as i"
-               [class.gui-list-item-active]="item.selectedIndex===i">
-            <div class="gui-list-item-heading">
-              <span class="gui-list-item-title"
-                    (click)="item.selectedIndex=i">{{tab.name | ejs:{i} }}</span>
-              <ng-container *ngIf="item.template && (item.addable || item.addable===undefined)">
-                <button mat-icon-button type="button" [disabled]="item.disabled"
-                        (click)="addTab($event, form.get(item.key), item, true, i)">
-                  <mat-icon svgIcon="content_copy" />
-                </button>
-                <button mat-icon-button type="button" [disabled]="item.disabled"
-                        (click)="addTab($event, form.get(item.key), item, false, i)">
-                  <mat-icon svgIcon="plus" />
-                </button>
-                <button mat-icon-button type="button" [disabled]="item.disabled"
-                        (click)="removeTab($event, form.get(item.key), item, i)">
-                  <mat-icon svgIcon="delete" />
-                </button>
-              </ng-container>
-            </div>
-            <div class="gui-list-item-content">
-              <!-- FormControl & FormArray -->
-              <ng-container *ngIf="!tab.children || tab.children.length===0 || tab.type==='tabs'">
-                <ng-template [ngTemplateOutlet]="controlType"
-                             [ngTemplateOutletContext]="{$implicit: tab, parent: item, formGroup: form.get([item.key])}">
-                </ng-template>
-              </ng-container>
-              <!-- FormGroup -->
-              <ng-container *ngIf="tab.children?.length>0 && tab.type!=='tabs'">
-                <div *ngFor="let child of tab.children">
+            }
+          </gui-inline-group>
+        }
+        @case ('group') {
+          <mat-expansion-panel [formGroupName]="item.key"
+            [(expanded)]="item.expanded" [disabled]="item.disabled">
+            <mat-expansion-panel-header>
+              <gui-field-label [config]="item" />
+            </mat-expansion-panel-header>
+            <!-- Lazy rendering -->
+            <ng-template matExpansionPanelContent>
+              @for (child of item.children; track child) {
+                <div>
                   <ng-template [ngTemplateOutlet]="controlType"
-                               [ngTemplateOutletContext]="{$implicit: child, parent: item, formGroup: form.get([item.key, i])}">
+                    [ngTemplateOutletContext]="{$implicit: child, parent: item, formGroup: form.get(item.key)}">
                   </ng-template>
                 </div>
-              </ng-container>
-            </div>
-          </div>
-        </div>
-      </ng-template>
-    </mat-expansion-panel>
-
-    <!-- Menu -->
-    <mat-tab-group class="gui-menu" *ngSwitchCase="'menu'" [formGroupName]="item.key" disableRipple>
-      <mat-tab *ngFor="let menuChild of item.children" [label]="menuChild.name"
-               [disabled]="menuChild.disabled">
-        <ng-template matTabContent>
-          <ng-container *ngIf="menuChild.type==='menuItem'">
-            <!-- Must wrap with div -->
-            <div *ngFor="let controlItem of menuChild.children" [formGroupName]="menuChild.key">
-              <ng-template [ngTemplateOutlet]="controlType"
-                           [ngTemplateOutletContext]="{$implicit: controlItem, formGroup: form.get([item.key, menuChild.key])}">
-              </ng-template>
-            </div>
-          </ng-container>
-          <!-- Support for unlimited nesting -->
-          <ng-container *ngIf="menuChild.type==='menu'">
-            <ng-template [ngTemplateOutlet]="controlType"
-                         [ngTemplateOutletContext]="{$implicit: menuChild, formGroup: form.get(item.key)}">
+              }
             </ng-template>
-          </ng-container>
-        </ng-template>
-      </mat-tab>
-    </mat-tab-group>
-
-  </ng-container>
+          </mat-expansion-panel>
+        }
+        @case ('tabs') {
+          <mat-expansion-panel [formArrayName]="item.key"
+            [(expanded)]="item.expanded" [disabled]="item.disabled">
+            <mat-expansion-panel-header>
+              <gui-field-label [config]="item" />
+              <!-- Show operation buttons when panel opened -->
+              @if (item.expanded) {
+                <button mat-icon-button type="button" [color]="item.mode!=='list'?'primary':''"
+                  (click)="changeTabsMode($event, item, 'normal')">
+                  <mat-icon svgIcon="dots_horizontal" />
+                </button>
+                <button mat-icon-button type="button" [color]="item.mode==='list'?'primary':''"
+                  (click)="changeTabsMode($event, item, 'list')">
+                  <mat-icon svgIcon="dots_vertical" />
+                </button>
+                @if (item.template && (item.addable || item.addable===undefined)) {
+                  <button mat-icon-button type="button" [disabled]="item.disabled"
+                    (click)="addTab($event, form.get(item.key), item, true)">
+                    <mat-icon svgIcon="content_copy" />
+                  </button>
+                  <button mat-icon-button type="button" [disabled]="item.disabled"
+                    (click)="addTab($event, form.get(item.key), item)">
+                    <mat-icon svgIcon="plus" />
+                  </button>
+                  <button mat-icon-button type="button" [disabled]="item.disabled"
+                    (click)="removeTab($event, form.get(item.key), item)">
+                    <mat-icon svgIcon="delete" />
+                  </button>
+                }
+              }
+            </mat-expansion-panel-header>
+            <!-- Lazy rendering -->
+            <ng-template matExpansionPanelContent>
+              @if (item.mode!=='list') {
+                <!-- Horizontal mode -->
+                <mat-tab-group class="gui-tabs" disableRipple
+                  [mat-stretch-tabs]="false" [(selectedIndex)]="item.selectedIndex">
+                  @for (tab of item.children; track tab; let i = $index) {
+                    <mat-tab [disabled]="tab.disabled">
+                      <ng-template mat-tab-label>
+                        <div>{{tab.name | ejs:{i} }}</div>
+                      </ng-template>
+                      <!-- FormControl & FormArray -->
+                      @if (!tab.children || tab.children.length===0 || tab.type==='tabs') {
+                        <ng-template [ngTemplateOutlet]="controlType"
+                          [ngTemplateOutletContext]="{$implicit: tab, parent: item, formGroup: form.get([item.key])}">
+                        </ng-template>
+                      }
+                      <!-- FormGroup -->
+                      @if (tab.children?.length>0 && tab.type!=='tabs') {
+                        @for (child of tab.children; track child) {
+                          <div>
+                            <ng-template [ngTemplateOutlet]="controlType"
+                              [ngTemplateOutletContext]="{$implicit: child, parent: item, formGroup: form.get([item.key, i])}">
+                            </ng-template>
+                          </div>
+                        }
+                      }
+                    </mat-tab>
+                  }
+                </mat-tab-group>
+              } @else {
+                <!-- Vertical mode -->
+                <div class="gui-list">
+                  @for (tab of item.children; track tab; let i = $index) {
+                    <div class="gui-list-item"
+                      [class.gui-list-item-active]="item.selectedIndex===i">
+                      <div class="gui-list-item-heading">
+                        <span class="gui-list-item-title"
+                        (click)="item.selectedIndex=i">{{tab.name | ejs:{i} }}</span>
+                        @if (item.template && (item.addable || item.addable===undefined)) {
+                          <button mat-icon-button type="button" [disabled]="item.disabled"
+                            (click)="addTab($event, form.get(item.key), item, true, i)">
+                            <mat-icon svgIcon="content_copy" />
+                          </button>
+                          <button mat-icon-button type="button" [disabled]="item.disabled"
+                            (click)="addTab($event, form.get(item.key), item, false, i)">
+                            <mat-icon svgIcon="plus" />
+                          </button>
+                          <button mat-icon-button type="button" [disabled]="item.disabled"
+                            (click)="removeTab($event, form.get(item.key), item, i)">
+                            <mat-icon svgIcon="delete" />
+                          </button>
+                        }
+                      </div>
+                      <div class="gui-list-item-content">
+                        <!-- FormControl & FormArray -->
+                        @if (!tab.children || tab.children.length===0 || tab.type==='tabs') {
+                          <ng-template [ngTemplateOutlet]="controlType"
+                            [ngTemplateOutletContext]="{$implicit: tab, parent: item, formGroup: form.get([item.key])}">
+                          </ng-template>
+                        }
+                        <!-- FormGroup -->
+                        @if (tab.children?.length>0 && tab.type!=='tabs') {
+                          @for (child of tab.children; track child) {
+                            <div>
+                              <ng-template [ngTemplateOutlet]="controlType"
+                                [ngTemplateOutletContext]="{$implicit: child, parent: item, formGroup: form.get([item.key, i])}">
+                              </ng-template>
+                            </div>
+                          }
+                        }
+                      </div>
+                    </div>
+                  }
+                </div>
+              }
+            </ng-template>
+          </mat-expansion-panel>
+        }
+        @case ('menu') {
+          <mat-tab-group class="gui-menu" [formGroupName]="item.key" disableRipple>
+            @for (menuChild of item.children; track menuChild) {
+              <mat-tab [label]="menuChild.name"
+                [disabled]="menuChild.disabled">
+                <ng-template matTabContent>
+                  @if (menuChild.type==='menuItem') {
+                    <!-- Must wrap with div -->
+                    @for (controlItem of menuChild.children; track controlItem) {
+                      <div [formGroupName]="menuChild.key">
+                        <ng-template [ngTemplateOutlet]="controlType"
+                          [ngTemplateOutletContext]="{$implicit: controlItem, formGroup: form.get([item.key, menuChild.key])}">
+                        </ng-template>
+                      </div>
+                    }
+                  }
+                  <!-- Support for unlimited nesting -->
+                  @if (menuChild.type==='menu') {
+                    <ng-template [ngTemplateOutlet]="controlType"
+                      [ngTemplateOutletContext]="{$implicit: menuChild, formGroup: form.get(item.key)}">
+                    </ng-template>
+                  }
+                </ng-template>
+              </mat-tab>
+            }
+          </mat-tab-group>
+        }
+      }
+    </ng-container>
+  }
 </ng-template>

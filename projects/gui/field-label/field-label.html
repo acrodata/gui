@@ -1,6 +1,9 @@
-<span *ngIf="!config.description">{{title}}</span>
-<span *ngIf="config.description"
-      [class.gui-field-label-with-description]="config.description"
-      [matTooltip]="config.description"
-      matTooltipPosition="above"
-      matTooltipClass="gui-field-label-tooltip">{{title}}</span>
+@if (!config.description) {
+  <span>{{title}}</span>
+} @else {
+  <span
+    [class.gui-field-label-with-description]="config.description"
+    [matTooltip]="config.description"
+    matTooltipPosition="above"
+    matTooltipClass="gui-field-label-tooltip">{{title}}</span>
+}

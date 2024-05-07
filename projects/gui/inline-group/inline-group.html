@@ -1,4 +1,6 @@
-<gui-field-label *ngIf="config.name" [config]="config" />
+@if (config.name) {
+  <gui-field-label [config]="config" />
+}
 <div class="gui-inline-group-content">
   <ng-content></ng-content>
 </div>

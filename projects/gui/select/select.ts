@@ -1,4 +1,3 @@
-import { NgFor, NgIf } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
@@ -39,8 +38,6 @@ import { GuiBasicValue, GuiControl } from '../interface';
   imports: [
     ReactiveFormsModule,
     FormsModule,
-    NgFor,
-    NgIf,
     MatFormField,
     MatPrefix,
     MatSelect,
