@@ -7,7 +7,7 @@ import { GuiFields } from '@acrodata/gui';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './page-header.component.html',
-  styleUrls: ['./page-header.component.scss'],
+  styleUrl: './page-header.component.scss',
   encapsulation: ViewEncapsulation.None,
   host: {
     class: 'page-header',

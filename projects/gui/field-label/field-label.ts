@@ -13,7 +13,7 @@ import { GuiControl } from '../interface';
 @Component({
   selector: 'gui-field-label',
   templateUrl: './field-label.html',
-  styleUrls: ['./field-label.scss'],
+  styleUrl: './field-label.scss',
   host: {
     '[class.gui-field-label]': '!styless',
     '[title]': 'title',

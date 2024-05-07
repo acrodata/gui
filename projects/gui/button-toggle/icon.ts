@@ -3,11 +3,11 @@ import { ChangeDetectionStrategy, Component, Input, ViewEncapsulation } from '@a
 
 @Component({
   selector: 'gui-icon',
-  styleUrls: ['./icon.scss'],
   template: `
     <img *ngIf="isUrl()" [src]="src" />
     <i *ngIf="!isUrl()" [class]="src"></i>
   `,
+  styleUrl: './icon.scss',
   host: {
     class: 'gui-icon',
   },

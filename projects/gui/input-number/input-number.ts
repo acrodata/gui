@@ -21,7 +21,7 @@ import { GuiControl } from '../interface';
 @Component({
   selector: 'gui-input-number',
   templateUrl: './input-number.html',
-  styleUrls: ['./input-number.scss'],
+  styleUrl: './input-number.scss',
   host: {
     class: 'gui-field gui-input-number',
   },

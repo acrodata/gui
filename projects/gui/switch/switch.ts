@@ -21,7 +21,7 @@ import { GuiControl } from '../interface';
 @Component({
   selector: 'gui-switch',
   templateUrl: './switch.html',
-  styleUrls: ['./switch.scss'],
+  styleUrl: './switch.scss',
   host: {
     class: 'gui-field gui-switch',
   },

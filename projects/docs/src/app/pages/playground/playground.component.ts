@@ -19,7 +19,7 @@ import { GuiFields, GuiModule } from '@acrodata/gui';
   standalone: true,
   imports: [CommonModule, FormsModule, MonacoEditorModule, MtxSplitModule, GuiModule],
   templateUrl: './playground.component.html',
-  styleUrls: ['./playground.component.scss'],
+  styleUrl: './playground.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PlaygroundComponent implements OnInit {

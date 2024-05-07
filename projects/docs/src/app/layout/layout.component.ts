@@ -18,7 +18,7 @@ import { filter } from 'rxjs';
     MatButtonModule,
   ],
   templateUrl: './layout.component.html',
-  styleUrls: ['./layout.component.scss'],
+  styleUrl: './layout.component.scss',
   host: {
     class: 'container-wrap',
   },

@@ -26,7 +26,7 @@ import { GuiControl } from '../interface';
 @Component({
   selector: 'gui-fill',
   templateUrl: './fill.html',
-  styleUrls: ['./fill.scss'],
+  styleUrl: './fill.scss',
   host: {
     class: 'gui-field gui-fill',
   },

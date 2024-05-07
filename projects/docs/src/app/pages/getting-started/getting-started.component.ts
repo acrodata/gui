@@ -8,6 +8,6 @@ import { HighlightModule } from 'ngx-highlightjs';
   standalone: true,
   imports: [CommonModule, HighlightModule, PageHeaderComponent],
   templateUrl: './getting-started.component.html',
-  styleUrls: ['./getting-started.component.scss'],
+  styleUrl: './getting-started.component.scss',
 })
 export class GettingStartedComponent {}

@@ -9,7 +9,7 @@ import { ExampleViewerComponent, PageHeaderComponent } from '../../shared';
   standalone: true,
   imports: [CommonModule, ExampleViewerComponent, PageHeaderComponent, HighlightModule],
   templateUrl: './media-controls.component.html',
-  styleUrls: ['./media-controls.component.scss'],
+  styleUrl: './media-controls.component.scss',
 })
 export class MediaControlsComponent {
   imageConfig: GuiFields = {

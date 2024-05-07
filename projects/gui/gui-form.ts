@@ -46,7 +46,7 @@ let nextUniqueId = 0;
 @Component({
   selector: 'gui-form',
   templateUrl: './gui-form.html',
-  styleUrls: ['./gui-form.scss'],
+  styleUrl: './gui-form.scss',
   host: {
     '[attr.id]': 'uid',
     'class': 'gui-form',

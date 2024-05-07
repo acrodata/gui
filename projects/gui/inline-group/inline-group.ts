@@ -6,7 +6,7 @@ import { GuiControl } from '../interface';
 @Component({
   selector: 'gui-inline-group',
   templateUrl: './inline-group.html',
-  styleUrls: ['./inline-group.scss'],
+  styleUrl: './inline-group.scss',
   host: {
     class: 'gui-inline-group',
   },

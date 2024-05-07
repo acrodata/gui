@@ -12,7 +12,7 @@ import { SettingsService } from '../settings.service';
   standalone: true,
   imports: [CommonModule, RouterModule, MatSidenavModule, MatToolbarModule, MatButtonModule],
   templateUrl: './layout.component.html',
-  styleUrls: ['./layout.component.scss'],
+  styleUrl: './layout.component.scss',
   encapsulation: ViewEncapsulation.None,
 })
 export class LayoutComponent implements OnInit {

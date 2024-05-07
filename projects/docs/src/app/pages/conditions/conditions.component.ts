@@ -9,7 +9,7 @@ import { ExampleViewerComponent, PageHeaderComponent } from '../../shared';
   standalone: true,
   imports: [CommonModule, PageHeaderComponent, ExampleViewerComponent, HighlightModule],
   templateUrl: './conditions.component.html',
-  styleUrls: ['./conditions.component.scss'],
+  styleUrl: './conditions.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ConditionsComponent {

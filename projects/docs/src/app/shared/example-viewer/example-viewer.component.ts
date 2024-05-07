@@ -10,7 +10,7 @@ import { HighlightModule } from 'ngx-highlightjs';
   standalone: true,
   imports: [CommonModule, GuiModule, MatInputModule, TextFieldModule, HighlightModule],
   templateUrl: './example-viewer.component.html',
-  styleUrls: ['./example-viewer.component.scss'],
+  styleUrl: './example-viewer.component.scss',
 })
 export class ExampleViewerComponent {
   @Input() config: GuiFields = {};

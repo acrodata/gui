@@ -16,7 +16,7 @@ import { GuiControl } from '../interface';
 @Component({
   selector: 'gui-textarea',
   templateUrl: './textarea.html',
-  styleUrls: ['./textarea.scss'],
+  styleUrl: './textarea.scss',
   host: {
     class: 'gui-field gui-textarea',
   },

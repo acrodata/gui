@@ -10,7 +10,7 @@ import { cloneDeep } from 'lodash-es';
   standalone: true,
   imports: [CommonModule, GuiModule, MatButtonModule],
   templateUrl: './gradient-generator.component.html',
-  styleUrls: ['./gradient-generator.component.scss'],
+  styleUrl: './gradient-generator.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class GradientGeneratorComponent implements OnInit {

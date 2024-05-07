@@ -44,7 +44,7 @@ export interface FileUploadContent {
 @Component({
   selector: 'gui-file-uploader',
   templateUrl: './file-uploader.html',
-  styleUrls: ['./file-uploader.scss'],
+  styleUrl: './file-uploader.scss',
   host: {
     class: 'gui-field gui-file-uploader',
   },

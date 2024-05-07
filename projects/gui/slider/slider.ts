@@ -22,7 +22,7 @@ import { GuiControl } from '../interface';
 @Component({
   selector: 'gui-slider',
   templateUrl: './slider.html',
-  styleUrls: ['./slider.scss'],
+  styleUrl: './slider.scss',
   host: {
     class: 'gui-field gui-slider',
   },

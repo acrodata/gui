@@ -10,7 +10,7 @@ import { SettingsService } from '../settings.service';
   standalone: true,
   selector: 'app-playground',
   templateUrl: './playground.component.html',
-  styleUrls: ['./playground.component.scss'],
+  styleUrl: './playground.component.scss',
   imports: [CommonModule, FormsModule, MonacoEditorModule, GuiModule],
 })
 export class PlaygroundComponent implements OnInit {

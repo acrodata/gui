@@ -8,7 +8,7 @@ import { FormGroup } from '@angular/forms';
   imports: [CommonModule, GuiModule],
   selector: 'app-examples',
   templateUrl: './examples.component.html',
-  styleUrls: ['./examples.component.scss'],
+  styleUrl: './examples.component.scss',
 })
 export class ExamplesComponent implements OnInit {
   form = new FormGroup({});

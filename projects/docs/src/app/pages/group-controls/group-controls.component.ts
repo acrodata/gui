@@ -8,7 +8,7 @@ import { ExampleViewerComponent, PageHeaderComponent } from '../../shared';
   standalone: true,
   imports: [CommonModule, ExampleViewerComponent, PageHeaderComponent],
   templateUrl: './group-controls.component.html',
-  styleUrls: ['./group-controls.component.scss'],
+  styleUrl: './group-controls.component.scss',
 })
 export class GroupControlsComponent {
   groupConfig: GuiFields = {

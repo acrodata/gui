@@ -18,7 +18,7 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
     FormsModule,
   ],
   templateUrl: './basic-controls.component.html',
-  styleUrls: ['./basic-controls.component.scss'],
+  styleUrl: './basic-controls.component.scss',
 })
 export class BasicControlsComponent {
   textConfig: GuiFields = {
@@ -132,8 +132,8 @@ export class BasicControlsComponent {
           this.useIcon == 1
             ? 'mdi mdi-format-align-' + opt.value
             : this.useIcon == 2
-            ? './assets/images/align_' + opt.value + '.png'
-            : undefined,
+              ? './assets/images/align_' + opt.value + '.png'
+              : undefined,
       };
     });
     this.buttonToggleConfig = { ...this.buttonToggleConfig };

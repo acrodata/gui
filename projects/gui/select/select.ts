@@ -22,7 +22,7 @@ import { GuiBasicValue, GuiControl } from '../interface';
 @Component({
   selector: 'gui-select',
   templateUrl: './select.html',
-  styleUrls: ['./select.scss'],
+  styleUrl: './select.scss',
   host: {
     class: 'gui-field gui-select',
   },

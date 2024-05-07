@@ -23,7 +23,7 @@ import { GuiIcon } from './icon';
 @Component({
   selector: 'gui-button-toggle',
   templateUrl: './button-toggle.html',
-  styleUrls: ['./button-toggle.scss'],
+  styleUrl: './button-toggle.scss',
   host: {
     class: 'gui-field gui-button-toggle',
   },

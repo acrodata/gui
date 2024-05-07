@@ -21,7 +21,7 @@ import { GuiControl } from '../interface';
 @Component({
   selector: 'gui-input-text',
   templateUrl: './input-text.html',
-  styleUrls: ['./input-text.scss'],
+  styleUrl: './input-text.scss',
   host: {
     class: 'gui-field gui-input-text',
   },

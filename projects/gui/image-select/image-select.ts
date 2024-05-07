@@ -27,7 +27,7 @@ import { GuiControl } from '../interface';
 @Component({
   selector: 'gui-image-select',
   templateUrl: './image-select.html',
-  styleUrls: ['./image-select.scss'],
+  styleUrl: './image-select.scss',
   host: {
     class: 'gui-field gui-image-select',
   },

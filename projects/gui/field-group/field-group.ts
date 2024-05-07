@@ -16,7 +16,7 @@ import { GuiControl } from '../interface';
 @Component({
   selector: 'gui-field-group',
   templateUrl: './field-group.html',
-  styleUrls: ['./field-group.scss'],
+  styleUrl: './field-group.scss',
   host: {
     class: 'gui-field-group',
   },
