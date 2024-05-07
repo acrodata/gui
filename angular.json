@@ -38,22 +38,16 @@
     },
     "dev-app": {
       "projectType": "application",
-      "schematics": {
-        "@schematics/angular:component": {
-          "style": "scss",
-          "skipTests": true
-        }
-      },
       "root": "projects/dev-app",
       "sourceRoot": "projects/dev-app/src",
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular-devkit/build-angular:application",
           "options": {
             "outputPath": "dist/dev-app",
             "index": "projects/dev-app/src/index.html",
-            "main": "projects/dev-app/src/main.ts",
+            "browser": "projects/dev-app/src/main.ts",
             "polyfills": [
               "zone.js"
             ],
@@ -98,12 +92,9 @@
               "outputHashing": "all"
             },
             "development": {
-              "buildOptimizer": false,
               "optimization": false,
-              "vendorChunk": true,
               "extractLicenses": false,
-              "sourceMap": true,
-              "namedChunks": true
+              "sourceMap": true
             }
           },
           "defaultConfiguration": "production"
@@ -149,28 +140,16 @@
     },
     "docs": {
       "projectType": "application",
-      "schematics": {
-        "@schematics/angular:component": {
-          "style": "scss",
-          "standalone": true
-        },
-        "@schematics/angular:directive": {
-          "standalone": true
-        },
-        "@schematics/angular:pipe": {
-          "standalone": true
-        }
-      },
       "root": "projects/docs",
       "sourceRoot": "projects/docs/src",
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular-devkit/build-angular:application",
           "options": {
             "outputPath": "dist/docs",
             "index": "projects/docs/src/index.html",
-            "main": "projects/docs/src/main.ts",
+            "browser": "projects/docs/src/main.ts",
             "polyfills": [
               "zone.js"
             ],
@@ -215,12 +194,9 @@
               "outputHashing": "all"
             },
             "development": {
-              "buildOptimizer": false,
               "optimization": false,
-              "vendorChunk": true,
               "extractLicenses": false,
-              "sourceMap": true,
-              "namedChunks": true
+              "sourceMap": true
             }
           },
           "defaultConfiguration": "production"
@@ -263,6 +239,12 @@
           }
         }
       }
+    }
+  },
+  "schematics": {
+    "@schematics/angular:component": {
+      "style": "scss",
+      "skipTests": true
     }
   },
   "cli": {
