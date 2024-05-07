@@ -1,16 +1,16 @@
-import { CommonModule, DOCUMENT } from '@angular/common';
-import { Component, Inject, OnInit, ViewEncapsulation } from '@angular/core';
-import { RouterModule } from '@angular/router';
-import { MatButtonModule } from '@angular/material/button';
-import { MatToolbarModule } from '@angular/material/toolbar';
 import { Directionality } from '@angular/cdk/bidi';
+import { DOCUMENT } from '@angular/common';
+import { Component, Inject, OnInit, ViewEncapsulation } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { RouterModule } from '@angular/router';
 import { SettingsService } from '../settings.service';
 
 @Component({
   selector: 'app-layout',
   standalone: true,
-  imports: [CommonModule, RouterModule, MatSidenavModule, MatToolbarModule, MatButtonModule],
+  imports: [RouterModule, MatSidenavModule, MatToolbarModule, MatButtonModule],
   templateUrl: './layout.component.html',
   styleUrl: './layout.component.scss',
   encapsulation: ViewEncapsulation.None,

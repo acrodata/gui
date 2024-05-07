@@ -7,14 +7,7 @@ import { filter } from 'rxjs';
 @Component({
   selector: 'app-layout',
   standalone: true,
-  imports: [
-    RouterOutlet,
-    RouterLink,
-    RouterLinkActive,
-    MatButtonModule,
-    MatIconModule,
-    MatButtonModule,
-  ],
+  imports: [RouterOutlet, RouterLink, RouterLinkActive, MatButtonModule, MatIconModule],
   templateUrl: './layout.component.html',
   styleUrl: './layout.component.scss',
   host: {

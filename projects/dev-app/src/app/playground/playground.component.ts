@@ -7,11 +7,11 @@ import { MonacoEditorModule, MonacoProviderService } from 'ng-monaco-editor';
 import { SettingsService } from '../settings.service';
 
 @Component({
-  standalone: true,
   selector: 'app-playground',
+  standalone: true,
+  imports: [CommonModule, FormsModule, MonacoEditorModule, GuiModule],
   templateUrl: './playground.component.html',
   styleUrl: './playground.component.scss',
-  imports: [CommonModule, FormsModule, MonacoEditorModule, GuiModule],
 })
 export class PlaygroundComponent implements OnInit {
   form = new FormGroup({});

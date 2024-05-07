@@ -4,9 +4,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 
 @Component({
+  selector: 'app-examples',
   standalone: true,
   imports: [CommonModule, GuiModule],
-  selector: 'app-examples',
   templateUrl: './examples.component.html',
   styleUrl: './examples.component.scss',
 })
