@@ -12,17 +12,6 @@
   <a href="getting-started#setup">Setup</a>
 </h2>
 
-<pre><code highlight="import { GuiModule } from '@acrodata/gui';
-
-@NgModule({
-  ...
-  imports: [GuiModule, ...],
-  ...
-})
-export class YourAppModule {
-}"
-[languages]="['ts']"></code></pre>
-
 <p>Define a theme with Angular Material's theming system.
   <a href="https://material.angular.io/guide/theming" target="_blank">More about theming.</a>
 </p>
@@ -37,16 +26,26 @@ $theme: mat.define-light-theme(...);
 @include gui.all-control-themes($theme);"
 [languages]="['scss']"></code></pre>
 
+<p>🚨 If you use the Angular Material as default library and have included all component themes,
+  there's no need to include the GUI themes anymore.</p>
+
+<pre><code highlight="+ @include mat.all-component-themes($theme);
++ @include mtx.all-component-themes($theme);
+- @include gui.all-control-themes($theme);"
+[languages]="['diff']"></code></pre>
+
 <h2 id="usage">
   <a href="getting-started#usage">Usage</a>
 </h2>
 
 <pre><code highlight="import { Component } from '@angular/core';
-import { GuiFields } from '@acrodata/gui';
+import { GuiModule, GuiFields } from '@acrodata/gui';
 
 @Component({
   selector: 'your-app',
   template: `&lt;gui-form [config]=&quot;config&quot; [model]=&quot;model&quot; [form]=&quot;form&quot;&gt;&lt;/gui-form&gt;`,
+  standalone: true,
+  imports: [GuiModule],
 })
 export class YourAppComponent {
   config: GuiFields = {

@@ -14,6 +14,10 @@
   --hl-number: rgb(50, 160, 85);
   --hl-comment: rgba(100, 100, 100);
   --hl-title: rgb(165, 120, 20);
+  --hl-inserted-text: rgb(17, 99, 41);
+  --hl-inserted-bg: rgb(218, 251, 225);
+  --hl-deleted-text: rgb(130, 7, 30);
+  --hl-deleted-bg: rgb(255, 235, 233);
   --mat-standard-button-toggle-height: 32px;
 }
 
@@ -165,4 +169,14 @@ table {
 
 .hljs-title {
   color: var(--hl-title);
+}
+
+.hljs-addition {
+  color: var(--hl-inserted-text);
+  background-color: var(--hl-inserted-bg);
+}
+
+.hljs-deletion {
+  color: var(--hl-deleted-text);
+  background-color: var(--hl-deleted-bg);
 }

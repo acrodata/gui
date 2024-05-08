@@ -31,6 +31,7 @@ export const appConfig: ApplicationConfig = {
           scss: () => import('highlight.js/lib/languages/scss'),
           xml: () => import('highlight.js/lib/languages/xml'),
           json: () => import('highlight.js/lib/languages/json'),
+          diff: () => import('highlight.js/lib/languages/diff'),
         },
       },
     },
