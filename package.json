@@ -20,7 +20,7 @@
     "build:lib": "ng build gui",
     "publish": "npm run build:lib && cd dist/gui && npm publish",
     "predeploy": "npm run build:docs",
-    "deploy": "angular-cli-ghpages --no-silent --dir=dist/docs",
+    "deploy": "angular-cli-ghpages --no-silent --dir=dist/docs/browser",
     "prepare": "husky install"
   },
   "private": true,
