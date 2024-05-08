@@ -9,8 +9,15 @@ A lightweight GUI library for Angular.
 
 #### Quick links
 
-[Documentation](https://acrodata.github.io/gui/) | 
+[Documentation](https://acrodata.github.io/gui/) |
 [Playground](https://acrodata.github.io/gui/playground)
+
+## Compatibility
+
+| Angular  | @acrodata/gui |
+| -------- | ------------- |
+| >=17.0.0 | 1.x           |
+| >=16.0.0 | 0.x           |
 
 ## Installation
 
@@ -19,18 +26,6 @@ npm install @angular/material @ng-matero/extensions @acrodata/gui --save
 ```
 
 ## Setup
-
-```ts
-import { GuiModule } from '@acrodata/gui';
-
-@NgModule({
-  ...
-  imports: [GuiModule, ...],
-  ...
-})
-export class YourAppModule {
-}
-```
 
 Define a theme with Angular Material's theming system. [More about theming](https://material.angular.io/guide/theming).
 
@@ -45,15 +40,25 @@ $theme: mat.define-light-theme(...);
 @include gui.all-control-themes($theme);
 ```
 
+🚨 If you use the Angular Material as default library and have included all component themes, there's no need to include the GUI themes anymore.
+
+```diff
++ @include mat.all-component-themes($theme);
++ @include mtx.all-component-themes($theme);
+- @include gui.all-control-themes($theme);
+```
+
 ## Usage
 
 ```ts
 import { Component } from '@angular/core';
-import { GuiFields } from '@acrodata/gui';
+import { GuiModule, GuiFields } from '@acrodata/gui';
 
 @Component({
   selector: 'your-app',
   template: `<gui-form [config]="config" [model]="model" [form]="form"></gui-form>`,
+  standalone: true,
+  imports: [GuiModule],
 })
 export class YourAppComponent {
   config: GuiFields = {
