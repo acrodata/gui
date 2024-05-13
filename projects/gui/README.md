@@ -5,7 +5,7 @@
 
 ![cover](https://github.com/acrodata/gui/assets/20625845/275f7f08-7971-4a4d-8fe8-ff8ead67beac)
 
-A lightweight GUI library for Angular.
+JSON powered GUI for configurable panels.
 
 #### Quick links
 
