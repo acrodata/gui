@@ -1,15 +1,18 @@
-import { GuiFields, GuiModule } from '@acrodata/gui';
+import { CodeEditor, Theme } from '@acrodata/code-editor';
+import { GuiFields, GuiForm } from '@acrodata/gui';
 import { CommonModule } from '@angular/common';
 import { Component, DestroyRef, OnInit } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormGroup, FormsModule } from '@angular/forms';
-import { MonacoEditorModule, MonacoProviderService } from 'ng-monaco-editor';
+import { json, jsonParseLinter } from '@codemirror/lang-json';
+import { lintGutter, linter } from '@codemirror/lint';
+import { basicSetup } from 'codemirror';
 import { SettingsService } from '../settings.service';
 
 @Component({
   selector: 'app-playground',
   standalone: true,
-  imports: [CommonModule, FormsModule, MonacoEditorModule, GuiModule],
+  imports: [CommonModule, FormsModule, CodeEditor, GuiForm],
   templateUrl: './playground.component.html',
   styleUrl: './playground.component.scss',
 })
@@ -52,10 +55,13 @@ export class PlaygroundComponent implements OnInit {
 
   configStr = '';
 
+  theme: Theme = 'light';
+
+  extensions = [basicSetup, json(), linter(jsonParseLinter()), lintGutter()];
+
   constructor(
     private destroyRef: DestroyRef,
-    private settings: SettingsService,
-    private monacoProvider: MonacoProviderService
+    private settings: SettingsService
   ) {}
 
   ngOnInit(): void {
@@ -66,11 +72,7 @@ export class PlaygroundComponent implements OnInit {
     });
 
     this.settings.themeChange.pipe(takeUntilDestroyed(this.destroyRef)).subscribe(theme => {
-      if (theme === 'dark') {
-        this.monacoProvider.changeTheme('vs-dark');
-      } else {
-        this.monacoProvider.changeTheme('vs');
-      }
+      this.theme = theme;
     });
   }
 

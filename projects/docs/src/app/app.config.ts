@@ -1,9 +1,8 @@
-import { ApplicationConfig, importProvidersFrom } from '@angular/core';
-import { provideRouter, withInMemoryScrolling } from '@angular/router';
-import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideHttpClient } from '@angular/common/http';
+import { ApplicationConfig } from '@angular/core';
+import { provideAnimations } from '@angular/platform-browser/animations';
+import { provideRouter, withInMemoryScrolling } from '@angular/router';
 import { HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
-import { MonacoEditorModule } from 'ng-monaco-editor';
 import { routes } from './app.routes';
 
 export const appConfig: ApplicationConfig = {
@@ -17,11 +16,6 @@ export const appConfig: ApplicationConfig = {
     ),
     provideAnimations(),
     provideHttpClient(),
-    importProvidersFrom(
-      MonacoEditorModule.forRoot({
-        baseUrl: 'assets/lib',
-      })
-    ),
     {
       provide: HIGHLIGHT_OPTIONS,
       useValue: {

@@ -1,3 +1,6 @@
+import { CodeEditor } from '@acrodata/code-editor';
+import { GuiFields, GuiForm } from '@acrodata/gui';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { CommonModule } from '@angular/common';
 import {
   ChangeDetectionStrategy,
@@ -7,17 +10,17 @@ import {
   OnInit,
   inject,
 } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { MonacoEditorModule } from 'ng-monaco-editor';
+import { FormsModule } from '@angular/forms';
+import { json, jsonParseLinter } from '@codemirror/lang-json';
+import { lintGutter, linter } from '@codemirror/lint';
 import { MtxSplitModule } from '@ng-matero/extensions/split';
-import { GuiFields, GuiModule } from '@acrodata/gui';
+import { basicSetup } from 'codemirror';
 
 @Component({
   selector: 'app-playground',
   standalone: true,
-  imports: [CommonModule, FormsModule, MonacoEditorModule, MtxSplitModule, GuiModule],
+  imports: [CommonModule, FormsModule, MtxSplitModule, CodeEditor, GuiForm],
   templateUrl: './playground.component.html',
   styleUrl: './playground.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -63,6 +66,8 @@ export class PlaygroundComponent implements OnInit {
   isMobile = false;
 
   private readonly destroy = inject(DestroyRef);
+
+  extensions = [basicSetup, json(), linter(jsonParseLinter()), lintGutter()];
 
   constructor(
     private breakpointObserver: BreakpointObserver,

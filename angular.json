@@ -65,11 +65,6 @@
                 "glob": "*.min.css",
                 "input": "node_modules/@mdi/font/css",
                 "output": "assets/fonts"
-              },
-              {
-                "glob": "**/*",
-                "input": "node_modules/monaco-editor/min/vs",
-                "output": "assets/lib/vs"
               }
             ],
             "styles": [
@@ -167,11 +162,6 @@
                 "glob": "*.min.css",
                 "input": "node_modules/@mdi/font/css",
                 "output": "assets/fonts"
-              },
-              {
-                "glob": "**/*",
-                "input": "node_modules/monaco-editor/min/vs",
-                "output": "assets/lib/vs"
               }
             ],
             "styles": [
