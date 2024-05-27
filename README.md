@@ -52,13 +52,13 @@ $theme: mat.define-light-theme(...);
 
 ```ts
 import { Component } from '@angular/core';
-import { GuiModule, GuiFields } from '@acrodata/gui';
+import { GuiFields, GuiForm } from '@acrodata/gui';
 
 @Component({
   selector: 'your-app',
   template: `<gui-form [config]="config" [model]="model" [form]="form"></gui-form>`,
   standalone: true,
-  imports: [GuiModule],
+  imports: [GuiForm],
 })
 export class YourAppComponent {
   config: GuiFields = {
