@@ -1,7 +1,7 @@
 {
   "name": "@acrodata/gui",
   "version": "1.0.0",
-  "description": "A lightweight GUI library for Angular",
+  "description": "JSON powered GUI for configurable panels.",
   "publishConfig": {
     "access": "public"
   },

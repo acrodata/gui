@@ -18,6 +18,7 @@
     "lint:ts": "eslint \"**/*.ts\" --fix",
     "lint:scss": "stylelint \"**/*.scss\" --fix",
     "build:lib": "ng build gui",
+    "postbuild:lib": "cp README.md dist/gui",
     "publish": "npm run build:lib && cd dist/gui && npm publish",
     "predeploy": "npm run build:docs",
     "deploy": "angular-cli-ghpages --no-silent --dir=dist/docs/browser",
