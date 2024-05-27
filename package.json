@@ -26,7 +26,7 @@
   },
   "private": true,
   "dependencies": {
-    "@acrodata/code-editor": "^0.1.0",
+    "@acrodata/code-editor": "^0.2.0",
     "@angular/animations": "^17.3.6",
     "@angular/cdk": "^17.3.6",
     "@angular/common": "^17.3.6",

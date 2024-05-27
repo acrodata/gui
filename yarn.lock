@@ -7,10 +7,10 @@
   resolved "https://registry.yarnpkg.com/@aashutoshrathi/word-wrap/-/word-wrap-1.2.6.tgz#bd9154aec9983f77b3a034ecaa015c2e4201f6cf"
   integrity sha512-1Yjs2SvM8TflER/OD3cOjhWWOZb58A2t7wpE2S9XfBYTiIl+XFhQG2bjy4Pu1I+EAlCNUzRDYDdFwFYUKvXcIA==
 
-"@acrodata/code-editor@^0.1.0":
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/@acrodata/code-editor/-/code-editor-0.1.0.tgz#769b439906f390b12940f1b3548d6de6ea5b2681"
-  integrity sha512-T+mvZZhEtvehVZl+1ONFdGRCxbMvDhXFnfozdv84ExfYBygOxE5d3HcY6b7bSSb1077My0d9XmPqP/obXS9sIw==
+"@acrodata/code-editor@^0.2.0":
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/@acrodata/code-editor/-/code-editor-0.2.0.tgz#85d5ee949787d5057fb64567438fdfa77d79eb57"
+  integrity sha512-kbOc1AG7Nmf6gADuX4FSORriSME3jmZbmL7vuXFTRuN1ZX1NrzhHa2oAYU+4UWi/zFsRnB9esR2+7m3Nmgu2Kg==
   dependencies:
     "@codemirror/theme-one-dark" "^6.0.0"
     codemirror "^6.0.0"

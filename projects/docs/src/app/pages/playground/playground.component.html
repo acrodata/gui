@@ -1,6 +1,7 @@
 <mtx-split [direction]="isMobile?'vertical':'horizontal'">
   <mtx-split-pane [size]="60">
-    <code-editor [extensions]="extensions" [(ngModel)]="configStr" (blur)="onConfigChange()" />
+    <code-editor [style.height.%]="100"
+                 [extensions]="extensions" [(ngModel)]="configStr" (blur)="onConfigChange()" />
   </mtx-split-pane>
   <mtx-split-pane class="preview" [size]="40">
     <mtx-split [direction]="isMobile?'horizontal':'vertical'">

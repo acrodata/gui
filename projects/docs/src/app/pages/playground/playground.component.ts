@@ -15,7 +15,6 @@ import { FormsModule } from '@angular/forms';
 import { json, jsonParseLinter } from '@codemirror/lang-json';
 import { lintGutter, linter } from '@codemirror/lint';
 import { MtxSplitModule } from '@ng-matero/extensions/split';
-import { basicSetup } from 'codemirror';
 
 @Component({
   selector: 'app-playground',
@@ -67,7 +66,7 @@ export class PlaygroundComponent implements OnInit {
 
   private readonly destroy = inject(DestroyRef);
 
-  extensions = [basicSetup, json(), linter(jsonParseLinter()), lintGutter()];
+  extensions = [json(), linter(jsonParseLinter()), lintGutter()];
 
   constructor(
     private breakpointObserver: BreakpointObserver,

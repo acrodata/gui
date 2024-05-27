@@ -6,7 +6,6 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormGroup, FormsModule } from '@angular/forms';
 import { json, jsonParseLinter } from '@codemirror/lang-json';
 import { lintGutter, linter } from '@codemirror/lint';
-import { basicSetup } from 'codemirror';
 import { SettingsService } from '../settings.service';
 
 @Component({
@@ -57,7 +56,7 @@ export class PlaygroundComponent implements OnInit {
 
   theme: Theme = 'light';
 
-  extensions = [basicSetup, json(), linter(jsonParseLinter()), lintGutter()];
+  extensions = [json(), linter(jsonParseLinter()), lintGutter()];
 
   constructor(
     private destroyRef: DestroyRef,
