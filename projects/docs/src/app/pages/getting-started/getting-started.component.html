@@ -6,7 +6,7 @@
 </h2>
 
 <pre><code highlight="npm install @angular/material @ng-matero/extensions @acrodata/gui --save"
-[languages]="['bash']"></code></pre>
+language="bash"></code></pre>
 
 <h2 id="setup">
   <a href="getting-started#setup">Setup</a>
@@ -24,7 +24,7 @@
 $theme: mat.define-light-theme(...);
 
 @include gui.all-control-themes($theme);"
-[languages]="['scss']"></code></pre>
+language="scss"></code></pre>
 
 <p>🚨 If you use the Angular Material as default library and have included all component themes,
   there's no need to include the GUI themes anymore.</p>
@@ -32,7 +32,7 @@ $theme: mat.define-light-theme(...);
 <pre><code highlight="+ @include mat.all-component-themes($theme);
 + @include mtx.all-component-themes($theme);
 - @include gui.all-control-themes($theme);"
-[languages]="['diff']"></code></pre>
+language="diff"></code></pre>
 
 <h2 id="usage">
   <a href="getting-started#usage">Usage</a>
@@ -58,7 +58,7 @@ export class YourAppComponent {
   model = {};
   form = new FormGroup({});
 }"
-[languages]="['ts']"></code></pre>
+language="ts"></code></pre>
 
 <h2 id="properties">
   <a href="getting-started#properties">Properties</a>
