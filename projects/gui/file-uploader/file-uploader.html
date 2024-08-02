@@ -7,7 +7,7 @@
 
   @if (url) {
     <button matSuffix mat-icon-button color="warn" [disabled]="disabled" (click)="onClear()">
-      <mat-icon svgIcon="close" />
+      <mat-icon svgIcon="clear" />
     </button>
   }
 </mat-form-field>
@@ -25,7 +25,7 @@
         <audio [src]="url" controls></audio>
       }
       @default {
-        <mat-icon svgIcon="file_outline" />
+        <mat-icon svgIcon="file" />
       }
     }
   } @else {

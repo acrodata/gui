@@ -114,7 +114,7 @@ export class GuiForm implements OnChanges, OnInit, OnDestroy {
   uid = `gui-form-${nextUniqueId++}`;
 
   constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer) {
-    ['dots_horizontal', 'dots_vertical', 'content_copy', 'plus', 'delete'].forEach(k => {
+    ['horizontal', 'vertical', 'copy', 'add', 'delete'].forEach(k => {
       iconRegistry.addSvgIconLiteral(k, sanitizer.bypassSecurityTrustHtml(svgIcons[k]));
     });
   }

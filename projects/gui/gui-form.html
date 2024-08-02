@@ -116,20 +116,20 @@
               @if (item.expanded) {
                 <button mat-icon-button type="button" [color]="item.mode!=='list'?'primary':''"
                   (click)="changeTabsMode($event, item, 'normal')">
-                  <mat-icon svgIcon="dots_horizontal" />
+                  <mat-icon svgIcon="horizontal" />
                 </button>
                 <button mat-icon-button type="button" [color]="item.mode==='list'?'primary':''"
                   (click)="changeTabsMode($event, item, 'list')">
-                  <mat-icon svgIcon="dots_vertical" />
+                  <mat-icon svgIcon="vertical" />
                 </button>
                 @if (item.template && (item.addable || item.addable===undefined)) {
                   <button mat-icon-button type="button" [disabled]="item.disabled"
                     (click)="addTab($event, form.get(item.key), item, true)">
-                    <mat-icon svgIcon="content_copy" />
+                    <mat-icon svgIcon="copy" />
                   </button>
                   <button mat-icon-button type="button" [disabled]="item.disabled"
                     (click)="addTab($event, form.get(item.key), item)">
-                    <mat-icon svgIcon="plus" />
+                    <mat-icon svgIcon="add" />
                   </button>
                   <button mat-icon-button type="button" [disabled]="item.disabled"
                     (click)="removeTab($event, form.get(item.key), item)">
@@ -180,11 +180,11 @@
                         @if (item.template && (item.addable || item.addable===undefined)) {
                           <button mat-icon-button type="button" [disabled]="item.disabled"
                             (click)="addTab($event, form.get(item.key), item, true, i)">
-                            <mat-icon svgIcon="content_copy" />
+                            <mat-icon svgIcon="copy" />
                           </button>
                           <button mat-icon-button type="button" [disabled]="item.disabled"
                             (click)="addTab($event, form.get(item.key), item, false, i)">
-                            <mat-icon svgIcon="plus" />
+                            <mat-icon svgIcon="add" />
                           </button>
                           <button mat-icon-button type="button" [disabled]="item.disabled"
                             (click)="removeTab($event, form.get(item.key), item, i)">

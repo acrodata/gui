@@ -96,7 +96,7 @@ export class GuiFileUploader implements ControlValueAccessor, OnChanges {
     iconRegistry: MatIconRegistry,
     sanitizer: DomSanitizer
   ) {
-    ['link', 'close', 'file_outline', 'file_upload'].forEach(k => {
+    ['link', 'clear', 'file', 'file_upload'].forEach(k => {
       iconRegistry.addSvgIconLiteral(k, sanitizer.bypassSecurityTrustHtml(svgIcons[k]));
     });
   }
