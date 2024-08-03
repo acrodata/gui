@@ -1,4 +1,8 @@
-export const svgIcons: { [key: string]: string } = {
+import { Inject, Injectable, InjectionToken, Optional } from '@angular/core';
+import { MatIconRegistry } from '@angular/material/icon';
+import { DomSanitizer } from '@angular/platform-browser';
+
+export const svgIcons = {
   horizontal: `
   <svg viewBox="0 0 24 24">
     <path d="M16,12A2,2 0 0,1 18,10A2,2 0 0,1 20,12A2,2 0 0,1 18,14A2,2 0 0,1 16,12M10,12A2,2 0 0,1 12,10A2,2 0 0,1 14,12A2,2 0 0,1 12,14A2,2 0 0,1 10,12M4,12A2,2 0 0,1 6,10A2,2 0 0,1 8,12A2,2 0 0,1 6,14A2,2 0 0,1 4,12Z"></path>
@@ -45,3 +49,28 @@ export const svgIcons: { [key: string]: string } = {
   </svg>
   `,
 };
+
+export type GuiIconType = keyof typeof svgIcons;
+
+export type GuiIconsType = {
+  [k in GuiIconType]: string;
+};
+
+/** Injection token that can be used to provide the default icons. */
+export const GUI_ICONS_CONFIG = new InjectionToken<GuiIconsType>('GUI_ICONS_CONFIG');
+
+@Injectable({ providedIn: 'root' })
+export class GuiIconsRegistry {
+  constructor(
+    private _iconRegistry: MatIconRegistry,
+    private _sanitizer: DomSanitizer,
+    @Optional() @Inject(GUI_ICONS_CONFIG) private _defaultIcons?: GuiIconsType
+  ) {}
+
+  add(...iconNames: GuiIconType[]) {
+    const icons = Object.assign(svgIcons, this._defaultIcons);
+    iconNames.forEach(k => {
+      this._iconRegistry.addSvgIconLiteral(k, this._sanitizer.bypassSecurityTrustHtml(icons[k]));
+    });
+  }
+}

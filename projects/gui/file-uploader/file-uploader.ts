@@ -21,14 +21,13 @@ import {
 } from '@angular/forms';
 import { MatIconButton } from '@angular/material/button';
 import { MatFormField, MatHint, MatPrefix, MatSuffix } from '@angular/material/form-field';
-import { MatIcon, MatIconRegistry } from '@angular/material/icon';
+import { MatIcon } from '@angular/material/icon';
 import { MatInput } from '@angular/material/input';
-import { DomSanitizer } from '@angular/platform-browser';
 import { of } from 'rxjs';
 import { catchError, finalize } from 'rxjs/operators';
 
 import { GuiFieldLabel } from '../field-label/field-label';
-import { svgIcons } from '../gui-icons';
+import { GuiIconsRegistry } from '../gui-icons';
 import { GuiControl } from '../interface';
 import { GuiFileUploaderConfig } from './file-uploader-config';
 
@@ -93,12 +92,9 @@ export class GuiFileUploader implements ControlValueAccessor, OnChanges {
   constructor(
     private fileUploaderCfg: GuiFileUploaderConfig,
     private cdr: ChangeDetectorRef,
-    iconRegistry: MatIconRegistry,
-    sanitizer: DomSanitizer
+    iconsRegistry: GuiIconsRegistry
   ) {
-    ['link', 'clear', 'file', 'file_upload'].forEach(k => {
-      iconRegistry.addSvgIconLiteral(k, sanitizer.bypassSecurityTrustHtml(svgIcons[k]));
-    });
+    iconsRegistry.add('link', 'clear', 'file', 'file_upload');
   }
 
   ngOnChanges(changes: SimpleChanges): void {
