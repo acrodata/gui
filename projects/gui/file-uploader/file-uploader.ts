@@ -94,7 +94,7 @@ export class GuiFileUploader implements ControlValueAccessor, OnChanges {
     private cdr: ChangeDetectorRef,
     iconsRegistry: GuiIconsRegistry
   ) {
-    iconsRegistry.add('link', 'clear', 'file', 'file_upload');
+    iconsRegistry.add('link', 'clear', 'file', 'upload');
   }
 
   ngOnChanges(changes: SimpleChanges): void {
