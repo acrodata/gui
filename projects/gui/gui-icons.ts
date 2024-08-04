@@ -52,19 +52,19 @@ export const svgIcons = {
 
 export type GuiIconType = keyof typeof svgIcons;
 
-export type GuiIconsType = {
+export type GuiIconsConfig = {
   [k in GuiIconType]: string;
 };
 
 /** Injection token that can be used to provide the default icons. */
-export const GUI_ICONS_CONFIG = new InjectionToken<GuiIconsType>('GUI_ICONS_CONFIG');
+export const GUI_ICONS_CONFIG = new InjectionToken<GuiIconsConfig>('gui-icons-config');
 
 @Injectable({ providedIn: 'root' })
 export class GuiIconsRegistry {
   constructor(
     private _iconRegistry: MatIconRegistry,
     private _sanitizer: DomSanitizer,
-    @Optional() @Inject(GUI_ICONS_CONFIG) private _defaultIcons?: GuiIconsType
+    @Optional() @Inject(GUI_ICONS_CONFIG) private _defaultIcons?: GuiIconsConfig
   ) {}
 
   add(...iconNames: GuiIconType[]) {
