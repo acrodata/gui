@@ -1,9 +1,16 @@
 .gui-switch {
   .mat-mdc-slide-toggle {
-    --mat-switch-unselected-handle-size: 14px;
-    --mat-switch-selected-handle-size: 14px;
-    --mat-switch-pressed-handle-size: 14px;
+    --mat-switch-unselected-handle-size: 12px;
+    --mat-switch-selected-handle-size: 12px;
+    --mat-switch-pressed-handle-size: 12px;
+    --mat-switch-selected-handle-horizontal-margin: 0;
+    --mat-switch-selected-pressed-handle-horizontal-margin: 0;
+    --mat-switch-unselected-handle-horizontal-margin: 0 2px;
+    --mat-switch-unselected-pressed-handle-horizontal-margin: 0 2px;
+    --mat-switch-track-outline-width: 1px;
     --mdc-switch-track-width: 28px;
+    --mdc-switch-track-height: 16px;
+    --mdc-switch-track-shape: 8px;
     --mdc-switch-handle-width: 14px;
     --mdc-switch-state-layer-size: 24px;
 

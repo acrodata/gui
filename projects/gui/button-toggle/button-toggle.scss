@@ -1,6 +1,8 @@
 .gui-button-toggle {
   --mat-standard-button-toggle-height: 24px;
   --mat-standard-button-toggle-label-text-size: 12px;
+  --mat-standard-button-toggle-shape: 4px;
+  --mat-standard-button-toggle-label-text-weight: 400;
 
   .mat-button-toggle-group {
     flex-wrap: wrap;
