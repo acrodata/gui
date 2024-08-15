@@ -1,12 +1,12 @@
 .gui-switch {
-  --mat-switch-unselected-handle-size: 14px;
-  --mat-switch-selected-handle-size: 14px;
-  --mat-switch-pressed-handle-size: 14px;
-  --mdc-switch-track-width: 28px;
-  --mdc-switch-handle-width: 14px;
-  --mdc-switch-state-layer-size: 24px;
-
   .mat-mdc-slide-toggle {
+    --mat-switch-unselected-handle-size: 14px;
+    --mat-switch-selected-handle-size: 14px;
+    --mat-switch-pressed-handle-size: 14px;
+    --mdc-switch-track-width: 28px;
+    --mdc-switch-handle-width: 14px;
+    --mdc-switch-state-layer-size: 24px;
+
     line-height: var(--mdc-switch-state-layer-size);
   }
 }
