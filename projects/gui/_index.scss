@@ -17,3 +17,20 @@
   @include mtx.colorpicker-theme($theme);
   @include mtx.select-theme($theme);
 }
+
+@mixin all-control-colors($theme) {
+  @include mat.core-color($theme);
+  @include mat.form-field-color($theme);
+  @include mat.input-color($theme);
+  @include mat.button-toggle-color($theme);
+  @include mat.slide-toggle-color($theme);
+  @include mat.select-color($theme);
+  @include mat.slider-color($theme);
+  @include mat.icon-color($theme);
+  @include mat.icon-button-color($theme);
+  @include mat.tabs-color($theme);
+  @include mat.expansion-color($theme);
+  @include mat.tooltip-color($theme);
+  @include mtx.colorpicker-color($theme);
+  @include mtx.select-color($theme);
+}
