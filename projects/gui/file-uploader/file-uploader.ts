@@ -13,12 +13,7 @@ import {
   ViewEncapsulation,
   forwardRef,
 } from '@angular/core';
-import {
-  ControlValueAccessor,
-  FormsModule,
-  NG_VALUE_ACCESSOR,
-  ReactiveFormsModule,
-} from '@angular/forms';
+import { ControlValueAccessor, FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { MatIconButton } from '@angular/material/button';
 import { MatFormField, MatHint, MatPrefix, MatSuffix } from '@angular/material/form-field';
 import { MatIcon } from '@angular/material/icon';
@@ -58,7 +53,6 @@ export interface FileUploadContent {
   ],
   standalone: true,
   imports: [
-    ReactiveFormsModule,
     FormsModule,
     MatFormField,
     MatIcon,

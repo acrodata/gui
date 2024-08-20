@@ -6,12 +6,7 @@ import {
   Input,
   ViewEncapsulation,
 } from '@angular/core';
-import {
-  ControlValueAccessor,
-  FormsModule,
-  NG_VALUE_ACCESSOR,
-  ReactiveFormsModule,
-} from '@angular/forms';
+import { ControlValueAccessor, FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { MatFormField, MatHint, MatPrefix, MatSuffix } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
 import { MatSlider, MatSliderRangeThumb, MatSliderThumb } from '@angular/material/slider';
@@ -36,7 +31,6 @@ import { GuiControl } from '../interface';
   ],
   standalone: true,
   imports: [
-    ReactiveFormsModule,
     FormsModule,
     MatSlider,
     MatSliderThumb,

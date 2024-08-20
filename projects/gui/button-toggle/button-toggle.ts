@@ -6,12 +6,7 @@ import {
   Input,
   ViewEncapsulation,
 } from '@angular/core';
-import {
-  ControlValueAccessor,
-  FormsModule,
-  NG_VALUE_ACCESSOR,
-  ReactiveFormsModule,
-} from '@angular/forms';
+import { ControlValueAccessor, FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { MatButtonToggle, MatButtonToggleGroup } from '@angular/material/button-toggle';
 import { MatHint } from '@angular/material/form-field';
 import { GuiFieldLabel } from '../field-label/field-label';
@@ -37,7 +32,6 @@ import { GuiIcon } from './icon';
   ],
   standalone: true,
   imports: [
-    ReactiveFormsModule,
     FormsModule,
     MatButtonToggleGroup,
     MatButtonToggle,

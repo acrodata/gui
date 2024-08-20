@@ -6,7 +6,7 @@ import {
   Input,
   ViewEncapsulation,
 } from '@angular/core';
-import { FormsModule, NG_VALUE_ACCESSOR, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { MatFormField, MatHint, MatPrefix, MatSuffix } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
 import { GuiFieldLabel } from '../field-label/field-label';
@@ -29,16 +29,7 @@ import { GuiControl } from '../interface';
     },
   ],
   standalone: true,
-  imports: [
-    ReactiveFormsModule,
-    FormsModule,
-    MatFormField,
-    MatPrefix,
-    MatInput,
-    MatSuffix,
-    MatHint,
-    GuiFieldLabel,
-  ],
+  imports: [FormsModule, MatFormField, MatPrefix, MatInput, MatSuffix, MatHint, GuiFieldLabel],
 })
 export class GuiTextarea {
   @Input() config: Partial<GuiControl> = {};
