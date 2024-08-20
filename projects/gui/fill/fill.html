@@ -10,8 +10,11 @@
     [placeholder]="config.placeholder||''"
     [mtxColorpicker]="cp"
     (colorChange)="onValueChange()">
+
   <mtx-colorpicker #cp />
-  <mtx-colorpicker-toggle matSuffix [for]="cp" />
+  <gui-icon-button-wrapper matSuffix>
+    <mtx-colorpicker-toggle [for]="cp" />
+  </gui-icon-button-wrapper>
 
   @if (config.parentType==='inline') {
     <mat-hint>

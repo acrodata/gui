@@ -1,14 +1,18 @@
 <mat-form-field>
-  <mat-icon matPrefix svgIcon="link" />
+  <gui-icon-button-wrapper matPrefix>
+    <mat-icon svgIcon="link" />
+  </gui-icon-button-wrapper>
 
   <input matInput type="text" [ngModel]="url" [disabled]="disabled"
     [placeholder]="config.placeholder||''"
     (change)="onUrlChange($event)" (blur)="onBlur()">
 
   @if (url) {
-    <button matSuffix mat-icon-button color="warn" [disabled]="disabled" (click)="onClear()">
-      <mat-icon svgIcon="clear" />
-    </button>
+    <gui-icon-button-wrapper matSuffix>
+      <button mat-icon-button color="warn" [disabled]="disabled" (click)="onClear()">
+        <mat-icon svgIcon="clear" />
+      </button>
+    </gui-icon-button-wrapper>
   }
 </mat-form-field>
 

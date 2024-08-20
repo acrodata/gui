@@ -20,6 +20,7 @@ import {
   MtxColorpickerToggle,
 } from '@ng-matero/extensions/colorpicker';
 import { GuiFieldLabel } from '../field-label/field-label';
+import { GuiIconButtonWrapper } from '../icon-button-wrapper/icon-button-wrapper';
 import { GuiControl } from '../interface';
 
 @Component({
@@ -51,6 +52,7 @@ import { GuiControl } from '../interface';
     MtxColorpicker,
     MtxColorpickerToggle,
     GuiFieldLabel,
+    GuiIconButtonWrapper,
   ],
 })
 export class GuiFill implements ControlValueAccessor {

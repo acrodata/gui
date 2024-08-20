@@ -1,0 +1,24 @@
+.gui-icon-button-wrapper {
+  .mat-mdc-icon-button {
+    --mdc-icon-button-state-layer-size: 24px;
+    --mdc-icon-button-icon-size: 14px;
+
+    padding: 0;
+
+    .mat-mdc-button-touch-target {
+      width: var(--mdc-icon-button-state-layer-size);
+      height: var(--mdc-icon-button-state-layer-size);
+    }
+  }
+
+  .mat-icon {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+
+    svg {
+      width: 14px;
+      height: 14px;
+    }
+  }
+}

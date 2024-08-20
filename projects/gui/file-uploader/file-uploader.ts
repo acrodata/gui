@@ -28,6 +28,7 @@ import { catchError, finalize } from 'rxjs/operators';
 
 import { GuiFieldLabel } from '../field-label/field-label';
 import { GuiIconsRegistry } from '../gui-icons';
+import { GuiIconButtonWrapper } from '../icon-button-wrapper/icon-button-wrapper';
 import { GuiControl } from '../interface';
 import { GuiFileUploaderConfig } from './file-uploader-config';
 
@@ -67,6 +68,7 @@ export interface FileUploadContent {
     MatSuffix,
     MatHint,
     GuiFieldLabel,
+    GuiIconButtonWrapper,
   ],
 })
 export class GuiFileUploader implements ControlValueAccessor, OnChanges {

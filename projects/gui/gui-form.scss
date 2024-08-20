@@ -55,24 +55,6 @@
     min-width: auto;
     padding: 0 12px;
   }
-
-  .mat-mdc-icon-button {
-    --mdc-icon-button-state-layer-size: 24px;
-    --mdc-icon-button-icon-size: 14px;
-
-    padding: 0;
-
-    .mat-mdc-button-touch-target {
-      width: var(--mdc-icon-button-state-layer-size);
-      height: var(--mdc-icon-button-state-layer-size);
-    }
-
-    .mat-icon {
-      display: inline-flex;
-      justify-content: center;
-      align-items: center;
-    }
-  }
 }
 
 .gui-list-item-heading {
@@ -124,8 +106,6 @@
 
   .mdc-tab-indicator .mdc-tab-indicator__content {
     height: 100%;
-    border-width: 0;
-    border-radius: var(--mdc-tab-indicator-active-indicator-shape);
     background-color: var(--mdc-tab-indicator-active-indicator-color);
   }
 

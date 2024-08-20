@@ -28,6 +28,7 @@ import { GuiFieldLabel } from './field-label/field-label';
 import { GuiFileUploader } from './file-uploader/file-uploader';
 import { GuiFill } from './fill/fill';
 import { GuiEjsPipe, GuiFlexDirective, compareValues, getValueByPath } from './gui-utils';
+import { GuiIconButtonWrapper } from './icon-button-wrapper/icon-button-wrapper';
 import { GuiImageSelect } from './image-select/image-select';
 import { GuiInlineGroup } from './inline-group/inline-group';
 import { GuiInputNumber } from './input-number/input-number';
@@ -79,6 +80,7 @@ let nextUniqueId = 0;
     GuiTextarea,
     GuiInlineGroup,
     GuiFieldLabel,
+    GuiIconButtonWrapper,
     GuiEjsPipe,
   ],
 })

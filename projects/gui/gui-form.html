@@ -114,28 +114,30 @@
               <gui-field-label [config]="item" />
               <!-- Show operation buttons when panel opened -->
               @if (item.expanded) {
-                <button mat-icon-button type="button" [color]="item.mode!=='list'?'primary':''"
-                  (click)="changeTabsMode($event, item, 'normal')">
-                  <mat-icon svgIcon="horizontal" />
-                </button>
-                <button mat-icon-button type="button" [color]="item.mode==='list'?'primary':''"
-                  (click)="changeTabsMode($event, item, 'list')">
-                  <mat-icon svgIcon="vertical" />
-                </button>
-                @if (item.template && (item.addable || item.addable===undefined)) {
-                  <button mat-icon-button type="button" [disabled]="item.disabled"
-                    (click)="addTab($event, form.get(item.key), item, true)">
-                    <mat-icon svgIcon="copy" />
+                <gui-icon-button-wrapper>
+                  <button mat-icon-button type="button" [color]="item.mode!=='list'?'primary':''"
+                    (click)="changeTabsMode($event, item, 'normal')">
+                    <mat-icon svgIcon="horizontal" />
                   </button>
-                  <button mat-icon-button type="button" [disabled]="item.disabled"
-                    (click)="addTab($event, form.get(item.key), item)">
-                    <mat-icon svgIcon="add" />
+                  <button mat-icon-button type="button" [color]="item.mode==='list'?'primary':''"
+                    (click)="changeTabsMode($event, item, 'list')">
+                    <mat-icon svgIcon="vertical" />
                   </button>
-                  <button mat-icon-button type="button" [disabled]="item.disabled"
-                    (click)="removeTab($event, form.get(item.key), item)">
-                    <mat-icon svgIcon="delete" />
-                  </button>
-                }
+                  @if (item.template && (item.addable || item.addable===undefined)) {
+                    <button mat-icon-button type="button" [disabled]="item.disabled"
+                      (click)="addTab($event, form.get(item.key), item, true)">
+                      <mat-icon svgIcon="copy" />
+                    </button>
+                    <button mat-icon-button type="button" [disabled]="item.disabled"
+                      (click)="addTab($event, form.get(item.key), item)">
+                      <mat-icon svgIcon="add" />
+                    </button>
+                    <button mat-icon-button type="button" [disabled]="item.disabled"
+                      (click)="removeTab($event, form.get(item.key), item)">
+                      <mat-icon svgIcon="delete" />
+                    </button>
+                  }
+                </gui-icon-button-wrapper>
               }
             </mat-expansion-panel-header>
             <!-- Lazy rendering -->
@@ -178,18 +180,20 @@
                         <span class="gui-list-item-title"
                         (click)="item.selectedIndex=i">{{tab.name | ejs:{i} }}</span>
                         @if (item.template && (item.addable || item.addable===undefined)) {
-                          <button mat-icon-button type="button" [disabled]="item.disabled"
-                            (click)="addTab($event, form.get(item.key), item, true, i)">
-                            <mat-icon svgIcon="copy" />
-                          </button>
-                          <button mat-icon-button type="button" [disabled]="item.disabled"
-                            (click)="addTab($event, form.get(item.key), item, false, i)">
-                            <mat-icon svgIcon="add" />
-                          </button>
-                          <button mat-icon-button type="button" [disabled]="item.disabled"
-                            (click)="removeTab($event, form.get(item.key), item, i)">
-                            <mat-icon svgIcon="delete" />
-                          </button>
+                          <gui-icon-button-wrapper>
+                            <button mat-icon-button type="button" [disabled]="item.disabled"
+                              (click)="addTab($event, form.get(item.key), item, true, i)">
+                              <mat-icon svgIcon="copy" />
+                            </button>
+                            <button mat-icon-button type="button" [disabled]="item.disabled"
+                              (click)="addTab($event, form.get(item.key), item, false, i)">
+                              <mat-icon svgIcon="add" />
+                            </button>
+                            <button mat-icon-button type="button" [disabled]="item.disabled"
+                              (click)="removeTab($event, form.get(item.key), item, i)">
+                              <mat-icon svgIcon="delete" />
+                            </button>
+                          </gui-icon-button-wrapper>
                         }
                       </div>
                       <div class="gui-list-item-content">

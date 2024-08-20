@@ -31,6 +31,7 @@ import { GuiFill } from './fill/fill';
 import { GuiImageSelect } from './image-select/image-select';
 import { GuiTextarea } from './textarea/textarea';
 import { GuiFileUploader } from './file-uploader/file-uploader';
+import { GuiIconButtonWrapper } from './icon-button-wrapper/icon-button-wrapper';
 import { GuiEjsPipe, GuiFlexDirective } from './gui-utils';
 
 @NgModule({
@@ -66,6 +67,7 @@ import { GuiEjsPipe, GuiFlexDirective } from './gui-utils';
     GuiImageSelect,
     GuiTextarea,
     GuiFileUploader,
+    GuiIconButtonWrapper,
     GuiEjsPipe,
     GuiFlexDirective,
   ],
@@ -85,6 +87,7 @@ import { GuiEjsPipe, GuiFlexDirective } from './gui-utils';
     GuiImageSelect,
     GuiTextarea,
     GuiFileUploader,
+    GuiIconButtonWrapper,
     GuiEjsPipe,
     GuiFlexDirective,
   ],
