@@ -1,8 +1,8 @@
 %img {
   height: 100%;
-  max-width: 120px;
+  max-width: 7.5rem;
   object-fit: contain;
-  border-radius: 4px;
+  border-radius: 0.25rem;
   background-color: var(--mat-option-hover-state-layer-color);
 }
 
@@ -10,19 +10,19 @@
   --mat-form-field-container-vertical-padding: 0;
 
   .ng-select {
-    padding: 0 8px;
-    margin: 0 -8px;
+    padding: 0 0.5rem;
+    margin: 0 -0.5rem;
 
     .ng-value-container {
-      height: 64px;
+      height: 4rem;
     }
 
     .ng-value {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
+      gap: 0.5rem;
       height: 100%;
-      padding: 8px 0;
+      padding: 0.5rem 0;
 
       img {
         @extend %img;
@@ -35,9 +35,9 @@
       .ng-option {
         display: flex;
         align-items: center;
-        gap: 8px;
-        height: 64px;
-        padding: 8px;
+        gap: 0.5rem;
+        height: 4rem;
+        padding: 0.5rem;
 
         img {
           @extend %img;

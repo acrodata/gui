@@ -1,6 +1,6 @@
 .gui-inline-group {
   display: flex;
-  padding: 4px 8px;
+  padding: 0.25rem 0.5rem;
 
   mat-hint {
     width: 100%;
@@ -13,13 +13,13 @@
   display: inline-flex;
   flex: 1;
   flex-flow: row wrap;
-  margin: 0 -4px;
+  margin: 0 -0.25rem;
 
   >.gui-field-group,
   >.gui-inline-group,
   >.mat-expansion-panel,
   >.gui-menu {
     width: 100%;
-    padding: 0 4px;
+    padding: 0 0.25rem;
   }
 }

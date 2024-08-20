@@ -1,10 +1,10 @@
 .gui-field-group {
   display: flex;
-  padding: 4px 8px;
+  padding: 0.25rem 0.5rem;
 }
 
 .gui-field {
-  --mat-form-field-container-text-size: 12px;
+  --mat-form-field-container-text-size: 0.75rem;
 
   display: inline-flex;
   flex: 1;
@@ -19,11 +19,11 @@
   .mat-mdc-text-field-wrapper,
   .mat-mdc-form-field-hint-wrapper {
     position: relative;
-    padding: 0 8px;
+    padding: 0 0.5rem;
     border-radius: var(--mdc-filled-text-field-container-shape);
 
     [dir='rtl'] & {
-      padding: 0 8px;
+      padding: 0 0.5rem;
     }
   }
 

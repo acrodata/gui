@@ -1,9 +1,9 @@
 .gui-slider {
   .mat-mdc-slider {
-    --mdc-slider-handle-width: 12px;
-    --mdc-slider-handle-height: 12px;
-    --mdc-slider-inactive-track-height: 2px;
-    --mdc-slider-active-track-height: 2px;
+    --mdc-slider-handle-width: 0.75rem;
+    --mdc-slider-handle-height: 0.75rem;
+    --mdc-slider-inactive-track-height: 0.125rem;
+    --mdc-slider-active-track-height: 0.125rem;
 
     flex: 3;
     min-width: auto;
@@ -36,11 +36,11 @@
   }
 
   .mat-mdc-form-field {
-    margin-left: 6px;
+    margin-left: 0.375rem;
 
     [dir='rtl'] & {
       margin-left: 0;
-      margin-right: 6px;
+      margin-right: 0.375rem;
     }
 
     input::-webkit-outer-spin-button,

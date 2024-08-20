@@ -1,13 +1,13 @@
 .gui-form {
-  --mat-expansion-header-text-size: 12px;
-  --mat-expansion-header-collapsed-state-height: 32px;
-  --mat-expansion-header-expanded-state-height: 32px;
-  --mat-expansion-container-text-size: 12px;
+  --mat-expansion-header-text-size: 0.75rem;
+  --mat-expansion-header-collapsed-state-height: 2rem;
+  --mat-expansion-header-expanded-state-height: 2rem;
+  --mat-expansion-container-text-size: 0.75rem;
   --mat-expansion-container-shape: 0;
 
   position: relative;
   display: block;
-  font-size: 12px;
+  font-size: 0.75rem;
 
   .mat-expansion-panel {
     box-shadow: none !important;
@@ -18,15 +18,15 @@
   }
 
   .mat-expansion-panel-header {
-    padding: 0 12px;
+    padding: 0 0.75rem;
 
     .mat-content {
       align-items: center;
-      padding-right: 8px;
+      padding-right: 0.5rem;
 
       [dir='rtl'] & {
         padding-right: 0;
-        padding-left: 8px;
+        padding-left: 0.5rem;
       }
 
       gui-field-label {
@@ -38,13 +38,21 @@
     }
   }
 
-  .mat-expansion-indicator::after {
-    vertical-align: 2px;
+  .mat-expansion-indicator {
+    svg {
+      width: 1.5rem;
+      height: 1.5rem;
+      margin: 0 -0.5rem;
+    }
+
+    &::after {
+      vertical-align: 0.125rem;
+    }
   }
 
   .mat-mdc-tab-header {
-    --mat-tab-header-label-text-size: 12px;
-    --mdc-secondary-navigation-tab-container-height: 24px;
+    --mat-tab-header-label-text-size: 0.75rem;
+    --mdc-secondary-navigation-tab-container-height: 1.5rem;
   }
 
   .mat-mdc-tab-header-pagination {
@@ -53,7 +61,7 @@
 
   .mat-mdc-tab {
     min-width: auto;
-    padding: 0 12px;
+    padding: 0 0.75rem;
   }
 }
 
@@ -61,14 +69,14 @@
   display: flex;
   align-items: center;
   position: relative;
-  padding: 0 12px;
-  line-height: 24px;
+  padding: 0 0.75rem;
+  line-height: 1.5rem;
 
   &::before {
     position: absolute;
     left: 0;
-    width: 2px;
-    height: 16px;
+    width: 0.125rem;
+    height: 1rem;
     background-color: var(--mat-expansion-header-text-color);
     content: '';
 
@@ -90,9 +98,9 @@
 
 .gui-menu {
   .mat-mdc-tab-header {
-    --mdc-tab-indicator-active-indicator-shape: 4px;
+    --mdc-tab-indicator-active-indicator-shape: 0.25rem;
 
-    padding: 4px;
+    padding: 0.25rem;
     background-color: var(--mdc-filled-text-field-container-color);
 
     .mdc-tab__ripple::before {
@@ -101,7 +109,7 @@
   }
 
   .mat-mdc-tab-labels {
-    gap: 4px;
+    gap: 0.25rem;
   }
 
   .mdc-tab-indicator .mdc-tab-indicator__content {
@@ -110,6 +118,6 @@
   }
 
   .mdc-tab-indicator--active .mdc-tab-indicator__content {
-    opacity: .24;
+    opacity: 0.24;
   }
 }

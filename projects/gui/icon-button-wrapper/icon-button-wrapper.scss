@@ -1,7 +1,7 @@
 .gui-icon-button-wrapper {
   .mat-mdc-icon-button {
-    --mdc-icon-button-state-layer-size: 24px;
-    --mdc-icon-button-icon-size: 14px;
+    --mdc-icon-button-state-layer-size: 1.5rem;
+    --mdc-icon-button-icon-size: 0.875rem;
 
     padding: 0;
 
@@ -15,10 +15,12 @@
     display: inline-flex;
     justify-content: center;
     align-items: center;
+    width: 1.5rem;
+    height: 1.5rem;
 
     svg {
-      width: 14px;
-      height: 14px;
+      width: 0.875rem;
+      height: 0.875rem;
     }
   }
 }
