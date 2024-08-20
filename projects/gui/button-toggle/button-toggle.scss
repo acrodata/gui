@@ -1,8 +1,9 @@
 .gui-button-toggle {
+  --mat-standard-button-toggle-shape: 4px;
   --mat-standard-button-toggle-height: 24px;
   --mat-standard-button-toggle-label-text-size: 12px;
-  --mat-standard-button-toggle-shape: 4px;
   --mat-standard-button-toggle-label-text-weight: 400;
+  --mat-standard-button-toggle-label-text-line-height: var(--mat-standard-button-toggle-height);
 
   .mat-button-toggle-group {
     flex-wrap: wrap;
@@ -12,10 +13,6 @@
   .mat-button-toggle-appearance-standard {
     border-width: 0 !important;
     background-color: var(--mdc-filled-text-field-container-color);
-
-    &.mat-button-toggle-checked {
-      background-color: var(--mat-standard-button-toggle-selected-state-background-color);
-    }
   }
 }
 
