@@ -14,11 +14,11 @@ import { RouterOutlet } from '@angular/router';
 export class AppComponent {
   title = 'docs';
 
-  icons = ['menu', 'github'];
+  icons = ['menu', 'github', 'format_color_fill'];
 
   constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer) {
     for (const i of this.icons) {
-      iconRegistry.addSvgIcon(i, sanitizer.bypassSecurityTrustResourceUrl(`assets/icons/${i}.svg`));
+      iconRegistry.addSvgIcon(i, sanitizer.bypassSecurityTrustResourceUrl(`icons/${i}.svg`));
     }
   }
 }

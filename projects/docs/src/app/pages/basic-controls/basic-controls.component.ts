@@ -130,7 +130,7 @@ export class BasicControlsComponent {
           this.useIcon == 1
             ? 'mdi mdi-format-align-' + opt.value
             : this.useIcon == 2
-              ? './assets/images/align_' + opt.value + '.png'
+              ? './images/align_' + opt.value + '.png'
               : undefined,
       };
     });
@@ -165,17 +165,17 @@ export class BasicControlsComponent {
         {
           label: 'img1',
           value: 'img1',
-          src: './assets/images/icon3d1.webp',
+          src: './images/icon3d1.webp',
         },
         {
           label: 'img2',
           value: 'img2',
-          src: './assets/images/icon3d2.webp',
+          src: './images/icon3d2.webp',
         },
         {
           label: 'img3',
           value: 'img3',
-          src: './assets/images/icon3d3.webp',
+          src: './images/icon3d3.webp',
         },
       ],
     },

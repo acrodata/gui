@@ -151,17 +151,29 @@
             "tsConfig": "projects/docs/tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
-              "projects/docs/src/favicon.ico",
-              "projects/docs/src/assets",
+              {
+                "glob": "**/*",
+                "input": "projects/docs/public"
+              },
               {
                 "glob": "*",
                 "input": "node_modules/@mdi/font/fonts",
-                "output": "assets/fonts"
+                "output": "fonts"
               },
               {
                 "glob": "*.min.css",
                 "input": "node_modules/@mdi/font/css",
-                "output": "assets/fonts"
+                "output": "fonts"
+              },
+              {
+                "glob": "*.css",
+                "input": "node_modules/@angular/material/prebuilt-themes",
+                "output": "themes/material"
+              },
+              {
+                "glob": "*.css",
+                "input": "node_modules/@ng-matero/extensions/prebuilt-themes",
+                "output": "themes/extensions"
               }
             ],
             "styles": [
