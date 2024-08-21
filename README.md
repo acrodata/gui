@@ -14,10 +14,11 @@ JSON powered GUI for configurable panels.
 
 ## Compatibility
 
-| Angular  | @acrodata/gui |
-| -------- | ------------- |
-| >=17.0.0 | 1.x           |
-| >=16.0.0 | 0.x           |
+| Angular  | @acrodata/gui | Theming |
+| -------- | ------------- | ------- |
+| >=18.0.0 | 2.x           | M2, M3  |
+| >=17.0.0 | 1.x           | M2      |
+| >=16.0.0 | 0.x           | M2      |
 
 ## Installation
 
@@ -35,7 +36,7 @@ Define a theme with Angular Material's theming system. [More about theming](http
 
 @include mat.core();
 
-$theme: mat.define-light-theme(...);
+$theme: mat.define-theme(...);
 
 @include gui.all-control-themes($theme);
 ```
