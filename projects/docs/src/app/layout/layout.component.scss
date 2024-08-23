@@ -32,7 +32,7 @@ header {
   z-index: 100;
   display: flex;
   align-items: center;
-  height: 64px;
+  padding: 12px 0;
   border-bottom: 1px solid var(--border-color);
   background-color: var(--bg-translucent-color);
   backdrop-filter: blur(6px);
@@ -101,10 +101,12 @@ footer {
 }
 
 .brand {
+  display: inline-block;
   padding: 0 16px;
   color: var(--heading-color);
   font-size: 20px;
   font-weight: 600;
+  line-height: 40px;
 }
 
 .spacer {

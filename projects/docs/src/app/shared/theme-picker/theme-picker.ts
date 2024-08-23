@@ -1,6 +1,7 @@
 import { LiveAnnouncer } from '@angular/cdk/a11y';
 import {
   ChangeDetectionStrategy,
+  ChangeDetectorRef,
   Component,
   OnDestroy,
   OnInit,
@@ -8,8 +9,8 @@ import {
 } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { ActivatedRoute, ParamMap } from '@angular/router';
-import { Subscription } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { fromEvent, Subscription } from 'rxjs';
+import { filter, map } from 'rxjs/operators';
 import { StyleManager } from '../style-manager/style-manager';
 import { DocsSiteTheme, ThemeStorage } from './theme-storage';
 
@@ -83,7 +84,8 @@ export class ThemePicker implements OnInit, OnDestroy {
     private styleManager: StyleManager,
     private themeStorage: ThemeStorage,
     private activatedRoute: ActivatedRoute,
-    private liveAnnouncer: LiveAnnouncer
+    private liveAnnouncer: LiveAnnouncer,
+    private cdr: ChangeDetectorRef
   ) {
     const themeName = this.themeStorage.getStoredThemeName();
     if (themeName) {
@@ -104,6 +106,13 @@ export class ThemePicker implements OnInit, OnDestroy {
         if (themeName) {
           this.selectTheme(themeName);
         }
+      });
+
+    fromEvent(document, 'click')
+      .pipe(filter(event => event.target != document.querySelector('.theme-picker-menu')))
+      .subscribe(v => {
+        this.showMenu = false;
+        this.cdr.detectChanges();
       });
   }
 
@@ -129,7 +138,8 @@ export class ThemePicker implements OnInit, OnDestroy {
     this.showMenu = false;
   }
 
-  toggleMenu() {
+  toggleMenu(e: MouseEvent) {
+    e.stopPropagation();
     this.showMenu = !this.showMenu;
   }
 }
