@@ -57,7 +57,7 @@ import { GuiFields, GuiForm } from '@acrodata/gui';
 
 @Component({
   selector: 'your-app',
-  template: `<gui-form [config]="config" [model]="model" [form]="form"></gui-form>`,
+  template: `<gui-form [config]="config" [model]="model" [form]="form" />`,
   standalone: true,
   imports: [GuiForm],
 })

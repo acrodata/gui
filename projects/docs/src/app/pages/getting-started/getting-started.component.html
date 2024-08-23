@@ -21,7 +21,7 @@ language="bash"></code></pre>
 
 @include mat.core();
 
-$theme: mat.define-light-theme(...);
+$theme: mat.define-theme(...);
 
 @include gui.all-control-themes($theme);"
 language="scss"></code></pre>
@@ -43,7 +43,7 @@ import { GuiModule, GuiFields } from '@acrodata/gui';
 
 @Component({
   selector: 'your-app',
-  template: `&lt;gui-form [config]=&quot;config&quot; [model]=&quot;model&quot; [form]=&quot;form&quot;&gt;&lt;/gui-form&gt;`,
+  template: `&lt;gui-form [config]=&quot;config&quot; [model]=&quot;model&quot; [form]=&quot;form&quot; /&gt;`,
   standalone: true,
   imports: [GuiModule],
 })
