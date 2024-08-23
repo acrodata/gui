@@ -14,7 +14,7 @@ import { RouterOutlet } from '@angular/router';
 export class AppComponent {
   title = 'docs';
 
-  icons = ['menu', 'github', 'format_color_fill'];
+  icons = ['menu', 'github', 'invert_colors'];
 
   constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer) {
     for (const i of this.icons) {

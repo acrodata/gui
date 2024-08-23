@@ -21,6 +21,8 @@ p {
 }
 
 .gui-heading {
+  position: relative;
+  z-index: 1;
   padding: 0 12px;
   border-radius: 4px 4px 0 0;
   background-color: var(--bg-color);
@@ -65,8 +67,9 @@ button + button {
         z-index: 2;
         display: block;
         width: 4px;
-        border: 2px solid rgba(0, 0, 0, 0.4);
+        border: 2px solid var(--mat-expansion-container-text-color);
         border-right: none;
+        opacity: 0.4;
       }
     }
   }

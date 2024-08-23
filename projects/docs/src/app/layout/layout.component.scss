@@ -28,6 +28,8 @@ aside {
 }
 
 header {
+  position: relative;
+  z-index: 100;
   display: flex;
   align-items: center;
   height: 64px;
@@ -119,7 +121,7 @@ footer {
     top: 0;
     bottom: 0;
     left: 0;
-    z-index: 20;
+    z-index: 200;
     transform: translateX(-100%);
     transition: transform 0.3s ease-in-out;
 
@@ -132,7 +134,7 @@ footer {
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 19;
+    z-index: 190;
     width: 100vw;
     height: 100vh;
     visibility: hidden;
@@ -149,7 +151,6 @@ footer {
   header {
     position: sticky;
     top: 0;
-    z-index: 10;
   }
 
   .brand {
@@ -164,16 +165,7 @@ footer {
 }
 
 @media (width > 960px) {
-  .mat-mdc-icon-button.menu-toggle {
+  .menu-toggle {
     display: none;
-  }
-}
-
-// fix svg vertical align
-a.mat-mdc-icon-button {
-  display: inline-flex;
-
-  .mat-icon {
-    line-height: 1;
   }
 }

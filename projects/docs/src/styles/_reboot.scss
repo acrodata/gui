@@ -4,7 +4,7 @@
   --bg-secondary-color: rgba(240, 240, 240, 1);
   --fg-color: rgba(85, 85, 90, 1);
   --fg-secondary-color: rgba(85, 85, 90, .7);
-  --border-color: rgba(0, 0, 0, .1);
+  --border-color: rgba(0, 0, 0, .15);
   --heading-color: rgba(50, 50, 55, 1);
   --console-color: rgba(0, 0, 0, .4);
   --console-bg-color: rgba(0, 0, 0, .04);
@@ -18,7 +18,6 @@
   --hl-inserted-bg: rgb(218, 251, 225);
   --hl-deleted-text: rgb(130, 7, 30);
   --hl-deleted-bg: rgb(255, 235, 233);
-  --mat-standard-button-toggle-height: 32px;
 }
 
 *,
@@ -140,8 +139,8 @@ table {
 }
 
 .gui-form {
-  display: block;
-  background-color: var(--bg-color);
+  background-color: var(--mat-expansion-container-background-color);
+  color: var(--mat-expansion-container-text-color);
   box-shadow: 0 2px 4px rgba(0, 0, 0, .2);
   border-radius: 4px;
 
@@ -179,4 +178,19 @@ table {
 .hljs-deletion {
   color: var(--hl-deleted-text);
   background-color: var(--hl-deleted-bg);
+}
+
+.btn {
+  height: 40px;
+  padding: 8px;
+  background-color: transparent;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  color: var(--fg-color);
+
+  &:hover,
+  &:focus {
+    background-color: var(--bg-secondary-color);
+  }
 }
