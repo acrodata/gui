@@ -24,8 +24,10 @@
 </h2>
 
 <div>
-  <mat-slide-toggle [(ngModel)]="isRangeSlider"
-                    (ngModelChange)="toggleRangeSlider()">Range slider</mat-slide-toggle>
+  <label>
+    <input type="checkbox" [(ngModel)]="isRangeSlider" (ngModelChange)="toggleRangeSlider()">
+    Range slider
+  </label>
 </div>
 
 <app-example-viewer [config]="sliderConfig"></app-example-viewer>
@@ -41,8 +43,10 @@
 </h2>
 
 <div>
-  <mat-slide-toggle [(ngModel)]="isMultiSelect"
-                    (ngModelChange)="toggleMultiSelect()">Multiple choice</mat-slide-toggle>
+  <label>
+    <input type="checkbox" [(ngModel)]="isMultiSelect" (ngModelChange)="toggleMultiSelect()">
+    Multiple choice
+  </label>
 </div>
 
 <app-example-viewer [config]="selectConfig"></app-example-viewer>
@@ -52,14 +56,23 @@
 </h2>
 
 <div>
-  <mat-slide-toggle [(ngModel)]="isMultiButtonToggle"
-                    (ngModelChange)="toggleMultiButtonToggle()">Multiple choice</mat-slide-toggle>
+  <label>
+    <input type="checkbox" [(ngModel)]="isMultiButtonToggle"
+           (ngModelChange)="toggleMultiButtonToggle()">
+    Multiple choice
+  </label>
 
-  <mat-button-toggle-group [(ngModel)]="useIcon" (ngModelChange)="toggleIconButtonToggle()">
-    <mat-button-toggle [value]="0">Text</mat-button-toggle>
-    <mat-button-toggle [value]="1">Font icon</mat-button-toggle>
-    <mat-button-toggle [value]="2">Image icon</mat-button-toggle>
-  </mat-button-toggle-group>
+  <label>
+    <input type="radio" name="icontype" [value]="0" [(ngModel)]="useIcon"
+           (ngModelChange)="toggleIconButtonToggle()"> Text
+  </label>
+  <label>
+    <input type="radio" name="icontype" [value]="1" [(ngModel)]="useIcon"
+           (ngModelChange)="toggleIconButtonToggle()"> Font icon</label>
+  <label>
+    <input type="radio" name="icontype" [value]="2" [(ngModel)]="useIcon"
+           (ngModelChange)="toggleIconButtonToggle()"> Image icon
+  </label>
 </div>
 
 <app-example-viewer [config]="buttonToggleConfig"></app-example-viewer>

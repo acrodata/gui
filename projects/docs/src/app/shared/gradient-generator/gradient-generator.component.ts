@@ -1,13 +1,12 @@
 import { GuiFields, GuiModule } from '@acrodata/gui';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { MatButtonModule } from '@angular/material/button';
 import { cloneDeep } from 'lodash-es';
 import { IBackground, gradientPresets } from './gradient-presets';
 
 @Component({
   selector: 'app-gradient-generator',
   standalone: true,
-  imports: [GuiModule, MatButtonModule],
+  imports: [GuiModule],
   templateUrl: './gradient-generator.component.html',
   styleUrl: './gradient-generator.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

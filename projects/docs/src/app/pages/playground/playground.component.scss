@@ -1,4 +1,8 @@
-:host {
+:host ::ng-deep {
+  .mtx-split>.mtx-split-gutter {
+    background-color: var(--border-color);
+  }
+
   >mtx-split {
     position: relative;
     height: calc(100vh - 96px);

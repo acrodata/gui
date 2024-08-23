@@ -1,20 +1,12 @@
 import { GuiFields } from '@acrodata/gui';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { MatButtonToggleModule } from '@angular/material/button-toggle';
-import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { ExampleViewerComponent, PageHeaderComponent } from '../../shared';
 
 @Component({
   selector: 'app-basic-controls',
   standalone: true,
-  imports: [
-    ExampleViewerComponent,
-    PageHeaderComponent,
-    MatSlideToggleModule,
-    MatButtonToggleModule,
-    FormsModule,
-  ],
+  imports: [ExampleViewerComponent, PageHeaderComponent, FormsModule],
   templateUrl: './basic-controls.component.html',
   styleUrl: './basic-controls.component.scss',
 })

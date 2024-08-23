@@ -6,11 +6,10 @@
 
   <div class="gui-wrapper">
     <div class="gui-heading">Gradient Generator</div>
-    <gui-form [config]="config" [model]="model"
-    (modelChange)="demoStyle = getBgStyle($event)"></gui-form>
+    <gui-form [config]="config" [model]="model" (modelChange)="demoStyle = getBgStyle($event)" />
   </div>
 </div>
 
 @for (m of presets; track m; let i = $index) {
-  <button mat-stroked-button [style]="presetStyles[i]" (click)="selectPreset(m)"></button>
+  <button class="thumbnail" [style]="presetStyles[i]" (click)="selectPreset(m)"></button>
 }

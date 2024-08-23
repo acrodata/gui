@@ -3,11 +3,10 @@
     <pre><code [highlight]="config|json" language="json"></code></pre>
   </div>
   <div class="demo-result">
-    <gui-form [config]="config" [model]="model"></gui-form>
+    <gui-form [config]="config" [model]="model" />
 
     <div class="demo-console">
       <textarea readonly
-                matInput
                 cdkTextareaAutosize
                 cdkAutosizeMinRows="1"
                 cdkAutosizeMaxRows="20">{{model|json}}</textarea>
