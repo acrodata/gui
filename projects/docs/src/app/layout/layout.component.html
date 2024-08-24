@@ -18,14 +18,13 @@
   <aside [class.show]="menuOpened">
     <ul class="menu" role="navigation">
       @for (item of menu; track item) {
-        <li class="menu-item"
-          routerLinkActive="active">
+        <li class="menu-item" routerLinkActive="active">
           <a role="button" [routerLink]="item.route">{{item.name}}</a>
           @if (item.children.length>0) {
             <ul class="submenu">
               @for (sub of item.children; track sub) {
                 <li class="submenu-item">
-                  <a role="button" [routerLink]="item.route" [fragment]="sub.route">{{sub.name}} </a>
+                  <a role="button" [routerLink]="item.route" [fragment]="sub.route">{{sub.name}}</a>
                 </li>
               }
             </ul>

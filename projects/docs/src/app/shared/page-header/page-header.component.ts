@@ -12,7 +12,7 @@ import { Component, Input, ViewEncapsulation } from '@angular/core';
   },
 })
 export class PageHeaderComponent {
-  @Input() title = '';
-  @Input() subtitle = '';
+  @Input() pageTitle = '';
+  @Input() pageContent = '';
   @Input() config: GuiFields | null = null;
 }
