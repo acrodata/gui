@@ -130,6 +130,15 @@
             ],
             "scripts": []
           }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "projects/dev-app/src/**/*.ts",
+              "projects/dev-app/src/**/*.html"
+            ]
+          }
         }
       }
     },
@@ -238,6 +247,15 @@
               "projects/docs/src/styles.scss"
             ],
             "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "projects/docs/src/**/*.ts",
+              "projects/docs/src/**/*.html"
+            ]
           }
         }
       }
