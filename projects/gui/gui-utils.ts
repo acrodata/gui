@@ -19,7 +19,6 @@ import { GuiDefaultValue, GuiOperator } from './interface';
  *
  */
 export function ejsTmpl(str: string, data: any) {
-  // eslint-disable-next-line @typescript-eslint/no-implied-eval
   const fn = new Function(
     'obj',
     'var p=[],print=function(){p.push.apply(p,arguments);};' +
@@ -56,6 +55,7 @@ export class GuiEjsPipe implements PipeTransform {
 }
 
 @Directive({
+  // eslint-disable-next-line @angular-eslint/directive-selector
   selector: '[flex]',
   standalone: true,
 })

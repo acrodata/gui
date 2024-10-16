@@ -2,8 +2,7 @@
   @for (item of formFields; track item) {
     <div>
       <ng-template [ngTemplateOutlet]="controlType"
-        [ngTemplateOutletContext]="{$implicit: item, formGroup: form}">
-      </ng-template>
+        [ngTemplateOutletContext]="{$implicit: item, formGroup: form}" />
     </div>
   }
 </form>
@@ -84,8 +83,7 @@
           <gui-inline-group [config]="item" [formGroupName]="item.key">
             @for (child of item.children; track child) {
               <ng-template [ngTemplateOutlet]="controlType"
-                [ngTemplateOutletContext]="{$implicit: child, parent: item, formGroup: form.get(item.key)}">
-              </ng-template>
+                [ngTemplateOutletContext]="{$implicit: child, parent: item, formGroup: form.get(item.key)}" />
             }
           </gui-inline-group>
         }
@@ -100,8 +98,7 @@
               @for (child of item.children; track child) {
                 <div>
                   <ng-template [ngTemplateOutlet]="controlType"
-                    [ngTemplateOutletContext]="{$implicit: child, parent: item, formGroup: form.get(item.key)}">
-                  </ng-template>
+                    [ngTemplateOutletContext]="{$implicit: child, parent: item, formGroup: form.get(item.key)}" />
                 </div>
               }
             </ng-template>
@@ -154,16 +151,14 @@
                       <!-- FormControl & FormArray -->
                       @if (!tab.children || tab.children.length===0 || tab.type==='tabs') {
                         <ng-template [ngTemplateOutlet]="controlType"
-                          [ngTemplateOutletContext]="{$implicit: tab, parent: item, formGroup: form.get([item.key])}">
-                        </ng-template>
+                          [ngTemplateOutletContext]="{$implicit: tab, parent: item, formGroup: form.get([item.key])}" />
                       }
                       <!-- FormGroup -->
                       @if (tab.children?.length>0 && tab.type!=='tabs') {
                         @for (child of tab.children; track child) {
                           <div>
                             <ng-template [ngTemplateOutlet]="controlType"
-                              [ngTemplateOutletContext]="{$implicit: child, parent: item, formGroup: form.get([item.key, i])}">
-                            </ng-template>
+                              [ngTemplateOutletContext]="{$implicit: child, parent: item, formGroup: form.get([item.key, i])}" />
                           </div>
                         }
                       }
@@ -177,8 +172,8 @@
                     <div class="gui-list-item"
                       [class.gui-list-item-active]="item.selectedIndex===i">
                       <div class="gui-list-item-heading">
-                        <span class="gui-list-item-title"
-                        (click)="item.selectedIndex=i">{{tab.name | ejs:{i} }}</span>
+                        <button class="gui-list-item-title"
+                          (click)="item.selectedIndex=i">{{tab.name | ejs:{i} }}</button>
                         @if (item.template && (item.addable || item.addable===undefined)) {
                           <gui-icon-button-wrapper>
                             <button mat-icon-button type="button" [disabled]="item.disabled"
@@ -200,16 +195,14 @@
                         <!-- FormControl & FormArray -->
                         @if (!tab.children || tab.children.length===0 || tab.type==='tabs') {
                           <ng-template [ngTemplateOutlet]="controlType"
-                            [ngTemplateOutletContext]="{$implicit: tab, parent: item, formGroup: form.get([item.key])}">
-                          </ng-template>
+                            [ngTemplateOutletContext]="{$implicit: tab, parent: item, formGroup: form.get([item.key])}" />
                         }
                         <!-- FormGroup -->
                         @if (tab.children?.length>0 && tab.type!=='tabs') {
                           @for (child of tab.children; track child) {
                             <div>
                               <ng-template [ngTemplateOutlet]="controlType"
-                                [ngTemplateOutletContext]="{$implicit: child, parent: item, formGroup: form.get([item.key, i])}">
-                              </ng-template>
+                                [ngTemplateOutletContext]="{$implicit: child, parent: item, formGroup: form.get([item.key, i])}" />
                             </div>
                           }
                         }
@@ -232,16 +225,14 @@
                     @for (controlItem of menuChild.children; track controlItem) {
                       <div [formGroupName]="menuChild.key">
                         <ng-template [ngTemplateOutlet]="controlType"
-                          [ngTemplateOutletContext]="{$implicit: controlItem, formGroup: form.get([item.key, menuChild.key])}">
-                        </ng-template>
+                          [ngTemplateOutletContext]="{$implicit: controlItem, formGroup: form.get([item.key, menuChild.key])}" />
                       </div>
                     }
                   }
                   <!-- Support for unlimited nesting -->
                   @if (menuChild.type==='menu') {
                     <ng-template [ngTemplateOutlet]="controlType"
-                      [ngTemplateOutletContext]="{$implicit: menuChild, formGroup: form.get(item.key)}">
-                    </ng-template>
+                      [ngTemplateOutletContext]="{$implicit: menuChild, formGroup: form.get(item.key)}" />
                   }
                 </ng-template>
               </mat-tab>

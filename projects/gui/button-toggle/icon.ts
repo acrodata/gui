@@ -4,7 +4,7 @@ import { ChangeDetectionStrategy, Component, Input, ViewEncapsulation } from '@a
   selector: 'gui-icon',
   template: `
     @if (isUrl()) {
-      <img [src]="src" />
+      <img [src]="src" alt="" />
     } @else {
       <i [class]="src"></i>
     }

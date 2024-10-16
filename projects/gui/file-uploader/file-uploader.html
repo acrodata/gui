@@ -20,7 +20,7 @@
   @if (url) {
     @switch (type) {
       @case ('image') {
-        <img [src]="url" />
+        <img [src]="url" alt="" />
       }
       @case ('video') {
         <video [src]="url"></video>

@@ -77,9 +77,7 @@ export interface GuiField {
   rows?: number;
 }
 
-export interface GuiFields {
-  [key: string]: GuiField;
-}
+export type GuiFields = Record<string, GuiField>;
 
 export interface GuiFieldOption {
   label: string;
@@ -101,6 +99,4 @@ export interface GuiControl extends GuiField {
   selectedIndex?: number;
 }
 
-export interface GuiControls {
-  [key: string]: GuiControl;
-}
+export type GuiControls = Record<string, GuiControl>;
