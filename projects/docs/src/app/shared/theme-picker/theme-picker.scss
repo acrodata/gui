@@ -46,10 +46,14 @@
 .theme-picker-item {
   display: flex;
   gap: 4px;
+  width: 100%;
   padding: 4px 16px 4px 8px;
   border-radius: 4px;
   white-space: nowrap;
   font-size: 14px;
+  background-color: transparent;
+  color: inherit;
+  border: none;
   cursor: pointer;
 
   &:hover {

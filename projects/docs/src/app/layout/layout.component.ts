@@ -2,12 +2,12 @@ import { Component, ViewEncapsulation } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { NavigationEnd, Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { filter } from 'rxjs';
-import { ThemePicker } from '../shared';
+import { ThemePickerComponent } from '../shared';
 
 @Component({
   selector: 'app-layout',
   standalone: true,
-  imports: [RouterOutlet, RouterLink, RouterLinkActive, MatIconModule, ThemePicker],
+  imports: [RouterOutlet, RouterLink, RouterLinkActive, MatIconModule, ThemePickerComponent],
   templateUrl: './layout.component.html',
   styleUrl: './layout.component.scss',
   host: {

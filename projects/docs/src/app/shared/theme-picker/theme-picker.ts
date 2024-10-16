@@ -15,7 +15,7 @@ import { StyleManager } from '../style-manager/style-manager';
 import { DocsSiteTheme, ThemeStorage } from './theme-storage';
 
 @Component({
-  selector: 'theme-picker',
+  selector: 'app-theme-picker',
   templateUrl: 'theme-picker.html',
   styleUrl: 'theme-picker.scss',
   host: {
@@ -26,7 +26,7 @@ import { DocsSiteTheme, ThemeStorage } from './theme-storage';
   standalone: true,
   imports: [MatIconModule],
 })
-export class ThemePicker implements OnInit, OnDestroy {
+export class ThemePickerComponent implements OnInit, OnDestroy {
   private queryParamSubscription = Subscription.EMPTY;
   currentTheme: DocsSiteTheme | undefined;
 

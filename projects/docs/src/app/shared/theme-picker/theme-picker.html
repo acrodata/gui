@@ -6,8 +6,8 @@
 <ul class="theme-picker-menu" [class.show]="showMenu">
   @for (theme of themes; track theme) {
     <li>
-      <span class="theme-picker-item" [class.active]="currentTheme === theme"
-        (click)="selectTheme(theme.name)">{{theme.displayName}}</span>
+      <button class="theme-picker-item" [class.active]="currentTheme === theme"
+        (click)="selectTheme(theme.name)">{{theme.displayName}}</button>
     </li>
   }
 </ul>

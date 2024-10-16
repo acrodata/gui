@@ -1,3 +1,5 @@
+<!-- eslint-disable @angular-eslint/template/click-events-have-key-events -->
+<!-- eslint-disable @angular-eslint/template/interactive-supports-focus -->
 <header>
   <button class="btn menu-toggle" (click)="menuOpened = !menuOpened">
     <mat-icon svgIcon="menu" />
@@ -7,7 +9,7 @@
 
   <span class="spacer"></span>
 
-  <theme-picker />
+  <app-theme-picker />
 
   <a class="btn" href="https://github.com/acrodata/gui" target="_blank">
     <mat-icon svgIcon="github" />
@@ -43,4 +45,4 @@
 </main>
 </div>
 
-<div class="backdrop" [class.show]="menuOpened" (click)="menuOpened = false"></div>
+<div class="backdrop" [class.show]="menuOpened" (click)="menuOpened=false"></div>

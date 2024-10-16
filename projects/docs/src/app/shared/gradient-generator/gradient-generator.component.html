@@ -11,5 +11,7 @@
 </div>
 
 @for (m of presets; track m; let i = $index) {
-  <button class="thumbnail" [style]="presetStyles[i]" (click)="selectPreset(m)"></button>
+  <button class="thumbnail" [style]="presetStyles[i]" (click)="selectPreset(m)">
+
+  </button>
 }
