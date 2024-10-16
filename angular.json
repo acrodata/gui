@@ -33,6 +33,16 @@
               "zone.js/testing"
             ]
           }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "projects/gui/**/*.ts",
+              "projects/gui/**/*.html"
+            ],
+            "eslintConfig": "projects/gui/eslint.config.js"
+          }
         }
       }
     },
@@ -135,9 +145,10 @@
           "builder": "@angular-eslint/builder:lint",
           "options": {
             "lintFilePatterns": [
-              "projects/dev-app/src/**/*.ts",
-              "projects/dev-app/src/**/*.html"
-            ]
+              "projects/dev-app/**/*.ts",
+              "projects/dev-app/**/*.html"
+            ],
+            "eslintConfig": "projects/dev-app/eslint.config.js"
           }
         }
       }
@@ -253,9 +264,10 @@
           "builder": "@angular-eslint/builder:lint",
           "options": {
             "lintFilePatterns": [
-              "projects/docs/src/**/*.ts",
-              "projects/docs/src/**/*.html"
-            ]
+              "projects/docs/**/*.ts",
+              "projects/docs/**/*.html"
+            ],
+            "eslintConfig": "projects/docs/eslint.config.js"
           }
         },
         "deploy": {

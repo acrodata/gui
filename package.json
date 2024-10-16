@@ -47,11 +47,6 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^18.2.0",
-    "@angular-eslint/builder": "^18.3.0",
-    "@angular-eslint/eslint-plugin": "^18.3.0",
-    "@angular-eslint/eslint-plugin-template": "^18.3.0",
-    "@angular-eslint/schematics": "^18.3.0",
-    "@angular-eslint/template-parser": "^18.3.0",
     "@angular/cli": "^18.2.0",
     "@angular/compiler-cli": "^18.2.0",
     "@commitlint/cli": "^19.3.0",
@@ -59,10 +54,9 @@
     "@types/jasmine": "~5.1.0",
     "@types/lodash-es": "^4.17.10",
     "@types/node": "^20.14.0",
-    "@typescript-eslint/eslint-plugin": "^7.16.0",
-    "@typescript-eslint/parser": "^7.16.0",
     "angular-cli-ghpages": "^2.0.0",
-    "eslint": "^8.57.0",
+    "angular-eslint": "^18.3.1",
+    "eslint": "^9.12.0",
     "husky": "^8.0.3",
     "jasmine-core": "~5.1.0",
     "karma": "~6.4.0",
@@ -76,6 +70,7 @@
     "stylelint": "^16.7.0",
     "stylelint-config-recommended-scss": "^14.1.0",
     "stylelint-config-standard": "^36.0.0",
-    "typescript": "~5.5.2"
+    "typescript": "~5.5.2",
+    "typescript-eslint": "^8.9.0"
   }
 }
