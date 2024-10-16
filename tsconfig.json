@@ -25,10 +25,7 @@
     ],
     "paths": {
       "@acrodata/gui": [
-        "projects/gui"
-      ],
-      "@acrodata/gui/*": [
-        "projects/gui/*"
+        "projects/gui/public-api"
       ],
     }
   },
