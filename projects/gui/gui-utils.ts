@@ -55,7 +55,6 @@ export class GuiEjsPipe implements PipeTransform {
 }
 
 @Directive({
-  // eslint-disable-next-line @angular-eslint/directive-selector
   selector: '[flex]',
   standalone: true,
 })

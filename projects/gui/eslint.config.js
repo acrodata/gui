@@ -11,7 +11,7 @@ module.exports = tseslint.config(
         'error',
         {
           type: 'attribute',
-          prefix: 'gui',
+          prefix: '',
           style: 'camelCase',
         },
       ],
@@ -23,8 +23,6 @@ module.exports = tseslint.config(
           style: 'kebab-case',
         },
       ],
-      '@angular-eslint/directive-class-suffix': 'off',
-      '@angular-eslint/component-class-suffix': 'off',
     },
   },
   {
