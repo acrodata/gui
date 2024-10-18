@@ -6,7 +6,6 @@ const angular = require('angular-eslint');
 module.exports = tseslint.config(
   {
     files: ['**/*.ts'],
-    ignores: ['dist/**'],
     extends: [
       eslint.configs.recommended,
       ...tseslint.configs.recommended,
@@ -28,8 +27,8 @@ module.exports = tseslint.config(
       'quote-props': ['warn', 'consistent-as-needed'],
       'quotes': ['warn', 'single', { allowTemplateLiterals: true }],
       'semi': ['warn', 'always'],
-      '@typescript-eslint/no-explicit-any': 'off',
       '@typescript-eslint/no-empty-function': 'off',
+      '@typescript-eslint/no-explicit-any': 'off',
       '@typescript-eslint/no-inferrable-types': 'off',
       '@typescript-eslint/no-unused-vars': 'off',
       '@angular-eslint/component-class-suffix': 'off',
@@ -40,7 +39,6 @@ module.exports = tseslint.config(
   },
   {
     files: ['**/*.html'],
-    ignores: ['dist/**'],
     extends: [...angular.configs.templateRecommended, ...angular.configs.templateAccessibility],
     rules: {
       '@angular-eslint/template/prefer-self-closing-tags': 'warn',
