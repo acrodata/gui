@@ -4,6 +4,8 @@
 }
 
 .gui-field {
+  --mat-form-field-container-vertical-padding: 0.25rem;
+  --mat-form-field-container-text-line-height: 1rem;
   --mat-form-field-container-text-size: 0.75rem;
 
   display: inline-flex;
@@ -29,7 +31,6 @@
 
   .mat-mdc-form-field-infix {
     min-height: auto;
-    padding: 0 !important;
   }
 
   .mat-mdc-form-field-hint-spacer,

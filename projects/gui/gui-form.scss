@@ -9,8 +9,8 @@
   display: block;
   font-size: 0.75rem;
 
-  .mat-expansion-panel {
-    box-shadow: none !important;
+  .mat-expansion-panel:not([class*="mat-elevation-z"]) {
+    box-shadow: none;
   }
 
   .mat-expansion-panel-body {
