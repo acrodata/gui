@@ -20,11 +20,12 @@ export class GuiFileUploaderConfig {
   /**
    * The File upload API
    *
-   * @param file file data
+   * @param formData The FormData with file binary
+   * @param config   The custom upload config that passed from component input
    * @returns
    */
-  upload(file: FormData) {
-    return this.http.post<any>(this.url, file, {
+  upload(formData: FormData, config: Record<string, any>) {
+    return this.http.post<any>(this.url, formData, {
       reportProgress: true,
       observe: 'events',
       params: this.params,

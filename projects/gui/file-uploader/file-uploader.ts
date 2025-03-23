@@ -76,11 +76,11 @@ export class GuiFileUploader implements ControlValueAccessor, OnChanges {
 
   @Output() fileChange = new EventEmitter<string>();
 
-  // media src
+  // file url that returned from the server
   url = '';
 
   // file to upload
-  file!: FileUploadContent;
+  fileUpload!: FileUploadContent;
 
   private onChange: (value: string) => void = () => {};
   private onTouched: () => void = () => {};
@@ -117,18 +117,18 @@ export class GuiFileUploader implements ControlValueAccessor, OnChanges {
     this.cdr.markForCheck();
   }
 
-  upload(file: FileUploadContent) {
+  upload(fileUpload: FileUploadContent) {
     const formData = new FormData();
-    formData.append('file', file.data || '');
+    formData.append('file', fileUpload.data);
 
-    file.inProgress = true;
+    fileUpload.inProgress = true;
 
     this.fileUploaderCfg
-      .upload(formData)
+      .upload(formData, this.config)
       .pipe(
         catchError((error: HttpErrorResponse) => {
-          file.inProgress = false;
-          return of(`${file.data?.name || 'File'} upload failed.`);
+          fileUpload.inProgress = false;
+          return of(`${fileUpload.data.name || 'File'} upload failed.`);
         }),
         finalize(() => {})
       )
@@ -155,13 +155,13 @@ export class GuiFileUploader implements ControlValueAccessor, OnChanges {
   }
 
   onFileChange(e: Event) {
-    this.file = {
+    this.fileUpload = {
       data: (e.target as HTMLInputElement).files![0],
       inProgress: false,
       progress: 0,
     };
 
-    this.upload(this.file);
+    this.upload(this.fileUpload);
 
     // reset input value
     (e.target as HTMLInputElement).value = '';
