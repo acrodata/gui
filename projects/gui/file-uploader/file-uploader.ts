@@ -94,8 +94,8 @@ export class GuiFileUploader implements ControlValueAccessor, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes['type']) {
-      this.accept = this.type + '/*';
+    if (changes['config'] || changes['accept'] || changes['type']) {
+      this.accept = this.config.accept || this.accept || this.type + '/*';
     }
   }
 

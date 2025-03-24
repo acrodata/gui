@@ -75,6 +75,8 @@ export interface GuiField {
   mode?: GuiFillMode | GuiSliderMode | GuiTabsMode;
   // textarea
   rows?: number;
+  // image & video & audio & file
+  accept?: string;
 }
 
 export type GuiFields = Record<string, GuiField>;
