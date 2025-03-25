@@ -1,4 +1,3 @@
-import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
@@ -18,8 +17,7 @@ import { MatIconButton } from '@angular/material/button';
 import { MatFormField, MatHint, MatPrefix, MatSuffix } from '@angular/material/form-field';
 import { MatIcon } from '@angular/material/icon';
 import { MatInput } from '@angular/material/input';
-import { of } from 'rxjs';
-import { catchError, finalize } from 'rxjs/operators';
+import { finalize } from 'rxjs/operators';
 
 import { GuiFieldLabel } from '../field-label/field-label';
 import { GuiIconsRegistry } from '../gui-icons';
@@ -126,23 +124,20 @@ export class GuiFileUploader implements ControlValueAccessor, OnChanges {
     this.fileUploaderCfg
       .upload(formData, this.config)
       .pipe(
-        catchError((error: HttpErrorResponse) => {
+        finalize(() => {
           fileUpload.inProgress = false;
-          return of(`${fileUpload.data.name || 'File'} upload failed.`);
-        }),
-        finalize(() => {})
+        })
       )
-      .subscribe(res => {
-        if (res instanceof HttpResponse && res.body) {
-          this.url = res.body.data;
+      .subscribe(result => {
+        if (result) {
+          this.url = result;
+          this.cdr.detectChanges();
 
           this.onChange(this.url);
           this.onTouched();
 
           this.fileChange.emit(this.url);
         }
-
-        this.cdr.detectChanges();
       });
   }
 

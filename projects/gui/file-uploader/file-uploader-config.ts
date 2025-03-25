@@ -1,11 +1,19 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { map } from 'rxjs';
+import { GuiControl } from '../interface';
+
+export interface FileUploadResponseBody {
+  bytes: number;
+  mime: string;
+  url: string;
+}
 
 @Injectable({
   providedIn: 'root',
 })
 export class GuiFileUploaderConfig {
-  constructor(private http: HttpClient) {}
+  constructor(protected http: HttpClient) {}
 
   /**
    *  The file upload URL
@@ -13,22 +21,25 @@ export class GuiFileUploaderConfig {
   url = '';
 
   /**
-   * The file upload params
-   */
-  params: any = {};
-
-  /**
    * The File upload API
    *
    * @param formData The FormData with file binary
    * @param config   The custom upload config that passed from component input
-   * @returns
+   * @returns        The uploaded file url stream
    */
-  upload(formData: FormData, config: Record<string, any>) {
-    return this.http.post<any>(this.url, formData, {
-      reportProgress: true,
-      observe: 'events',
-      params: this.params,
-    });
+  upload(formData: FormData, config: Partial<GuiControl>) {
+    return this.http
+      .post<FileUploadResponseBody>(this.url, formData, {
+        reportProgress: true,
+        observe: 'events',
+      })
+      .pipe(
+        map(res => {
+          if (res instanceof HttpResponse && res.body) {
+            return res.body.url;
+          }
+          return null;
+        })
+      );
   }
 }
