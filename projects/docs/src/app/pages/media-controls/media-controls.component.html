@@ -6,17 +6,27 @@
 </h2>
 
 <p>If you want to use the upload feature, you should replace the <code>GuiFileUploaderConfig</code>
-  with your own uploading logic.</p>
+  with your own uploading logic. The returns of upload function must be a stream of file URL (or
+  null).</p>
 
 <pre><code highlight="@Injectable()
 export class YourUploadService {
   constructor(private http: HttpClient) {}
 
   upload(file: FormData) {
-    return this.http.post<any>('your_url', file, {
-      reportProgress: true,
-      observe: 'events',
-    });
+    return this.http
+      .post('your_url', file, {
+        reportProgress: true,
+        observe: 'events',
+      })
+      .pipe(
+        map(res => {
+          if (res instanceof HttpResponse && res.body) {
+            return res.body.url;
+          }
+          return null;
+        })
+      );
   }
 }
 
