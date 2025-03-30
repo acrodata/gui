@@ -61,8 +61,10 @@ export class GuiFill implements ControlValueAccessor {
   constructor(private cdr: ChangeDetectorRef) {}
 
   writeValue(value: string) {
-    this.value = value;
-    this.cdr.markForCheck();
+    if (typeof value === 'string') {
+      this.value = value;
+      this.cdr.markForCheck();
+    }
   }
 
   registerOnChange(fn: (value: string) => void) {
