@@ -13,6 +13,7 @@ export type GuiFieldType =
   | 'select'
   | 'buttonToggle'
   | 'imageSelect'
+  | 'combobox'
   | 'textarea'
   | 'hidden'
   | 'image'
@@ -49,7 +50,7 @@ export interface GuiField {
   col?: number;
   showIf?: GuiFieldShowIf;
   show?: boolean;
-  // group & subgroup & menu & tabs & inline
+  // group & menu & tabs & inline
   children?: GuiFields | GuiField[];
   // group & tabs
   expanded?: boolean;
@@ -60,11 +61,11 @@ export interface GuiField {
   // text & number & slider & select
   prefix?: string;
   suffix?: string;
-  // select & buttonToggle & imageSelect
+  // select & buttonToggle & imageSelect & combobox
   options?: GuiFieldOption[];
-  // select
+  // select & combobox
   useFont?: boolean;
-  // select & buttonToggle
+  // select & buttonToggle & combobox
   multiple?: boolean;
   // buttonToggle
   useIcon?: boolean;

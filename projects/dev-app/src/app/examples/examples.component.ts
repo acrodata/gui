@@ -90,7 +90,7 @@ export class ExamplesComponent implements OnInit {
       ],
       description: '请选择您系统有的字体,如果您系统无此字体,标题将会显示默认字体',
     },
-    furits: {
+    fruits: {
       name: '选择多项',
       type: 'select',
       multiple: true,
@@ -101,6 +101,30 @@ export class ExamplesComponent implements OnInit {
         { value: 4, label: 'Orange', disabled: true },
         { value: 5, label: 'Strawberry' },
       ],
+    },
+    combobox1: {
+      name: '复合框',
+      type: 'combobox',
+      options: [
+        { value: 'Arial', label: 'Arial' },
+        { value: 'fantasy', label: 'Fantasy' },
+        { value: 'impact', label: 'Impact' },
+        { value: 'monospace', label: 'Monospace' },
+      ],
+      placeholder: '单选',
+      useFont: true,
+    },
+    combobox2: {
+      name: '复合框',
+      type: 'combobox',
+      multiple: true,
+      options: [
+        { value: 1, label: 'Volvo' },
+        { value: 2, label: 'Saab' },
+        { value: 3, label: 'Mercedes' },
+        { value: 4, label: 'Audi', disabled: true },
+      ],
+      placeholder: '多选',
     },
     align: {
       name: '对齐方式',

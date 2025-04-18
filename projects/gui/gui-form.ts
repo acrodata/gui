@@ -40,6 +40,7 @@ import { GuiSwitch } from './switch/switch';
 import { GuiTextarea } from './textarea/textarea';
 
 import { GuiIconsRegistry } from './gui-icons';
+import { GuiCombobox } from './combobox/combobox';
 
 let nextUniqueId = 0;
 
@@ -82,6 +83,7 @@ let nextUniqueId = 0;
     GuiFieldLabel,
     GuiIconButtonWrapper,
     GuiEjsPipe,
+    GuiCombobox,
   ],
 })
 export class GuiForm implements OnChanges, OnInit, OnDestroy {

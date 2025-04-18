@@ -1,0 +1,33 @@
+<mat-form-field>
+  @if (config.prefix) {
+    <span matPrefix>{{ config.prefix }}</span>
+  }
+  <mtx-select
+    [(ngModel)]="value"
+    [disabled]="disabled"
+    [placeholder]="config.placeholder || ''"
+    [appendTo]="appendTo"
+    [items]="config.options || []"
+    bindLabel="label"
+    bindValue="value"
+    [multiple]="config.multiple || false"
+    [addTag]="addTagFn"
+    [closeOnSelect]="!config.multiple"
+    [deselectOnClick]="true"
+    (change)="onValueChange()"
+  >
+    <ng-template ng-option-tmp let-item="item">
+      <div class="ng-option-label" [style.font-family]="config.useFont ? item.value : ''">
+        {{ item.label }}
+      </div>
+    </ng-template>
+  </mtx-select>
+  @if (config.suffix) {
+    <span matSuffix>{{ config.suffix }}</span>
+  }
+  @if (config.parentType === 'inline') {
+    <mat-hint>
+      <gui-field-label [config]="config" />
+    </mat-hint>
+  }
+</mat-form-field>

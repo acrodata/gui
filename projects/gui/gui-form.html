@@ -71,6 +71,11 @@
             <gui-image-select [formControlName]="item.key" [config]="item" [appendTo]="'#'+uid" />
           </gui-field-group>
         }
+        @case ('combobox') {
+          <gui-field-group [config]="item" [flex]="item.col">
+            <gui-combobox [formControlName]="item.key" [config]="item" [appendTo]="'#'+uid" />
+          </gui-field-group>
+        }
         @case ('textarea') {
           <gui-field-group [config]="item" [flex]="item.col">
             <gui-textarea [formControlName]="item.key" [config]="item" />

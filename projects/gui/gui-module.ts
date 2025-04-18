@@ -32,6 +32,7 @@ import { GuiImageSelect } from './image-select/image-select';
 import { GuiTextarea } from './textarea/textarea';
 import { GuiFileUploader } from './file-uploader/file-uploader';
 import { GuiIconButtonWrapper } from './icon-button-wrapper/icon-button-wrapper';
+import { GuiCombobox } from './combobox/combobox';
 import { GuiEjsPipe, GuiFlexDirective } from './gui-utils';
 
 @NgModule({
@@ -65,6 +66,7 @@ import { GuiEjsPipe, GuiFlexDirective } from './gui-utils';
     GuiFieldLabel,
     GuiInlineGroup,
     GuiImageSelect,
+    GuiCombobox,
     GuiTextarea,
     GuiFileUploader,
     GuiIconButtonWrapper,
@@ -85,6 +87,7 @@ import { GuiEjsPipe, GuiFlexDirective } from './gui-utils';
     GuiFieldLabel,
     GuiInlineGroup,
     GuiImageSelect,
+    GuiCombobox,
     GuiTextarea,
     GuiFileUploader,
     GuiIconButtonWrapper,

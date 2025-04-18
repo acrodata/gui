@@ -1,0 +1,41 @@
+.gui-combobox {
+  .ng-select {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    margin-left: -0.5rem;
+    margin-right: -0.5rem;
+
+    &.ng-select-multiple .ng-value {
+      flex-direction: row-reverse;
+    }
+
+    .ng-value-icon {
+      font-family: math;
+      font-size: 10px;
+    }
+
+    .ng-clear-wrapper .ng-clear {
+      font-family: math;
+      font-size: 12px;
+    }
+
+    .ng-arrow {
+      vertical-align: -1px;
+    }
+  }
+
+  &.ng-dropdown-panel {
+    padding: 0.5rem 0;
+
+    .ng-dropdown-panel-items {
+      .ng-option {
+        padding: 0 0.5rem;
+        line-height: var(--mat-option-label-text-line-height);
+
+        .ng-tag-label {
+          line-height: 1;
+        }
+      }
+    }
+  }
+}
