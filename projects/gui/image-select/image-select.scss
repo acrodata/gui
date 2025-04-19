@@ -28,6 +28,15 @@
         @extend %img;
       }
     }
+
+    .ng-clear-wrapper .ng-clear {
+      font-family: math;
+      font-size: 12px;
+    }
+
+    .ng-arrow {
+      vertical-align: -1px;
+    }
   }
 
   &.ng-dropdown-panel {
