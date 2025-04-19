@@ -91,6 +91,28 @@ export class BasicControlsComponent {
     this.selectConfig = { ...this.selectConfig };
   }
 
+  comboboxConfig: GuiFields = {
+    font: {
+      type: 'combobox',
+      name: 'Font',
+      default: 'arial',
+      multiple: false,
+      useFont: true,
+      options: [
+        { value: 'arial', label: 'Arial' },
+        { value: 'fantasy', label: 'Fantasy' },
+        { value: 'monospace', label: 'Monospace' },
+      ],
+    },
+  };
+  isMultiCombobox = false;
+  toggleMultiCombobox() {
+    const { font } = this.comboboxConfig;
+    font.multiple = this.isMultiCombobox;
+    font.default = this.isMultiCombobox ? [] : 'arial';
+    this.comboboxConfig = { ...this.comboboxConfig };
+  }
+
   buttonToggleConfig: GuiFields = {
     textAlign: {
       type: 'buttonToggle',

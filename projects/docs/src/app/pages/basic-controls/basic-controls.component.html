@@ -1,5 +1,7 @@
-<app-page-header pageTitle="Basic controls"
-                 pageContent="Used for binding primitive values (string, number or boolean)." />
+<app-page-header
+  pageTitle="Basic controls"
+  pageContent="Used for binding primitive values (string, number or boolean)."
+/>
 
 <h2 id="text">
   <a href="basic-controls#text">Text</a>
@@ -25,7 +27,7 @@
 
 <div>
   <label>
-    <input type="checkbox" [(ngModel)]="isRangeSlider" (ngModelChange)="toggleRangeSlider()">
+    <input type="checkbox" [(ngModel)]="isRangeSlider" (ngModelChange)="toggleRangeSlider()" />
     Range slider
   </label>
 </div>
@@ -44,12 +46,25 @@
 
 <div>
   <label>
-    <input type="checkbox" [(ngModel)]="isMultiSelect" (ngModelChange)="toggleMultiSelect()">
+    <input type="checkbox" [(ngModel)]="isMultiSelect" (ngModelChange)="toggleMultiSelect()" />
     Multiple choice
   </label>
 </div>
 
 <app-example-viewer [config]="selectConfig" />
+
+<h2 id="combobox">
+  <a href="basic-controls#combobox">Combobox</a>
+</h2>
+
+<div>
+  <label>
+    <input type="checkbox" [(ngModel)]="isMultiCombobox" (ngModelChange)="toggleMultiCombobox()" />
+    Multiple choice
+  </label>
+</div>
+
+<app-example-viewer [config]="comboboxConfig" />
 
 <h2 id="button_toggle">
   <a href="basic-controls#button_toggle">Button Toggle</a>
@@ -57,21 +72,43 @@
 
 <div>
   <label>
-    <input type="checkbox" [(ngModel)]="isMultiButtonToggle"
-           (ngModelChange)="toggleMultiButtonToggle()">
+    <input
+      type="checkbox"
+      [(ngModel)]="isMultiButtonToggle"
+      (ngModelChange)="toggleMultiButtonToggle()"
+    />
     Multiple choice
   </label>
 
   <label>
-    <input type="radio" name="icontype" [value]="0" [(ngModel)]="useIcon"
-           (ngModelChange)="toggleIconButtonToggle()"> Text
+    <input
+      type="radio"
+      name="icontype"
+      [value]="0"
+      [(ngModel)]="useIcon"
+      (ngModelChange)="toggleIconButtonToggle()"
+    />
+    Text
   </label>
   <label>
-    <input type="radio" name="icontype" [value]="1" [(ngModel)]="useIcon"
-           (ngModelChange)="toggleIconButtonToggle()"> Font icon</label>
+    <input
+      type="radio"
+      name="icontype"
+      [value]="1"
+      [(ngModel)]="useIcon"
+      (ngModelChange)="toggleIconButtonToggle()"
+    />
+    Font icon</label
+  >
   <label>
-    <input type="radio" name="icontype" [value]="2" [(ngModel)]="useIcon"
-           (ngModelChange)="toggleIconButtonToggle()"> Image icon
+    <input
+      type="radio"
+      name="icontype"
+      [value]="2"
+      [(ngModel)]="useIcon"
+      (ngModelChange)="toggleIconButtonToggle()"
+    />
+    Image icon
   </label>
 </div>
 

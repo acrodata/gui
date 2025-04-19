@@ -32,6 +32,7 @@ export class LayoutComponent {
         { name: 'Slider', route: 'slider' },
         { name: 'Fill', route: 'fill' },
         { name: 'Select', route: 'select' },
+        { name: 'Combobox', route: 'combobox' },
         { name: 'Button Toggle', route: 'button_toggle' },
         { name: 'Image Select', route: 'image_select' },
         { name: 'Textarea', route: 'textarea' },
