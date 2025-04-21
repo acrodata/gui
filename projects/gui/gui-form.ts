@@ -23,6 +23,8 @@ import { MatTab, MatTabContent, MatTabGroup, MatTabLabel } from '@angular/materi
 import { Subscription, mergeWith, of } from 'rxjs';
 
 import { GuiButtonToggle } from './button-toggle/button-toggle';
+import { GuiCodearea } from './codearea/codearea';
+import { GuiCombobox } from './combobox/combobox';
 import { GuiFieldGroup } from './field-group/field-group';
 import { GuiFieldLabel } from './field-label/field-label';
 import { GuiFileUploader } from './file-uploader/file-uploader';
@@ -40,7 +42,6 @@ import { GuiSwitch } from './switch/switch';
 import { GuiTextarea } from './textarea/textarea';
 
 import { GuiIconsRegistry } from './gui-icons';
-import { GuiCombobox } from './combobox/combobox';
 
 let nextUniqueId = 0;
 
@@ -84,6 +85,7 @@ let nextUniqueId = 0;
     GuiIconButtonWrapper,
     GuiEjsPipe,
     GuiCombobox,
+    GuiCodearea,
   ],
 })
 export class GuiForm implements OnChanges, OnInit, OnDestroy {

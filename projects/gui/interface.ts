@@ -15,6 +15,7 @@ export type GuiFieldType =
   | 'imageSelect'
   | 'combobox'
   | 'textarea'
+  | 'codearea'
   | 'hidden'
   | 'image'
   | 'video'
@@ -78,6 +79,9 @@ export interface GuiField {
   rows?: number;
   // image & video & audio & file
   accept?: string;
+  // codearea
+  height?: string | number;
+  language?: string;
 }
 
 export type GuiFields = Record<string, GuiField>;

@@ -81,6 +81,11 @@
             <gui-textarea [formControlName]="item.key" [config]="item" />
           </gui-field-group>
         }
+        @case ('codearea') {
+          <gui-field-group [config]="item" [flex]="item.col">
+            <gui-codearea [formControlName]="item.key" [config]="item" />
+          </gui-field-group>
+        }
         @case ('hidden') {
           <input type="hidden" [formControlName]="item.key">
         }
