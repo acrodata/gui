@@ -7,6 +7,7 @@ export * from './gui-form';
 export * from './button-toggle/button-toggle';
 export * from './button-toggle/icon';
 export * from './codearea/codearea';
+export * from './codearea/codearea-dialog';
 export * from './combobox/combobox';
 export * from './field-group/field-group';
 export * from './field-label/field-label';

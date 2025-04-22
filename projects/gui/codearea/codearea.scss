@@ -1,5 +1,35 @@
 .gui-codearea {
+  position: relative;
+  overflow: auto;
+  border: 1px solid var(--mdc-outlined-text-field-outline-color);
+  border-radius: var(--mdc-outlined-text-field-container-shape);
+
   .code-editor {
     width: 100%;
+    min-height: 24px;
+    overflow: auto;
+    resize: vertical;
+  }
+
+  &:hover {
+    .gui-codearea-btns {
+      display: block;
+    }
+  }
+}
+
+.gui-codearea-btns {
+  position: absolute;
+  top: 0;
+  right: 8px;
+  display: none;
+
+  [dir='rtl'] & {
+    left: 8px;
+    right: auto;
+  }
+
+  .mat-mdc-icon-button {
+    backdrop-filter: blur(8px);
   }
 }

@@ -2,8 +2,20 @@
   [style.height]="height"
   [(ngModel)]="value"
   [disabled]="disabled"
+  [languages]="languages"
+  [language]="language"
+  [theme]="theme"
+  setup="minimal"
   (blur)="onValueChange()"
 />
+
+<div class="gui-codearea-btns">
+  <gui-icon-button-wrapper>
+    <button mat-icon-button (click)="onExpand()">
+      <mat-icon svgIcon="expand" />
+    </button>
+  </gui-icon-button-wrapper>
+</div>
 
 @if (config.parentType === 'inline') {
   <mat-hint>

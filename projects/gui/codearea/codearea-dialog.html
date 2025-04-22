@@ -1,0 +1,21 @@
+<div
+  class="gui-codearea-dialog-header"
+  [class.dragging]="dragHandle.isDragging"
+  rndDialogDragHandle
+  #dragHandle="rndDialogDragHandle"
+>
+  <span class="title" [title]="data.title">{{ data.title }}</span>
+
+  <span class="spacer"></span>
+
+  <button mat-stroked-button (click)="close()">Close</button>
+  <button mat-flat-button cdkFocusInitial (click)="save()">Save</button>
+</div>
+
+<code-editor
+  [(ngModel)]="data.value"
+  [disabled]="data.disabled"
+  [languages]="data.languages"
+  [language]="data.language"
+  [theme]="data.theme"
+/>

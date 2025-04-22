@@ -11,6 +11,7 @@
   @include mat.slider-theme($theme);
   @include mat.icon-theme($theme);
   @include mat.icon-button-theme($theme);
+  @include mat.button-theme($theme);
   @include mat.tabs-theme($theme);
   @include mat.expansion-theme($theme);
   @include mat.tooltip-theme($theme);
@@ -28,6 +29,7 @@
   @include mat.slider-color($theme);
   @include mat.icon-color($theme);
   @include mat.icon-button-color($theme);
+  @include mat.button-color($theme);
   @include mat.tabs-color($theme);
   @include mat.expansion-color($theme);
   @include mat.tooltip-color($theme);

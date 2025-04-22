@@ -1,4 +1,5 @@
-import { CodeEditor } from '@acrodata/code-editor';
+import { CodeEditor, Theme } from '@acrodata/code-editor';
+import { RndDialog } from '@acrodata/rnd-dialog';
 import { coerceCssPixelValue } from '@angular/cdk/coercion';
 import {
   ChangeDetectionStrategy,
@@ -9,9 +10,24 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { ControlValueAccessor, FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { MatIconButton } from '@angular/material/button';
 import { MatHint } from '@angular/material/form-field';
+import { MatIcon } from '@angular/material/icon';
+import { LanguageDescription } from '@codemirror/language';
 import { GuiFieldLabel } from '../field-label/field-label';
+import { GuiIconsRegistry } from '../gui-icons';
+import { GuiIconButtonWrapper } from '../icon-button-wrapper/icon-button-wrapper';
 import { GuiControl } from '../interface';
+import { GuiCodeareaDialog } from './codearea-dialog';
+
+export interface GuiCodeareaDialogData {
+  value: string;
+  disabled: boolean;
+  languages: LanguageDescription[];
+  language: string;
+  theme: Theme;
+  title: string;
+}
 
 @Component({
   selector: 'gui-codearea',
@@ -30,7 +46,15 @@ import { GuiControl } from '../interface';
     },
   ],
   standalone: true,
-  imports: [FormsModule, MatHint, CodeEditor, GuiFieldLabel],
+  imports: [
+    FormsModule,
+    MatIcon,
+    MatIconButton,
+    MatHint,
+    CodeEditor,
+    GuiFieldLabel,
+    GuiIconButtonWrapper,
+  ],
 })
 export class GuiCodearea implements ControlValueAccessor {
   @Input() config: Partial<GuiControl> = {};
@@ -40,13 +64,27 @@ export class GuiCodearea implements ControlValueAccessor {
     return coerceCssPixelValue(this.config.height || 160);
   }
 
+  get language() {
+    return this.config.language || '';
+  }
+
+  languages: LanguageDescription[] = [];
+
+  theme: Theme = 'light';
+
   value = '';
   private oldValue = '';
 
   private onChange: (value: string) => void = () => {};
   private onTouched: () => void = () => {};
 
-  constructor(private cdr: ChangeDetectorRef) {}
+  constructor(
+    private cdr: ChangeDetectorRef,
+    private rndDialog: RndDialog,
+    iconsRegistry: GuiIconsRegistry
+  ) {
+    iconsRegistry.add('expand');
+  }
 
   writeValue(value: any) {
     if (typeof value === 'string' || value == null) {
@@ -76,5 +114,31 @@ export class GuiCodearea implements ControlValueAccessor {
       this.onChange(this.value);
       this.oldValue = this.value;
     }
+  }
+
+  onExpand() {
+    const dialogRef = this.rndDialog.open<string, GuiCodeareaDialogData, GuiCodeareaDialog>(
+      GuiCodeareaDialog,
+      {
+        panelClass: 'gui-codearea-dialog-panel',
+        width: '600px',
+        data: {
+          value: this.value,
+          disabled: this.disabled,
+          languages: this.languages || [],
+          language: this.language,
+          theme: this.theme,
+          title: `(${this.language || 'plaintext'})`,
+        },
+      }
+    );
+
+    dialogRef.closed.subscribe(newValue => {
+      if (newValue) {
+        this.value = newValue;
+        this.cdr.detectChanges();
+        this.onValueChange();
+      }
+    });
   }
 }

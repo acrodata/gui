@@ -1,0 +1,51 @@
+.gui-codearea-dialog-panel {
+  --rnd-dialog-container-color: var(--mdc-dialog-container-color);
+  --mdc-outlined-button-label-text-size: 0.75rem;
+  --mdc-outlined-button-container-height: 1.5rem;
+  --mat-outlined-button-horizontal-padding: 0.75rem;
+  --mat-outlined-button-touch-target-display: none;
+  --mdc-filled-button-label-text-size: 0.75rem;
+  --mdc-filled-button-container-height: 1.5rem;
+  --mat-filled-button-horizontal-padding: 0.75rem;
+  --mat-filled-button-touch-target-display: none;
+
+  font-size: 0.75rem;
+}
+
+.gui-codearea-dialog {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+  border-radius: inherit;
+
+  .code-editor {
+    flex: 1;
+    overflow: auto;
+    border: 1px solid transparent;
+  }
+}
+
+.gui-codearea-dialog-header {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  padding: 8px;
+  cursor: grab;
+  border-bottom: 1px solid rgba(0, 0, 0, .24);
+  box-shadow: 0 1px 0 0 rgba(255, 255, 255, .24);
+
+  &.dragging {
+    cursor: grabbing;
+  }
+
+  .title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .spacer {
+    flex: 1;
+  }
+}
