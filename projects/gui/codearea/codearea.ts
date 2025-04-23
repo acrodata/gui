@@ -1,31 +1,31 @@
-import { CodeEditor, Theme } from '@acrodata/code-editor';
+import { CodeEditor } from '@acrodata/code-editor';
 import { RndDialog } from '@acrodata/rnd-dialog';
 import { coerceCssPixelValue } from '@angular/cdk/coercion';
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
+  DestroyRef,
   forwardRef,
   Input,
   ViewEncapsulation,
 } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ControlValueAccessor, FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { MatIconButton } from '@angular/material/button';
 import { MatHint } from '@angular/material/form-field';
 import { MatIcon } from '@angular/material/icon';
-import { LanguageDescription } from '@codemirror/language';
 import { GuiFieldLabel } from '../field-label/field-label';
 import { GuiIconsRegistry } from '../gui-icons';
 import { GuiIconButtonWrapper } from '../icon-button-wrapper/icon-button-wrapper';
 import { GuiControl } from '../interface';
+import { GuiCodeareaConfig } from './codearea-config';
 import { GuiCodeareaDialog } from './codearea-dialog';
 
 export interface GuiCodeareaDialogData {
   value: string;
   disabled: boolean;
-  languages: LanguageDescription[];
   language: string;
-  theme: Theme;
   title: string;
 }
 
@@ -68,9 +68,13 @@ export class GuiCodearea implements ControlValueAccessor {
     return this.config.language || '';
   }
 
-  languages: LanguageDescription[] = [];
+  get languages() {
+    return this.codeareaCfg.languages;
+  }
 
-  theme: Theme = 'light';
+  get theme() {
+    return this.codeareaCfg.theme;
+  }
 
   value = '';
   private oldValue = '';
@@ -79,11 +83,17 @@ export class GuiCodearea implements ControlValueAccessor {
   private onTouched: () => void = () => {};
 
   constructor(
-    private cdr: ChangeDetectorRef,
     private rndDialog: RndDialog,
+    private cdr: ChangeDetectorRef,
+    private destroyRef: DestroyRef,
+    private codeareaCfg: GuiCodeareaConfig,
     iconsRegistry: GuiIconsRegistry
   ) {
     iconsRegistry.add('expand');
+
+    this.codeareaCfg.changes.pipe(takeUntilDestroyed(this.destroyRef)).subscribe(() => {
+      this.cdr.markForCheck();
+    });
   }
 
   writeValue(value: any) {
@@ -121,13 +131,12 @@ export class GuiCodearea implements ControlValueAccessor {
       GuiCodeareaDialog,
       {
         panelClass: 'gui-codearea-dialog-panel',
+        hasBackdrop: false,
         width: '600px',
         data: {
           value: this.value,
           disabled: this.disabled,
-          languages: this.languages || [],
           language: this.language,
-          theme: this.theme,
           title: `(${this.language || 'plaintext'})`,
         },
       }
