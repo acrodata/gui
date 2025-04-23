@@ -446,6 +446,7 @@ export class ExamplesComponent implements OnInit {
       type: 'codearea',
       name: '代码块',
       default: 'console.log("Hello World")',
+      language: 'js',
     },
   };
   model = {};

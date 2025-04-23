@@ -35,7 +35,7 @@
     "@angular/platform-browser": "^18.2.0",
     "@angular/platform-browser-dynamic": "^18.2.0",
     "@angular/router": "^18.2.0",
-    "@codemirror/lang-json": "^6.0.1",
+    "@codemirror/language-data": "^6.5.1",
     "@mdi/font": "^7.4.47",
     "@ng-matero/extensions": "^18.5.0",
     "lodash-es": "^4.17.21",

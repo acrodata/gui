@@ -1,5 +1,12 @@
 <gui-field-group>
-  <gui-button-toggle [config]="{options:[{label:'A',value:1},{label:'B',value:2}]}" />
+  <gui-button-toggle
+    [config]="{
+      options: [
+        { label: 'A', value: 1 },
+        { label: 'B', value: 2 },
+      ],
+    }"
+  />
 </gui-field-group>
 
 <gui-field-group>
@@ -11,10 +18,22 @@
 </gui-field-group>
 
 <gui-field-group>
-  <gui-image-select [config]="{options:[
-    {label:'A',value:1,src:'https://interactive-examples.mdn.mozilla.net/media/cc0-images/grapefruit-slice-332-332.jpg'},
-    {label:'B',value:2,src:'https://interactive-examples.mdn.mozilla.net/media/cc0-images/elephant-660-480.jpg'}
-    ]}" />
+  <gui-image-select
+    [config]="{
+      options: [
+        {
+          label: 'A',
+          value: 1,
+          src: 'https://interactive-examples.mdn.mozilla.net/media/cc0-images/grapefruit-slice-332-332.jpg',
+        },
+        {
+          label: 'B',
+          value: 2,
+          src: 'https://interactive-examples.mdn.mozilla.net/media/cc0-images/elephant-660-480.jpg',
+        },
+      ],
+    }"
+  />
 </gui-field-group>
 
 <gui-field-group>
@@ -26,11 +45,25 @@
 </gui-field-group>
 
 <gui-field-group>
-  <gui-select [config]="{options:[{label:'A',value:1},{label:'B',value:2}]}" />
+  <gui-select
+    [config]="{
+      options: [
+        { label: 'A', value: 1 },
+        { label: 'B', value: 2 },
+      ],
+    }"
+  />
 </gui-field-group>
 
 <gui-field-group>
-  <gui-combobox [config]="{options:[{label:'A',value:1},{label:'B',value:2}]}" />
+  <gui-combobox
+    [config]="{
+      options: [
+        { label: 'A', value: 1 },
+        { label: 'B', value: 2 },
+      ],
+    }"
+  />
 </gui-field-group>
 
 <gui-field-group>
@@ -45,12 +78,16 @@
   <gui-textarea />
 </gui-field-group>
 
+<gui-field-group>
+  <gui-codearea [config]="{ language: 'js', height: 60 }" />
+</gui-field-group>
+
 <gui-inline-group>
   <gui-field-group [flex]="50">
-    <gui-input-text [config]="{parentType:'inline',name:'A'}" />
+    <gui-input-text [config]="{ parentType: 'inline', name: 'A' }" />
   </gui-field-group>
 
   <gui-field-group [flex]="50">
-    <gui-input-text [config]="{parentType:'inline',name:'B'}" />
+    <gui-input-text [config]="{ parentType: 'inline', name: 'B' }" />
   </gui-field-group>
 </gui-inline-group>
