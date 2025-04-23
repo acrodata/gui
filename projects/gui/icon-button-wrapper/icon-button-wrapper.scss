@@ -4,13 +4,9 @@
   .mat-mdc-icon-button {
     --mdc-icon-button-state-layer-size: 1.5rem;
     --mdc-icon-button-icon-size: 0.875rem;
+    --mat-icon-button-touch-target-display: none;
 
     padding: 0;
-
-    .mat-mdc-button-touch-target {
-      width: var(--mdc-icon-button-state-layer-size);
-      height: var(--mdc-icon-button-state-layer-size);
-    }
   }
 
   .mat-icon {

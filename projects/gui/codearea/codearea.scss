@@ -6,7 +6,7 @@
 
   .code-editor {
     width: 100%;
-    min-height: 24px;
+    min-height: 1.5rem;
     overflow: auto;
     resize: vertical;
   }
@@ -21,15 +21,27 @@
 .gui-codearea-btns {
   position: absolute;
   top: 0;
-  right: 8px;
+  right: 0;
   display: none;
+  margin: 2px;
 
   [dir='rtl'] & {
-    left: 8px;
+    left: 0;
     right: auto;
+  }
+
+  .mat-mdc-icon-button,
+  .mat-icon {
+    width: 1.25rem;
+    height: 1.25rem;
   }
 
   .mat-mdc-icon-button {
     backdrop-filter: blur(8px);
+    border-radius: 0.25rem;
+
+    .mat-mdc-button-persistent-ripple {
+      border-radius: inherit;
+    }
   }
 }
