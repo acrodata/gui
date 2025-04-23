@@ -2,7 +2,9 @@
 @use '@ng-matero/extensions' as mtx;
 
 @mixin all-control-themes($theme) {
-  @include mat.core-theme($theme);
+  @include mat.option-theme($theme);
+  @include mat.optgroup-theme($theme);
+  @include mat.pseudo-checkbox-theme($theme);
   @include mat.form-field-theme($theme);
   @include mat.input-theme($theme);
   @include mat.button-toggle-theme($theme);
@@ -20,7 +22,9 @@
 }
 
 @mixin all-control-colors($theme) {
-  @include mat.core-color($theme);
+  @include mat.option-color($theme);
+  @include mat.optgroup-color($theme);
+  @include mat.pseudo-checkbox-color($theme);
   @include mat.form-field-color($theme);
   @include mat.input-color($theme);
   @include mat.button-toggle-color($theme);
