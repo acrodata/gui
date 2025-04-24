@@ -1,4 +1,4 @@
-import { CodeEditor } from '@acrodata/code-editor';
+import { CodeEditor, Setup } from '@acrodata/code-editor';
 import { RndDialog } from '@acrodata/rnd-dialog';
 import { coerceCssPixelValue } from '@angular/cdk/coercion';
 import {
@@ -60,13 +60,25 @@ export class GuiCodearea implements ControlValueAccessor {
   @Input() config: Partial<GuiControl> = {};
   @Input() disabled = false;
 
-  get height() {
-    return coerceCssPixelValue(this.config.height || 160);
-  }
+  @Input() setup: Setup = 'minimal';
 
-  get language() {
-    return this.config.language || '';
+  @Input()
+  get height() {
+    return coerceCssPixelValue(this.config.height || this._height);
   }
+  set height(value: string | number) {
+    this._height = value;
+  }
+  private _height: string | number = 120;
+
+  @Input()
+  get language() {
+    return this.config.language || this._language;
+  }
+  set language(value: string) {
+    this._language = value;
+  }
+  private _language = '';
 
   get languages() {
     return this.codeareaCfg.languages;
