@@ -182,7 +182,7 @@
                     <div class="gui-list-item"
                       [class.gui-list-item-active]="item.selectedIndex===i">
                       <div class="gui-list-item-heading">
-                        <button class="gui-list-item-title"
+                        <button class="gui-list-item-title" type="button"
                           (click)="item.selectedIndex=i">{{tab.name | ejs:{i} }}</button>
                         @if (item.template && (item.addable || item.addable===undefined)) {
                           <gui-icon-button-wrapper>
