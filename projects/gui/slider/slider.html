@@ -1,65 +1,74 @@
-@if (config.mode!=='range') {
+@if (config.mode !== 'range') {
   <!-- normal slider -->
   <mat-slider [disabled]="disabled" [step]="config.step" [min]="config.min" [max]="config.max">
-    <input matSliderThumb [(ngModel)]="value" (valueChange)="onValueChange()">
+    <input matSliderThumb [(ngModel)]="value" (valueChange)="onValueChange()" />
   </mat-slider>
   <mat-form-field>
     @if (config.prefix) {
-      <span matPrefix>{{config.prefix}}</span>
+      <span matPrefix>{{ config.prefix }}</span>
     }
-    <input matInput type="number"
+    <input
+      matInput
+      type="number"
       [(ngModel)]="value"
       [disabled]="disabled"
-      [placeholder]="config.placeholder||''"
+      [placeholder]="config.placeholder || ''"
       [step]="config.step"
       [min]="config.min!"
       [max]="config.max!"
-      (change)="onValueChange()">
+      (change)="onValueChange()"
+    />
     @if (config.suffix) {
-      <span matSuffix>{{config.suffix}}</span>
+      <span matSuffix>{{ config.suffix }}</span>
     }
   </mat-form-field>
 } @else {
   <!-- range slider -->
   <mat-slider [disabled]="disabled" [step]="config.step" [min]="config.min" [max]="config.max">
-    <input matSliderStartThumb [(ngModel)]="minValue" (valueChange)="onRangeInputChange()">
-    <input matSliderEndThumb [(ngModel)]="maxValue" (valueChange)="onRangeInputChange()">
+    <input matSliderStartThumb [(ngModel)]="minValue" (valueChange)="onRangeInputChange()" />
+    <input matSliderEndThumb [(ngModel)]="maxValue" (valueChange)="onRangeInputChange()" />
   </mat-slider>
   <mat-form-field>
     @if (config.prefix) {
-      <span matPrefix>{{config.prefix}}</span>
+      <span matPrefix>{{ config.prefix }}</span>
     }
-    <input matInput type="number"
+    <input
+      matInput
+      type="number"
       [(ngModel)]="minValue"
       [disabled]="disabled"
-      [placeholder]="config.placeholder||''"
+      [placeholder]="config.placeholder || ''"
       [step]="config.step"
       [min]="config.min!"
       [max]="config.max!"
-      (change)="onRangeInputChange()">
+      (change)="onRangeInputChange()"
+    />
     @if (config.suffix) {
-      <span matSuffix>{{config.suffix}}</span>
+      <span matSuffix>{{ config.suffix }}</span>
     }
   </mat-form-field>
   <mat-form-field>
     @if (config.prefix) {
-      <span matPrefix>{{config.prefix}}</span>
+      <span matPrefix>{{ config.prefix }}</span>
     }
-    <input matInput type="number"
+    <input
+      matInput
+      type="number"
       [(ngModel)]="maxValue"
       [disabled]="disabled"
-      [placeholder]="config.placeholder||''"
+      [placeholder]="config.placeholder || ''"
       [step]="config.step"
       [min]="config.min!"
       [max]="config.max!"
-      (change)="onRangeInputChange()">
+      (change)="onRangeInputChange()"
+    />
     @if (config.suffix) {
-      <span matSuffix>{{config.suffix}}</span>
+      <span matSuffix>{{ config.suffix }}</span>
     }
   </mat-form-field>
 }
 
-@if (config.parentType==='inline') {
+@if (config.parentType === 'inline') {
   <mat-hint>
     <gui-field-label [config]="config" />
   </mat-hint>

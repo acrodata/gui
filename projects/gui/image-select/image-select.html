@@ -1,24 +1,29 @@
 <mat-form-field>
   @if (config.prefix) {
-    <span matPrefix>{{config.prefix}}</span>
+    <span matPrefix>{{ config.prefix }}</span>
   }
-  <mtx-select [items]="config.options||[]" [appendTo]="appendTo" bindValue="value"
-    [(ngModel)]="value" [disabled]="disabled"
-    [placeholder]="config.placeholder||''"
-    (change)="onValueChange()">
+  <mtx-select
+    [items]="config.options || []"
+    [appendTo]="appendTo"
+    bindValue="value"
+    [(ngModel)]="value"
+    [disabled]="disabled"
+    [placeholder]="config.placeholder || ''"
+    (change)="onValueChange()"
+  >
     <ng-template ng-label-tmp let-opt="item">
       <img [src]="opt.src" [alt]="opt.label" />
-      <span>{{opt.label}}</span>
+      <span>{{ opt.label }}</span>
     </ng-template>
     <ng-template ng-option-tmp let-opt="item" let-index="index" let-search="searchTerm">
       <img [src]="opt.src" [alt]="opt.label" />
-      <span>{{opt.label}}</span>
+      <span>{{ opt.label }}</span>
     </ng-template>
   </mtx-select>
   @if (config.suffix) {
-    <span matSuffix>{{config.suffix}}</span>
+    <span matSuffix>{{ config.suffix }}</span>
   }
-  @if (config.parentType==='inline') {
+  @if (config.parentType === 'inline') {
     <mat-hint>
       <gui-field-label [config]="config" />
     </mat-hint>

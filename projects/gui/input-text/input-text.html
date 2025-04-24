@@ -1,16 +1,19 @@
 <mat-form-field>
   @if (config.prefix) {
-    <span matPrefix>{{config.prefix}}</span>
+    <span matPrefix>{{ config.prefix }}</span>
   }
-  <input matInput type="text"
+  <input
+    matInput
+    type="text"
     [(ngModel)]="value"
     [disabled]="disabled"
-    [placeholder]="config.placeholder||''"
-    (change)="onValueChange()">
+    [placeholder]="config.placeholder || ''"
+    (change)="onValueChange()"
+  />
   @if (config.suffix) {
-    <span matSuffix>{{config.suffix}}</span>
+    <span matSuffix>{{ config.suffix }}</span>
   }
-  @if (config.parentType==='inline') {
+  @if (config.parentType === 'inline') {
     <mat-hint>
       <gui-field-label [config]="config" />
     </mat-hint>

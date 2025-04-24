@@ -4,19 +4,21 @@
     <span class="gui-color-block" [style.background]="value"></span>
   </ng-container>
 
-  <input matInput
+  <input
+    matInput
     [(ngModel)]="value"
     [disabled]="disabled"
-    [placeholder]="config.placeholder||''"
+    [placeholder]="config.placeholder || ''"
     [mtxColorpicker]="cp"
-    (colorChange)="onValueChange()">
+    (colorChange)="onValueChange()"
+  />
 
   <mtx-colorpicker #cp />
   <gui-icon-button-wrapper matSuffix>
     <mtx-colorpicker-toggle [for]="cp" />
   </gui-icon-button-wrapper>
 
-  @if (config.parentType==='inline') {
+  @if (config.parentType === 'inline') {
     <mat-hint>
       <gui-field-label [config]="config" />
     </mat-hint>

@@ -1,21 +1,29 @@
-<mat-button-toggle-group [(ngModel)]="value" [disabled]="disabled" [multiple]="config.multiple"
-  (change)="onValueChange()" hideSingleSelectionIndicator hideMultipleSelectionIndicator>
+<mat-button-toggle-group
+  [(ngModel)]="value"
+  [disabled]="disabled"
+  [multiple]="config.multiple"
+  (change)="onValueChange()"
+  hideSingleSelectionIndicator
+  hideMultipleSelectionIndicator
+>
   @for (opt of config.options; track opt) {
-    <mat-button-toggle disableRipple
+    <mat-button-toggle
+      disableRipple
       [class.gui-icon-toggle]="config.useIcon"
       [flex]="opt.col"
       [value]="opt.value"
       [disabled]="opt.disabled"
-      [title]="config.useIcon ? opt.label : ''">
+      [title]="config.useIcon ? opt.label : ''"
+    >
       @if (config.useIcon) {
         <gui-icon [src]="opt.src!" />
       } @else {
-        {{opt.label}}
+        {{ opt.label }}
       }
     </mat-button-toggle>
   }
 </mat-button-toggle-group>
-@if (config.parentType==='inline') {
+@if (config.parentType === 'inline') {
   <mat-hint>
     <gui-field-label [config]="config" />
   </mat-hint>

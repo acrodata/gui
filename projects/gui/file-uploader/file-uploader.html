@@ -3,9 +3,15 @@
     <mat-icon svgIcon="link" />
   </gui-icon-button-wrapper>
 
-  <input matInput type="text" [ngModel]="url" [disabled]="disabled"
-    [placeholder]="config.placeholder||''"
-    (change)="onUrlChange($event)" (blur)="onBlur()">
+  <input
+    matInput
+    type="text"
+    [ngModel]="url"
+    [disabled]="disabled"
+    [placeholder]="config.placeholder || ''"
+    (change)="onUrlChange($event)"
+    (blur)="onBlur()"
+  />
 
   @if (url) {
     <gui-icon-button-wrapper matSuffix>
@@ -38,11 +44,17 @@
     </div>
   }
 
-  <input #fileInput type="file" [accept]="accept" [name]="name"
-    [disabled]="disabled" (change)="onFileChange($event)">
+  <input
+    #fileInput
+    type="file"
+    [accept]="accept"
+    [name]="name"
+    [disabled]="disabled"
+    (change)="onFileChange($event)"
+  />
 </figure>
 
-@if (config.parentType==='inline') {
+@if (config.parentType === 'inline') {
   <mat-hint>
     <gui-field-label [config]="config" />
   </mat-hint>

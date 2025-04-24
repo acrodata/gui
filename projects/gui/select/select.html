@@ -1,23 +1,27 @@
 <mat-form-field>
   @if (config.prefix) {
-    <span matPrefix>{{config.prefix}}</span>
+    <span matPrefix>{{ config.prefix }}</span>
   }
-  <mat-select panelClass="gui-select" hideSingleSelectionIndicator disableRipple
+  <mat-select
+    panelClass="gui-select"
+    hideSingleSelectionIndicator
+    disableRipple
     [(ngModel)]="value"
     [disabled]="disabled"
-    [placeholder]="config.placeholder||''"
+    [placeholder]="config.placeholder || ''"
     [multiple]="config.multiple || false"
-    (selectionChange)="onValueChange()">
+    (selectionChange)="onValueChange()"
+  >
     @for (opt of config.options; track opt) {
       <mat-option [value]="opt.value" [disabled]="opt.disabled">
-        <span [style.font-family]="config.useFont ? opt.value : ''">{{opt.label}}</span>
+        <span [style.font-family]="config.useFont ? opt.value : ''">{{ opt.label }}</span>
       </mat-option>
     }
   </mat-select>
   @if (config.suffix) {
-    <span matSuffix>{{config.suffix}}</span>
+    <span matSuffix>{{ config.suffix }}</span>
   }
-  @if (config.parentType==='inline') {
+  @if (config.parentType === 'inline') {
     <mat-hint>
       <gui-field-label [config]="config" />
     </mat-hint>
