@@ -49,9 +49,9 @@ export class GuiCombobox implements ControlValueAccessor, AfterViewInit {
   @Input() disabled = false;
   @Input() appendTo = 'body';
 
-  value: GuiBasicValue = '';
+  value: GuiBasicValue | GuiBasicValue[] = '';
 
-  private onChange: (value: GuiBasicValue) => void = () => {};
+  private onChange: (value: GuiBasicValue | GuiBasicValue[]) => void = () => {};
   private onTouched: () => void = () => {};
 
   constructor(private cdr: ChangeDetectorRef) {}
@@ -62,12 +62,12 @@ export class GuiCombobox implements ControlValueAccessor, AfterViewInit {
     ngSelect.classes = (ngSelect.classes || '') + ' gui-combobox';
   }
 
-  writeValue(value: string | number) {
+  writeValue(value: GuiBasicValue | GuiBasicValue[]) {
     this.value = value;
     this.cdr.markForCheck();
   }
 
-  registerOnChange(fn: (value: GuiBasicValue) => void) {
+  registerOnChange(fn: (value: GuiBasicValue | GuiBasicValue[]) => void) {
     this.onChange = fn;
   }
 

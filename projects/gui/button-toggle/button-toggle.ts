@@ -45,19 +45,19 @@ export class GuiButtonToggle implements ControlValueAccessor {
   @Input() config: Partial<GuiControl> = {};
   @Input() disabled = false;
 
-  value: GuiBasicValue = '';
+  value: GuiBasicValue | GuiBasicValue[] = '';
 
-  private onChange: (value: GuiBasicValue) => void = () => {};
+  private onChange: (value: GuiBasicValue | GuiBasicValue[]) => void = () => {};
   private onTouched: () => void = () => {};
 
   constructor(private cdr: ChangeDetectorRef) {}
 
-  writeValue(value: GuiBasicValue) {
+  writeValue(value: GuiBasicValue | GuiBasicValue[]) {
     this.value = value;
     this.cdr.markForCheck();
   }
 
-  registerOnChange(fn: (value: GuiBasicValue) => void) {
+  registerOnChange(fn: (value: GuiBasicValue | GuiBasicValue[]) => void) {
     this.onChange = fn;
   }
 
