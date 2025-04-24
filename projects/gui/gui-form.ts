@@ -239,7 +239,7 @@ export class GuiForm implements OnChanges, OnInit, OnDestroy {
           const controls = item.showIf!.conditions.map(c => getControl(c[0]));
           const valueChanges$ = controls.map(control => control?.valueChanges || of());
           const subscription = of()
-            .pipe(mergeWith(valueChanges$))
+            .pipe(mergeWith(...valueChanges$))
             .subscribe(() => {
               setVisibility(c => compareValues(getControl(c[0])?.value, c[2], c[1]));
             });
