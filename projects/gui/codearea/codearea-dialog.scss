@@ -1,5 +1,8 @@
 .gui-codearea-dialog-panel {
   --rnd-dialog-container-color: var(--mdc-dialog-container-color);
+}
+
+.gui-codearea-dialog {
   --mdc-outlined-button-label-text-size: 0.75rem;
   --mdc-outlined-button-container-height: 1.5rem;
   --mat-outlined-button-horizontal-padding: 0.75rem;
@@ -9,15 +12,12 @@
   --mat-filled-button-horizontal-padding: 0.75rem;
   --mat-filled-button-touch-target-display: none;
 
-  font-size: 0.75rem;
-}
-
-.gui-codearea-dialog {
   display: flex;
   flex-direction: column;
   height: 100%;
   overflow: hidden;
   border-radius: inherit;
+  font-size: 0.75rem;
 
   .code-editor {
     flex: 1;

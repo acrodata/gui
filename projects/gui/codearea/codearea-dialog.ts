@@ -1,6 +1,5 @@
 import { CodeEditor } from '@acrodata/code-editor';
 import { RndDialogDragHandle } from '@acrodata/rnd-dialog';
-import { A11yModule } from '@angular/cdk/a11y';
 import { DIALOG_DATA, DialogRef } from '@angular/cdk/dialog';
 import {
   ChangeDetectionStrategy,
@@ -12,14 +11,14 @@ import {
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormsModule } from '@angular/forms';
-import { MatButtonModule } from '@angular/material/button';
+import { MatButton } from '@angular/material/button';
 import { GuiCodeareaDialogData } from './codearea';
 import { GuiCodeareaConfig } from './codearea-config';
 
 @Component({
   selector: 'gui-codearea-dialog',
   standalone: true,
-  imports: [FormsModule, A11yModule, MatButtonModule, RndDialogDragHandle, CodeEditor],
+  imports: [FormsModule, MatButton, RndDialogDragHandle, CodeEditor],
   templateUrl: './codearea-dialog.html',
   styleUrl: './codearea-dialog.scss',
   host: {
@@ -36,6 +35,12 @@ export class GuiCodeareaDialog {
   get theme() {
     return this.codeareaCfg.theme;
   }
+
+  langDesc = this.codeareaCfg.languages.find(lang =>
+    lang.alias.includes(this.data.language.toLowerCase())
+  );
+
+  title = `${this.data.title || ''} (${this.langDesc?.name || 'Plain Text'})`;
 
   constructor(
     private dialogRef: DialogRef<string, GuiCodeareaDialog>,

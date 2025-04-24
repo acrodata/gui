@@ -4,12 +4,12 @@
   rndDialogDragHandle
   #dragHandle="rndDialogDragHandle"
 >
-  <span class="gui-codearea-dialog-title" [title]="data.title">{{ data.title }}</span>
+  <span class="gui-codearea-dialog-title" [title]="title">{{ title }}</span>
 
   <span class="gui-codearea-dialog-spacer"></span>
 
   <button mat-stroked-button (click)="close()">Close</button>
-  <button mat-flat-button cdkFocusInitial (click)="save()">Save</button>
+  <button mat-flat-button (click)="save()">Save</button>
 </div>
 
 <code-editor

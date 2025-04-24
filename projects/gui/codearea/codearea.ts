@@ -26,7 +26,7 @@ export interface GuiCodeareaDialogData {
   value: string;
   disabled: boolean;
   language: string;
-  title: string;
+  title?: string;
 }
 
 @Component({
@@ -149,7 +149,6 @@ export class GuiCodearea implements ControlValueAccessor {
           value: this.value,
           disabled: this.disabled,
           language: this.language,
-          title: `(${this.language || 'plaintext'})`,
         },
       }
     );
