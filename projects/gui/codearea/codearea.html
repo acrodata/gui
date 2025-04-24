@@ -9,13 +9,13 @@
   (blur)="onValueChange()"
 />
 
-<gui-icon-button-wrapper>
-  <div class="gui-codearea-btns">
+<div class="gui-codearea-btns">
+  <gui-icon-button-wrapper>
     <button mat-icon-button (click)="onExpand()">
       <mat-icon svgIcon="expand" />
     </button>
-  </div>
-</gui-icon-button-wrapper>
+  </gui-icon-button-wrapper>
+</div>
 
 @if (config.parentType === 'inline') {
   <mat-hint>
