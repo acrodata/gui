@@ -29,12 +29,12 @@ import { GuiIcon } from './button-toggle/icon';
 import { GuiButtonToggle } from './button-toggle/button-toggle';
 import { GuiFill } from './fill/fill';
 import { GuiImageSelect } from './image-select/image-select';
+import { GuiCombobox } from './combobox/combobox';
 import { GuiTextarea } from './textarea/textarea';
 import { GuiCodearea } from './codearea/codearea';
 import { GuiCodeareaDialog } from './codearea/codearea-dialog';
 import { GuiFileUploader } from './file-uploader/file-uploader';
 import { GuiIconButtonWrapper } from './icon-button-wrapper/icon-button-wrapper';
-import { GuiCombobox } from './combobox/combobox';
 import { GuiEjsPipe, GuiFlexDirective } from './gui-utils';
 
 @NgModule({
