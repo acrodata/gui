@@ -1,12 +1,13 @@
 import { GuiFields } from '@acrodata/gui';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { HighlightModule } from 'ngx-highlightjs';
 import { ExampleViewerComponent, PageHeaderComponent } from '../../shared';
 
 @Component({
   selector: 'app-basic-controls',
   standalone: true,
-  imports: [ExampleViewerComponent, PageHeaderComponent, FormsModule],
+  imports: [ExampleViewerComponent, PageHeaderComponent, FormsModule, HighlightModule],
   templateUrl: './basic-controls.component.html',
   styleUrl: './basic-controls.component.scss',
 })
@@ -201,6 +202,15 @@ export class BasicControlsComponent {
       name: 'Foo',
       default: 'I am a textarea',
       rows: 3,
+    },
+  };
+
+  codeareaConfig: GuiFields = {
+    snippet: {
+      type: 'codearea',
+      name: 'Snippet',
+      default: 'console.log("Hello World!")',
+      language: 'js',
     },
   };
 

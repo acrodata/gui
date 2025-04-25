@@ -98,8 +98,8 @@
       [(ngModel)]="useIcon"
       (ngModelChange)="toggleIconButtonToggle()"
     />
-    Font icon</label
-  >
+    Font icon
+  </label>
   <label>
     <input
       type="radio"
@@ -114,7 +114,11 @@
 
 <app-example-viewer [config]="buttonToggleConfig" />
 
-<p>If you have lots of options, you can make a grid for options with the <code>col</code> attr.</p>
+<p>
+  If you have lots of options, you can make a grid for options with the
+  <code>col</code>
+  attr.
+</p>
 
 <app-example-viewer [config]="buttonToggleConfig2" />
 
@@ -129,6 +133,32 @@
 </h2>
 
 <app-example-viewer [config]="textareaConfig" />
+
+<h2 id="codearea">
+  <a href="basic-controls#codearea">Codearea</a>
+</h2>
+
+<details>
+  <summary>
+    If you want to configure the language, you must define the
+    <code>languages</code>
+    at first.
+  </summary>
+
+  <pre><code highlight="export const appConfig: ApplicationConfig = {
+  providers: [
+    {
+      provide: GuiCodeareaConfig,
+      useValue: {
+        ...new GuiCodeareaConfig(),
+        languages: [], // LanguageDescription[]
+      },
+    },
+  ]
+}" language="ts"></code></pre>
+</details>
+
+<app-example-viewer [config]="codeareaConfig" />
 
 <h2 id="hidden">
   <a href="basic-controls#hidden">Hidden</a>

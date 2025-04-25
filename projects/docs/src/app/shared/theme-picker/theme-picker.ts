@@ -1,3 +1,4 @@
+import { GuiCodeareaConfig } from '@acrodata/gui';
 import { LiveAnnouncer } from '@angular/cdk/a11y';
 import {
   ChangeDetectionStrategy,
@@ -47,6 +48,7 @@ export class ThemePickerComponent implements OnInit, OnDestroy {
       color: '#810081',
       displayName: '🌚 M3 (Magenta & Violet)',
       name: 'magenta-violet',
+      isDark: true,
     },
     {
       color: '#004f4f',
@@ -85,7 +87,8 @@ export class ThemePickerComponent implements OnInit, OnDestroy {
     private themeStorage: ThemeStorage,
     private activatedRoute: ActivatedRoute,
     private liveAnnouncer: LiveAnnouncer,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    private codeareaCfg: GuiCodeareaConfig
   ) {
     const themeName = this.themeStorage.getStoredThemeName();
     if (themeName) {
@@ -134,6 +137,9 @@ export class ThemePickerComponent implements OnInit, OnDestroy {
       this.liveAnnouncer.announce(`${theme.displayName} theme selected.`, 'polite', 3000);
       this.themeStorage.storeTheme(this.currentTheme);
     }
+
+    this.codeareaCfg.theme = theme.isDark ? 'dark' : 'light';
+    this.codeareaCfg.changes.next();
 
     this.showMenu = false;
   }

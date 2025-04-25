@@ -36,6 +36,7 @@ export class LayoutComponent {
         { name: 'Button Toggle', route: 'button_toggle' },
         { name: 'Image Select', route: 'image_select' },
         { name: 'Textarea', route: 'textarea' },
+        { name: 'Codearea', route: 'codearea' },
         { name: 'Hidden', route: 'hidden' },
       ],
     },
