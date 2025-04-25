@@ -2,20 +2,20 @@
 # yarn lockfile v1
 
 
-"@acrodata/code-editor@^0.4.0":
-  version "0.4.0"
-  resolved "https://registry.yarnpkg.com/@acrodata/code-editor/-/code-editor-0.4.0.tgz#445250bebbb9f3aebc25c993748510cb583885de"
-  integrity sha512-UjOsghqspPEId2GNrj6SpJLWvs1LIF1iFj4A1R26HJlb1YY60sikx43ArV7Rhmy5V0MrtaQcCKBxewYiGKu4Rg==
+"@acrodata/code-editor@^0.5.1":
+  version "0.5.1"
+  resolved "https://registry.yarnpkg.com/@acrodata/code-editor/-/code-editor-0.5.1.tgz#de6ff62be763c5ae08213d7d862b38f420d42ec3"
+  integrity sha512-ta0prFRwXQgLSqBtjzpR9+eWXPpFh/+tS/BQapoA89cMnJDo6zCjkfEax41uO5xb96UJA3IAuYM22jUA6G4WRw==
   dependencies:
     "@codemirror/merge" "^6.0.0"
     "@codemirror/theme-one-dark" "^6.0.0"
     codemirror "^6.0.0"
     tslib "^2.3.0"
 
-"@acrodata/rnd-dialog@^0.3.0":
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/@acrodata/rnd-dialog/-/rnd-dialog-0.3.0.tgz#9ae67b92382f073a05980f87db9e63a0766ead4c"
-  integrity sha512-Z6L6pzmfQmwo2Th0EKqNwB6/sUcP3fs8X/hwH/AVpuEcq2i7ddCNtfNsRDce8L1jwztpKLhKmOPHev6geJU+Aw==
+"@acrodata/rnd-dialog@^0.3.2":
+  version "0.3.2"
+  resolved "https://registry.yarnpkg.com/@acrodata/rnd-dialog/-/rnd-dialog-0.3.2.tgz#1a10fbf6aeae27e26d82fd96588b0ee68480d8f8"
+  integrity sha512-yiZ59rRVKUXlYa7CZGFBB2g93Dj36/qAInXdHzvDsQdMLBjpjTz073UTaTtL/3jm76IKXmoPlN1euV2BttdzCQ==
   dependencies:
     gesto "^1.19.4"
     tslib "^2.3.0"

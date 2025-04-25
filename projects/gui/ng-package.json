@@ -6,5 +6,9 @@
   ],
   "lib": {
     "entryFile": "public-api.ts"
-  }
+  },
+  "allowedNonPeerDependencies": [
+    "@acrodata/code-editor",
+    "@acrodata/rnd-dialog"
+  ]
 }

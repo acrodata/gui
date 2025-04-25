@@ -23,8 +23,8 @@
   },
   "private": true,
   "dependencies": {
-    "@acrodata/code-editor": "^0.4.0",
-    "@acrodata/rnd-dialog": "^0.3.0",
+    "@acrodata/code-editor": "^0.5.1",
+    "@acrodata/rnd-dialog": "^0.3.2",
     "@angular/animations": "^18.2.0",
     "@angular/cdk": "^18.2.0",
     "@angular/common": "^18.2.0",
