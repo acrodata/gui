@@ -1,13 +1,18 @@
-<app-page-header pageTitle="Media controls"
-                 pageContent="Used for uploading and displaying files." />
+<app-page-header
+  pageTitle="Media controls"
+  pageContent="Used for uploading and displaying files."
+/>
 
 <h2 id="upload_settings">
   <a href="media-controls#upload_settings">Upload Settings</a>
 </h2>
 
-<p>If you want to use the upload feature, you should replace the <code>GuiFileUploaderConfig</code>
+<p>
+  If you want to use the upload feature, you should replace the
+  <code>GuiFileUploaderConfig</code>
   with your own uploading logic. The returns of upload function must be a stream of file URL (or
-  null).</p>
+  null).
+</p>
 
 <pre><code highlight="@Injectable()
 export class YourUploadService {
@@ -30,17 +35,13 @@ export class YourUploadService {
   }
 }
 
-@Component({
-  ...
-  imports: [GuiModule],
+export const appConfig: ApplicationConfig = {
   providers: [
     {
       provide: GuiFileUploaderConfig,
       useClass: YourUploadService
     },
   ],
-})
-export class YourComponent {
 }"
 language="ts"></code></pre>
 
