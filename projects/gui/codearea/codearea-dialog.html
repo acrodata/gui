@@ -15,10 +15,12 @@
 <div class="gui-codearea-dialog-content">
   <code-editor
     [(ngModel)]="data.value"
-    [disabled]="data.disabled"
-    [language]="data.language"
+    [disabled]="data.disabled || false"
+    [readonly]="data.readonly || false"
+    [language]="data.language || ''"
     [languages]="languages"
     [theme]="theme"
+    [extensions]="extensions"
     [lineWrapping]="lineWrapping"
     indentWithTab
   />

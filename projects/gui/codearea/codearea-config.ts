@@ -1,6 +1,7 @@
 import { Theme } from '@acrodata/code-editor';
 import { Injectable } from '@angular/core';
 import { LanguageDescription } from '@codemirror/language';
+import { Extension } from '@codemirror/state';
 import { Subject } from 'rxjs';
 
 @Injectable({
@@ -12,4 +13,6 @@ export class GuiCodeareaConfig {
   theme: Theme = 'light';
 
   languages: LanguageDescription[] = [];
+
+  extensions: Extension[] | ((language: string) => Extension[]) = [];
 }

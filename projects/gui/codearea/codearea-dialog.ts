@@ -15,8 +15,15 @@ import { MatButton, MatIconButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
 import { GuiIconsRegistry } from '../gui-icons';
 import { GuiIconButtonWrapper } from '../icon-button-wrapper/icon-button-wrapper';
-import { GuiCodeareaDialogData } from './codearea';
 import { GuiCodeareaConfig } from './codearea-config';
+
+export interface GuiCodeareaDialogData {
+  value: string;
+  disabled?: boolean;
+  readonly?: boolean;
+  language?: string;
+  title?: string;
+}
 
 @Component({
   selector: 'gui-codearea-dialog',
@@ -47,8 +54,14 @@ export class GuiCodeareaDialog {
     return this.codeareaCfg.theme;
   }
 
-  langDesc = this.codeareaCfg.languages.find(lang =>
-    lang.alias.includes(this.data.language.toLowerCase())
+  get extensions() {
+    return typeof this.codeareaCfg.extensions === 'function'
+      ? this.codeareaCfg.extensions(this.data.language || '')
+      : this.codeareaCfg.extensions;
+  }
+
+  langDesc = this.codeareaCfg.languages.find(
+    lang => this.data.language && lang.alias.includes(this.data.language.toLowerCase())
   );
 
   title = `${this.data.title || ''} (${this.langDesc?.name || 'Plain Text'})`;

@@ -8,6 +8,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterModule } from '@angular/router';
 import { LanguageDescription } from '@codemirror/language';
 import { SettingsService } from '../settings.service';
+import { json, jsonParseLinter } from '@codemirror/lang-json';
+import { lintGutter, linter } from '@codemirror/lint';
 
 export const CODEAREA_LANGUAGES = [
   LanguageDescription.of({
@@ -49,6 +51,9 @@ export class LayoutComponent implements OnInit {
     this.htmlElement = this.document.querySelector('html')!;
     this.isRtl = this.dir.value === 'rtl';
     this.codeareaCfg.languages = CODEAREA_LANGUAGES;
+    this.codeareaCfg.extensions = lang => {
+      return lang == 'json' ? [lintGutter(), linter(jsonParseLinter())] : [];
+    };
   }
 
   toggleThemeClass() {

@@ -20,14 +20,7 @@ import { GuiIconsRegistry } from '../gui-icons';
 import { GuiIconButtonWrapper } from '../icon-button-wrapper/icon-button-wrapper';
 import { GuiControl } from '../interface';
 import { GuiCodeareaConfig } from './codearea-config';
-import { GuiCodeareaDialog } from './codearea-dialog';
-
-export interface GuiCodeareaDialogData {
-  value: string;
-  disabled: boolean;
-  language: string;
-  title?: string;
-}
+import { GuiCodeareaDialog, GuiCodeareaDialogData } from './codearea-dialog';
 
 @Component({
   selector: 'gui-codearea',
@@ -86,6 +79,12 @@ export class GuiCodearea implements ControlValueAccessor {
 
   get theme() {
     return this.codeareaCfg.theme;
+  }
+
+  get extensions() {
+    return typeof this.codeareaCfg.extensions === 'function'
+      ? this.codeareaCfg.extensions(this.language)
+      : this.codeareaCfg.extensions;
   }
 
   value = '';
