@@ -18,12 +18,6 @@
   overflow: hidden;
   border-radius: inherit;
   font-size: 0.75rem;
-
-  .code-editor {
-    flex: 1;
-    overflow: auto;
-    border: 1px solid transparent;
-  }
 }
 
 .gui-codearea-dialog-header {
@@ -48,4 +42,22 @@
 
 .gui-codearea-dialog-spacer {
   flex: 1;
+}
+
+.gui-codearea-dialog-content {
+  position: relative;
+  flex: 1;
+  overflow: auto;
+
+  .code-editor {
+    height: 100%;
+    overflow: auto;
+    border: 1px solid transparent;
+  }
+
+  &:hover {
+    .gui-codearea-btns {
+      display: block;
+    }
+  }
 }

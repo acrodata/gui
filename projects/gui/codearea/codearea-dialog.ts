@@ -11,14 +11,25 @@ import {
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormsModule } from '@angular/forms';
-import { MatButton } from '@angular/material/button';
+import { MatButton, MatIconButton } from '@angular/material/button';
+import { MatIcon } from '@angular/material/icon';
+import { GuiIconsRegistry } from '../gui-icons';
+import { GuiIconButtonWrapper } from '../icon-button-wrapper/icon-button-wrapper';
 import { GuiCodeareaDialogData } from './codearea';
 import { GuiCodeareaConfig } from './codearea-config';
 
 @Component({
   selector: 'gui-codearea-dialog',
   standalone: true,
-  imports: [FormsModule, MatButton, RndDialogDragHandle, CodeEditor],
+  imports: [
+    FormsModule,
+    MatButton,
+    MatIconButton,
+    MatIcon,
+    RndDialogDragHandle,
+    CodeEditor,
+    GuiIconButtonWrapper,
+  ],
   templateUrl: './codearea-dialog.html',
   styleUrl: './codearea-dialog.scss',
   host: {
@@ -42,16 +53,25 @@ export class GuiCodeareaDialog {
 
   title = `${this.data.title || ''} (${this.langDesc?.name || 'Plain Text'})`;
 
+  lineWrapping = false;
+
   constructor(
     private dialogRef: DialogRef<string, GuiCodeareaDialog>,
     @Inject(DIALOG_DATA) public data: GuiCodeareaDialogData,
     private cdr: ChangeDetectorRef,
     private destroyRef: DestroyRef,
-    private codeareaCfg: GuiCodeareaConfig
+    private codeareaCfg: GuiCodeareaConfig,
+    iconsRegistry: GuiIconsRegistry
   ) {
+    iconsRegistry.add('wrap');
+
     this.codeareaCfg.changes.pipe(takeUntilDestroyed(this.destroyRef)).subscribe(() => {
       this.cdr.markForCheck();
     });
+  }
+
+  toggleLineWrapping() {
+    this.lineWrapping = !this.lineWrapping;
   }
 
   save() {

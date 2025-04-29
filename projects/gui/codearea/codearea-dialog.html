@@ -12,11 +12,22 @@
   <button mat-flat-button (click)="save()">Save</button>
 </div>
 
-<code-editor
-  [(ngModel)]="data.value"
-  [disabled]="data.disabled"
-  [language]="data.language"
-  [languages]="languages"
-  [theme]="theme"
-  indentWithTab
-/>
+<div class="gui-codearea-dialog-content">
+  <code-editor
+    [(ngModel)]="data.value"
+    [disabled]="data.disabled"
+    [language]="data.language"
+    [languages]="languages"
+    [theme]="theme"
+    [lineWrapping]="lineWrapping"
+    indentWithTab
+  />
+
+  <div class="gui-codearea-btns">
+    <gui-icon-button-wrapper>
+      <button mat-icon-button type="button" (click)="toggleLineWrapping()">
+        <mat-icon svgIcon="wrap" />
+      </button>
+    </gui-icon-button-wrapper>
+  </div>
+</div>
