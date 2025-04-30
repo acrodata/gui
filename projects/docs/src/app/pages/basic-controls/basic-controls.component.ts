@@ -209,7 +209,7 @@ export class BasicControlsComponent {
     snippet: {
       type: 'codearea',
       name: 'Snippet',
-      default: 'console.log("Hello World!")',
+      default: 'console.log("Hello, World!")',
       language: 'js',
     },
   };

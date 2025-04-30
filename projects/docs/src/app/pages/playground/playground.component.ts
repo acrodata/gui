@@ -28,31 +28,31 @@ export class PlaygroundComponent implements OnInit {
   config: GuiFields = {
     title: {
       type: 'text',
-      name: '标题',
-      default: '我是标题',
+      name: 'Title',
+      default: 'Hello, World!',
     },
     align: {
       type: 'buttonToggle',
-      name: '对齐方式',
+      name: 'Align',
       options: [
-        { value: 'left', label: '左对齐' },
-        { value: 'center', label: '居中对齐' },
-        { value: 'right', label: '右对齐' },
+        { value: 'left', label: 'Left' },
+        { value: 'center', label: 'Center' },
+        { value: 'right', label: 'Right' },
       ],
       default: 'center',
     },
     size: {
       type: 'group',
-      name: '尺寸',
+      name: 'Size',
       children: {
         width: {
           type: 'number',
-          name: '宽度',
+          name: 'Width',
           default: 100,
         },
         height: {
           type: 'number',
-          name: '高度',
+          name: 'Height',
           default: 100,
         },
       },
