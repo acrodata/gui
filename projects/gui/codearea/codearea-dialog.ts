@@ -56,7 +56,7 @@ export class GuiCodeareaDialog {
 
   get extensions() {
     return typeof this.codeareaCfg.extensions === 'function'
-      ? this.codeareaCfg.extensions(this.data.language || '')
+      ? this.codeareaCfg.extensions(this.data)
       : this.codeareaCfg.extensions;
   }
 

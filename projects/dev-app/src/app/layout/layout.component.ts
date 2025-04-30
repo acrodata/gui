@@ -51,8 +51,8 @@ export class LayoutComponent implements OnInit {
     this.htmlElement = this.document.querySelector('html')!;
     this.isRtl = this.dir.value === 'rtl';
     this.codeareaCfg.languages = CODEAREA_LANGUAGES;
-    this.codeareaCfg.extensions = lang => {
-      return lang == 'json' ? [lintGutter(), linter(jsonParseLinter())] : [];
+    this.codeareaCfg.extensions = data => {
+      return data.language == 'json' ? [lintGutter(), linter(jsonParseLinter())] : [];
     };
   }
 

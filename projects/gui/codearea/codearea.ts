@@ -81,9 +81,17 @@ export class GuiCodearea implements ControlValueAccessor {
     return this.codeareaCfg.theme;
   }
 
+  get dialogData(): GuiCodeareaDialogData {
+    return {
+      value: this.value,
+      disabled: this.disabled,
+      language: this.language,
+    };
+  }
+
   get extensions() {
     return typeof this.codeareaCfg.extensions === 'function'
-      ? this.codeareaCfg.extensions(this.language)
+      ? this.codeareaCfg.extensions(this.dialogData)
       : this.codeareaCfg.extensions;
   }
 
@@ -144,11 +152,7 @@ export class GuiCodearea implements ControlValueAccessor {
         panelClass: 'gui-codearea-dialog-panel',
         hasBackdrop: false,
         width: '600px',
-        data: {
-          value: this.value,
-          disabled: this.disabled,
-          language: this.language,
-        },
+        data: this.dialogData,
       }
     );
 

@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { LanguageDescription } from '@codemirror/language';
 import { Extension } from '@codemirror/state';
 import { Subject } from 'rxjs';
+import { GuiCodeareaDialogData } from './codearea-dialog';
 
 @Injectable({
   providedIn: 'root',
@@ -14,5 +15,5 @@ export class GuiCodeareaConfig {
 
   languages: LanguageDescription[] = [];
 
-  extensions: Extension[] | ((language: string) => Extension[]) = [];
+  extensions: Extension[] | ((data: GuiCodeareaDialogData) => Extension[]) = [];
 }
