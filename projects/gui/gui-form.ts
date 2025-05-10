@@ -197,9 +197,9 @@ export class GuiForm implements OnChanges, OnInit, OnDestroy {
       // Special judgment on `tabs` type, the `children` key will be ignored if
       // there has a `template` key
       if (item.template) {
-        // If model is an array and not empty, the default value of the form field
+        // If the model is an array, the default value of the form field
         // will use the model's value
-        if (Array.isArray(item.model) && item.model.length > 0) {
+        if (Array.isArray(item.model)) {
           item.default = item.model;
         }
         if (item.default?.length) {
