@@ -1,19 +1,19 @@
 .gui-switch {
   .mat-mdc-slide-toggle {
-    --mat-switch-unselected-handle-size: 0.5rem;
-    --mat-switch-selected-handle-size: 0.75rem;
-    --mat-switch-pressed-handle-size: 0.75rem;
-    --mat-switch-selected-handle-horizontal-margin: 0;
-    --mat-switch-selected-pressed-handle-horizontal-margin: 0;
-    --mat-switch-unselected-handle-horizontal-margin: 0 0.25rem;
-    --mat-switch-unselected-pressed-handle-horizontal-margin: 0 0.125rem;
-    --mat-switch-track-outline-width: 1px;
-    --mdc-switch-track-width: 1.75rem;
-    --mdc-switch-track-height: 1rem;
-    --mdc-switch-track-shape: 0.5rem;
-    --mdc-switch-handle-width: 0.875rem;
-    --mdc-switch-state-layer-size: 1.5rem;
+    --mat-slide-toggle-unselected-handle-size: 0.5rem;
+    --mat-slide-toggle-selected-handle-size: 0.75rem;
+    --mat-slide-toggle-pressed-handle-size: 0.75rem;
+    --mat-slide-toggle-selected-handle-horizontal-margin: 0;
+    --mat-slide-toggle-selected-pressed-handle-horizontal-margin: 0;
+    --mat-slide-toggle-unselected-handle-horizontal-margin: 0 0.25rem;
+    --mat-slide-toggle-unselected-pressed-handle-horizontal-margin: 0 0.125rem;
+    --mat-slide-toggle-track-outline-width: 1px;
+    --mat-slide-toggle-track-width: 1.75rem;
+    --mat-slide-toggle-track-height: 1rem;
+    --mat-slide-toggle-track-shape: 0.5rem;
+    --mat-slide-toggle-handle-width: 0.875rem;
+    --mat-slide-toggle-state-layer-size: 1.5rem;
 
-    line-height: var(--mdc-switch-state-layer-size);
+    line-height: var(--mat-slide-toggle-state-layer-size);
   }
 }
