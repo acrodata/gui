@@ -24,6 +24,9 @@ import { MtxSplitModule } from '@ng-matero/extensions/split';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PlaygroundComponent implements OnInit {
+  private breakpointObserver = inject(BreakpointObserver);
+  private cdr = inject(ChangeDetectorRef);
+
   config: GuiFields = {
     title: {
       type: 'text',
@@ -66,11 +69,6 @@ export class PlaygroundComponent implements OnInit {
   private readonly destroy = inject(DestroyRef);
 
   extensions = [json(), linter(jsonParseLinter()), lintGutter()];
-
-  constructor(
-    private breakpointObserver: BreakpointObserver,
-    private cdr: ChangeDetectorRef
-  ) {}
 
   ngOnInit(): void {
     this.breakpointObserver

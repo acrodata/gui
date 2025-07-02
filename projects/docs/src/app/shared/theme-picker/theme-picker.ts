@@ -7,6 +7,7 @@ import {
   OnDestroy,
   OnInit,
   ViewEncapsulation,
+  inject,
 } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { ActivatedRoute, ParamMap } from '@angular/router';
@@ -27,6 +28,13 @@ import { DocsSiteTheme, ThemeStorage } from './theme-storage';
   imports: [MatIconModule],
 })
 export class ThemePickerComponent implements OnInit, OnDestroy {
+  private styleManager = inject(StyleManager);
+  private themeStorage = inject(ThemeStorage);
+  private activatedRoute = inject(ActivatedRoute);
+  private liveAnnouncer = inject(LiveAnnouncer);
+  private cdr = inject(ChangeDetectorRef);
+  private codeareaCfg = inject(GuiCodeareaConfig);
+
   private queryParamSubscription = Subscription.EMPTY;
   currentTheme: DocsSiteTheme | undefined;
 
@@ -81,14 +89,7 @@ export class ThemePickerComponent implements OnInit, OnDestroy {
 
   showMenu = false;
 
-  constructor(
-    private styleManager: StyleManager,
-    private themeStorage: ThemeStorage,
-    private activatedRoute: ActivatedRoute,
-    private liveAnnouncer: LiveAnnouncer,
-    private cdr: ChangeDetectorRef,
-    private codeareaCfg: GuiCodeareaConfig
-  ) {
+  constructor() {
     const themeName = this.themeStorage.getStoredThemeName();
     if (themeName) {
       this.selectTheme(themeName);

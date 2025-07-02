@@ -1,7 +1,7 @@
 import { GuiCodeareaConfig } from '@acrodata/gui';
 import { Directionality } from '@angular/cdk/bidi';
 
-import { Component, Inject, OnInit, ViewEncapsulation, DOCUMENT } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, DOCUMENT, inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -34,17 +34,15 @@ export const CODEAREA_LANGUAGES = [
   encapsulation: ViewEncapsulation.None,
 })
 export class LayoutComponent implements OnInit {
+  private document = inject<Document>(DOCUMENT);
+  private dir = inject(Directionality);
+  private settings = inject(SettingsService);
+  private codeareaCfg = inject(GuiCodeareaConfig);
+
   htmlElement!: HTMLHtmlElement;
   darkThemeClass = 'dark-theme';
   isDark = false;
   isRtl = false;
-
-  constructor(
-    @Inject(DOCUMENT) private document: Document,
-    private dir: Directionality,
-    private settings: SettingsService,
-    private codeareaCfg: GuiCodeareaConfig
-  ) {}
 
   ngOnInit(): void {
     this.htmlElement = this.document.querySelector('html')!;

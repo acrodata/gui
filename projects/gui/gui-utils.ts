@@ -1,4 +1,4 @@
-import { Directive, ElementRef, Input, OnInit, Pipe, PipeTransform } from '@angular/core';
+import { Directive, ElementRef, Input, OnInit, Pipe, PipeTransform, inject } from '@angular/core';
 import { GuiDefaultValue, GuiOperator } from './interface';
 
 /**
@@ -59,13 +59,13 @@ export class GuiEjsPipe implements PipeTransform {
   standalone: true,
 })
 export class GuiFlexDirective implements OnInit {
+  private elRef = inject(ElementRef);
+
   @Input() flex: number | undefined = 100;
 
-  constructor(private el: ElementRef) {}
-
   ngOnInit(): void {
-    this.el.nativeElement.style.flex = `1 1 ${this.flex}%`;
-    this.el.nativeElement.style.maxWidth = `${this.flex}%`;
+    this.elRef.nativeElement.style.flex = `1 1 ${this.flex}%`;
+    this.elRef.nativeElement.style.maxWidth = `${this.flex}%`;
   }
 }
 

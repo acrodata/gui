@@ -10,6 +10,7 @@ import {
   Output,
   SimpleChanges,
   ViewEncapsulation,
+  inject,
 } from '@angular/core';
 import { FormArray, FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatIconButton } from '@angular/material/button';
@@ -117,7 +118,8 @@ export class GuiForm implements OnChanges, OnInit, OnDestroy {
   // Unique id for this form
   uid = `gui-form-${nextUniqueId++}`;
 
-  constructor(iconsRegistry: GuiIconsRegistry) {
+  constructor() {
+    const iconsRegistry = inject(GuiIconsRegistry);
     iconsRegistry.add('horizontal', 'vertical', 'copy', 'add', 'delete');
   }
 

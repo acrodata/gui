@@ -11,6 +11,7 @@ import {
   ViewChild,
   ViewEncapsulation,
   forwardRef,
+  inject,
 } from '@angular/core';
 import { ControlValueAccessor, FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { MatIconButton } from '@angular/material/button';
@@ -63,6 +64,9 @@ export interface FileUploadContent {
   ],
 })
 export class GuiFileUploader implements ControlValueAccessor, OnChanges {
+  private fileUploaderCfg = inject(GuiFileUploaderConfig);
+  private cdr = inject(ChangeDetectorRef);
+
   @ViewChild('fileInput') fileInput!: ElementRef<HTMLInputElement>;
 
   @Input() config: Partial<GuiControl> = {};
@@ -82,11 +86,8 @@ export class GuiFileUploader implements ControlValueAccessor, OnChanges {
   private onChange: (value: string) => void = () => {};
   private onTouched: () => void = () => {};
 
-  constructor(
-    private fileUploaderCfg: GuiFileUploaderConfig,
-    private cdr: ChangeDetectorRef,
-    iconsRegistry: GuiIconsRegistry
-  ) {
+  constructor() {
+    const iconsRegistry = inject(GuiIconsRegistry);
     iconsRegistry.add('link', 'clear', 'file', 'upload');
   }
 

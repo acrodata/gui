@@ -5,6 +5,7 @@ import {
   forwardRef,
   Input,
   ViewEncapsulation,
+  inject,
 } from '@angular/core';
 import { ControlValueAccessor, FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { MatFormField, MatHint, MatPrefix, MatSuffix } from '@angular/material/form-field';
@@ -49,6 +50,8 @@ import { GuiControl } from '../interface';
   ],
 })
 export class GuiFill implements ControlValueAccessor {
+  private cdr = inject(ChangeDetectorRef);
+
   @Input() config: Partial<GuiControl> = {};
   @Input() disabled = false;
 
@@ -56,8 +59,6 @@ export class GuiFill implements ControlValueAccessor {
 
   private onChange: (value: string) => void = () => {};
   private onTouched: () => void = () => {};
-
-  constructor(private cdr: ChangeDetectorRef) {}
 
   writeValue(value: string) {
     if (typeof value === 'string') {

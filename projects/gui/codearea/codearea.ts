@@ -9,6 +9,7 @@ import {
   forwardRef,
   Input,
   ViewEncapsulation,
+  inject,
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ControlValueAccessor, FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
@@ -49,6 +50,11 @@ import { GuiCodeareaDialog, GuiCodeareaDialogData } from './codearea-dialog';
   ],
 })
 export class GuiCodearea implements ControlValueAccessor {
+  private rndDialog = inject(RndDialog);
+  private cdr = inject(ChangeDetectorRef);
+  private destroyRef = inject(DestroyRef);
+  private codeareaCfg = inject(GuiCodeareaConfig);
+
   @Input() config: Partial<GuiControl> = {};
   @Input() disabled = false;
 
@@ -100,13 +106,8 @@ export class GuiCodearea implements ControlValueAccessor {
   private onChange: (value: string) => void = () => {};
   private onTouched: () => void = () => {};
 
-  constructor(
-    private rndDialog: RndDialog,
-    private cdr: ChangeDetectorRef,
-    private destroyRef: DestroyRef,
-    private codeareaCfg: GuiCodeareaConfig,
-    iconsRegistry: GuiIconsRegistry
-  ) {
+  constructor() {
+    const iconsRegistry = inject(GuiIconsRegistry);
     iconsRegistry.add('expand');
 
     this.codeareaCfg.changes.pipe(takeUntilDestroyed(this.destroyRef)).subscribe(() => {

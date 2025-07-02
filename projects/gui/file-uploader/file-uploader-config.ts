@@ -1,5 +1,5 @@
 import { HttpClient, HttpResponse } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { map } from 'rxjs';
 import { GuiControl } from '../interface';
 
@@ -13,7 +13,7 @@ export interface FileUploadResponseBody {
   providedIn: 'root',
 })
 export class GuiFileUploaderConfig {
-  constructor(protected http: HttpClient) {}
+  protected http = inject(HttpClient);
 
   /**
    *  The file upload URL

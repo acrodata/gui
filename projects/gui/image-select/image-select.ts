@@ -7,6 +7,7 @@ import {
   Input,
   ViewChild,
   ViewEncapsulation,
+  inject,
 } from '@angular/core';
 import { ControlValueAccessor, FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { MatFormField, MatHint, MatPrefix, MatSuffix } from '@angular/material/form-field';
@@ -47,6 +48,8 @@ import { GuiControl } from '../interface';
   ],
 })
 export class GuiImageSelect implements ControlValueAccessor, AfterViewInit {
+  private cdr = inject(ChangeDetectorRef);
+
   @ViewChild(MtxSelect) mtxSelect!: MtxSelect;
 
   @Input() config: Partial<GuiControl> = {};
@@ -57,8 +60,6 @@ export class GuiImageSelect implements ControlValueAccessor, AfterViewInit {
 
   private onChange: (value: unknown) => void = () => {};
   private onTouched: () => void = () => {};
-
-  constructor(private cdr: ChangeDetectorRef) {}
 
   ngAfterViewInit(): void {
     // Add additional class for ng-select's dropdown panel
