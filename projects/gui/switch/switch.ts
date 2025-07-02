@@ -28,7 +28,6 @@ import { GuiControl } from '../interface';
       multi: true,
     },
   ],
-  standalone: true,
   imports: [FormsModule, MatSlideToggle, MatHint, GuiFieldLabel],
 })
 export class GuiSwitch implements ControlValueAccessor {

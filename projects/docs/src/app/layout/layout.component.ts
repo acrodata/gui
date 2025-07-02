@@ -6,7 +6,6 @@ import { ThemePickerComponent } from '../shared';
 
 @Component({
   selector: 'app-layout',
-  standalone: true,
   imports: [RouterOutlet, RouterLink, RouterLinkActive, MatIconModule, ThemePickerComponent],
   templateUrl: './layout.component.html',
   styleUrl: './layout.component.scss',

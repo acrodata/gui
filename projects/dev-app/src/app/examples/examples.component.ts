@@ -5,7 +5,6 @@ import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-examples',
-  standalone: true,
   imports: [CommonModule, GuiModule],
   templateUrl: './examples.component.html',
   styleUrl: './examples.component.scss',

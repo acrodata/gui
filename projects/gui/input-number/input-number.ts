@@ -28,7 +28,6 @@ import { GuiControl } from '../interface';
       multi: true,
     },
   ],
-  standalone: true,
   imports: [FormsModule, MatFormField, MatPrefix, MatInput, MatSuffix, MatHint, GuiFieldLabel],
 })
 export class GuiInputNumber implements ControlValueAccessor {

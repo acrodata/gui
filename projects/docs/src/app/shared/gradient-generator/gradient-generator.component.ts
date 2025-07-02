@@ -5,7 +5,6 @@ import { IBackground, gradientPresets } from './gradient-presets';
 
 @Component({
   selector: 'app-gradient-generator',
-  standalone: true,
   imports: [GuiModule],
   templateUrl: './gradient-generator.component.html',
   styleUrl: './gradient-generator.component.scss',

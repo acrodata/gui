@@ -27,7 +27,6 @@ export interface GuiCodeareaDialogData {
 
 @Component({
   selector: 'gui-codearea-dialog',
-  standalone: true,
   imports: [
     FormsModule,
     MatButton,

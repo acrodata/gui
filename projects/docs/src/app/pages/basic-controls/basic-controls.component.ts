@@ -6,7 +6,6 @@ import { ExampleViewerComponent, PageHeaderComponent } from '../../shared';
 
 @Component({
   selector: 'app-basic-controls',
-  standalone: true,
   imports: [ExampleViewerComponent, PageHeaderComponent, FormsModule, HighlightModule],
   templateUrl: './basic-controls.component.html',
   styleUrl: './basic-controls.component.scss',

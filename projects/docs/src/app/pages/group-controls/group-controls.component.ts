@@ -4,7 +4,6 @@ import { ExampleViewerComponent, PageHeaderComponent } from '../../shared';
 
 @Component({
   selector: 'app-group-controls',
-  standalone: true,
   imports: [ExampleViewerComponent, PageHeaderComponent],
   templateUrl: './group-controls.component.html',
   styleUrl: './group-controls.component.scss',

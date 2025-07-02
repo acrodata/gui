@@ -55,7 +55,6 @@ let nextUniqueId = 0;
   },
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
   imports: [
     ReactiveFormsModule,
     NgTemplateOutlet,

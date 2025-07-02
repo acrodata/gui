@@ -30,7 +30,6 @@ import { GuiIcon } from './icon';
       multi: true,
     },
   ],
-  standalone: true,
   imports: [
     FormsModule,
     MatButtonToggleGroup,
