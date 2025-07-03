@@ -33,7 +33,7 @@
   },
   "dependencies": {
     "@acrodata/code-editor": "^0.5.0",
-    "@acrodata/rnd-dialog": "^0.3.0",
+    "@acrodata/rnd-dialog": "^0.4.0",
     "tslib": "^2.3.0"
   },
   "sideEffects": false
