@@ -3,7 +3,14 @@
   max-width: 7.5rem;
   object-fit: contain;
   border-radius: 0.25rem;
-  background-color: var(--mat-option-hover-state-layer-color);
+  background-color: var(
+    --mat-option-hover-state-layer-color,
+    color-mix(
+      in srgb,
+      var(--mat-sys-on-surface) calc(var(--mat-sys-hover-state-layer-opacity) * 100%),
+      transparent
+    )
+  );
 }
 
 .gui-image-select {

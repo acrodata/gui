@@ -17,7 +17,7 @@
   }
 
   .mat-button-toggle-appearance-standard {
-    background-color: var(--mat-form-field-filled-container-color);
+    background-color: var(--mat-form-field-filled-container-color, var(--mat-sys-surface-variant));
   }
 }
 

@@ -139,8 +139,8 @@ table {
 }
 
 .gui-form {
-  background-color: var(--mat-expansion-container-background-color);
-  color: var(--mat-expansion-container-text-color);
+  background-color: var(--mat-expansion-container-background-color, var(--mat-sys-surface));
+  color: var(--mat-expansion-container-text-color, var(--mat-sys-on-surface));
   box-shadow: 0 2px 4px rgba(0, 0, 0, .2);
   border-radius: 4px;
 
