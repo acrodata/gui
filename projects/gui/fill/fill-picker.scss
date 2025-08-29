@@ -1,0 +1,71 @@
+.gui-fill-picker {
+  display: block;
+  width: 240px;
+  padding: 12px;
+  border-radius: 0.25rem;
+  box-shadow:
+    inset 0 0 1px 0 rgba(255, 255, 255, 0.64),
+    0 2px 5px 0 rgba(0, 0, 0, 0.16),
+    0 10px 16px 0 rgba(0, 0, 0, 0.12),
+    0 0 1px 0 rgba(0, 0, 0, 0.12);
+  background-color: #fff;
+
+  color-chrome {
+    display: block;
+
+    .chrome-picker {
+      width: auto;
+      background: none;
+      box-shadow: none;
+      border-radius: 0;
+      font-family: inherit;
+    }
+
+    .saturation {
+      border: 1px solid;
+      border-radius: 4px;
+    }
+
+    .chrome-body {
+      padding: 16px 0 0;
+    }
+
+    .chrome-fields {
+      gap: 8px;
+      margin: 0;
+    }
+
+    .chrome-field {
+      padding: 0;
+    }
+
+    .wrap {
+      width: 100%;
+      line-height: 1;
+    }
+  }
+
+  .gradient-picker {
+    display: block;
+    padding: 0;
+    margin: 0 -12px;
+
+    --gp-container-width: auto;
+    --gp-container-elevation-shadow: none;
+    --gp-container-shape: 0;
+    --gp-container-background-color: transparent;
+  }
+}
+
+.gui-fill-picker-types {
+  margin-bottom: 12px;
+
+  --mat-standard-button-toggle-shape: 4px;
+  --mat-standard-button-toggle-height: 1;
+
+  .mat-button-toggle-appearance-standard {
+    .mat-button-toggle-label-content {
+      padding: 0;
+    }
+  }
+}

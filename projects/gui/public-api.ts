@@ -15,6 +15,7 @@ export * from './field-label/field-label';
 export * from './file-uploader/file-uploader';
 export * from './file-uploader/file-uploader-config';
 export * from './fill/fill';
+export * from './fill/fill-picker';
 export * from './icon-button-wrapper/icon-button-wrapper';
 export * from './image-select/image-select';
 export * from './inline-group/inline-group';

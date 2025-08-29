@@ -1,3 +1,9 @@
+<gui-fill-picker [(ngModel)]="fillValue" />
+
+<textarea [(ngModel)]="fillValue" [ngModelOptions]="{ updateOn: 'blur' }"></textarea>
+
+<div class="bg-preview" [style.background]="fillValue"></div>
+
 <gui-field-group>
   <gui-button-toggle
     [config]="{

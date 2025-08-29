@@ -28,6 +28,7 @@ import { GuiSlider } from './slider/slider';
 import { GuiIcon } from './button-toggle/icon';
 import { GuiButtonToggle } from './button-toggle/button-toggle';
 import { GuiFill } from './fill/fill';
+import { GuiFillPicker } from './fill/fill-picker';
 import { GuiImageSelect } from './image-select/image-select';
 import { GuiCombobox } from './combobox/combobox';
 import { GuiTextarea } from './textarea/textarea';
@@ -64,6 +65,7 @@ import { GuiEjsPipe, GuiFlexDirective } from './gui-utils';
     GuiIcon,
     GuiButtonToggle,
     GuiFill,
+    GuiFillPicker,
     GuiFieldGroup,
     GuiFieldLabel,
     GuiInlineGroup,
@@ -87,6 +89,7 @@ import { GuiEjsPipe, GuiFlexDirective } from './gui-utils';
     GuiIcon,
     GuiButtonToggle,
     GuiFill,
+    GuiFillPicker,
     GuiFieldGroup,
     GuiFieldLabel,
     GuiInlineGroup,
