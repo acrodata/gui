@@ -39,6 +39,8 @@ $dark-theme: mat.private-deep-merge-all(
 );
 
 .dark-theme {
+  color-scheme: dark;
+
   @include mat.all-component-colors($dark-theme);
   @include mtx.all-component-colors($dark-theme);
   // @include gui.all-control-colors($dark-theme);

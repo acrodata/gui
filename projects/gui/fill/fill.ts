@@ -17,6 +17,7 @@ import {
 import { GuiFieldLabel } from '../field-label/field-label';
 import { GuiIconButtonWrapper } from '../icon-button-wrapper/icon-button-wrapper';
 import { GuiControl } from '../interface';
+import { GuiFillPicker } from './fill-picker';
 
 @Component({
   selector: 'gui-fill',
@@ -47,6 +48,7 @@ import { GuiControl } from '../interface';
     MtxColorpickerToggle,
     GuiFieldLabel,
     GuiIconButtonWrapper,
+    GuiFillPicker,
   ],
 })
 export class GuiFill implements ControlValueAccessor {

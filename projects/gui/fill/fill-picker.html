@@ -1,21 +1,23 @@
-<div class="gui-fill-picker-types">
+<div class="gui-fill-picker-header">
   <mat-button-toggle-group
     [(ngModel)]="selectedType"
     hideSingleSelectionIndicator
     (ngModelChange)="onTypeChange()"
   >
     @for (t of types; track $index) {
-      <mat-button-toggle [value]="t.value">
+      <mat-button-toggle [value]="t.value" [matTooltip]="t.label" matTooltipPosition="above">
         <mat-icon [svgIcon]="t.value" />
       </mat-button-toggle>
     }
   </mat-button-toggle-group>
 </div>
 
-@if (selectedType === 'solid') {
-  <color-chrome [color]="value" (onChangeComplete)="onColorChange($event)" />
-} @else if (selectedType === 'gradient') {
-  <gradient-picker [(ngModel)]="value" (ngModelChange)="onGradientChange()" />
-} @else if (selectedType === 'image') {
-  <gui-file-uploader type="image" [(ngModel)]="value" (ngModelChange)="onImageChange()" />
-}
+<div class="gui-fill-picker-body">
+  @if (selectedType === 'solid') {
+    <color-chrome [color]="value" (onChangeComplete)="onColorChange($event)" />
+  } @else if (selectedType === 'gradient') {
+    <gradient-picker [(ngModel)]="value" (ngModelChange)="onGradientChange()" />
+  } @else if (selectedType === 'image') {
+    <gui-file-uploader type="image" [(ngModel)]="value" (ngModelChange)="onImageChange()" />
+  }
+</div>

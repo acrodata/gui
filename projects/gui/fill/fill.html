@@ -13,7 +13,7 @@
     (colorChange)="onValueChange()"
   />
 
-  <mtx-colorpicker #cp />
+  <mtx-colorpicker #cp [content]="customPickerContent" />
   <gui-icon-button-wrapper matSuffix>
     <mtx-colorpicker-toggle [for]="cp" />
   </gui-icon-button-wrapper>
@@ -24,3 +24,7 @@
     </mat-hint>
   }
 </mat-form-field>
+
+<ng-template #customPickerContent>
+  <gui-fill-picker [(ngModel)]="cp.selected" (ngModelChange)="cp.select($event)" />
+</ng-template>

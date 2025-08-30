@@ -1,14 +1,14 @@
 .gui-fill-picker {
   display: block;
   width: 240px;
-  padding: 12px;
-  border-radius: 0.25rem;
+  border-radius: 4px;
+  background-color: var(--mat-expansion-container-background-color);
+  color: var(--mat-expansion-container-text-color);
   box-shadow:
     inset 0 0 1px 0 rgba(255, 255, 255, 0.64),
     0 2px 5px 0 rgba(0, 0, 0, 0.16),
     0 10px 16px 0 rgba(0, 0, 0, 0.12),
     0 0 1px 0 rgba(0, 0, 0, 0.12);
-  background-color: #fff;
 
   color-chrome {
     display: block;
@@ -22,12 +22,38 @@
     }
 
     .saturation {
-      border: 1px solid;
       border-radius: 4px;
+      box-shadow:
+        0 0 0 1px rgba(255, 255, 255, 0.12),
+        0 0 0 1px rgba(0, 0, 0, 0.12);
     }
 
     .chrome-body {
       padding: 16px 0 0;
+    }
+
+    .chrome-swatch {
+      box-shadow:
+        0 0 0 1px rgba(255, 255, 255, 0.12),
+        0 0 0 1px rgba(0, 0, 0, 0.12);
+    }
+
+    .chrome-active {
+      box-shadow: none;
+    }
+
+    .alpha-checkboard {
+      background-color: #fff;
+      border-radius: 2px;
+    }
+
+    .alpha-gradient {
+      border-radius: 2px;
+    }
+
+    .chrome-wrap {
+      gap: 12px;
+      align-items: center;
     }
 
     .chrome-fields {
@@ -42,23 +68,61 @@
     .wrap {
       width: 100%;
       line-height: 1;
+
+      input {
+        background-color: transparent;
+        box-shadow: none !important;
+        color: var(--mdc-outlined-text-field-input-text-color) !important;
+        border: 1px solid var(--mdc-outlined-text-field-outline-color) !important;
+      }
+    }
+
+    .chrome-toggle {
+      display: flex;
+      width: 24px;
+      height: 24px;
+      padding: 2px;
+      border-radius: 2px;
+
+      &:hover {
+        background: rgba(0, 0, 0, 0.04);
+      }
+    }
+
+    .chrome-icon {
+      margin: 0;
+    }
+
+    .chrome-toggle-svg {
+      width: 20px;
+      height: 20px;
+      border: none;
+
+      &:hover {
+        background: transparent;
+      }
+
+      path {
+        fill: var(--mdc-icon-button-icon-color);
+      }
     }
   }
 
   .gradient-picker {
     display: block;
     padding: 0;
-    margin: 0 -12px;
+    margin: -4px -12px 0;
 
     --gp-container-width: auto;
     --gp-container-elevation-shadow: none;
-    --gp-container-shape: 0;
     --gp-container-background-color: transparent;
+    --gp-container-text-color: var(--mdc-filled-text-field-input-text-color);
+    --gp-input-background-color: var(--mdc-filled-text-field-container-color);
   }
 }
 
-.gui-fill-picker-types {
-  margin-bottom: 12px;
+.gui-fill-picker-header {
+  padding: 12px 12px 0;
 
   --mat-standard-button-toggle-shape: 4px;
   --mat-standard-button-toggle-height: 1;
@@ -68,4 +132,8 @@
       padding: 0;
     }
   }
+}
+
+.gui-fill-picker-body{
+  padding: 12px;
 }
