@@ -1,7 +1,11 @@
 <mat-form-field>
   <ng-container matPrefix>
-    <span class="gui-color-block-empty"></span>
-    <span class="gui-color-block" [style.background]="value"></span>
+    <span class="gui-color-block">
+      <span
+        class="gui-color-block-bg"
+        [style.background]="value + ' center / contain no-repeat'"
+      ></span>
+    </span>
   </ng-container>
 
   <input
