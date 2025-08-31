@@ -3,7 +3,7 @@ import { ChangeDetectionStrategy, Component, Input, ViewEncapsulation } from '@a
 @Component({
   selector: 'gui-icon',
   template: `
-    @if (isUrl()) {
+    @if (isUrl) {
       <img [src]="src" alt="" />
     } @else {
       <i [class]="src"></i>
@@ -20,7 +20,7 @@ import { ChangeDetectionStrategy, Component, Input, ViewEncapsulation } from '@a
 export class GuiIcon {
   @Input() src = '';
 
-  isUrl() {
-    return /^(https?:\/\/|\.?\/)\w+/.test(this.src);
+  get isUrl() {
+    return /^(https?:\/\/|\.?\/|data:)\w+/.test(this.src);
   }
 }
