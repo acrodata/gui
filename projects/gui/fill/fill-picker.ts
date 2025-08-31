@@ -49,7 +49,7 @@ export class GuiFillPicker implements ControlValueAccessor {
   value = '';
 
   types = [
-    { label: 'Solid', value: 'solid', icon: '' },
+    { label: 'Solid', value: 'solid' },
     { label: 'Gradient', value: 'gradient' },
     { label: 'Image', value: 'image' },
   ];

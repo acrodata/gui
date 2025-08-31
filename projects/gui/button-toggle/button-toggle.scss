@@ -11,7 +11,7 @@
   }
 
   .mat-button-toggle-group-appearance-standard {
-    .mat-button-toggle-appearance-standard+.mat-button-toggle-appearance-standard {
+    .mat-button-toggle-appearance-standard + .mat-button-toggle-appearance-standard {
       border-width: 0;
     }
   }
@@ -29,7 +29,11 @@
     }
   }
 
+  .mat-button-toggle-button {
+    display: flex;
+  }
+
   &.mat-button-toggle-checked img {
-    opacity: .64;
+    opacity: 0.64;
   }
 }
