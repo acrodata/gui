@@ -331,9 +331,14 @@ export class ExamplesComponent implements OnInit {
         },
       ],
     },
-    flat: {
+    fill: {
+      name: '填充',
+      type: 'fill',
+    },
+    solid: {
       name: '纯色填充',
       type: 'fill',
+      mode: 'solid',
       default: '#333',
     },
     gradient: {

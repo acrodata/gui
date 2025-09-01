@@ -11,4 +11,5 @@ import { FormsModule } from '@angular/forms';
 })
 export class ControlsComponent {
   fillValue = 'red';
+  fillType: any = '';
 }

@@ -4,6 +4,8 @@ import {
   Component,
   forwardRef,
   Input,
+  OnChanges,
+  SimpleChanges,
   ViewEncapsulation,
 } from '@angular/core';
 import { ControlValueAccessor, FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
@@ -16,7 +18,7 @@ import {
 } from '@ng-matero/extensions/colorpicker';
 import { GuiFieldLabel } from '../field-label/field-label';
 import { GuiIconButtonWrapper } from '../icon-button-wrapper/icon-button-wrapper';
-import { GuiControl } from '../interface';
+import { GuiControl, GuiFillMode } from '../interface';
 import { GuiFillPicker } from './fill-picker';
 
 @Component({
@@ -51,9 +53,10 @@ import { GuiFillPicker } from './fill-picker';
     GuiFillPicker,
   ],
 })
-export class GuiFill implements ControlValueAccessor {
+export class GuiFill implements ControlValueAccessor, OnChanges {
   @Input() config: Partial<GuiControl> = {};
   @Input() disabled = false;
+  @Input() type?: GuiFillMode | null;
 
   value = '';
 
@@ -62,7 +65,13 @@ export class GuiFill implements ControlValueAccessor {
 
   constructor(private cdr: ChangeDetectorRef) {}
 
-  writeValue(value: string) {
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['config']) {
+      this.type = this.config.mode as GuiFillMode;
+    }
+  }
+
+  writeValue(value: any) {
     if (typeof value === 'string') {
       this.value = value;
       this.cdr.markForCheck();

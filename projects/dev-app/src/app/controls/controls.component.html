@@ -1,9 +1,3 @@
-<gui-fill-picker [(ngModel)]="fillValue" />
-
-<textarea [(ngModel)]="fillValue" [ngModelOptions]="{ updateOn: 'blur' }"></textarea>
-
-<div class="bg-preview" [style.background]="fillValue"></div>
-
 <gui-field-group>
   <gui-button-toggle
     [config]="{
@@ -97,3 +91,21 @@
     <gui-input-text [config]="{ parentType: 'inline', name: 'B' }" />
   </gui-field-group>
 </gui-inline-group>
+
+<gui-button-toggle
+  [config]="{
+    options: [
+      { label: 'None', value: '' },
+      { label: 'Solid', value: 'solid' },
+      { label: 'Gradient', value: 'gradient' },
+      { label: 'Image', value: 'image' },
+    ],
+  }"
+  [(ngModel)]="fillType"
+/>
+
+<gui-fill-picker [type]="fillType" [(ngModel)]="fillValue" />
+
+<textarea [(ngModel)]="fillValue" [ngModelOptions]="{ updateOn: 'blur' }"></textarea>
+
+<div class="bg-preview" [style.background]="fillValue"></div>

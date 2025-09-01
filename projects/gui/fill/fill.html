@@ -30,5 +30,5 @@
 </mat-form-field>
 
 <ng-template #customPickerContent>
-  <gui-fill-picker [(ngModel)]="cp.selected" (ngModelChange)="cp.select($event)" />
+  <gui-fill-picker [type]="type" [(ngModel)]="cp.selected" (ngModelChange)="cp.select($event)" />
 </ng-template>

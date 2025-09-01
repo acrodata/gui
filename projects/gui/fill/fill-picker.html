@@ -1,16 +1,18 @@
-<div class="gui-fill-picker-header">
-  <mat-button-toggle-group
-    [(ngModel)]="selectedType"
-    hideSingleSelectionIndicator
-    (ngModelChange)="onTypeChange()"
-  >
-    @for (t of types; track $index) {
-      <mat-button-toggle [value]="t.value" [matTooltip]="t.label" matTooltipPosition="above">
-        <mat-icon [svgIcon]="t.value" />
-      </mat-button-toggle>
-    }
-  </mat-button-toggle-group>
-</div>
+@if (!type) {
+  <div class="gui-fill-picker-header">
+    <mat-button-toggle-group
+      [(ngModel)]="selectedType"
+      hideSingleSelectionIndicator
+      (ngModelChange)="onTypeChange()"
+    >
+      @for (t of types; track $index) {
+        <mat-button-toggle [value]="t.value" [matTooltip]="t.label" matTooltipPosition="above">
+          <mat-icon [svgIcon]="t.value" />
+        </mat-button-toggle>
+      }
+    </mat-button-toggle-group>
+  </div>
+}
 
 <div class="gui-fill-picker-body">
   @if (selectedType === 'solid') {

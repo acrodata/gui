@@ -1,11 +1,12 @@
 import { GradientPicker } from '@acrodata/gradient-picker';
-import { GuiFileUploader, GuiIconsRegistry } from '@acrodata/gui';
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
   forwardRef,
   Input,
+  OnChanges,
+  SimpleChanges,
   ViewEncapsulation,
 } from '@angular/core';
 import { ControlValueAccessor, FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
@@ -15,6 +16,9 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { TinyColor } from '@ctrl/tinycolor';
 import { ColorEvent } from 'ngx-color';
 import { ColorChromeModule } from 'ngx-color/chrome';
+import { GuiFileUploader } from '../file-uploader/file-uploader';
+import { GuiIconsRegistry } from '../gui-icons';
+import { GuiFillMode } from '../interface';
 
 @Component({
   selector: 'gui-fill-picker',
@@ -43,10 +47,9 @@ import { ColorChromeModule } from 'ngx-color/chrome';
     GuiFileUploader,
   ],
 })
-export class GuiFillPicker implements ControlValueAccessor {
+export class GuiFillPicker implements ControlValueAccessor, OnChanges {
   @Input() disabled = false;
-
-  value = '';
+  @Input() type?: GuiFillMode | null;
 
   types = [
     { label: 'Solid', value: 'solid' },
@@ -58,6 +61,8 @@ export class GuiFillPicker implements ControlValueAccessor {
 
   colorFormat: 'hex' | 'rgb' | 'hsl' | 'hsv' = 'hex';
 
+  value = '';
+
   private onChange: (value: string) => void = () => {};
   private onTouched: () => void = () => {};
 
@@ -68,21 +73,26 @@ export class GuiFillPicker implements ControlValueAccessor {
     iconsRegistry.add('solid', 'gradient', 'image');
   }
 
-  writeValue(value: string) {
-    if (typeof value === 'string') {
-      value = value.trim();
-      if (value.includes('linear') || value.includes('radial') || value.includes('conic')) {
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['type']) {
+      if (this.type === 'gradient') {
         this.selectedType = 'gradient';
-        this.value = value;
-      } else if (value.startsWith('url')) {
+      } else if (this.type === 'image') {
         this.selectedType = 'image';
-        const regex = /url\((?:'|")?([^'"]+?)(?:'|")?\)/;
-        this.value = value.match(regex)?.[1] || '';
       } else {
         this.selectedType = 'solid';
-        this.value = value;
-        this.colorFormat = this.getColorFormat();
       }
+      this.setValueByType();
+    }
+  }
+
+  writeValue(value: any) {
+    if (typeof value === 'string') {
+      value = value.trim();
+      if (!this.type) {
+        this.getTypeFromModel(value);
+      }
+      this.getValueFromModel(value);
       this.cdr.markForCheck();
     }
   }
@@ -109,7 +119,29 @@ export class GuiFillPicker implements ControlValueAccessor {
     }
   }
 
-  onTypeChange() {
+  getTypeFromModel(value: string) {
+    if (value.includes('linear') || value.includes('radial') || value.includes('conic')) {
+      this.selectedType = 'gradient';
+    } else if (value.startsWith('url')) {
+      this.selectedType = 'image';
+    } else {
+      this.selectedType = 'solid';
+    }
+  }
+
+  getValueFromModel(value: string) {
+    if (this.selectedType === 'solid') {
+      this.value = value;
+      this.colorFormat = this.getColorFormat();
+    } else if (this.selectedType === 'gradient') {
+      this.value = value;
+    } else if (this.selectedType === 'image') {
+      const regex = /url\((?:'|")?([^'"]+?)(?:'|")?\)/;
+      this.value = value.match(regex)?.[1] || '';
+    }
+  }
+
+  setValueByType() {
     if (this.selectedType === 'solid') {
       this.value = '#000';
     } else if (this.selectedType === 'gradient') {
@@ -117,6 +149,10 @@ export class GuiFillPicker implements ControlValueAccessor {
     } else if (this.selectedType === 'image') {
       this.value = '';
     }
+  }
+
+  onTypeChange() {
+    this.setValueByType();
     this.onChange(this.value);
     this.cdr.markForCheck();
   }
