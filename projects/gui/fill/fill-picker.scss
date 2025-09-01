@@ -1,13 +1,13 @@
 .gui-fill-picker {
   display: block;
-  width: 240px;
-  border-radius: 4px;
+  width: 15rem;
+  border-radius: 0.25rem;
   background-color: var(--mat-expansion-container-background-color);
   color: var(--mat-expansion-container-text-color);
   box-shadow:
     inset 0 0 1px 0 rgba(255, 255, 255, 0.64),
-    0 2px 5px 0 rgba(0, 0, 0, 0.16),
-    0 10px 16px 0 rgba(0, 0, 0, 0.12),
+    0 2px 4px 0 rgba(0, 0, 0, 0.16),
+    0 8px 16px 0 rgba(0, 0, 0, 0.12),
     0 0 1px 0 rgba(0, 0, 0, 0.12);
 
   color-chrome {
@@ -22,14 +22,14 @@
     }
 
     .saturation {
-      border-radius: 4px;
+      border-radius: 0.25rem;
       box-shadow:
         0 0 0 1px rgba(255, 255, 255, 0.12),
         0 0 0 1px rgba(0, 0, 0, 0.12);
     }
 
     .chrome-body {
-      padding: 16px 0 0;
+      padding: 1rem 0 0;
     }
 
     .chrome-swatch {
@@ -52,12 +52,12 @@
     }
 
     .chrome-wrap {
-      gap: 12px;
+      gap: 0.75rem;
       align-items: center;
     }
 
     .chrome-fields {
-      gap: 8px;
+      gap: 0.5rem;
       margin: 0;
     }
 
@@ -79,9 +79,9 @@
 
     .chrome-toggle {
       display: flex;
-      width: 24px;
-      height: 24px;
-      padding: 2px;
+      width: 1.5rem;
+      height: 1.5rem;
+      padding: 0.125rem;
       border-radius: 2px;
 
       &:hover {
@@ -94,8 +94,8 @@
     }
 
     .chrome-toggle-svg {
-      width: 20px;
-      height: 20px;
+      width: 1.25rem;
+      height: 1.25rem;
       border: none;
 
       &:hover {
@@ -121,14 +121,14 @@
 }
 
 .gui-fill-picker-header {
-  padding: 6px 6px 0;
+  padding: 0.375rem 0.375rem 0;
   line-height: 1;
 
   --mat-standard-button-toggle-shape: 0;
   --mat-standard-button-toggle-height: 1;
 
   .mat-button-toggle-group-appearance-standard {
-    gap: 4px;
+    gap: 0.25rem;
     border: none;
 
     .mat-button-toggle-appearance-standard + .mat-button-toggle-appearance-standard {
@@ -137,7 +137,7 @@
   }
 
   .mat-button-toggle-appearance-standard {
-    border-radius: 4px;
+    border-radius: 0.25rem;
 
     .mat-button-toggle-label-content {
       padding: 0;
@@ -146,5 +146,5 @@
 }
 
 .gui-fill-picker-body {
-  padding: 12px;
+  padding: 0.75rem;
 }
