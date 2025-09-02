@@ -6,7 +6,7 @@
       (ngModelChange)="onTypeChange()"
     >
       @for (t of types; track $index) {
-        <mat-button-toggle [value]="t.value" [matTooltip]="t.label" matTooltipPosition="above">
+        <mat-button-toggle [value]="t.value" [title]="t.label">
           <mat-icon [svgIcon]="t.value" />
         </mat-button-toggle>
       }

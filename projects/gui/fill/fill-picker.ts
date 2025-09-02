@@ -12,7 +12,6 @@ import {
 import { ControlValueAccessor, FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { MatButtonToggle, MatButtonToggleGroup } from '@angular/material/button-toggle';
 import { MatIcon } from '@angular/material/icon';
-import { MatTooltip } from '@angular/material/tooltip';
 import { TinyColor } from '@ctrl/tinycolor';
 import { ColorEvent } from 'ngx-color';
 import { ColorChromeModule } from 'ngx-color/chrome';
@@ -42,7 +41,6 @@ import { GuiFillMode } from '../interface';
     MatButtonToggleGroup,
     MatButtonToggle,
     MatIcon,
-    MatTooltip,
     ColorChromeModule,
     GradientPicker,
     GuiFileUploader,
