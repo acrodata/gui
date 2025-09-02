@@ -1,4 +1,4 @@
-import { GuiFields } from '@acrodata/gui';
+import { GuiFields, GuiFillMode } from '@acrodata/gui';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HighlightModule } from 'ngx-highlightjs';
@@ -63,12 +63,24 @@ export class BasicControlsComponent {
   }
 
   fillConfig: GuiFields = {
-    color: {
+    background: {
       type: 'fill',
-      name: 'Color',
+      name: 'Background',
       default: '#ff0055',
     },
   };
+  fillType: GuiFillMode = 'all';
+  toggleFillType() {
+    const { background } = this.fillConfig;
+    background.mode = this.fillType;
+    background.default =
+      this.fillType === 'gradient'
+        ? 'linear-gradient(45deg, #ff0055, #0099ff)'
+        : this.fillType === 'image'
+          ? 'url("https://avatars.githubusercontent.com/u/9919?s=200&v=4")'
+          : '#ff0055';
+    this.fillConfig = { ...this.fillConfig };
+  }
 
   selectConfig: GuiFields = {
     font: {

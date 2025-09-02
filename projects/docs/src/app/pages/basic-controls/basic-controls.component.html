@@ -38,6 +38,49 @@
   <a href="basic-controls#fill">Fill</a>
 </h2>
 
+<div>
+  <label>
+    <input
+      type="radio"
+      name="filltype"
+      value="all"
+      [(ngModel)]="fillType"
+      (ngModelChange)="toggleFillType()"
+    />
+    All
+  </label>
+  <label>
+    <input
+      type="radio"
+      name="filltype"
+      value="solid"
+      [(ngModel)]="fillType"
+      (ngModelChange)="toggleFillType()"
+    />
+    Solid
+  </label>
+  <label>
+    <input
+      type="radio"
+      name="filltype"
+      value="gradient"
+      [(ngModel)]="fillType"
+      (ngModelChange)="toggleFillType()"
+    />
+    Gradient
+  </label>
+  <label>
+    <input
+      type="radio"
+      name="filltype"
+      value="image"
+      [(ngModel)]="fillType"
+      (ngModelChange)="toggleFillType()"
+    />
+    Image
+  </label>
+</div>
+
 <app-example-viewer [config]="fillConfig" />
 
 <h2 id="select">
