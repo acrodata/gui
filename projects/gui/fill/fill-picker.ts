@@ -10,9 +10,9 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { ControlValueAccessor, FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { MatButtonToggleModule } from '@angular/material/button-toggle';
-import { MatIconModule } from '@angular/material/icon';
-import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatButtonToggle, MatButtonToggleGroup } from '@angular/material/button-toggle';
+import { MatIcon } from '@angular/material/icon';
+import { MatTooltip } from '@angular/material/tooltip';
 import { TinyColor } from '@ctrl/tinycolor';
 import { ColorEvent } from 'ngx-color';
 import { ColorChromeModule } from 'ngx-color/chrome';
@@ -39,9 +39,10 @@ import { GuiFillMode } from '../interface';
   standalone: true,
   imports: [
     FormsModule,
-    MatButtonToggleModule,
-    MatIconModule,
-    MatTooltipModule,
+    MatButtonToggleGroup,
+    MatButtonToggle,
+    MatIcon,
+    MatTooltip,
     ColorChromeModule,
     GradientPicker,
     GuiFileUploader,
