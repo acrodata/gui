@@ -22,7 +22,7 @@ export type GuiFieldType =
   | 'audio'
   | 'file';
 
-export type GuiFillMode = 'solid' | 'gradient' | 'image';
+export type GuiFillMode = 'all' | 'solid' | 'gradient' | 'image';
 
 export type GuiSliderMode = 'normal' | 'range';
 

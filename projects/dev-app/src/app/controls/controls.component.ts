@@ -1,4 +1,4 @@
-import { GuiModule } from '@acrodata/gui';
+import { GuiFillMode, GuiModule } from '@acrodata/gui';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
@@ -11,5 +11,5 @@ import { FormsModule } from '@angular/forms';
 })
 export class ControlsComponent {
   fillValue = 'red';
-  fillType: any = '';
+  fillType: GuiFillMode = 'all';
 }

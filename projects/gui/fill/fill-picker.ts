@@ -48,7 +48,7 @@ import { GuiFillMode } from '../interface';
 })
 export class GuiFillPicker implements ControlValueAccessor, OnChanges {
   @Input() disabled = false;
-  @Input() type?: GuiFillMode | null;
+  @Input() type: GuiFillMode = 'all';
 
   types = [
     { label: 'Solid', value: 'solid' },

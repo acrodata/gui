@@ -56,7 +56,7 @@ import { GuiFillPicker } from './fill-picker';
 export class GuiFill implements ControlValueAccessor, OnChanges {
   @Input() config: Partial<GuiControl> = {};
   @Input() disabled = false;
-  @Input() type?: GuiFillMode | null;
+  @Input() type: GuiFillMode = 'all';
 
   value = '';
 
@@ -67,7 +67,7 @@ export class GuiFill implements ControlValueAccessor, OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['config']) {
-      this.type = this.config.mode as GuiFillMode;
+      this.type = (this.config.mode || 'all') as GuiFillMode;
     }
   }
 
