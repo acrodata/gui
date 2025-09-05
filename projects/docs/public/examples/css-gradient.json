@@ -1,0 +1,103 @@
+{
+  "type": {
+    "type": "buttonToggle",
+    "name": "Type",
+    "options": [
+      {
+        "label": "Linear",
+        "value": "linear"
+      },
+      {
+        "label": "Radial",
+        "value": "radial"
+      },
+      {
+        "label": "Conic",
+        "value": "conic"
+      }
+    ],
+    "default": "linear"
+  },
+  "repeating": {
+    "type": "switch",
+    "name": "Repeating"
+  },
+  "reverse": {
+    "type": "switch",
+    "name": "Reverse"
+  },
+  "angle": {
+    "type": "slider",
+    "name": "Angle",
+    "min": 0,
+    "max": 360,
+    "suffix": "deg",
+    "showIf": {
+      "conditions": [
+        [
+          "type",
+          "$eq",
+          "linear"
+        ]
+      ]
+    }
+  },
+  "radialBase": {
+    "type": "text",
+    "name": "Radial",
+    "placeholder": "<shape> <size> at <position>",
+    "showIf": {
+      "conditions": [
+        [
+          "type",
+          "$eq",
+          "radial"
+        ]
+      ]
+    }
+  },
+  "conicBase": {
+    "type": "text",
+    "name": "Conic",
+    "placeholder": "from <angle> at <position>",
+    "showIf": {
+      "conditions": [
+        [
+          "type",
+          "$eq",
+          "conic"
+        ]
+      ]
+    }
+  },
+  "stops": {
+    "type": "tabs",
+    "name": "Color stops",
+    "default": [
+      {
+        "color": "white",
+        "offset": "0%"
+      },
+      {
+        "color": "black",
+        "offset": "100%"
+      }
+    ],
+    "template": {
+      "name": "Stop <%= i + 1 %>",
+      "children": {
+        "color": {
+          "type": "fill",
+          "mode": "solid",
+          "name": "Color",
+          "default": "#000"
+        },
+        "offset": {
+          "type": "text",
+          "name": "Offset",
+          "default": "0%"
+        }
+      }
+    }
+  }
+}

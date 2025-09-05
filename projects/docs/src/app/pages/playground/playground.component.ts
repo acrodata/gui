@@ -2,6 +2,7 @@ import { CodeEditor } from '@acrodata/code-editor';
 import { GuiFields, GuiForm } from '@acrodata/gui';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { CommonModule } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
@@ -25,53 +26,22 @@ import { MtxSplitModule } from '@ng-matero/extensions/split';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PlaygroundComponent implements OnInit {
-  config: GuiFields = {
-    title: {
-      type: 'text',
-      name: 'Title',
-      default: 'Hello, World!',
-    },
-    align: {
-      type: 'buttonToggle',
-      name: 'Align',
-      options: [
-        { value: 'left', label: 'Left' },
-        { value: 'center', label: 'Center' },
-        { value: 'right', label: 'Right' },
-      ],
-      default: 'center',
-    },
-    size: {
-      type: 'group',
-      name: 'Size',
-      children: {
-        width: {
-          type: 'number',
-          name: 'Width',
-          default: 100,
-        },
-        height: {
-          type: 'number',
-          name: 'Height',
-          default: 100,
-        },
-      },
-    },
-  };
+  private destroy = inject(DestroyRef);
+  private breakpointObserver = inject(BreakpointObserver);
+  private cdr = inject(ChangeDetectorRef);
+  private http = inject(HttpClient);
+
+  isMobile = false;
+
+  config: GuiFields = {};
   model: any = {};
 
   configStr = '';
 
-  isMobile = false;
-
-  private readonly destroy = inject(DestroyRef);
-
   extensions = [json(), linter(jsonParseLinter()), lintGutter()];
 
-  constructor(
-    private breakpointObserver: BreakpointObserver,
-    private cdr: ChangeDetectorRef
-  ) {}
+  examples = ['basic', 'css-gradient'];
+  selectedExample = 'basic';
 
   ngOnInit(): void {
     this.breakpointObserver
@@ -82,7 +52,20 @@ export class PlaygroundComponent implements OnInit {
         this.cdr.detectChanges();
       });
 
-    this.configStr = JSON.stringify(this.config, null, 2);
+    this.getExample();
+  }
+
+  getExample() {
+    this.http.get<GuiFields>(`examples/${this.selectedExample}.json`).subscribe(res => {
+      this.config = res;
+      this.configStr = JSON.stringify(this.config, null, 2);
+      this.model = {};
+      this.cdr.detectChanges();
+    });
+  }
+
+  onExampleChange() {
+    this.getExample();
   }
 
   onConfigChange() {

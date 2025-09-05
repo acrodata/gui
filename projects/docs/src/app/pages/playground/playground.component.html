@@ -1,15 +1,28 @@
-<mtx-split [direction]="isMobile?'vertical':'horizontal'">
+<div class="example-select">
+  <label for="">Example</label>
+  <select [(ngModel)]="selectedExample" (change)="onExampleChange()">
+    @for (e of examples; track $index) {
+      <option [value]="e">{{ e }}</option>
+    }
+  </select>
+</div>
+
+<mtx-split [direction]="isMobile ? 'vertical' : 'horizontal'">
   <mtx-split-pane [size]="60">
-    <code-editor [style.height.%]="100"
-                 [extensions]="extensions" [(ngModel)]="configStr" (blur)="onConfigChange()" />
+    <code-editor
+      [style.height.%]="100"
+      [extensions]="extensions"
+      [(ngModel)]="configStr"
+      (blur)="onConfigChange()"
+    />
   </mtx-split-pane>
   <mtx-split-pane class="preview" [size]="40">
-    <mtx-split [direction]="isMobile?'horizontal':'vertical'">
+    <mtx-split [direction]="isMobile ? 'horizontal' : 'vertical'">
       <mtx-split-pane>
         <gui-form [config]="config" [model]="model" />
       </mtx-split-pane>
       <mtx-split-pane>
-        <textarea [value]="model|json" readonly></textarea>
+        <textarea [value]="model | json" readonly></textarea>
       </mtx-split-pane>
     </mtx-split>
   </mtx-split-pane>

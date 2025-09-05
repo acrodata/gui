@@ -1,0 +1,42 @@
+{
+  "title": {
+    "type": "text",
+    "name": "Title",
+    "default": "Hello, World!"
+  },
+  "align": {
+    "type": "buttonToggle",
+    "name": "Align",
+    "options": [
+      {
+        "value": "left",
+        "label": "Left"
+      },
+      {
+        "value": "center",
+        "label": "Center"
+      },
+      {
+        "value": "right",
+        "label": "Right"
+      }
+    ],
+    "default": "center"
+  },
+  "size": {
+    "type": "group",
+    "name": "Size",
+    "children": {
+      "width": {
+        "type": "number",
+        "name": "Width",
+        "default": 100
+      },
+      "height": {
+        "type": "number",
+        "name": "Height",
+        "default": 100
+      }
+    }
+  }
+}
