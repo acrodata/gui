@@ -1,87 +1,30 @@
 import { GuiFields, GuiModule } from '@acrodata/gui';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { cloneDeep } from 'lodash-es';
-import { IBackground, gradientPresets } from './gradient-presets';
+import { IBackground, presets } from './presets';
 
 @Component({
-  selector: 'app-gradient-generator',
+  selector: 'app-background-generator',
   standalone: true,
   imports: [GuiModule],
-  templateUrl: './gradient-generator.component.html',
-  styleUrl: './gradient-generator.component.scss',
+  templateUrl: './background-generator.component.html',
+  styleUrl: './background-generator.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class GradientGeneratorComponent implements OnInit {
   demoStyle = {};
 
   config: GuiFields = {
-    gradients: {
+    layers: {
       type: 'tabs',
-      name: 'Bg gradients',
+      name: 'Bg layers',
       template: {
-        name: 'Gradient <%= i + 1 %>',
+        name: 'Layer <%= i + 1 %>',
         children: {
-          type: {
-            type: 'buttonToggle',
-            name: 'Type',
-            options: [
-              { label: 'linear', value: 'linear' },
-              { label: 'radial', value: 'radial' },
-              { label: 'conic', value: 'conic' },
-            ],
-          },
-          repeating: {
-            type: 'switch',
-            name: 'Repeating',
-          },
-          reverse: {
-            type: 'switch',
-            name: 'Reverse',
-          },
-          angle: {
-            type: 'slider',
-            name: 'Angle',
-            min: 0,
-            max: 360,
-            suffix: 'deg',
-            showIf: {
-              conditions: [['type', '$eq', 'linear']],
-            },
-          },
-          radialBase: {
-            type: 'text',
-            name: 'Radial',
-            placeholder: '<shape> <size> at <position>',
-            showIf: {
-              conditions: [['type', '$eq', 'radial']],
-            },
-          },
-          conicBase: {
-            type: 'text',
-            name: 'Conic',
-            placeholder: 'from <angle> at <position>',
-            showIf: {
-              conditions: [['type', '$eq', 'conic']],
-            },
-          },
-          stops: {
-            type: 'tabs',
-            name: 'Color stops',
-            template: {
-              name: 'Stop <%= i + 1 %>',
-              children: {
-                color: {
-                  type: 'fill',
-                  name: 'Color',
-                  default: '#000',
-                },
-                offset: {
-                  type: 'text',
-                  name: 'Offset',
-                  default: '0%',
-                },
-              },
-            },
+          image: {
+            type: 'fill',
+            name: 'Image',
+            mode: 'gradient',
           },
           position: {
             type: 'inline',
@@ -163,9 +106,9 @@ export class GradientGeneratorComponent implements OnInit {
     },
   };
 
-  model = cloneDeep(gradientPresets[0]);
+  model = cloneDeep(presets[0]);
 
-  presets = gradientPresets;
+  presets = presets;
 
   presetStyles: any[] = [];
 
@@ -179,33 +122,17 @@ export class GradientGeneratorComponent implements OnInit {
     console.log(model);
 
     return {
-      'background-image': model.gradients
-        .map(b => {
-          const type = b.repeating ? `repeating-${b.type}-gradient` : `${b.type}-gradient`;
-          const angle = b.angle ? `${b.angle}deg,` : '';
-          const base: any = {
-            linear: angle,
-            radial: b.radialBase ? `${b.radialBase},` : '',
-            conic: b.conicBase ? `${b.conicBase},` : '',
-          };
-          const stops = b.stops
-            ?.map((s, i) => ({
-              ...s,
-              color: b.reverse ? b.stops![b.stops!.length - 1 - i].color : s.color,
-            }))
-            .map(s => `${s.color} ${s.offset}`)
-            .join(',');
-          return stops ? `${type}(${base[b.type]}${stops})` : '';
-        })
-        .filter(b => b.trim())
+      'background-image': model.layers
+        .map(l => l.image || '')
+        .filter(i => i.trim())
         .join(','),
-      'background-position': model.gradients
-        .map(b => `${b.position?.x || ''} ${b.position?.y || ''}`)
-        .filter(b => b.trim())
+      'background-position': model.layers
+        .map(l => `${l.position?.x || ''} ${l.position?.y || ''}`)
+        .filter(p => p.trim())
         .join(','),
-      'background-size': model.gradients
-        .map(b => `${b.size?.w || ''} ${b.size?.h || ''}`)
-        .filter(b => b.trim())
+      'background-size': model.layers
+        .map(l => `${l.size?.w || ''} ${l.size?.h || ''}`)
+        .filter(s => s.trim())
         .join(','),
       'background-blend-mode': model.blendMode.join(','),
       'background-repeat': model.repeat,

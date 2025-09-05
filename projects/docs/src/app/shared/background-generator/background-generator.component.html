@@ -5,13 +5,13 @@
   </div>
 
   <div class="gui-wrapper">
-    <div class="gui-heading">Gradient Generator</div>
+    <div class="gui-heading">Background Generator</div>
     <gui-form [config]="config" [model]="model" (modelChange)="demoStyle = getBgStyle($event)" />
   </div>
 </div>
 
-@for (m of presets; track m; let i = $index) {
-  <button class="thumbnail" [style]="presetStyles[i]" (click)="selectPreset(m)">
-
+@for (p of presets; track p; let i = $index) {
+  <button class="thumbnail" [style]="presetStyles[i]" (click)="selectPreset(p)">
+    <!--  -->
   </button>
 }
