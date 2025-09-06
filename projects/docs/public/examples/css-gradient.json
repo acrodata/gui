@@ -20,11 +20,13 @@
   },
   "repeating": {
     "type": "switch",
-    "name": "Repeating"
+    "name": "Repeating",
+    "default": false
   },
   "reverse": {
     "type": "switch",
-    "name": "Reverse"
+    "name": "Reverse",
+    "default": false
   },
   "angle": {
     "type": "slider",
@@ -32,20 +34,31 @@
     "min": 0,
     "max": 360,
     "suffix": "deg",
+    "default": 90,
     "showIf": {
       "conditions": [
         [
           "type",
-          "$eq",
-          "linear"
+          "$ne",
+          "radial"
         ]
       ]
     }
   },
-  "radialBase": {
-    "type": "text",
-    "name": "Radial",
-    "placeholder": "<shape> <size> at <position>",
+  "shape": {
+    "type": "buttonToggle",
+    "name": "Shape",
+    "options": [
+      {
+        "value": "ellipse",
+        "label": "Ellipse"
+      },
+      {
+        "value": "circle",
+        "label": "Circle"
+      }
+    ],
+    "default": "ellipse",
     "showIf": {
       "conditions": [
         [
@@ -56,16 +69,65 @@
       ]
     }
   },
-  "conicBase": {
-    "type": "text",
-    "name": "Conic",
-    "placeholder": "from <angle> at <position>",
+  "size": {
+    "type": "select",
+    "name": "Shape",
+    "options": [
+      {
+        "value": "closest-side",
+        "label": "closest-side"
+      },
+      {
+        "value": "closest-corner",
+        "label": "closest-corner"
+      },
+      {
+        "value": "farthest-side",
+        "label": "farthest-side"
+      },
+      {
+        "value": "farthest-corner",
+        "label": "farthest-corner"
+      }
+    ],
+    "default": "farthest-corner",
     "showIf": {
       "conditions": [
         [
           "type",
           "$eq",
-          "conic"
+          "radial"
+        ]
+      ]
+    }
+  },
+  "position": {
+    "type": "inline",
+    "name": "Position",
+    "children": {
+      "x": {
+        "type": "slider",
+        "name": "X",
+        "min": 0,
+        "max": 100,
+        "suffix": "%",
+        "default": 50
+      },
+      "y": {
+        "type": "slider",
+        "name": "Y",
+        "min": 0,
+        "max": 100,
+        "suffix": "%",
+        "default": 50
+      }
+    },
+    "showIf": {
+      "conditions": [
+        [
+          "type",
+          "$ne",
+          "linear"
         ]
       ]
     }

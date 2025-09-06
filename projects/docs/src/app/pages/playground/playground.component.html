@@ -2,7 +2,7 @@
   <label for="">Example</label>
   <select [(ngModel)]="selectedExample" (change)="onExampleChange()">
     @for (e of examples; track $index) {
-      <option [value]="e">{{ e }}</option>
+      <option [value]="e.value">{{ e.label }}</option>
     }
   </select>
 </div>

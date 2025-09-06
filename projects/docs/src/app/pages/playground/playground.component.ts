@@ -40,7 +40,10 @@ export class PlaygroundComponent implements OnInit {
 
   extensions = [json(), linter(jsonParseLinter()), lintGutter()];
 
-  examples = ['basic', 'css-gradient'];
+  examples = [
+    { label: 'Baisc', value: 'basic' },
+    { label: 'CSS Gradient', value: 'css-gradient' },
+  ];
   selectedExample = 'basic';
 
   ngOnInit(): void {
