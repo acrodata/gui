@@ -1,5 +1,5 @@
 <form [formGroup]="form">
-  @for (item of formFields; track item.key) {
+  @for (item of formFields; track item) {
     <div>
       <ng-template [ngTemplateOutlet]="controlType"
         [ngTemplateOutletContext]="{$implicit: item, formGroup: form}" />
@@ -91,7 +91,7 @@
         }
         @case ('inline') {
           <gui-inline-group [config]="item" [formGroupName]="item.key">
-            @for (child of item.children; track child.key) {
+            @for (child of item.children; track child) {
               <ng-template [ngTemplateOutlet]="controlType"
                 [ngTemplateOutletContext]="{
                   $implicit: child, parent: item, formGroup: form.get(item.key)
@@ -107,7 +107,7 @@
             </mat-expansion-panel-header>
             <!-- Lazy rendering -->
             <ng-template matExpansionPanelContent>
-              @for (child of item.children; track child.key) {
+              @for (child of item.children; track child) {
                 <div>
                   <ng-template [ngTemplateOutlet]="controlType"
                     [ngTemplateOutletContext]="{
@@ -157,7 +157,7 @@
                 <!-- Horizontal mode -->
                 <mat-tab-group class="gui-tabs" disableRipple
                   [mat-stretch-tabs]="false" [(selectedIndex)]="item.selectedIndex">
-                  @for (tab of item.children; track $index; let i = $index) {
+                  @for (tab of item.children; track tab; let i = $index) {
                     <mat-tab [disabled]="tab.disabled">
                       <ng-template mat-tab-label>
                         <div>{{tab.name | ejs:{i} }}</div>
@@ -171,7 +171,7 @@
                       }
                       <!-- FormGroup -->
                       @if (tab.children?.length>0 && tab.type!=='tabs') {
-                        @for (child of tab.children; track $index) {
+                        @for (child of tab.children; track child) {
                           <div>
                             <ng-template [ngTemplateOutlet]="controlType"
                               [ngTemplateOutletContext]="{
@@ -186,7 +186,7 @@
               } @else {
                 <!-- Vertical mode -->
                 <div class="gui-list">
-                  @for (tab of item.children; track $index; let i = $index) {
+                  @for (tab of item.children; track tab; let i = $index) {
                     <div class="gui-list-item"
                       [class.gui-list-item-active]="item.selectedIndex===i">
                       <div class="gui-list-item-heading">
@@ -219,7 +219,7 @@
                         }
                         <!-- FormGroup -->
                         @if (tab.children?.length>0 && tab.type!=='tabs') {
-                          @for (child of tab.children; track $index) {
+                          @for (child of tab.children; track child) {
                             <div>
                               <ng-template [ngTemplateOutlet]="controlType"
                                 [ngTemplateOutletContext]="{
@@ -238,13 +238,13 @@
         }
         @case ('menu') {
           <mat-tab-group class="gui-menu" [formGroupName]="item.key" disableRipple>
-            @for (menuChild of item.children; track menuChild.key) {
+            @for (menuChild of item.children; track menuChild) {
               <mat-tab [label]="menuChild.name"
                 [disabled]="menuChild.disabled">
                 <ng-template matTabContent>
                   @if (menuChild.type==='menuItem') {
                     <!-- Must wrap with div -->
-                    @for (controlItem of menuChild.children; track controlItem.key) {
+                    @for (controlItem of menuChild.children; track controlItem) {
                       <div [formGroupName]="menuChild.key">
                         <ng-template [ngTemplateOutlet]="controlType"
                           [ngTemplateOutletContext]="{
