@@ -6,7 +6,7 @@
   hideSingleSelectionIndicator
   hideMultipleSelectionIndicator
 >
-  @for (opt of config.options; track opt) {
+  @for (opt of config.options; track $index) {
     <mat-button-toggle
       disableRipple
       [class.gui-icon-toggle]="config.useIcon"

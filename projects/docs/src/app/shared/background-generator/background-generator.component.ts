@@ -1,5 +1,11 @@
 import { GuiFields, GuiModule } from '@acrodata/gui';
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  inject,
+  OnInit,
+} from '@angular/core';
 import { cloneDeep } from 'lodash-es';
 import { IBackground, presets } from './presets';
 
@@ -12,6 +18,8 @@ import { IBackground, presets } from './presets';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class GradientGeneratorComponent implements OnInit {
+  private cdr = inject(ChangeDetectorRef);
+
   demoStyle = {};
 
   config: GuiFields = {
@@ -117,30 +125,35 @@ export class GradientGeneratorComponent implements OnInit {
     this.presetStyles = this.presets.map(m => this.getBgStyle(m));
   }
 
-  getBgStyle(model: IBackground) {
-    // Print the model object
-    console.log(model);
+  getBgStyle(bg: IBackground) {
+    // Print the object
+    console.log(bg);
 
     return {
-      'background-image': model.layers
+      'background-image': bg.layers
         .map(l => l.image || '')
         .filter(i => i.trim())
         .join(','),
-      'background-position': model.layers
+      'background-position': bg.layers
         .map(l => `${l.position?.x || ''} ${l.position?.y || ''}`)
         .filter(p => p.trim())
         .join(','),
-      'background-size': model.layers
+      'background-size': bg.layers
         .map(l => `${l.size?.w || ''} ${l.size?.h || ''}`)
         .filter(s => s.trim())
         .join(','),
-      'background-blend-mode': model.blendMode.join(','),
-      'background-repeat': model.repeat,
+      'background-blend-mode': bg.blendMode.join(','),
+      'background-repeat': bg.repeat,
     };
   }
 
   selectPreset(model: IBackground) {
     this.model = cloneDeep(model);
     this.config = cloneDeep(this.config);
+  }
+
+  onModelChange() {
+    this.demoStyle = this.getBgStyle(this.model);
+    this.cdr.detectChanges();
   }
 }

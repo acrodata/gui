@@ -12,7 +12,7 @@
     [multiple]="config.multiple || false"
     (selectionChange)="onValueChange()"
   >
-    @for (opt of config.options; track opt) {
+    @for (opt of config.options; track $index) {
       <mat-option [value]="opt.value" [disabled]="opt.disabled">
         <span [style.font-family]="config.useFont ? opt.value : ''">{{ opt.label }}</span>
       </mat-option>

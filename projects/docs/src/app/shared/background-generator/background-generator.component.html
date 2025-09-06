@@ -6,11 +6,11 @@
 
   <div class="gui-wrapper">
     <div class="gui-heading">Background Generator</div>
-    <gui-form [config]="config" [model]="model" (modelChange)="demoStyle = getBgStyle($event)" />
+    <gui-form [config]="config" [model]="model" (modelChange)="onModelChange()" />
   </div>
 </div>
 
-@for (p of presets; track p; let i = $index) {
+@for (p of presets; track $index; let i = $index) {
   <button class="thumbnail" [style]="presetStyles[i]" (click)="selectPreset(p)">
     <!--  -->
   </button>
