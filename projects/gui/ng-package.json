@@ -9,6 +9,7 @@
   },
   "allowedNonPeerDependencies": [
     "@acrodata/code-editor",
+    "@acrodata/gradient-picker",
     "@acrodata/rnd-dialog"
   ]
 }
