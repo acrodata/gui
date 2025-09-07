@@ -236,6 +236,7 @@ export class ExamplesComponent implements OnInit {
         },
         {
           seriesName: '第二产业',
+          seriesId: 2,
         },
       ],
       template: {
@@ -247,10 +248,12 @@ export class ExamplesComponent implements OnInit {
             showIf: {
               conditions: [['seriesId', '$eq', 1]],
             },
+            default: '1',
           },
           seriesId: {
             type: 'number',
             name: '数值',
+            default: 1,
           },
         },
       },
@@ -315,6 +318,7 @@ export class ExamplesComponent implements OnInit {
       template: {
         name: '系列<%= i + 1%>',
         type: 'text',
+        default: '1',
       },
     },
     tabs4: {

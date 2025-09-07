@@ -173,14 +173,14 @@ export class GuiForm implements OnChanges, OnInit, OnDestroy {
       const _type = !_children ? 'control' : Array.isArray(_children) ? 'array' : 'group';
 
       const item: GuiControl = {
+        ...(config as any)[key],
         _type,
         key,
         parentType,
         model: model[key],
-        default: defaultValue?.[key],
+        default: defaultValue?.[key] ?? (config as any)[key].default,
         index: Number(key), // the string key will be `NaN`
         show: true,
-        ...(config as any)[key],
       };
 
       // The `group` type generally have no `default`, so we should
@@ -204,7 +204,6 @@ export class GuiForm implements OnChanges, OnInit, OnDestroy {
         }
         if (item.default?.length) {
           item.children = item.default.map((value: any) => {
-            Object.assign(value, item.template?.default);
             return {
               default: value,
               ...item.template,
