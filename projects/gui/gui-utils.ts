@@ -1,5 +1,5 @@
 import { Directive, ElementRef, Input, OnInit, Pipe, PipeTransform } from '@angular/core';
-import { GuiDefaultValue, GuiOperator } from './interface';
+import { GuiDefaultValue, GuiFields, GuiOperator } from './interface';
 
 /**
  * Lightweight EJS template engine
@@ -96,4 +96,29 @@ export function getValueByPath(obj: Record<string, any>, path: string) {
   return path.split('.').reduce((acc: Record<string, any> | undefined, key) => {
     return acc?.['children']?.[key] ? acc['children'][key] : acc?.[key];
   }, obj);
+}
+
+export function getModelFromConfig(config: GuiFields = {}, model: Record<string, any> = {}) {
+  for (const [key, fieldCfg] of Object.entries(config)) {
+    if (model[key] != null) {
+      continue;
+    }
+    if (fieldCfg.default != null) {
+      model[key] = fieldCfg.default;
+    } else {
+      if (
+        fieldCfg.type === 'group' ||
+        fieldCfg.type === 'inline' ||
+        fieldCfg.type === 'menu' ||
+        fieldCfg.type === 'menuItem'
+      ) {
+        model[key] = getModelFromConfig(fieldCfg.children as GuiFields, {});
+      } else if (fieldCfg.type === 'tabs') {
+        model[key] = [];
+      } else {
+        model[key] = null;
+      }
+    }
+  }
+  return model;
 }

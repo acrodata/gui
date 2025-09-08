@@ -29,7 +29,13 @@ import { GuiFieldGroup } from './field-group/field-group';
 import { GuiFieldLabel } from './field-label/field-label';
 import { GuiFileUploader } from './file-uploader/file-uploader';
 import { GuiFill } from './fill/fill';
-import { GuiEjsPipe, GuiFlexDirective, compareValues, getValueByPath } from './gui-utils';
+import {
+  GuiEjsPipe,
+  GuiFlexDirective,
+  compareValues,
+  getModelFromConfig,
+  getValueByPath,
+} from './gui-utils';
 import { GuiIconButtonWrapper } from './icon-button-wrapper/icon-button-wrapper';
 import { GuiImageSelect } from './image-select/image-select';
 import { GuiInlineGroup } from './inline-group/inline-group';
@@ -102,7 +108,7 @@ export class GuiForm implements OnChanges, OnInit, OnDestroy {
   /**
    * The model to be represented by the form.
    */
-  @Input() model: any = {};
+  @Input() model: Record<string, any> = {};
 
   /**
    * Fired on model value change
@@ -124,6 +130,7 @@ export class GuiForm implements OnChanges, OnInit, OnDestroy {
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['config']) {
+      getModelFromConfig(this.config, this.model);
       this.form.controls = {}; // reset controls
       this.formFields = this.getFormFieldArray(this.form, this.config, this.model);
     }
