@@ -1,6 +1,6 @@
 {
   "name": "@acrodata/gui",
-  "version": "2.6.0",
+  "version": "2.6.1",
   "description": "JSON powered GUI for configurable panels.",
   "publishConfig": {
     "access": "public"
