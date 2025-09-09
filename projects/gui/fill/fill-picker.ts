@@ -88,7 +88,7 @@ export class GuiFillPicker implements ControlValueAccessor, OnChanges {
   writeValue(value: any) {
     if (typeof value === 'string') {
       value = value.trim();
-      if (!this.type) {
+      if (this.type === 'all') {
         this.getTypeFromModel(value);
       }
       this.getValueFromModel(value);
