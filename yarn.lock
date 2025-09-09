@@ -12,10 +12,10 @@
     codemirror "^6.0.0"
     tslib "^2.3.0"
 
-"@acrodata/gradient-picker@^0.7.1":
-  version "0.7.1"
-  resolved "https://registry.yarnpkg.com/@acrodata/gradient-picker/-/gradient-picker-0.7.1.tgz#2dcf8825b5dce2f44ba4c81bc5f7a7b5f40393c0"
-  integrity sha512-m67RlAujN1A1pqGsecOVifk2tFqz2n2ksw2ki+fuGG564q4Cay1uyExplVRbwAzYIamvRT2YXBWPhCRhlrtkzQ==
+"@acrodata/gradient-picker@^0.7.2":
+  version "0.7.2"
+  resolved "https://registry.yarnpkg.com/@acrodata/gradient-picker/-/gradient-picker-0.7.2.tgz#551b6c8d719d74b1e67dc53832298bf7662f5d19"
+  integrity sha512-oJOUkAAlj1juMhggLD7/ERmBFDmG1Vh1BCjBTCCU/IrXBuzZg9rv7eoOYjBoAzPYNtMSYcuAOUL54iLUBxQ8sA==
   dependencies:
     tslib "^2.3.0"
 
