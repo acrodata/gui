@@ -56,11 +56,15 @@ export class GuiFillPicker implements ControlValueAccessor, OnChanges {
     { label: 'Image', value: 'image' },
   ];
 
-  selectedType = 'solid';
+  selectedType: Exclude<GuiFillMode, 'all'> = 'solid';
 
   colorFormat: 'hex' | 'rgb' | 'hsl' | 'hsv' = 'hex';
 
-  value = '';
+  fillValue = {
+    solid: '#000',
+    gradient: 'linear-gradient(transparent, #000)',
+    image: '',
+  };
 
   private onChange: (value: string) => void = () => {};
   private onTouched: () => void = () => {};
@@ -81,7 +85,6 @@ export class GuiFillPicker implements ControlValueAccessor, OnChanges {
       } else {
         this.selectedType = 'solid';
       }
-      this.setValueByType();
     }
   }
 
@@ -91,7 +94,9 @@ export class GuiFillPicker implements ControlValueAccessor, OnChanges {
       if (this.type === 'all') {
         this.getTypeFromModel(value);
       }
-      this.getValueFromModel(value);
+      if (value) {
+        this.getValueFromModel(value);
+      }
       this.cdr.markForCheck();
     }
   }
@@ -110,7 +115,7 @@ export class GuiFillPicker implements ControlValueAccessor, OnChanges {
   }
 
   getColorFormat() {
-    const color = new TinyColor(this.value);
+    const color = new TinyColor(this.fillValue.solid);
     if (color.format === 'rgb' || color.format === 'hsl' || color.format === 'hsv') {
       return color.format;
     } else {
@@ -130,47 +135,46 @@ export class GuiFillPicker implements ControlValueAccessor, OnChanges {
 
   getValueFromModel(value: string) {
     if (this.selectedType === 'solid') {
-      this.value = value;
+      this.fillValue.solid = value;
       this.colorFormat = this.getColorFormat();
     } else if (this.selectedType === 'gradient') {
-      this.value = value;
+      this.fillValue.gradient = value;
     } else if (this.selectedType === 'image') {
       const regex = /url\((?:'|")?([^'"]+?)(?:'|")?\)/;
-      this.value = value.match(regex)?.[1] || '';
-    }
-  }
-
-  setValueByType() {
-    if (this.selectedType === 'solid') {
-      this.value = '#000';
-    } else if (this.selectedType === 'gradient') {
-      this.value = 'linear-gradient(transparent, #000)';
-    } else if (this.selectedType === 'image') {
-      this.value = '';
+      this.fillValue.image = value.match(regex)?.[1] || '';
     }
   }
 
   onTypeChange() {
-    this.setValueByType();
-    this.onChange(this.value);
-    this.cdr.markForCheck();
+    if (this.selectedType === 'solid') {
+      this.onSolidChange();
+    } else if (this.selectedType === 'gradient') {
+      this.onGradientChange();
+    } else if (this.selectedType === 'image') {
+      this.onImageChange();
+    }
   }
 
   onColorChange(e: ColorEvent) {
-    this.value = {
+    this.fillValue.solid = {
       hex: e.color.rgb.a === 1 ? e.color.hex : new TinyColor(e.color.rgb).toHex8String(),
       rgb: new TinyColor(e.color.rgb).toRgbString(),
       hsl: new TinyColor(e.color.hsl).toHslString(),
       hsv: new TinyColor(e.color.hsv).toHsvString(),
     }[this.colorFormat];
-    this.onChange(this.value);
+    this.onSolidChange();
+  }
+
+  onSolidChange() {
+    this.onChange(this.fillValue.solid);
   }
 
   onGradientChange() {
-    this.onChange(this.value);
+    this.onChange(this.fillValue.gradient);
   }
 
   onImageChange() {
-    this.onChange(`url("${this.value}")`);
+    const bgImg = `url("${this.fillValue.image}")`;
+    this.onChange(bgImg);
   }
 }

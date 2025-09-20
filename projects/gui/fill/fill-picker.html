@@ -16,10 +16,14 @@
 
 <div class="gui-fill-picker-body">
   @if (selectedType === 'solid') {
-    <color-chrome [color]="value" (onChangeComplete)="onColorChange($event)" />
+    <color-chrome [color]="fillValue.solid" (onChangeComplete)="onColorChange($event)" />
   } @else if (selectedType === 'gradient') {
-    <gradient-picker [(ngModel)]="value" (ngModelChange)="onGradientChange()" />
+    <gradient-picker [(ngModel)]="fillValue.gradient" (ngModelChange)="onGradientChange()" />
   } @else if (selectedType === 'image') {
-    <gui-file-uploader type="image" [(ngModel)]="value" (ngModelChange)="onImageChange()" />
+    <gui-file-uploader
+      type="image"
+      [(ngModel)]="fillValue.image"
+      (ngModelChange)="onImageChange()"
+    />
   }
 </div>
