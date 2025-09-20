@@ -58,7 +58,7 @@ export class GuiSlider implements ControlValueAccessor {
 
   constructor(private cdr: ChangeDetectorRef) {}
 
-  writeValue(value: number) {
+  writeValue(value: any) {
     this.value = value;
     this.setInputValue();
     this.cdr.markForCheck();

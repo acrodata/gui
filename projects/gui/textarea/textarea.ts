@@ -42,7 +42,7 @@ export class GuiTextarea {
 
   constructor(private cdr: ChangeDetectorRef) {}
 
-  writeValue(value: string) {
+  writeValue(value: any) {
     this.value = value;
     this.cdr.markForCheck();
   }

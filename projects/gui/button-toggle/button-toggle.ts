@@ -52,7 +52,7 @@ export class GuiButtonToggle implements ControlValueAccessor {
 
   constructor(private cdr: ChangeDetectorRef) {}
 
-  writeValue(value: GuiBasicValue | GuiBasicValue[]) {
+  writeValue(value: any) {
     this.value = value;
     this.cdr.markForCheck();
   }

@@ -42,7 +42,7 @@ export class GuiSwitch implements ControlValueAccessor {
 
   constructor(private cdr: ChangeDetectorRef) {}
 
-  writeValue(value: boolean) {
+  writeValue(value: any) {
     this.value = value;
     this.cdr.markForCheck();
   }

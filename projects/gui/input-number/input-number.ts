@@ -42,7 +42,7 @@ export class GuiInputNumber implements ControlValueAccessor {
 
   constructor(private cdr: ChangeDetectorRef) {}
 
-  writeValue(value: number) {
+  writeValue(value: any) {
     this.value = value;
     this.cdr.markForCheck();
   }

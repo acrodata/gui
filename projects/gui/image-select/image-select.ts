@@ -54,9 +54,9 @@ export class GuiImageSelect implements ControlValueAccessor, AfterViewInit {
   @Input() disabled = false;
   @Input() appendTo = 'body';
 
-  value: unknown;
+  value: any;
 
-  private onChange: (value: unknown) => void = () => {};
+  private onChange: (value: any) => void = () => {};
   private onTouched: () => void = () => {};
 
   constructor(private cdr: ChangeDetectorRef) {}
@@ -67,12 +67,12 @@ export class GuiImageSelect implements ControlValueAccessor, AfterViewInit {
     ngSelect.classes = (ngSelect.classes || '') + ' gui-image-select';
   }
 
-  writeValue(value: unknown) {
+  writeValue(value: any) {
     this.value = value;
     this.cdr.markForCheck();
   }
 
-  registerOnChange(fn: (value: unknown) => void) {
+  registerOnChange(fn: (value: any) => void) {
     this.onChange = fn;
   }
 

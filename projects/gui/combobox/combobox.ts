@@ -62,7 +62,7 @@ export class GuiCombobox implements ControlValueAccessor, AfterViewInit {
     ngSelect.classes = (ngSelect.classes || '') + ' gui-combobox';
   }
 
-  writeValue(value: GuiBasicValue | GuiBasicValue[]) {
+  writeValue(value: any) {
     this.value = value;
     this.cdr.markForCheck();
   }
