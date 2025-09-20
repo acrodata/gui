@@ -97,8 +97,10 @@ export class GuiFileUploader implements ControlValueAccessor, OnChanges {
     }
   }
 
-  writeValue(value: string) {
-    this.url = value;
+  writeValue(value: any) {
+    if (typeof value === 'string') {
+      this.url = value.trim();
+    }
     this.cdr.markForCheck();
   }
 
@@ -142,7 +144,7 @@ export class GuiFileUploader implements ControlValueAccessor, OnChanges {
   }
 
   onUrlChange(e: Event) {
-    this.url = (e.target as HTMLInputElement).value;
+    this.url = (e.target as HTMLInputElement).value.trim();
 
     this.onChange(this.url);
 
