@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component, ViewEncapsulation, inject } from '@angular/core';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
 import { RouterOutlet } from '@angular/router';
@@ -16,7 +16,10 @@ export class AppComponent {
 
   icons = ['menu', 'github', 'invert_colors'];
 
-  constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer) {
+  constructor() {
+    const iconRegistry = inject(MatIconRegistry);
+    const sanitizer = inject(DomSanitizer);
+
     for (const i of this.icons) {
       iconRegistry.addSvgIcon(i, sanitizer.bypassSecurityTrustResourceUrl(`icons/${i}.svg`));
     }

@@ -4,6 +4,7 @@ import {
   ChangeDetectorRef,
   Component,
   forwardRef,
+  inject,
   Input,
   OnChanges,
   SimpleChanges,
@@ -47,6 +48,8 @@ import { GuiFillMode } from '../interface';
   ],
 })
 export class GuiFillPicker implements ControlValueAccessor, OnChanges {
+  private cdr = inject(ChangeDetectorRef);
+
   @Input() disabled = false;
   @Input() type: GuiFillMode = 'all';
 
@@ -69,10 +72,8 @@ export class GuiFillPicker implements ControlValueAccessor, OnChanges {
   private onChange: (value: string) => void = () => {};
   private onTouched: () => void = () => {};
 
-  constructor(
-    private cdr: ChangeDetectorRef,
-    iconsRegistry: GuiIconsRegistry
-  ) {
+  constructor() {
+    const iconsRegistry = inject(GuiIconsRegistry);
     iconsRegistry.add('solid', 'gradient', 'image');
   }
 

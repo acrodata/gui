@@ -1,6 +1,6 @@
 import { GuiFields, GuiFileUploaderConfig, GuiModule } from '@acrodata/gui';
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 
 @Component({
@@ -11,6 +11,8 @@ import { FormGroup } from '@angular/forms';
   styleUrl: './examples.component.scss',
 })
 export class ExamplesComponent implements OnInit {
+  private fileUploaderCfg = inject(GuiFileUploaderConfig);
+
   form = new FormGroup({});
   config: GuiFields = {
     size: {
@@ -459,8 +461,6 @@ export class ExamplesComponent implements OnInit {
     },
   };
   model = {};
-
-  constructor(private fileUploaderCfg: GuiFileUploaderConfig) {}
 
   ngOnInit(): void {
     this.form.valueChanges.subscribe(v => {

@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component, ViewEncapsulation, inject } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { NavigationEnd, Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { filter } from 'rxjs';
@@ -16,6 +16,8 @@ import { ThemePickerComponent } from '../shared';
   encapsulation: ViewEncapsulation.None,
 })
 export class LayoutComponent {
+  private router = inject(Router);
+
   menu = [
     {
       name: 'Getting started',
@@ -75,7 +77,7 @@ export class LayoutComponent {
 
   menuOpened = false;
 
-  constructor(private router: Router) {
+  constructor() {
     this.router.events.pipe(filter(event => event instanceof NavigationEnd)).subscribe(e => {
       this.menuOpened = false;
     });

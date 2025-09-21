@@ -3,6 +3,7 @@ import {
   ChangeDetectorRef,
   Component,
   forwardRef,
+  inject,
   Input,
   ViewEncapsulation,
 } from '@angular/core';
@@ -44,6 +45,8 @@ import { GuiControl } from '../interface';
   ],
 })
 export class GuiSlider implements ControlValueAccessor {
+  private cdr = inject(ChangeDetectorRef);
+
   @Input() config: Partial<GuiControl> = {};
   @Input() disabled = false;
 
@@ -55,8 +58,6 @@ export class GuiSlider implements ControlValueAccessor {
 
   private onChange: (value: number | number[]) => void = () => {};
   private onTouched: () => void = () => {};
-
-  constructor(private cdr: ChangeDetectorRef) {}
 
   writeValue(value: any) {
     this.value = value;

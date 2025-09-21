@@ -3,6 +3,7 @@ import {
   ChangeDetectorRef,
   Component,
   forwardRef,
+  inject,
   Input,
   OnChanges,
   SimpleChanges,
@@ -54,6 +55,8 @@ import { GuiFillPicker } from './fill-picker';
   ],
 })
 export class GuiFill implements ControlValueAccessor, OnChanges {
+  private cdr = inject(ChangeDetectorRef);
+
   @Input() config: Partial<GuiControl> = {};
   @Input() disabled = false;
   @Input() type: GuiFillMode = 'all';
@@ -62,8 +65,6 @@ export class GuiFill implements ControlValueAccessor, OnChanges {
 
   private onChange: (value: string) => void = () => {};
   private onTouched: () => void = () => {};
-
-  constructor(private cdr: ChangeDetectorRef) {}
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['config']) {

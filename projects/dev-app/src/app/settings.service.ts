@@ -6,6 +6,4 @@ import { Subject } from 'rxjs';
 })
 export class SettingsService {
   themeChange = new Subject<'light' | 'dark'>();
-
-  constructor() {}
 }

@@ -3,6 +3,7 @@ import {
   ChangeDetectorRef,
   Component,
   forwardRef,
+  inject,
   Input,
   ViewEncapsulation,
 } from '@angular/core';
@@ -42,6 +43,8 @@ import { GuiIcon } from './icon';
   ],
 })
 export class GuiButtonToggle implements ControlValueAccessor {
+  private cdr = inject(ChangeDetectorRef);
+
   @Input() config: Partial<GuiControl> = {};
   @Input() disabled = false;
 
@@ -49,8 +52,6 @@ export class GuiButtonToggle implements ControlValueAccessor {
 
   private onChange: (value: GuiBasicValue | GuiBasicValue[]) => void = () => {};
   private onTouched: () => void = () => {};
-
-  constructor(private cdr: ChangeDetectorRef) {}
 
   writeValue(value: any) {
     this.value = value;

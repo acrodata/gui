@@ -8,6 +8,7 @@ import {
   KeyValueDiffers,
   OnInit,
   ViewEncapsulation,
+  inject,
 } from '@angular/core';
 import { GuiFieldLabel } from '../field-label/field-label';
 import { GuiControl } from '../interface';
@@ -25,14 +26,12 @@ import { GuiControl } from '../interface';
   imports: [GuiFieldLabel],
 })
 export class GuiFieldGroup implements OnInit, DoCheck {
+  private differs = inject(KeyValueDiffers);
+  private cdr = inject(ChangeDetectorRef);
+
   @Input() config: Partial<GuiControl> = {};
 
   private configDiffer?: KeyValueDiffer<string, any>;
-
-  constructor(
-    private differs: KeyValueDiffers,
-    private cdr: ChangeDetectorRef
-  ) {}
 
   ngOnInit(): void {
     this.configDiffer = this.differs.find(this.config).create();

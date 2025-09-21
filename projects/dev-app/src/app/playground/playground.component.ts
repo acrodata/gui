@@ -1,7 +1,7 @@
 import { CodeEditor, Theme } from '@acrodata/code-editor';
 import { GuiFields, GuiForm } from '@acrodata/gui';
 import { CommonModule } from '@angular/common';
-import { Component, DestroyRef, OnInit } from '@angular/core';
+import { Component, DestroyRef, OnInit, inject } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormGroup, FormsModule } from '@angular/forms';
 import { json, jsonParseLinter } from '@codemirror/lang-json';
@@ -16,6 +16,9 @@ import { SettingsService } from '../settings.service';
   styleUrl: './playground.component.scss',
 })
 export class PlaygroundComponent implements OnInit {
+  private destroyRef = inject(DestroyRef);
+  private settings = inject(SettingsService);
+
   form = new FormGroup({});
   config: GuiFields = {
     title: {
@@ -57,11 +60,6 @@ export class PlaygroundComponent implements OnInit {
   theme: Theme = 'light';
 
   extensions = [json(), linter(jsonParseLinter()), lintGutter()];
-
-  constructor(
-    private destroyRef: DestroyRef,
-    private settings: SettingsService
-  ) {}
 
   ngOnInit(): void {
     this.configStr = JSON.stringify(this.config, null, 2);

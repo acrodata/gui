@@ -1,4 +1,4 @@
-import { Inject, Injectable, InjectionToken, Optional } from '@angular/core';
+import { Injectable, InjectionToken, inject } from '@angular/core';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
 
@@ -81,11 +81,9 @@ export const GUI_ICONS_CONFIG = new InjectionToken<GuiIconsConfig>('gui-icons-co
 
 @Injectable({ providedIn: 'root' })
 export class GuiIconsRegistry {
-  constructor(
-    private _iconRegistry: MatIconRegistry,
-    private _sanitizer: DomSanitizer,
-    @Optional() @Inject(GUI_ICONS_CONFIG) private _defaultIcons?: GuiIconsConfig
-  ) {}
+  private _iconRegistry = inject(MatIconRegistry);
+  private _sanitizer = inject(DomSanitizer);
+  private _defaultIcons = inject<GuiIconsConfig>(GUI_ICONS_CONFIG, { optional: true });
 
   add(...iconNames: GuiIconType[]) {
     const icons = Object.assign(svgIcons, this._defaultIcons);

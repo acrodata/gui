@@ -3,6 +3,7 @@ import {
   ChangeDetectorRef,
   Component,
   forwardRef,
+  inject,
   Input,
   ViewEncapsulation,
 } from '@angular/core';
@@ -32,6 +33,8 @@ import { GuiControl } from '../interface';
   imports: [FormsModule, MatFormField, MatPrefix, MatInput, MatSuffix, MatHint, GuiFieldLabel],
 })
 export class GuiInputNumber implements ControlValueAccessor {
+  private cdr = inject(ChangeDetectorRef);
+
   @Input() config: Partial<GuiControl> = {};
   @Input() disabled = false;
 
@@ -39,8 +42,6 @@ export class GuiInputNumber implements ControlValueAccessor {
 
   private onChange: (value: number) => void = () => {};
   private onTouched: () => void = () => {};
-
-  constructor(private cdr: ChangeDetectorRef) {}
 
   writeValue(value: any) {
     this.value = value;

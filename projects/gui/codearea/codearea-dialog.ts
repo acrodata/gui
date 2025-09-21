@@ -6,8 +6,8 @@ import {
   ChangeDetectorRef,
   Component,
   DestroyRef,
-  Inject,
   ViewEncapsulation,
+  inject,
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormsModule } from '@angular/forms';
@@ -46,6 +46,12 @@ export interface GuiCodeareaDialogData {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class GuiCodeareaDialog {
+  private dialogRef = inject<DialogRef<string, GuiCodeareaDialog>>(DialogRef);
+  data = inject<GuiCodeareaDialogData>(DIALOG_DATA);
+  private cdr = inject(ChangeDetectorRef);
+  private destroyRef = inject(DestroyRef);
+  private codeareaCfg = inject(GuiCodeareaConfig);
+
   get languages() {
     return this.codeareaCfg.languages;
   }
@@ -68,14 +74,8 @@ export class GuiCodeareaDialog {
 
   lineWrapping = false;
 
-  constructor(
-    private dialogRef: DialogRef<string, GuiCodeareaDialog>,
-    @Inject(DIALOG_DATA) public data: GuiCodeareaDialogData,
-    private cdr: ChangeDetectorRef,
-    private destroyRef: DestroyRef,
-    private codeareaCfg: GuiCodeareaConfig,
-    iconsRegistry: GuiIconsRegistry
-  ) {
+  constructor() {
+    const iconsRegistry = inject(GuiIconsRegistry);
     iconsRegistry.add('wrap');
 
     this.codeareaCfg.changes.pipe(takeUntilDestroyed(this.destroyRef)).subscribe(() => {

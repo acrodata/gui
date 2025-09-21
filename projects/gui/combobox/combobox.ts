@@ -4,6 +4,7 @@ import {
   ChangeDetectorRef,
   Component,
   forwardRef,
+  inject,
   Input,
   ViewChild,
   ViewEncapsulation,
@@ -43,6 +44,8 @@ import { GuiBasicValue, GuiControl } from '../interface';
   ],
 })
 export class GuiCombobox implements ControlValueAccessor, AfterViewInit {
+  private cdr = inject(ChangeDetectorRef);
+
   @ViewChild(MtxSelect) mtxSelect!: MtxSelect;
 
   @Input() config: Partial<GuiControl> = {};
@@ -53,8 +56,6 @@ export class GuiCombobox implements ControlValueAccessor, AfterViewInit {
 
   private onChange: (value: GuiBasicValue | GuiBasicValue[]) => void = () => {};
   private onTouched: () => void = () => {};
-
-  constructor(private cdr: ChangeDetectorRef) {}
 
   ngAfterViewInit(): void {
     // Add additional class for ng-select's dropdown panel
