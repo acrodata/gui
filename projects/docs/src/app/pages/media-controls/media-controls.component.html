@@ -16,7 +16,7 @@
 
 <pre><code highlight="@Injectable()
 export class YourUploadService {
-  constructor(private http: HttpClient) {}
+  private http = inject(HttpClient);
 
   upload(file: FormData) {
     return this.http
