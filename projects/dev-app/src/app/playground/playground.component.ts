@@ -10,7 +10,6 @@ import { SettingsService } from '../settings.service';
 
 @Component({
   selector: 'app-playground',
-  standalone: true,
   imports: [CommonModule, FormsModule, CodeEditor, GuiForm],
   templateUrl: './playground.component.html',
   styleUrl: './playground.component.scss',

@@ -38,7 +38,6 @@ import { GuiFillPicker } from './fill-picker';
       multi: true,
     },
   ],
-  standalone: true,
   imports: [
     FormsModule,
     MatFormField,

@@ -11,7 +11,6 @@ import { IBackground, presets } from './presets';
 
 @Component({
   selector: 'app-background-generator',
-  standalone: true,
   imports: [GuiModule],
   templateUrl: './background-generator.component.html',
   styleUrl: './background-generator.component.scss',

@@ -22,7 +22,6 @@ import { GuiControl } from '../interface';
   },
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
   imports: [GuiFieldLabel],
 })
 export class GuiFieldGroup implements OnInit, DoCheck {

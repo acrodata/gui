@@ -50,7 +50,6 @@ export interface FileUploadContent {
       multi: true,
     },
   ],
-  standalone: true,
   imports: [
     FormsModule,
     MatFormField,

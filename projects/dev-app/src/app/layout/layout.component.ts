@@ -28,7 +28,6 @@ export const CODEAREA_LANGUAGES = [
 
 @Component({
   selector: 'app-layout',
-  standalone: true,
   imports: [RouterModule, MatSidenavModule, MatToolbarModule, MatButtonModule],
   templateUrl: './layout.component.html',
   styleUrl: './layout.component.scss',

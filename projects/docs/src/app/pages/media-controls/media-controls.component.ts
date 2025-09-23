@@ -5,7 +5,6 @@ import { ExampleViewerComponent, PageHeaderComponent } from '../../shared';
 
 @Component({
   selector: 'app-media-controls',
-  standalone: true,
   imports: [ExampleViewerComponent, PageHeaderComponent, HighlightModule],
   templateUrl: './media-controls.component.html',
   styleUrl: './media-controls.component.scss',

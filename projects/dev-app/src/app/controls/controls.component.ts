@@ -4,7 +4,6 @@ import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-controls',
-  standalone: true,
   imports: [FormsModule, GuiModule],
   templateUrl: './controls.component.html',
   styleUrl: './controls.component.scss',

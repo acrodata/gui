@@ -25,7 +25,6 @@ import { DocsSiteTheme, ThemeStorage } from './theme-storage';
   },
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
-  standalone: true,
   imports: [MatIconModule],
 })
 export class ThemePickerComponent implements OnInit, OnDestroy {

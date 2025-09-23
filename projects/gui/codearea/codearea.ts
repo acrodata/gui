@@ -39,7 +39,6 @@ import { GuiCodeareaDialog, GuiCodeareaDialogData } from './codearea-dialog';
       multi: true,
     },
   ],
-  standalone: true,
   imports: [
     FormsModule,
     MatIcon,

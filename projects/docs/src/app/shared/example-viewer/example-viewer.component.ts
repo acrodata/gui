@@ -6,7 +6,6 @@ import { HighlightModule } from 'ngx-highlightjs';
 
 @Component({
   selector: 'app-example-viewer',
-  standalone: true,
   imports: [CommonModule, GuiModule, TextFieldModule, HighlightModule],
   templateUrl: './example-viewer.component.html',
   styleUrl: './example-viewer.component.scss',

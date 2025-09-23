@@ -36,7 +36,6 @@ import { GuiFillMode } from '../interface';
       multi: true,
     },
   ],
-  standalone: true,
   imports: [
     FormsModule,
     MatButtonToggleGroup,

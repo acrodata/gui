@@ -5,7 +5,6 @@ import { ExampleViewerComponent, PageHeaderComponent } from '../../shared';
 
 @Component({
   selector: 'app-conditions',
-  standalone: true,
   imports: [PageHeaderComponent, ExampleViewerComponent, HighlightModule],
   templateUrl: './conditions.component.html',
   styleUrl: './conditions.component.scss',

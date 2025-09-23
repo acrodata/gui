@@ -30,7 +30,6 @@ import { GuiBasicValue, GuiControl } from '../interface';
       multi: true,
     },
   ],
-  standalone: true,
   imports: [
     FormsModule,
     MatFormField,

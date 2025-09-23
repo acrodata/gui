@@ -19,7 +19,6 @@ import { GuiControl } from '../interface';
   },
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
   imports: [MatTooltip],
 })
 export class GuiFieldLabel implements OnChanges {

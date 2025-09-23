@@ -19,7 +19,6 @@ import { MtxSplitModule } from '@ng-matero/extensions/split';
 
 @Component({
   selector: 'app-playground',
-  standalone: true,
   imports: [CommonModule, FormsModule, MtxSplitModule, CodeEditor, GuiForm],
   templateUrl: './playground.component.html',
   styleUrl: './playground.component.scss',
