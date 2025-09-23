@@ -30,7 +30,7 @@
     .ng-dropdown-panel-items {
       .ng-option {
         padding: 0 0.5rem;
-        line-height: var(--mat-option-label-text-line-height);
+        line-height: var(--mat-option-label-text-line-height, var(--mat-sys-label-large-line-height));
 
         .ng-tag-label {
           line-height: 1;

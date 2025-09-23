@@ -4,7 +4,7 @@
 
   mat-hint {
     width: 100%;
-    line-height: var(--mat-form-field-subscript-text-line-height);
+    line-height: var(--mat-form-field-subscript-text-line-height, var(--mat-sys-body-small-line-height));
     -webkit-font-smoothing: antialiased;
   }
 }

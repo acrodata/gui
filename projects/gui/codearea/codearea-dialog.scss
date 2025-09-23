@@ -1,5 +1,5 @@
 .gui-codearea-dialog-panel {
-  --rnd-dialog-container-color: var(--mdc-dialog-container-color);
+  --rnd-dialog-container-color: var(--mdc-dialog-container-color, var(--mat-sys-surface, white));
 }
 
 .gui-codearea-dialog {

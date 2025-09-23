@@ -2,8 +2,8 @@
   display: block;
   width: 15rem;
   border-radius: 0.5rem;
-  background-color: var(--mat-expansion-container-background-color);
-  color: var(--mat-expansion-container-text-color);
+  background-color: var(--mat-expansion-container-background-color, var(--mat-sys-surface));
+  color: var(--mat-expansion-container-text-color, var(--mat-sys-on-surface));
   box-shadow:
     inset 0 0 1px 0 rgba(255, 255, 255, 0.64),
     0 2px 4px 0 rgba(0, 0, 0, 0.16),
@@ -72,8 +72,8 @@
       input {
         background-color: transparent;
         box-shadow: none !important;
-        color: var(--mdc-outlined-text-field-input-text-color) !important;
-        border: 1px solid var(--mdc-outlined-text-field-outline-color) !important;
+        color: var(--mdc-outlined-text-field-input-text-color, var(--mat-sys-on-surface)) !important;
+        border: 1px solid var(--mdc-outlined-text-field-outline-color, var(--mat-sys-outline)) !important;
       }
     }
 
@@ -103,7 +103,7 @@
       }
 
       path {
-        fill: var(--mdc-icon-button-icon-color);
+        fill: var(--mdc-icon-button-icon-color, var(--mat-sys-on-surface-variant));
       }
     }
   }
@@ -115,8 +115,8 @@
     --gp-container-shape: 0;
     --gp-container-elevation-shadow: none;
     --gp-container-background-color: transparent;
-    --gp-container-text-color: var(--mdc-filled-text-field-input-text-color);
-    --gp-input-background-color: var(--mdc-filled-text-field-container-color);
+    --gp-container-text-color: var(--mdc-filled-text-field-input-text-color, var(--mat-sys-on-surface));
+    --gp-input-background-color: var(--mdc-filled-text-field-container-color, var(--mat-sys-surface-variant));
   }
 }
 

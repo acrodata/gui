@@ -4,7 +4,7 @@
   --mat-option-label-text-size: 0.75rem;
 
   .mat-mdc-option {
-    min-height: var(--mat-option-label-text-line-height);
+    min-height: var(--mat-option-label-text-line-height, var(--mat-sys-label-large-line-height));
     padding: 0 0.5rem;
 
     .mat-pseudo-checkbox-full {

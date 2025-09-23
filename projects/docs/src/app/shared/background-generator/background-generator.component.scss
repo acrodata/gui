@@ -76,7 +76,7 @@ button + button {
         z-index: 2;
         display: block;
         width: 4px;
-        border: 2px solid var(--mat-expansion-container-text-color);
+        border: 2px solid var(--mat-expansion-container-text-color, var(--mat-sys-on-surface));
         border-right: none;
         opacity: 0.4;
       }

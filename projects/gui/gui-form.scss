@@ -9,7 +9,7 @@
   display: block;
   font-size: 0.75rem;
 
-  .mat-expansion-panel:not([class*="mat-elevation-z"]) {
+  .mat-expansion-panel:not([class*='mat-elevation-z']) {
     box-shadow: none;
   }
 
@@ -71,14 +71,14 @@
   position: relative;
   padding: 0 0.75rem;
   line-height: 1.5rem;
-  border-bottom: var(--mat-tab-header-divider-height) solid transparent;
+  border-bottom: var(--mat-tab-header-divider-height, 1px) solid transparent;
 
   &::before {
     position: absolute;
     left: 0;
     width: 0.125rem;
     height: 1rem;
-    background-color: var(--mat-expansion-header-text-color);
+    background-color: var(--mat-expansion-header-text-color, var(--mat-sys-on-surface));
     content: '';
 
     [dir='rtl'] & {
@@ -111,7 +111,7 @@
     --mdc-tab-indicator-active-indicator-shape: 0.25rem;
 
     padding: 0.25rem;
-    background-color: var(--mdc-filled-text-field-container-color);
+    background-color: var(--mdc-filled-text-field-container-color, var(--mat-sys-surface-variant));
 
     .mdc-tab__ripple::before {
       border-radius: var(--mdc-tab-indicator-active-indicator-shape);
@@ -124,7 +124,7 @@
 
   .mdc-tab-indicator .mdc-tab-indicator__content {
     height: 100%;
-    background-color: var(--mdc-tab-indicator-active-indicator-color);
+    background-color: var(--mdc-tab-indicator-active-indicator-color, var(--mat-sys-primary));
   }
 
   .mdc-tab-indicator--active .mdc-tab-indicator__content {
