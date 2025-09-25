@@ -72,8 +72,8 @@
       input {
         background-color: transparent;
         box-shadow: none !important;
-        color: var(--mdc-outlined-text-field-input-text-color, var(--mat-sys-on-surface)) !important;
-        border: 1px solid var(--mdc-outlined-text-field-outline-color, var(--mat-sys-outline)) !important;
+        color: var(--mat-form-field-outlined-input-text-color, var(--mat-sys-on-surface)) !important;
+        border: 1px solid var(--mat-form-field-outlined-outline-color, var(--mat-sys-outline)) !important;
       }
     }
 
@@ -103,7 +103,7 @@
       }
 
       path {
-        fill: var(--mdc-icon-button-icon-color, var(--mat-sys-on-surface-variant));
+        fill: var(--mat-icon-button-icon-color, var(--mat-sys-on-surface-variant));
       }
     }
   }
@@ -115,8 +115,8 @@
     --gp-container-shape: 0;
     --gp-container-elevation-shadow: none;
     --gp-container-background-color: transparent;
-    --gp-container-text-color: var(--mdc-filled-text-field-input-text-color, var(--mat-sys-on-surface));
-    --gp-input-background-color: var(--mdc-filled-text-field-container-color, var(--mat-sys-surface-variant));
+    --gp-container-text-color: var(--mat-form-field-filled-input-text-color, var(--mat-sys-on-surface));
+    --gp-input-background-color: var(--mat-form-field-filled-container-color, var(--mat-sys-surface-variant));
   }
 }
 
@@ -124,8 +124,8 @@
   padding: 0.375rem 0.375rem 0;
   line-height: 1;
 
-  --mat-standard-button-toggle-shape: 0;
-  --mat-standard-button-toggle-height: 1;
+  --mat-button-toggle-shape: 0;
+  --mat-button-toggle-height: 1;
 
   .mat-button-toggle-group-appearance-standard {
     gap: 0.25rem;

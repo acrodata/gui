@@ -22,7 +22,7 @@
   .mat-mdc-form-field-hint-wrapper {
     position: relative;
     padding: 0 0.5rem;
-    border-radius: var(--mdc-filled-text-field-container-shape, var(--mat-sys-corner-extra-small));
+    border-radius: var(--mat-form-field-filled-container-shape, var(--mat-sys-corner-extra-small));
 
     [dir='rtl'] & {
       padding: 0 0.5rem;

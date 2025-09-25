@@ -1,7 +1,6 @@
 import { GuiCodeareaConfig } from '@acrodata/gui';
 import { Directionality } from '@angular/cdk/bidi';
-import { DOCUMENT } from '@angular/common';
-import { Component, OnInit, ViewEncapsulation, inject } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, inject, DOCUMENT } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';

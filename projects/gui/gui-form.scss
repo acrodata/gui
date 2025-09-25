@@ -51,12 +51,12 @@
   }
 
   .mat-mdc-tab-header {
-    --mat-tab-header-label-text-size: 0.75rem;
-    --mdc-secondary-navigation-tab-container-height: 1.5rem;
+    --mat-tab-label-text-size: 0.75rem;
+    --mat-tab-container-height: 1.5rem;
   }
 
   .mat-mdc-tab-header-pagination {
-    min-width: var(--mdc-secondary-navigation-tab-container-height);
+    min-width: var(--mat-tab-container-height);
   }
 
   .mat-mdc-tab {
@@ -71,7 +71,7 @@
   position: relative;
   padding: 0 0.75rem;
   line-height: 1.5rem;
-  border-bottom: var(--mat-tab-header-divider-height, 1px) solid transparent;
+  border-bottom: var(--mat-tab-divider-height, 1px) solid transparent;
 
   &::before {
     position: absolute;
@@ -108,13 +108,13 @@
 
 .gui-menu {
   .mat-mdc-tab-header {
-    --mdc-tab-indicator-active-indicator-shape: 0.25rem;
+    --mat-tab-active-indicator-shape: 0.25rem;
 
     padding: 0.25rem;
-    background-color: var(--mdc-filled-text-field-container-color, var(--mat-sys-surface-variant));
+    background-color: var(--mat-form-field-filled-container-color, var(--mat-sys-surface-variant));
 
     .mdc-tab__ripple::before {
-      border-radius: var(--mdc-tab-indicator-active-indicator-shape);
+      border-radius: var(--mat-tab-active-indicator-shape);
     }
   }
 
@@ -124,7 +124,7 @@
 
   .mdc-tab-indicator .mdc-tab-indicator__content {
     height: 100%;
-    background-color: var(--mdc-tab-indicator-active-indicator-color, var(--mat-sys-primary));
+    background-color: var(--mat-tab-active-indicator-color, var(--mat-sys-primary));
   }
 
   .mdc-tab-indicator--active .mdc-tab-indicator__content {

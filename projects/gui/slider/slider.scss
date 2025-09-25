@@ -1,14 +1,14 @@
 .gui-slider {
   .mat-mdc-slider {
-    --mdc-slider-handle-width: 0.75rem;
-    --mdc-slider-handle-height: 0.75rem;
-    --mdc-slider-inactive-track-height: 0.125rem;
-    --mdc-slider-active-track-height: 0.125rem;
+    --mat-slider-handle-width: 0.75rem;
+    --mat-slider-handle-height: 0.75rem;
+    --mat-slider-inactive-track-height: 0.125rem;
+    --mat-slider-active-track-height: 0.125rem;
 
     flex: 3;
     min-width: auto;
-    height: calc(var(--mdc-slider-handle-width) * 2);
-    margin: 0 calc(var(--mdc-slider-handle-width) / 2);
+    height: calc(var(--mat-slider-handle-width) * 2);
+    margin: 0 calc(var(--mat-slider-handle-width) / 2);
 
     +.mat-mdc-form-field {
       flex: 2;
@@ -23,13 +23,13 @@
 
     .mdc-slider__input {
       top: 0;
-      height: calc(var(--mdc-slider-handle-width) * 2);
+      height: calc(var(--mat-slider-handle-width) * 2);
     }
 
     .mdc-slider__thumb {
-      left: calc(var(--mdc-slider-handle-width) * -1);
-      width: calc(var(--mdc-slider-handle-width) * 2);
-      height: calc(var(--mdc-slider-handle-width) * 2);
+      left: calc(var(--mat-slider-handle-width) * -1);
+      width: calc(var(--mat-slider-handle-width) * 2);
+      height: calc(var(--mat-slider-handle-width) * 2);
       border-radius: 50%;
       overflow: hidden;
     }

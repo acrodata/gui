@@ -1,16 +1,16 @@
 .gui-codearea-dialog-panel {
-  --rnd-dialog-container-color: var(--mdc-dialog-container-color, var(--mat-sys-surface, white));
+  --rnd-dialog-container-color: var(--mat-dialog-container-color, var(--mat-sys-surface, white));
 }
 
 .gui-codearea-dialog {
-  --mdc-outlined-button-label-text-size: 0.75rem;
-  --mdc-outlined-button-container-height: 1.5rem;
-  --mat-outlined-button-horizontal-padding: 0.75rem;
-  --mat-outlined-button-touch-target-display: none;
-  --mdc-filled-button-label-text-size: 0.75rem;
-  --mdc-filled-button-container-height: 1.5rem;
-  --mat-filled-button-horizontal-padding: 0.75rem;
-  --mat-filled-button-touch-target-display: none;
+  --mat-button-outlined-label-text-size: 0.75rem;
+  --mat-button-outlined-container-height: 1.5rem;
+  --mat-button-outlined-horizontal-padding: 0.75rem;
+  --mat-button-outlined-touch-target-display: none;
+  --mat-button-filled-label-text-size: 0.75rem;
+  --mat-button-filled-container-height: 1.5rem;
+  --mat-button-filled-horizontal-padding: 0.75rem;
+  --mat-button-filled-touch-target-display: none;
 
   display: flex;
   flex-direction: column;

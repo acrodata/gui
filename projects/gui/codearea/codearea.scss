@@ -1,8 +1,8 @@
 .gui-codearea {
   position: relative;
   overflow: auto;
-  border: 1px solid var(--mdc-outlined-text-field-outline-color, var(--mat-sys-outline));
-  border-radius: var(--mdc-outlined-text-field-container-shape, var(--mat-sys-corner-extra-small));
+  border: 1px solid var(--mat-form-field-outlined-outline-color, var(--mat-sys-outline));
+  border-radius: var(--mat-form-field-outlined-container-shape, var(--mat-sys-corner-extra-small));
 
   .code-editor {
     width: 100%;

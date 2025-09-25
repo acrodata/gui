@@ -1,9 +1,9 @@
 .gui-button-toggle {
-  --mat-standard-button-toggle-shape: 0.25rem;
-  --mat-standard-button-toggle-height: 1.5rem;
-  --mat-standard-button-toggle-label-text-size: 0.75rem;
-  --mat-standard-button-toggle-label-text-weight: 400;
-  --mat-standard-button-toggle-label-text-line-height: var(--mat-standard-button-toggle-height);
+  --mat-button-toggle-shape: 0.25rem;
+  --mat-button-toggle-height: 1.5rem;
+  --mat-button-toggle-label-text-size: 0.75rem;
+  --mat-button-toggle-label-text-weight: 400;
+  --mat-button-toggle-label-text-line-height: var(--mat-button-toggle-height);
 
   .mat-button-toggle-group {
     flex-wrap: wrap;
@@ -17,7 +17,7 @@
   }
 
   .mat-button-toggle-appearance-standard {
-    background-color: var(--mdc-filled-text-field-container-color, var(--mat-sys-surface-variant));
+    background-color: var(--mat-form-field-filled-container-color, var(--mat-sys-surface-variant));
   }
 }
 

@@ -59,7 +59,7 @@ export class GuiCombobox implements ControlValueAccessor, AfterViewInit {
   ngAfterViewInit(): void {
     // Add additional class for ng-select's dropdown panel
     const { ngSelect } = this.mtxSelect;
-    ngSelect.classes = (ngSelect.classes || '') + ' gui-combobox';
+    (ngSelect as any).classes = (ngSelect.classes || '') + ' gui-combobox';
   }
 
   writeValue(value: any) {

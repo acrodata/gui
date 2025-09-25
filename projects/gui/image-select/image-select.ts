@@ -64,7 +64,7 @@ export class GuiImageSelect implements ControlValueAccessor, AfterViewInit {
   ngAfterViewInit(): void {
     // Add additional class for ng-select's dropdown panel
     const { ngSelect } = this.mtxSelect;
-    ngSelect.classes = (ngSelect.classes || '') + ' gui-image-select';
+    (ngSelect as any).classes = (ngSelect.classes || '') + ' gui-image-select';
   }
 
   writeValue(value: any) {
