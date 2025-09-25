@@ -15,6 +15,7 @@ export const routes: Routes = [
       { path: 'examples', component: ExamplesComponent },
       { path: 'controls', component: ControlsComponent },
       { path: 'playground', component: PlaygroundComponent },
+      { path: '**', redirectTo: 'home' },
     ],
   },
 ];
