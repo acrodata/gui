@@ -12,6 +12,7 @@
     "at-rule-empty-line-before": null,
     "block-no-empty": null,
     "color-function-notation": "legacy",
+    "color-function-alias-notation": "with-alpha",
     "function-no-unknown": null,
     "import-notation": null,
     "no-descending-specificity": null,
