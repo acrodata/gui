@@ -1,6 +1,6 @@
 {
   "name": "@acrodata/gui",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "JSON powered GUI for configurable panels.",
   "publishConfig": {
     "access": "public"
@@ -35,7 +35,7 @@
   },
   "dependencies": {
     "@acrodata/code-editor": "^0.5.0",
-    "@acrodata/gradient-picker": "^0.8.0",
+    "@acrodata/gradient-picker": "^0.11.0",
     "@acrodata/rnd-dialog": "^0.4.0",
     "tslib": "^2.3.0"
   },
