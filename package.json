@@ -24,7 +24,7 @@
   "private": true,
   "dependencies": {
     "@acrodata/code-editor": "^0.5.1",
-    "@acrodata/gradient-picker": "^0.8.0",
+    "@acrodata/gradient-picker": "^0.11.0",
     "@acrodata/rnd-dialog": "^0.4.1",
     "@angular/animations": "^20.3.2",
     "@angular/cdk": "^20.2.5",
