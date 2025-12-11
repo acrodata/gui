@@ -1,48 +1,17 @@
+/* You can add global styles to this file, and also import other style files */
 @use '@angular/material' as mat;
 @use '@ng-matero/extensions' as mtx;
-@use '../../gui' as gui;
-
-@include mat.elevation-classes();
-@include mat.app-background();
-
-$light-config: (
-  color: (
-    theme-type: 'light',
-    primary: mat.$azure-palette,
-    tertiary: mat.$blue-palette,
-  ),
-);
-
-// Define the default (light) theme.
-$light-theme: mat.private-deep-merge-all(
-  mat.define-theme($light-config),
-  mtx.define-theme($light-config)
-);
 
 html {
-  @include mat.all-component-themes($light-theme);
-  @include mtx.all-component-themes($light-theme);
-  // @include gui.all-control-themes($light-theme);
+  color-scheme: light;
+
+  @include mat.theme((
+    color: mat.$azure-palette,
+    typography: Roboto,
+    density: 0
+  ));
 }
 
-$dark-config: (
-  color: (
-    theme-type: 'dark',
-    primary: mat.$cyan-palette,
-    tertiary: mat.$orange-palette,
-  ),
-);
-
-// Define an alternate dark theme.
-$dark-theme: mat.private-deep-merge-all(
-  mat.define-theme($dark-config),
-  mtx.define-theme($dark-config)
-);
-
-.dark-theme {
+.theme-dark {
   color-scheme: dark;
-
-  @include mat.all-component-colors($dark-theme);
-  @include mtx.all-component-colors($dark-theme);
-  // @include gui.all-control-colors($dark-theme);
 }
