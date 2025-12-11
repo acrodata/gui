@@ -2,20 +2,20 @@
 # yarn lockfile v1
 
 
-"@acrodata/code-editor@^0.5.1":
-  version "0.5.1"
-  resolved "https://registry.yarnpkg.com/@acrodata/code-editor/-/code-editor-0.5.1.tgz#de6ff62be763c5ae08213d7d862b38f420d42ec3"
-  integrity sha512-ta0prFRwXQgLSqBtjzpR9+eWXPpFh/+tS/BQapoA89cMnJDo6zCjkfEax41uO5xb96UJA3IAuYM22jUA6G4WRw==
+"@acrodata/code-editor@^0.6.0":
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/@acrodata/code-editor/-/code-editor-0.6.0.tgz#5497dd378b651ca747ee1f3003ee5c6020b06afb"
+  integrity sha512-cegNEj5/eFehvA1IDUHo8EInnnhPN5VgLLyuzAkAPCosooUCI/fHdcoixlsOaM+Au32PcXDxvdg7DmMLsrV3Ww==
   dependencies:
     "@codemirror/merge" "^6.0.0"
     "@codemirror/theme-one-dark" "^6.0.0"
     codemirror "^6.0.0"
     tslib "^2.3.0"
 
-"@acrodata/gradient-picker@^0.11.0":
-  version "0.11.0"
-  resolved "https://registry.yarnpkg.com/@acrodata/gradient-picker/-/gradient-picker-0.11.0.tgz#fccf1ea2692ba25569c0933e89c714283415c108"
-  integrity sha512-q9mNnk8gxHc3AyhL7O+sixtWvKe0KzEUnY6m+cR7VusBTlCLnJ9tHhh79DF8oifipBHwcVGFV12w85xi5mlDMw==
+"@acrodata/gradient-picker@^0.11.1":
+  version "0.11.1"
+  resolved "https://registry.yarnpkg.com/@acrodata/gradient-picker/-/gradient-picker-0.11.1.tgz#e23e0bfb5950af244944debbf213ab7e49da24c7"
+  integrity sha512-LtZ9JI2hmBQobYZFJn6nZBSwXhXOfAloLkX9Q6uT6Qp+I1Ny+RCWX14zAK9WMNyJb8tsTIsGxH/yNEb+XroT5A==
   dependencies:
     tslib "^2.3.0"
 

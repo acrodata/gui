@@ -23,8 +23,8 @@
   },
   "private": true,
   "dependencies": {
-    "@acrodata/code-editor": "^0.5.1",
-    "@acrodata/gradient-picker": "^0.11.0",
+    "@acrodata/code-editor": "^0.6.0",
+    "@acrodata/gradient-picker": "^0.11.1",
     "@acrodata/rnd-dialog": "^0.4.1",
     "@angular/cdk": "^20.2.5",
     "@angular/common": "^20.3.2",
