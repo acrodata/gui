@@ -1,7 +1,6 @@
 import { GuiCodeareaConfig } from '@acrodata/gui';
 import { provideHttpClient } from '@angular/common/http';
 import { ApplicationConfig } from '@angular/core';
-import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideRouter, withInMemoryScrolling } from '@angular/router';
 import { LanguageDescription } from '@codemirror/language';
 import { provideHighlightOptions } from 'ngx-highlightjs';
@@ -42,7 +41,6 @@ export const appConfig: ApplicationConfig = {
         anchorScrolling: 'enabled',
       })
     ),
-    provideAnimations(),
     provideHttpClient(),
     provideHighlightOptions({
       coreLibraryLoader: () => import('highlight.js/lib/core'),
