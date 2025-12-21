@@ -11,8 +11,7 @@ import {
 } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { ActivatedRoute, ParamMap } from '@angular/router';
-import { fromEvent, Subscription } from 'rxjs';
-import { filter, map } from 'rxjs/operators';
+import { filter, fromEvent, map, Subscription } from 'rxjs';
 import { StyleManager } from '../style-manager/style-manager';
 import { DocsSiteTheme, ThemeStorage } from './theme-storage';
 
