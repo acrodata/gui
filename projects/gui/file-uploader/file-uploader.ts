@@ -18,7 +18,7 @@ import { MatIconButton } from '@angular/material/button';
 import { MatFormField, MatHint, MatPrefix, MatSuffix } from '@angular/material/form-field';
 import { MatIcon } from '@angular/material/icon';
 import { MatInput } from '@angular/material/input';
-import { finalize } from 'rxjs/operators';
+import { finalize } from 'rxjs';
 
 import { GuiFieldLabel } from '../field-label/field-label';
 import { GuiIconsRegistry } from '../gui-icons';
