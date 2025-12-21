@@ -10,102 +10,13 @@
     0 8px 16px 0 rgba(0, 0, 0, 0.12),
     0 0 1px 0 rgba(0, 0, 0, 0.12);
 
-  color-chrome {
-    display: block;
-
-    .chrome-picker {
-      width: auto;
-      background: none;
-      box-shadow: none;
-      border-radius: 0;
-      font-family: inherit;
-    }
-
-    .saturation {
-      border-radius: 0.25rem;
-      box-shadow:
-        0 0 0 1px rgba(255, 255, 255, 0.12),
-        0 0 0 1px rgba(0, 0, 0, 0.12);
-    }
-
-    .chrome-body {
-      padding: 1rem 0 0;
-    }
-
-    .chrome-swatch {
-      box-shadow:
-        0 0 0 1px rgba(255, 255, 255, 0.12),
-        0 0 0 1px rgba(0, 0, 0, 0.12);
-    }
-
-    .chrome-active {
-      box-shadow: none;
-    }
-
-    .alpha-checkboard {
-      background-color: #fff;
-      border-radius: 2px;
-    }
-
-    .alpha-gradient {
-      border-radius: 2px;
-    }
-
-    .chrome-wrap {
-      gap: 0.75rem;
-      align-items: center;
-    }
-
-    .chrome-fields {
-      gap: 0.5rem;
-      margin: 0;
-    }
-
-    .chrome-field {
-      padding: 0;
-    }
-
-    .wrap {
-      width: 100%;
-      line-height: 1;
-
-      input {
-        background-color: transparent;
-        box-shadow: none !important;
-        color: var(--mdc-outlined-text-field-input-text-color, var(--mat-sys-on-surface)) !important;
-        border: 1px solid var(--mdc-outlined-text-field-outline-color, var(--mat-sys-outline)) !important;
-      }
-    }
-
-    .chrome-toggle {
-      display: flex;
-      width: 1.5rem;
-      height: 1.5rem;
-      padding: 0.125rem;
-      border-radius: 2px;
-
-      &:hover {
-        background: rgba(0, 0, 0, 0.04);
-      }
-    }
-
-    .chrome-icon {
-      margin: 0;
-    }
-
-    .chrome-toggle-svg {
-      width: 1.25rem;
-      height: 1.25rem;
-      border: none;
-
-      &:hover {
-        background: transparent;
-      }
-
-      path {
-        fill: var(--mdc-icon-button-icon-color, var(--mat-sys-on-surface-variant));
-      }
-    }
+  .color-picker {
+    --cp-container-width: auto;
+    --cp-container-padding: 0;
+    --cp-container-shape: 0;
+    --cp-container-elevation-shadow: none;
+    --cp-container-background-color: transparent;
+    --cp-container-text-color: var(--mat-form-field-filled-input-text-color, var(--mat-sys-on-surface));
   }
 
   .gradient-picker {
@@ -131,7 +42,7 @@
     gap: 0.25rem;
     border: none;
 
-    .mat-button-toggle-appearance-standard + .mat-button-toggle-appearance-standard {
+    .mat-button-toggle-appearance-standard+.mat-button-toggle-appearance-standard {
       border: none;
     }
   }

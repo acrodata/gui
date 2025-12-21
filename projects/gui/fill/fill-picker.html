@@ -16,7 +16,7 @@
 
 <div class="gui-fill-picker-body">
   @if (selectedType === 'solid') {
-    <color-chrome [color]="fillValue.solid" (onChangeComplete)="onColorChange($event)" />
+    <color-picker [(ngModel)]="fillValue.solid" (ngModelChange)="onColorChange()" />
   } @else if (selectedType === 'gradient') {
     <gradient-picker [(ngModel)]="fillValue.gradient" (ngModelChange)="onGradientChange()" />
   } @else if (selectedType === 'image') {

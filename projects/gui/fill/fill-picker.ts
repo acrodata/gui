@@ -1,3 +1,4 @@
+import { ColorPicker } from '@acrodata/color-picker';
 import { GradientPicker } from '@acrodata/gradient-picker';
 import {
   ChangeDetectionStrategy,
@@ -13,9 +14,6 @@ import {
 import { ControlValueAccessor, FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { MatButtonToggle, MatButtonToggleGroup } from '@angular/material/button-toggle';
 import { MatIcon } from '@angular/material/icon';
-import { TinyColor } from '@ctrl/tinycolor';
-import { ColorEvent } from 'ngx-color';
-import { ColorChromeModule } from 'ngx-color/chrome';
 import { GuiFileUploader } from '../file-uploader/file-uploader';
 import { GuiIconsRegistry } from '../gui-icons';
 import { GuiFillMode } from '../interface';
@@ -41,7 +39,7 @@ import { GuiFillMode } from '../interface';
     MatButtonToggleGroup,
     MatButtonToggle,
     MatIcon,
-    ColorChromeModule,
+    ColorPicker,
     GradientPicker,
     GuiFileUploader,
   ],
@@ -59,8 +57,6 @@ export class GuiFillPicker implements ControlValueAccessor, OnChanges {
   ];
 
   selectedType: Exclude<GuiFillMode, 'all'> = 'solid';
-
-  colorFormat: 'hex' | 'rgb' | 'hsl' | 'hsv' = 'hex';
 
   fillValue = {
     solid: '#000',
@@ -114,15 +110,6 @@ export class GuiFillPicker implements ControlValueAccessor, OnChanges {
     this.cdr.markForCheck();
   }
 
-  getColorFormat() {
-    const color = new TinyColor(this.fillValue.solid);
-    if (color.format === 'rgb' || color.format === 'hsl' || color.format === 'hsv') {
-      return color.format;
-    } else {
-      return 'hex';
-    }
-  }
-
   getTypeFromModel(value: string) {
     if (value.includes('linear') || value.includes('radial') || value.includes('conic')) {
       this.selectedType = 'gradient';
@@ -136,7 +123,6 @@ export class GuiFillPicker implements ControlValueAccessor, OnChanges {
   getValueFromModel(value: string) {
     if (this.selectedType === 'solid') {
       this.fillValue.solid = value;
-      this.colorFormat = this.getColorFormat();
     } else if (this.selectedType === 'gradient') {
       this.fillValue.gradient = value;
     } else if (this.selectedType === 'image') {
@@ -155,13 +141,7 @@ export class GuiFillPicker implements ControlValueAccessor, OnChanges {
     }
   }
 
-  onColorChange(e: ColorEvent) {
-    this.fillValue.solid = {
-      hex: e.color.rgb.a === 1 ? e.color.hex : new TinyColor(e.color.rgb).toHex8String(),
-      rgb: new TinyColor(e.color.rgb).toRgbString(),
-      hsl: new TinyColor(e.color.hsl).toHslString(),
-      hsv: new TinyColor(e.color.hsv).toHsvString(),
-    }[this.colorFormat];
+  onColorChange() {
     this.onSolidChange();
   }
 
