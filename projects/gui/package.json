@@ -1,6 +1,6 @@
 {
   "name": "@acrodata/gui",
-  "version": "2.9.0",
+  "version": "2.10.0",
   "description": "JSON powered GUI for configurable panels.",
   "publishConfig": {
     "access": "public"
@@ -34,8 +34,8 @@
     "@ng-matero/extensions": ">=18.0.0"
   },
   "dependencies": {
-    "@acrodata/code-editor": "^0.5.0",
-    "@acrodata/gradient-picker": "^0.8.0",
+    "@acrodata/code-editor": "^0.6.0",
+    "@acrodata/gradient-picker": "^0.12.0",
     "@acrodata/rnd-dialog": "^0.4.0",
     "tslib": "^2.3.0"
   },

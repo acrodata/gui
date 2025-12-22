@@ -17,7 +17,7 @@
     "lint:ts": "eslint \"projects/**/*.ts\" --fix",
     "lint:scss": "stylelint \"projects/**/*.scss\" --fix",
     "build:lib": "ng build gui && cp README.md dist/gui",
-    "publish": "npm run build:lib && cd dist/gui && npm publish",
+    "publish": "npm run build:lib && cd dist/gui && npm publish --tag v2-lts",
     "deploy": "npm run build:docs && ng deploy",
     "prepare": "husky install"
   },
