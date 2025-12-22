@@ -28,6 +28,10 @@
     --gp-container-background-color: transparent;
     --gp-container-text-color: var(--mdc-filled-text-field-input-text-color, var(--mat-sys-on-surface));
     --gp-input-background-color: var(--mdc-filled-text-field-container-color, var(--mat-sys-surface-variant));
+    --gp-radio-button-selected-background-color: var(--mat-standard-button-toggle-selected-state-background-color,
+        var(--mat-sys-secondary-container));
+    --gp-radio-button-selected-outline-color: var(--mat-standard-button-toggle-divider-color,
+        var(--mat-sys-outline));
   }
 }
 
