@@ -35,7 +35,7 @@
   },
   "dependencies": {
     "@acrodata/code-editor": "^0.6.0",
-    "@acrodata/gradient-picker": "^0.12.0",
+    "@acrodata/gradient-picker": "^0.14.0",
     "@acrodata/rnd-dialog": "^0.4.0",
     "tslib": "^2.3.0"
   },
