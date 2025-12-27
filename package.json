@@ -24,7 +24,7 @@
   "private": true,
   "dependencies": {
     "@acrodata/code-editor": "^0.6.0",
-    "@acrodata/gradient-picker": "^0.12.1",
+    "@acrodata/gradient-picker": "^0.12.2",
     "@acrodata/rnd-dialog": "^0.4.1",
     "@angular/cdk": "^20.2.5",
     "@angular/common": "^20.3.2",
@@ -36,7 +36,7 @@
     "@angular/router": "^20.3.2",
     "@codemirror/language-data": "^6.5.1",
     "@mdi/font": "^7.4.47",
-    "@ng-matero/extensions": "^20.4.0",
+    "@ng-matero/extensions": "^20.4.2",
     "lodash-es": "^4.17.21",
     "ngx-highlightjs": "^14.0.0",
     "rxjs": "~7.8.0",

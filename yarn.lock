@@ -12,20 +12,20 @@
     codemirror "^6.0.0"
     tslib "^2.3.0"
 
-"@acrodata/color-picker@^1.0.0":
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@acrodata/color-picker/-/color-picker-1.1.0.tgz#db2a8f374b3321daff3b0b94ed160042977849de"
-  integrity sha512-6jAlEIMKU4+EcKVvHqYklvA+fvocX/4OuxF7xegCF/hnRjWa9YLjzs6gyO5KQ6StnewWhc8B4EDvPHswM8Fx0g==
+"@acrodata/color-picker@^1.3.0":
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/@acrodata/color-picker/-/color-picker-1.3.0.tgz#80b616dc1ef463259b397b6b7fc4c7aa35378b48"
+  integrity sha512-Ee6gLthLvcPTne6poeSnhiQj+tBH05tp/nnF1ruuPcJknja1ab2WFjha6B9u1D4blYijRJWztepuXIdAsmDxcw==
   dependencies:
     "@ctrl/tinycolor" "^4.2.0"
     tslib "^2.3.0"
 
-"@acrodata/gradient-picker@^0.12.1":
-  version "0.12.1"
-  resolved "https://registry.yarnpkg.com/@acrodata/gradient-picker/-/gradient-picker-0.12.1.tgz#546ce00960dcf9332d911cc0069df74c64bfd238"
-  integrity sha512-X9t6bCZk+/ijbp3eM8gStt6wrNh3NQPdg87gzDcnNX+Mvwno9OLrxIlfwrcQm5Wva6A26lpIxPkolR4tl148OQ==
+"@acrodata/gradient-picker@^0.12.2":
+  version "0.12.2"
+  resolved "https://registry.yarnpkg.com/@acrodata/gradient-picker/-/gradient-picker-0.12.2.tgz#2346fea2f5819f1a528d64a3bb1c07aef256b0fe"
+  integrity sha512-/Ffu4iy6ztxXoV0h3NfhEeN7FdodsAfEc0ll7xOMkG7d5zK9jiaMCXUvzjOHw3fnzw2h368BNNdlHRauPgsARg==
   dependencies:
-    "@acrodata/color-picker" "^1.0.0"
+    "@acrodata/color-picker" "^1.3.0"
     tslib "^2.3.0"
 
 "@acrodata/rnd-dialog@^0.4.1":
@@ -2276,12 +2276,12 @@
     "@emnapi/runtime" "^1.5.0"
     "@tybys/wasm-util" "^0.10.1"
 
-"@ng-matero/extensions@^20.4.0":
-  version "20.4.1"
-  resolved "https://registry.yarnpkg.com/@ng-matero/extensions/-/extensions-20.4.1.tgz#a105a91970e9c2c31d1225fafee2871b5a81b1e8"
-  integrity sha512-SA4sYQitXW6vVSpIhVx4FAEYxWLfu6KDLv2oBTW7bZgJ0cyv+3oHy12y8nm+48/W2cDTR6IwuBPJ8+d0XHZgdg==
+"@ng-matero/extensions@^20.4.2":
+  version "20.4.2"
+  resolved "https://registry.yarnpkg.com/@ng-matero/extensions/-/extensions-20.4.2.tgz#edcd19d3a81d3d2f79633dede373dd41a70be649"
+  integrity sha512-1tRQz+9EvgQXGZeNdb7AcBcHSim4sf2bbaudHV9V9CZzk70+Ev2jWV23MdI8hEZv6oCpRj0XS6ZTJ96krUfdAg==
   dependencies:
-    "@acrodata/color-picker" "^1.0.0"
+    "@acrodata/color-picker" "^1.3.0"
     "@ng-select/ng-select" "^20.0.0"
     photoviewer "^3.10.0"
     tslib "^2.4.0"
