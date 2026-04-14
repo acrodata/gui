@@ -20,11 +20,11 @@ import { MtxSplitModule } from '@ng-matero/extensions/split';
 @Component({
   selector: 'app-playground',
   imports: [CommonModule, FormsModule, MtxSplitModule, CodeEditor, GuiForm],
-  templateUrl: './playground.component.html',
-  styleUrl: './playground.component.scss',
+  templateUrl: './playground.html',
+  styleUrl: './playground.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class PlaygroundComponent implements OnInit {
+export class Playground implements OnInit {
   private destroy = inject(DestroyRef);
   private breakpointObserver = inject(BreakpointObserver);
   private cdr = inject(ChangeDetectorRef);

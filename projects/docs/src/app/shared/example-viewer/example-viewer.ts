@@ -7,10 +7,10 @@ import { HighlightModule } from 'ngx-highlightjs';
 @Component({
   selector: 'app-example-viewer',
   imports: [CommonModule, GuiModule, TextFieldModule, HighlightModule],
-  templateUrl: './example-viewer.component.html',
-  styleUrl: './example-viewer.component.scss',
+  templateUrl: './example-viewer.html',
+  styleUrl: './example-viewer.scss',
 })
-export class ExampleViewerComponent {
+export class ExampleViewer {
   @Input() config: GuiFields = {};
 
   model = {};

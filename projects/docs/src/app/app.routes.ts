@@ -1,51 +1,41 @@
 import { Routes } from '@angular/router';
-import { LayoutComponent } from './layout/layout.component';
-import { HomeComponent } from './pages/home/home.component';
+import { Layout } from './layout/layout';
+import { Home } from './pages/home/home';
 
 export const routes: Routes = [
   {
     path: '',
-    component: LayoutComponent,
+    component: Layout,
     children: [
       { path: '', redirectTo: 'home', pathMatch: 'full' },
-      { path: 'home', component: HomeComponent },
+      { path: 'home', component: Home },
       {
         path: 'getting-started',
         loadComponent: () =>
-          import('./pages/getting-started/getting-started.component').then(
-            m => m.GettingStartedComponent
-          ),
+          import('./pages/getting-started/getting-started').then(m => m.GettingStarted),
       },
       {
         path: 'basic-controls',
         loadComponent: () =>
-          import('./pages/basic-controls/basic-controls.component').then(
-            m => m.BasicControlsComponent
-          ),
+          import('./pages/basic-controls/basic-controls').then(m => m.BasicControls),
       },
       {
         path: 'media-controls',
         loadComponent: () =>
-          import('./pages/media-controls/media-controls.component').then(
-            m => m.MediaControlsComponent
-          ),
+          import('./pages/media-controls/media-controls').then(m => m.MediaControls),
       },
       {
         path: 'group-controls',
         loadComponent: () =>
-          import('./pages/group-controls/group-controls.component').then(
-            m => m.GroupControlsComponent
-          ),
+          import('./pages/group-controls/group-controls').then(m => m.GroupControls),
       },
       {
         path: 'conditions',
-        loadComponent: () =>
-          import('./pages/conditions/conditions.component').then(m => m.ConditionsComponent),
+        loadComponent: () => import('./pages/conditions/conditions').then(m => m.Conditions),
       },
       {
         path: 'playground',
-        loadComponent: () =>
-          import('./pages/playground/playground.component').then(m => m.PlaygroundComponent),
+        loadComponent: () => import('./pages/playground/playground').then(m => m.Playground),
       },
     ],
   },

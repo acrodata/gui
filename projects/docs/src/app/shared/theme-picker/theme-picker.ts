@@ -26,7 +26,7 @@ import { DocsSiteTheme, ThemeStorage } from './theme-storage';
   encapsulation: ViewEncapsulation.None,
   imports: [MatIconModule],
 })
-export class ThemePickerComponent implements OnInit, OnDestroy {
+export class ThemePicker implements OnInit, OnDestroy {
   private styleManager = inject(StyleManager);
   private themeStorage = inject(ThemeStorage);
   private activatedRoute = inject(ActivatedRoute);

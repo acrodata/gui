@@ -12,11 +12,11 @@ import { IBackground, presets } from './presets';
 @Component({
   selector: 'app-background-generator',
   imports: [GuiModule],
-  templateUrl: './background-generator.component.html',
-  styleUrl: './background-generator.component.scss',
+  templateUrl: './background-generator.html',
+  styleUrl: './background-generator.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class GradientGeneratorComponent implements OnInit {
+export class GradientGenerator implements OnInit {
   private cdr = inject(ChangeDetectorRef);
 
   demoStyle = {};

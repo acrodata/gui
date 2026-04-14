@@ -2,15 +2,15 @@ import { GuiFields, GuiFillMode } from '@acrodata/gui';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HighlightModule } from 'ngx-highlightjs';
-import { ExampleViewerComponent, PageHeaderComponent } from '../../shared';
+import { ExampleViewer, PageHeader } from '../../shared';
 
 @Component({
   selector: 'app-basic-controls',
-  imports: [ExampleViewerComponent, PageHeaderComponent, FormsModule, HighlightModule],
-  templateUrl: './basic-controls.component.html',
-  styleUrl: './basic-controls.component.scss',
+  imports: [ExampleViewer, PageHeader, FormsModule, HighlightModule],
+  templateUrl: './basic-controls.html',
+  styleUrl: './basic-controls.scss',
 })
-export class BasicControlsComponent {
+export class BasicControls {
   textConfig: GuiFields = {
     content: {
       type: 'text',

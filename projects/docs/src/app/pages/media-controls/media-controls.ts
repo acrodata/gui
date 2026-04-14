@@ -1,15 +1,15 @@
 import { GuiFields } from '@acrodata/gui';
 import { Component } from '@angular/core';
 import { HighlightModule } from 'ngx-highlightjs';
-import { ExampleViewerComponent, PageHeaderComponent } from '../../shared';
+import { ExampleViewer, PageHeader } from '../../shared';
 
 @Component({
   selector: 'app-media-controls',
-  imports: [ExampleViewerComponent, PageHeaderComponent, HighlightModule],
-  templateUrl: './media-controls.component.html',
-  styleUrl: './media-controls.component.scss',
+  imports: [ExampleViewer, PageHeader, HighlightModule],
+  templateUrl: './media-controls.html',
+  styleUrl: './media-controls.scss',
 })
-export class MediaControlsComponent {
+export class MediaControls {
   imageConfig: GuiFields = {
     image: {
       type: 'image',

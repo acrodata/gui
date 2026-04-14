@@ -1,16 +1,16 @@
 import { GuiFields } from '@acrodata/gui';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { HighlightModule } from 'ngx-highlightjs';
-import { ExampleViewerComponent, PageHeaderComponent } from '../../shared';
+import { ExampleViewer, PageHeader } from '../../shared';
 
 @Component({
   selector: 'app-conditions',
-  imports: [PageHeaderComponent, ExampleViewerComponent, HighlightModule],
-  templateUrl: './conditions.component.html',
-  styleUrl: './conditions.component.scss',
+  imports: [PageHeader, ExampleViewer, HighlightModule],
+  templateUrl: './conditions.html',
+  styleUrl: './conditions.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ConditionsComponent {
+export class Conditions {
   ruleJson = `{
   ...
   "showIf": {

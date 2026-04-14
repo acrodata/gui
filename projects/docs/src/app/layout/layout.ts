@@ -2,19 +2,19 @@ import { Component, ViewEncapsulation, inject } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { NavigationEnd, Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { filter } from 'rxjs';
-import { ThemePickerComponent } from '../shared';
+import { ThemePicker } from '../shared';
 
 @Component({
   selector: 'app-layout',
-  imports: [RouterOutlet, RouterLink, RouterLinkActive, MatIconModule, ThemePickerComponent],
-  templateUrl: './layout.component.html',
-  styleUrl: './layout.component.scss',
+  imports: [RouterOutlet, RouterLink, RouterLinkActive, MatIconModule, ThemePicker],
+  templateUrl: './layout.html',
+  styleUrl: './layout.scss',
   host: {
     class: 'container-wrap',
   },
   encapsulation: ViewEncapsulation.None,
 })
-export class LayoutComponent {
+export class Layout {
   private router = inject(Router);
 
   menu = [

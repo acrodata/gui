@@ -1,14 +1,14 @@
 import { GuiFields } from '@acrodata/gui';
 import { Component } from '@angular/core';
-import { ExampleViewerComponent, PageHeaderComponent } from '../../shared';
+import { ExampleViewer, PageHeader } from '../../shared';
 
 @Component({
   selector: 'app-group-controls',
-  imports: [ExampleViewerComponent, PageHeaderComponent],
-  templateUrl: './group-controls.component.html',
-  styleUrl: './group-controls.component.scss',
+  imports: [ExampleViewer, PageHeader],
+  templateUrl: './group-controls.html',
+  styleUrl: './group-controls.scss',
 })
-export class GroupControlsComponent {
+export class GroupControls {
   groupConfig: GuiFields = {
     size: {
       type: 'group',
