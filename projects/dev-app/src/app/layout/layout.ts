@@ -28,11 +28,11 @@ export const CODEAREA_LANGUAGES = [
 @Component({
   selector: 'app-layout',
   imports: [RouterModule, MatSidenavModule, MatToolbarModule, MatButtonModule],
-  templateUrl: './layout.component.html',
-  styleUrl: './layout.component.scss',
+  templateUrl: './layout.html',
+  styleUrl: './layout.scss',
   encapsulation: ViewEncapsulation.None,
 })
-export class LayoutComponent implements OnInit {
+export class Layout implements OnInit {
   private document = inject<Document>(DOCUMENT);
   private dir = inject(Directionality);
   private settings = inject(SettingsService);

@@ -5,10 +5,10 @@ import { FormsModule } from '@angular/forms';
 @Component({
   selector: 'app-controls',
   imports: [FormsModule, GuiModule],
-  templateUrl: './controls.component.html',
-  styleUrl: './controls.component.scss',
+  templateUrl: './controls.html',
+  styleUrl: './controls.scss',
 })
-export class ControlsComponent {
+export class Controls {
   fillValue = 'red';
   fillType: GuiFillMode = 'all';
 }

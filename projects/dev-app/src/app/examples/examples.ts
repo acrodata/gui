@@ -6,10 +6,10 @@ import { FormGroup } from '@angular/forms';
 @Component({
   selector: 'app-examples',
   imports: [CommonModule, GuiModule],
-  templateUrl: './examples.component.html',
-  styleUrl: './examples.component.scss',
+  templateUrl: './examples.html',
+  styleUrl: './examples.scss',
 })
-export class ExamplesComponent implements OnInit {
+export class Examples implements OnInit {
   private fileUploaderCfg = inject(GuiFileUploaderConfig);
 
   form = new FormGroup({});

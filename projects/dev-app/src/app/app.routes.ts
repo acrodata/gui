@@ -1,20 +1,20 @@
 import { Routes } from '@angular/router';
-import { LayoutComponent } from './layout/layout.component';
-import { HomeComponent } from './home/home.component';
-import { ExamplesComponent } from './examples/examples.component';
-import { ControlsComponent } from './controls/controls.component';
-import { PlaygroundComponent } from './playground/playground.component';
+import { Layout } from './layout/layout';
+import { Home } from './home/home';
+import { Examples } from './examples/examples';
+import { Controls } from './controls/controls';
+import { Playground } from './playground/playground';
 
 export const routes: Routes = [
   {
     path: '',
-    component: LayoutComponent,
+    component: Layout,
     children: [
       { path: '', pathMatch: 'full', redirectTo: 'home' },
-      { path: 'home', component: HomeComponent },
-      { path: 'examples', component: ExamplesComponent },
-      { path: 'controls', component: ControlsComponent },
-      { path: 'playground', component: PlaygroundComponent },
+      { path: 'home', component: Home },
+      { path: 'examples', component: Examples },
+      { path: 'controls', component: Controls },
+      { path: 'playground', component: Playground },
       { path: '**', redirectTo: 'home' },
     ],
   },

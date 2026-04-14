@@ -11,10 +11,10 @@ import { SettingsService } from '../settings.service';
 @Component({
   selector: 'app-playground',
   imports: [CommonModule, FormsModule, CodeEditor, GuiForm],
-  templateUrl: './playground.component.html',
-  styleUrl: './playground.component.scss',
+  templateUrl: './playground.html',
+  styleUrl: './playground.scss',
 })
-export class PlaygroundComponent implements OnInit {
+export class Playground implements OnInit {
   private destroyRef = inject(DestroyRef);
   private settings = inject(SettingsService);
 
