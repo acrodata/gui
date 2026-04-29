@@ -36,7 +36,7 @@
       }
     }
 
-    .ng-clear-wrapper .ng-clear {
+    .ng-clear {
       font-family: math;
       font-size: 12px;
     }
@@ -47,17 +47,15 @@
   }
 
   &.ng-dropdown-panel {
-    .ng-dropdown-panel-items {
-      .ng-option {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        height: 4rem;
-        padding: 0.5rem;
+    .ng-option {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      height: 4rem;
+      padding: 0.5rem;
 
-        img {
-          @extend %img;
-        }
+      img {
+        @extend %img;
       }
     }
   }

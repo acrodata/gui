@@ -3,6 +3,7 @@
     <span matPrefix>{{ config.prefix }}</span>
   }
   <mtx-select
+    panelClass="gui-combobox"
     [(ngModel)]="value"
     [disabled]="disabled"
     [placeholder]="config.placeholder || ''"

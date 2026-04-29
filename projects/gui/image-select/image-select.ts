@@ -1,5 +1,4 @@
 import {
-  AfterViewInit,
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
@@ -47,7 +46,7 @@ import { GuiControl } from '../interface';
     GuiFieldLabel,
   ],
 })
-export class GuiImageSelect implements ControlValueAccessor, AfterViewInit {
+export class GuiImageSelect implements ControlValueAccessor {
   private cdr = inject(ChangeDetectorRef);
 
   @ViewChild(MtxSelect) mtxSelect!: MtxSelect;
@@ -60,12 +59,6 @@ export class GuiImageSelect implements ControlValueAccessor, AfterViewInit {
 
   private onChange: (value: any) => void = () => {};
   private onTouched: () => void = () => {};
-
-  ngAfterViewInit(): void {
-    // Add additional class for ng-select's dropdown panel
-    const { ngSelect } = this.mtxSelect;
-    (ngSelect as any).classes = (ngSelect.classes || '') + ' gui-image-select';
-  }
 
   writeValue(value: any) {
     this.value = value;

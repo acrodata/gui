@@ -1,20 +1,16 @@
 .gui-combobox {
+  .mat-mdc-form-field .ng-select {
+    padding-inline: 0.5rem;
+    margin-inline: -0.5rem;
+  }
+
   .ng-select {
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
-    margin-left: -0.5rem;
-    margin-right: -0.5rem;
-
-    &.ng-select-multiple .ng-value {
-      flex-direction: row-reverse;
-    }
-
-    .ng-value-icon {
+    .ng-value-remove {
       font-family: math;
       font-size: 10px;
     }
 
-    .ng-clear-wrapper .ng-clear {
+    .ng-clear {
       font-family: math;
       font-size: 12px;
     }
@@ -27,15 +23,13 @@
   &.ng-dropdown-panel {
     padding: 0.5rem 0;
 
-    .ng-dropdown-panel-items {
-      .ng-option {
-        padding: 0 0.5rem;
-        line-height: var(--mat-option-label-text-line-height, var(--mat-sys-label-large-line-height));
+    .ng-option {
+      padding: 0 0.5rem;
+      line-height: var(--mat-option-label-text-line-height, var(--mat-sys-label-large-line-height));
+    }
 
-        .ng-tag-label {
-          line-height: 1;
-        }
-      }
+    .ng-tag-label {
+      line-height: 1;
     }
   }
 }
