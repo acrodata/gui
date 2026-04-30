@@ -16,10 +16,12 @@
 .gui-image-select {
   --mat-form-field-container-vertical-padding: 0;
 
-  .ng-select {
+  .mat-mdc-form-field .ng-select {
     padding: 0 0.5rem;
     margin: 0 -0.5rem;
+  }
 
+  .ng-select {
     .ng-value-container {
       height: 4rem;
     }
