@@ -1,6 +1,10 @@
 import { GuiCodeareaConfig } from '@acrodata/gui';
 import { provideHttpClient } from '@angular/common/http';
-import { ApplicationConfig } from '@angular/core';
+import {
+  ApplicationConfig,
+  provideBrowserGlobalErrorListeners,
+  provideZonelessChangeDetection,
+} from '@angular/core';
 import { provideRouter, withInMemoryScrolling } from '@angular/router';
 import { LanguageDescription } from '@codemirror/language';
 import { provideHighlightOptions } from 'ngx-highlightjs';
@@ -34,6 +38,8 @@ export const CODEAREA_LANGUAGES = [
 
 export const appConfig: ApplicationConfig = {
   providers: [
+    provideBrowserGlobalErrorListeners(),
+    provideZonelessChangeDetection(),
     provideRouter(
       routes,
       withInMemoryScrolling({

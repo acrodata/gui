@@ -58,9 +58,6 @@
             "outputPath": "dist/dev-app",
             "index": "projects/dev-app/src/index.html",
             "browser": "projects/dev-app/src/main.ts",
-            "polyfills": [
-              "zone.js"
-            ],
             "tsConfig": "projects/dev-app/tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
@@ -169,9 +166,6 @@
             "outputPath": "dist/docs",
             "index": "projects/docs/src/index.html",
             "browser": "projects/docs/src/main.ts",
-            "polyfills": [
-              "zone.js"
-            ],
             "tsConfig": "projects/docs/tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [

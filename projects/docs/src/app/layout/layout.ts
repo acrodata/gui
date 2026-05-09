@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation, inject } from '@angular/core';
+import { Component, ViewEncapsulation, inject, signal } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { NavigationEnd, Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { filter } from 'rxjs';
@@ -74,11 +74,15 @@ export class Layout {
     },
   ];
 
-  menuOpened = false;
+  menuOpened = signal(false);
 
   constructor() {
     this.router.events.pipe(filter(event => event instanceof NavigationEnd)).subscribe(e => {
-      this.menuOpened = false;
+      this.menuOpened.set(false);
     });
+  }
+
+  toggleMenu() {
+    this.menuOpened.update(v => !v);
   }
 }

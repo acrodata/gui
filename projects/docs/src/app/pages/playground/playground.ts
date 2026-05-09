@@ -1,16 +1,9 @@
 import { CodeEditor } from '@acrodata/code-editor';
-import { GuiFields, GuiForm } from '@acrodata/gui';
+import { getModelFromConfig, GuiFields, GuiForm } from '@acrodata/gui';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
-import {
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
-  Component,
-  DestroyRef,
-  OnInit,
-  inject,
-} from '@angular/core';
+import { Component, DestroyRef, OnInit, inject, linkedSignal, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormsModule } from '@angular/forms';
 import { json, jsonParseLinter } from '@codemirror/lang-json';
@@ -22,20 +15,18 @@ import { MtxSplitModule } from '@ng-matero/extensions/split';
   imports: [CommonModule, FormsModule, MtxSplitModule, CodeEditor, GuiForm],
   templateUrl: './playground.html',
   styleUrl: './playground.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Playground implements OnInit {
   private destroy = inject(DestroyRef);
   private breakpointObserver = inject(BreakpointObserver);
-  private cdr = inject(ChangeDetectorRef);
   private http = inject(HttpClient);
 
-  isMobile = false;
+  isMobile = signal(false);
 
-  config: GuiFields = {};
-  model: any = {};
+  config = signal<GuiFields>({});
+  model = signal<any>({});
 
-  configStr = '';
+  configStr = linkedSignal(() => JSON.stringify(this.config(), null, 2));
 
   extensions = [json(), linter(jsonParseLinter()), lintGutter()];
 
@@ -43,26 +34,23 @@ export class Playground implements OnInit {
     { label: 'Baisc', value: 'basic' },
     { label: 'CSS Gradient', value: 'css-gradient' },
   ];
-  selectedExample = 'basic';
+  selectedExample = signal('basic');
 
   ngOnInit(): void {
     this.breakpointObserver
       .observe([Breakpoints.XSmall])
       .pipe(takeUntilDestroyed(this.destroy))
       .subscribe(result => {
-        this.isMobile = result.matches;
-        this.cdr.detectChanges();
+        this.isMobile.set(result.matches);
       });
 
     this.getExample();
   }
 
   getExample() {
-    this.http.get<GuiFields>(`examples/${this.selectedExample}.json`).subscribe(res => {
-      this.config = res;
-      this.configStr = JSON.stringify(this.config, null, 2);
-      this.model = {};
-      this.cdr.detectChanges();
+    this.http.get<GuiFields>(`examples/${this.selectedExample()}.json`).subscribe(res => {
+      this.config.set(res);
+      this.model.set({});
     });
   }
 
@@ -71,6 +59,8 @@ export class Playground implements OnInit {
   }
 
   onConfigChange() {
-    this.config = JSON.parse(this.configStr);
+    const config = JSON.parse(this.configStr());
+    this.config.set(config);
+    this.model.set(getModelFromConfig(config));
   }
 }

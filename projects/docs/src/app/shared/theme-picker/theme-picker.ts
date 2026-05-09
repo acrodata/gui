@@ -2,11 +2,11 @@ import { GuiCodeareaConfig } from '@acrodata/gui';
 import { LiveAnnouncer } from '@angular/cdk/a11y';
 import {
   ChangeDetectionStrategy,
-  ChangeDetectorRef,
   Component,
   inject,
   OnDestroy,
   OnInit,
+  signal,
   ViewEncapsulation,
 } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
@@ -31,11 +31,9 @@ export class ThemePicker implements OnInit, OnDestroy {
   private themeStorage = inject(ThemeStorage);
   private activatedRoute = inject(ActivatedRoute);
   private liveAnnouncer = inject(LiveAnnouncer);
-  private cdr = inject(ChangeDetectorRef);
   private codeareaCfg = inject(GuiCodeareaConfig);
 
   private queryParamSubscription = Subscription.EMPTY;
-  currentTheme: DocsSiteTheme | undefined;
 
   // The below colors need to align with the themes defined in theme-picker.scss
   themes: DocsSiteTheme[] = [
@@ -86,7 +84,9 @@ export class ThemePicker implements OnInit, OnDestroy {
     },
   ];
 
-  showMenu = false;
+  currentTheme?: DocsSiteTheme;
+
+  showMenu = signal(false);
 
   constructor() {
     const themeName = this.themeStorage.getStoredThemeName();
@@ -113,8 +113,7 @@ export class ThemePicker implements OnInit, OnDestroy {
     fromEvent(document, 'click')
       .pipe(filter(event => event.target != document.querySelector('.theme-picker-menu')))
       .subscribe(v => {
-        this.showMenu = false;
-        this.cdr.detectChanges();
+        this.showMenu.set(false);
       });
   }
 
@@ -140,11 +139,11 @@ export class ThemePicker implements OnInit, OnDestroy {
     this.codeareaCfg.theme = theme.isDark ? 'dark' : 'light';
     this.codeareaCfg.changes.next();
 
-    this.showMenu = false;
+    this.showMenu.set(false);
   }
 
   toggleMenu(e: MouseEvent) {
     e.stopPropagation();
-    this.showMenu = !this.showMenu;
+    this.showMenu.update(v => !v);
   }
 }

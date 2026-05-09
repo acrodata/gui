@@ -6,10 +6,13 @@
     <gui-form [config]="config" [model]="model" />
 
     <div class="demo-console">
-      <textarea readonly
-                cdkTextareaAutosize
-                cdkAutosizeMinRows="1"
-                cdkAutosizeMaxRows="20">{{model|json}}</textarea>
+      <textarea
+        readonly
+        cdkTextareaAutosize
+        cdkAutosizeMinRows="1"
+        cdkAutosizeMaxRows="20"
+        [value]="model | json"
+      ></textarea>
     </div>
   </div>
 </div>

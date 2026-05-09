@@ -7,7 +7,7 @@
   </select>
 </div>
 
-<mtx-split [direction]="isMobile ? 'vertical' : 'horizontal'">
+<mtx-split [direction]="isMobile() ? 'vertical' : 'horizontal'">
   <mtx-split-pane [size]="60">
     <code-editor
       [style.height.%]="100"
@@ -17,12 +17,12 @@
     />
   </mtx-split-pane>
   <mtx-split-pane class="preview" [size]="40">
-    <mtx-split [direction]="isMobile ? 'horizontal' : 'vertical'">
+    <mtx-split [direction]="isMobile() ? 'horizontal' : 'vertical'">
       <mtx-split-pane>
-        <gui-form [config]="config" [model]="model" />
+        <gui-form [config]="config()" [model]="model()" />
       </mtx-split-pane>
       <mtx-split-pane>
-        <textarea [value]="model | json" readonly></textarea>
+        <textarea [value]="model() | json" readonly></textarea>
       </mtx-split-pane>
     </mtx-split>
   </mtx-split-pane>

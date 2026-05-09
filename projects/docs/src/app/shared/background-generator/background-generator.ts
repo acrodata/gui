@@ -1,11 +1,5 @@
 import { GuiFields, GuiModule } from '@acrodata/gui';
-import {
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
-  Component,
-  inject,
-  OnInit,
-} from '@angular/core';
+import { Component } from '@angular/core';
 import { cloneDeep } from 'lodash-es';
 import { IBackground, presets } from './presets';
 
@@ -14,13 +8,8 @@ import { IBackground, presets } from './presets';
   imports: [GuiModule],
   templateUrl: './background-generator.html',
   styleUrl: './background-generator.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class GradientGenerator implements OnInit {
-  private cdr = inject(ChangeDetectorRef);
-
-  demoStyle = {};
-
+export class GradientGenerator {
   config: GuiFields = {
     layers: {
       type: 'tabs',
@@ -117,12 +106,9 @@ export class GradientGenerator implements OnInit {
 
   presets = presets;
 
-  presetStyles: any[] = [];
+  presetStyles = presets.map(m => this.getBgStyle(m));
 
-  ngOnInit(): void {
-    this.demoStyle = this.getBgStyle(this.model);
-    this.presetStyles = this.presets.map(m => this.getBgStyle(m));
-  }
+  demoStyle = this.getBgStyle(presets[0]);
 
   getBgStyle(bg: IBackground) {
     // Print the object
@@ -146,13 +132,12 @@ export class GradientGenerator implements OnInit {
     };
   }
 
-  selectPreset(model: IBackground) {
-    this.model = cloneDeep(model);
+  selectPreset(value: IBackground) {
+    this.model = cloneDeep(value);
     this.config = cloneDeep(this.config);
   }
 
   onModelChange() {
     this.demoStyle = this.getBgStyle(this.model);
-    this.cdr.detectChanges();
   }
 }
