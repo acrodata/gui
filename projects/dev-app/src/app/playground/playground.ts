@@ -1,7 +1,7 @@
 import { CodeEditor, Theme } from '@acrodata/code-editor';
 import { GuiFields, GuiForm } from '@acrodata/gui';
 import { CommonModule } from '@angular/common';
-import { Component, DestroyRef, OnInit, inject } from '@angular/core';
+import { Component, DestroyRef, OnInit, inject, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormGroup, FormsModule } from '@angular/forms';
 import { json, jsonParseLinter } from '@codemirror/lang-json';
@@ -54,25 +54,25 @@ export class Playground implements OnInit {
   };
   model: any = {};
 
-  configStr = '';
+  configStr = signal('');
 
-  theme: Theme = 'light';
+  theme = signal<Theme>('light');
 
   extensions = [json(), linter(jsonParseLinter()), lintGutter()];
 
   ngOnInit(): void {
-    this.configStr = JSON.stringify(this.config, null, 2);
+    this.configStr.set(JSON.stringify(this.config, null, 2));
 
     this.form.valueChanges.subscribe(v => {
       console.log(v);
     });
 
     this.settings.themeChange.pipe(takeUntilDestroyed(this.destroyRef)).subscribe(theme => {
-      this.theme = theme;
+      this.theme.set(theme);
     });
   }
 
   onConfigChange() {
-    this.config = JSON.parse(this.configStr);
+    this.config = JSON.parse(this.configStr());
   }
 }

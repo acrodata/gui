@@ -1,4 +1,4 @@
-<mat-sidenav-container [dir]="isRtl?'rtl':'ltr'">
+<mat-sidenav-container [dir]="isRtl() ? 'rtl' : 'ltr'">
   <mat-sidenav-content>
     <mat-toolbar color="primary">
       <div class="demo-links">
@@ -9,8 +9,10 @@
       </div>
 
       <div class="demo-config">
-        <button mat-button (click)="toggleThemeClass()">{{isDark ? 'Light' : 'Dark'}} theme</button>
-        <button mat-button (click)="toggleRtl()">{{isRtl ? 'LTR' : 'RTL'}}</button>
+        <button mat-button (click)="toggleThemeClass()">
+          {{ isDark() ? 'Light' : 'Dark' }} theme
+        </button>
+        <button mat-button (click)="toggleRtl()">{{ isRtl() ? 'LTR' : 'RTL' }}</button>
       </div>
     </mat-toolbar>
 

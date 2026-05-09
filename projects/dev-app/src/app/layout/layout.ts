@@ -1,6 +1,6 @@
 import { GuiCodeareaConfig } from '@acrodata/gui';
 import { Directionality } from '@angular/cdk/bidi';
-import { Component, OnInit, ViewEncapsulation, inject, DOCUMENT } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, inject, DOCUMENT, signal } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -38,14 +38,12 @@ export class Layout implements OnInit {
   private settings = inject(SettingsService);
   private codeareaCfg = inject(GuiCodeareaConfig);
 
-  htmlElement!: HTMLHtmlElement;
+  htmlElement = this.document.querySelector('html')!;
   darkThemeClass = 'dark-theme';
-  isDark = false;
-  isRtl = false;
+  isDark = signal(false);
+  isRtl = signal(this.dir.value === 'rtl');
 
   ngOnInit(): void {
-    this.htmlElement = this.document.querySelector('html')!;
-    this.isRtl = this.dir.value === 'rtl';
     this.codeareaCfg.languages = CODEAREA_LANGUAGES;
     this.codeareaCfg.extensions = data => {
       return data.language == 'json' ? [lintGutter(), linter(jsonParseLinter())] : [];
@@ -53,9 +51,9 @@ export class Layout implements OnInit {
   }
 
   toggleThemeClass() {
-    this.isDark = !this.isDark;
+    this.isDark.update(v => !v);
 
-    if (this.isDark) {
+    if (this.isDark()) {
       this.htmlElement.classList.add(this.darkThemeClass);
       this.codeareaCfg.theme = 'dark';
     } else {
@@ -64,13 +62,13 @@ export class Layout implements OnInit {
     }
 
     this.codeareaCfg.changes.next();
-    this.settings.themeChange.next(this.isDark ? 'dark' : 'light');
+    this.settings.themeChange.next(this.isDark() ? 'dark' : 'light');
   }
 
   toggleRtl() {
-    this.isRtl = !this.isRtl;
+    this.isRtl.update(v => !v);
 
-    if (this.isRtl) {
+    if (this.isRtl()) {
       this.htmlElement.dir = 'rtl';
     } else {
       this.htmlElement.dir = 'ltr';

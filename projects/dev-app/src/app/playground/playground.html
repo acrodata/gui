@@ -1,13 +1,15 @@
 <section>
-  <code-editor [style.height.%]="100"
-               [theme]="theme"
-               [extensions]="extensions"
-               [(ngModel)]="configStr"
-               (blur)="onConfigChange()" />
+  <code-editor
+    [style.height.%]="100"
+    [theme]="theme()"
+    [extensions]="extensions"
+    [(ngModel)]="configStr"
+    (blur)="onConfigChange()"
+  />
 </section>
 <section>
   <gui-form [config]="config" [model]="model" [form]="form" />
 </section>
 <section>
-  <textarea [value]="model|json" readonly></textarea>
+  <textarea [value]="model | json" readonly></textarea>
 </section>
