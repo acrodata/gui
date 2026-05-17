@@ -8,11 +8,11 @@
   .mat-button-toggle-group {
     flex-wrap: wrap;
     border-width: 0;
-  }
 
-  .mat-button-toggle-group-appearance-standard {
-    .mat-button-toggle-appearance-standard + .mat-button-toggle-appearance-standard {
-      border-width: 0;
+    &.mat-button-toggle-group-appearance-standard {
+      .mat-button-toggle-appearance-standard + .mat-button-toggle-appearance-standard {
+        border-width: 0;
+      }
     }
   }
 
