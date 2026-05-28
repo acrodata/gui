@@ -87,7 +87,7 @@ code {
   display: inline-block;
   padding: 0 4px;
   font-size: 0.75rem;
-  word-wrap: break-word;
+  overflow-wrap: break-word;
   background-color: var(--bg-secondary-color);
   border-radius: 4px;
 }
