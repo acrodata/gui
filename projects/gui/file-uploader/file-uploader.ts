@@ -83,6 +83,8 @@ export class GuiFileUploader implements ControlValueAccessor, OnChanges {
   // file to upload
   fileUpload!: FileUploadContent;
 
+  lastPasteFileMeta = { size: 0, type: '' };
+
   private onChange: (value: string) => void = () => {};
   private onTouched: () => void = () => {};
 
@@ -175,5 +177,35 @@ export class GuiFileUploader implements ControlValueAccessor, OnChanges {
     this.onTouched();
 
     this.fileChange.emit(this.url);
+  }
+
+  onPaste(e: ClipboardEvent) {
+    const clipboardData = e.clipboardData;
+    if (!clipboardData) return;
+
+    let imageFile = null;
+
+    for (const item of clipboardData.items) {
+      if (item.type.includes('image')) {
+        imageFile = item.getAsFile();
+        break;
+      }
+    }
+
+    if (imageFile) {
+      e.preventDefault();
+
+      // Avoid uploading duplicate images
+      if (
+        imageFile.size === this.lastPasteFileMeta.size &&
+        imageFile.type === this.lastPasteFileMeta.type
+      ) {
+        return;
+      }
+      this.lastPasteFileMeta = { size: imageFile.size, type: imageFile.type };
+
+      this.fileUpload = { data: imageFile, inProgress: false, progress: 0 };
+      this.upload(this.fileUpload);
+    }
   }
 }
