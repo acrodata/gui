@@ -36,10 +36,10 @@
     "@acrodata/gradient-parser" "^1.1.0"
     tslib "^2.3.0"
 
-"@acrodata/rnd-dialog@^0.6.0":
-  version "0.6.1"
-  resolved "https://registry.yarnpkg.com/@acrodata/rnd-dialog/-/rnd-dialog-0.6.1.tgz#a330dd104ff3ad0df47ef52d9c7fb307e98e18bf"
-  integrity sha512-gzYruKS+jtwtqg0/HVeKELo/4Ezhrgshv0zW+hlGcoQVwF+OIapQAHkHWFG/SQ9XwbKAAGaEl1uqRJQgiq75Yw==
+"@acrodata/rnd-dialog@^0.7.0":
+  version "0.7.0"
+  resolved "https://registry.yarnpkg.com/@acrodata/rnd-dialog/-/rnd-dialog-0.7.0.tgz#51f009a3bea679185f8322d55688e778954af5bf"
+  integrity sha512-7dGMHXZVVUWIpoRaTWmoyv0T5jNTyqTVoRCGNcQac1JCpuXC9RZctOkfmDbEabzM/aCB+VXd7zkDEs1Ix4ajCQ==
   dependencies:
     tslib "^2.3.0"
 
