@@ -34,6 +34,7 @@ import { GuiCombobox } from './combobox/combobox';
 import { GuiTextarea } from './textarea/textarea';
 import { GuiCodearea } from './codearea/codearea';
 import { GuiCodeareaDialog } from './codearea/codearea-dialog';
+import { GuiCodeareaToolbar } from './codearea/codearea-toolbar';
 import { GuiFileUploader } from './file-uploader/file-uploader';
 import { GuiIconButtonWrapper } from './icon-button-wrapper/icon-button-wrapper';
 import { GuiEjsPipe, GuiFlexDirective } from './gui-utils';
@@ -74,6 +75,7 @@ import { GuiEjsPipe, GuiFlexDirective } from './gui-utils';
     GuiTextarea,
     GuiCodearea,
     GuiCodeareaDialog,
+    GuiCodeareaToolbar,
     GuiFileUploader,
     GuiIconButtonWrapper,
     GuiEjsPipe,
@@ -98,6 +100,7 @@ import { GuiEjsPipe, GuiFlexDirective } from './gui-utils';
     GuiTextarea,
     GuiCodearea,
     GuiCodeareaDialog,
+    GuiCodeareaToolbar,
     GuiFileUploader,
     GuiIconButtonWrapper,
     GuiEjsPipe,

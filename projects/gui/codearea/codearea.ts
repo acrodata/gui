@@ -22,6 +22,7 @@ import { GuiIconButtonWrapper } from '../icon-button-wrapper/icon-button-wrapper
 import { GuiControl } from '../interface';
 import { GuiCodeareaConfig } from './codearea-config';
 import { GuiCodeareaDialog, GuiCodeareaDialogData } from './codearea-dialog';
+import { GuiCodeareaToolbar } from './codearea-toolbar';
 
 @Component({
   selector: 'gui-codearea',
@@ -47,6 +48,7 @@ import { GuiCodeareaDialog, GuiCodeareaDialogData } from './codearea-dialog';
     CodeEditor,
     GuiFieldLabel,
     GuiIconButtonWrapper,
+    GuiCodeareaToolbar,
   ],
 })
 export class GuiCodearea implements ControlValueAccessor {
@@ -103,12 +105,15 @@ export class GuiCodearea implements ControlValueAccessor {
   value = '';
   private oldValue = '';
 
+  lineWrapping = false;
+
   private onChange: (value: string) => void = () => {};
   private onTouched: () => void = () => {};
 
   constructor() {
     const iconsRegistry = inject(GuiIconsRegistry);
     iconsRegistry.add('expand');
+    iconsRegistry.add('wrap');
 
     this.codeareaCfg.changes.pipe(takeUntilDestroyed(this.destroyRef)).subscribe(() => {
       this.cdr.markForCheck();
@@ -163,5 +168,9 @@ export class GuiCodearea implements ControlValueAccessor {
         this.onValueChange();
       }
     });
+  }
+
+  toggleLineWrapping() {
+    this.lineWrapping = !this.lineWrapping;
   }
 }

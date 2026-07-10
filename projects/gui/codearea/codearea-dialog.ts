@@ -16,6 +16,7 @@ import { MatIcon } from '@angular/material/icon';
 import { GuiIconsRegistry } from '../gui-icons';
 import { GuiIconButtonWrapper } from '../icon-button-wrapper/icon-button-wrapper';
 import { GuiCodeareaConfig } from './codearea-config';
+import { GuiCodeareaToolbar } from './codearea-toolbar';
 
 export interface GuiCodeareaDialogData {
   value: string;
@@ -35,6 +36,7 @@ export interface GuiCodeareaDialogData {
     RndDialogDragHandle,
     CodeEditor,
     GuiIconButtonWrapper,
+    GuiCodeareaToolbar,
   ],
   templateUrl: './codearea-dialog.html',
   styleUrl: './codearea-dialog.scss',

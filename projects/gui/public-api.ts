@@ -8,6 +8,7 @@ export * from './button-toggle/button-toggle';
 export * from './button-toggle/icon';
 export * from './codearea/codearea';
 export * from './codearea/codearea-dialog';
+export * from './codearea/codearea-toolbar';
 export * from './codearea/codearea-config';
 export * from './combobox/combobox';
 export * from './field-group/field-group';

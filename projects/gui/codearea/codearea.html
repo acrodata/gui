@@ -7,16 +7,20 @@
   [theme]="theme"
   [setup]="setup"
   [extensions]="extensions"
+  [lineWrapping]="lineWrapping"
   (blur)="onValueChange()"
 />
 
-<div class="gui-codearea-btns">
+<gui-codearea-toolbar>
   <gui-icon-button-wrapper>
     <button mat-icon-button type="button" (click)="onExpand()">
       <mat-icon svgIcon="expand" />
     </button>
+    <button mat-icon-button type="button" (click)="toggleLineWrapping()">
+      <mat-icon svgIcon="wrap" />
+    </button>
   </gui-icon-button-wrapper>
-</div>
+</gui-codearea-toolbar>
 
 @if (config.parentType === 'inline') {
   <mat-hint>
