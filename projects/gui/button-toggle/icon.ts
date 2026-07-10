@@ -15,7 +15,6 @@ import { ChangeDetectionStrategy, Component, Input, ViewEncapsulation } from '@a
   },
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
 })
 export class GuiIcon {
   @Input() src = '';

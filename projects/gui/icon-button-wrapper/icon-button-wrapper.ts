@@ -2,7 +2,6 @@ import { ChangeDetectionStrategy, Component, ViewEncapsulation } from '@angular/
 
 @Component({
   selector: 'gui-icon-button-wrapper',
-  standalone: true,
   templateUrl: './icon-button-wrapper.html',
   styleUrl: './icon-button-wrapper.scss',
   host: {
