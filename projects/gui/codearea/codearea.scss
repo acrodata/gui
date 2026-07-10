@@ -11,6 +11,10 @@
     resize: vertical;
   }
 
+  .gui-codearea-toolbar {
+    display: none;
+  }
+
   &:hover {
     .gui-codearea-toolbar {
       display: block;
