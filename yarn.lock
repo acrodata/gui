@@ -12,10 +12,10 @@
     codemirror "^6.0.0"
     tslib "^2.3.0"
 
-"@acrodata/color-picker@^1.4.0":
-  version "1.4.0"
-  resolved "https://registry.yarnpkg.com/@acrodata/color-picker/-/color-picker-1.4.0.tgz#eb5b5f6ea6951ab5c02cc6a232a2f4ed4ca1a7d7"
-  integrity sha512-Tn0YhEePMuf4EP9uK1WAfn3Jm43g3s5wFsarbCq7/oMtvgo+BPdzPMnVepPmf8C/J/pmZp64cmaEw0lgqYgJsg==
+"@acrodata/color-picker@^1.4.0", "@acrodata/color-picker@^1.5.0":
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/@acrodata/color-picker/-/color-picker-1.5.0.tgz#f069ec22bab6e4fee5685188ace31c7d189e1cbc"
+  integrity sha512-3iJobPSBCu4EpZE9F+IqzwSIOgswiNNr6Ep9wGb2dZMQuUnE7xopQbOtW1Xs+EAbPUrenVZWXKYqypeb2/iQTw==
   dependencies:
     "@ctrl/tinycolor" "^4.2.0"
     tslib "^2.3.0"
@@ -27,12 +27,12 @@
   dependencies:
     tslib "^2.3.0"
 
-"@acrodata/gradient-picker@^0.14.0":
-  version "0.14.0"
-  resolved "https://registry.yarnpkg.com/@acrodata/gradient-picker/-/gradient-picker-0.14.0.tgz#08a6757f986ebd62fc5e48387539c7b31898d093"
-  integrity sha512-Di0bCJVxZh6ImqztZJxei80R01ArhPAjcxjKGb6GYdRgliWYsBUlHy7qoiyfy0LbW+FeHwT77NakLNYgyb71zg==
+"@acrodata/gradient-picker@^0.15.1":
+  version "0.15.1"
+  resolved "https://registry.yarnpkg.com/@acrodata/gradient-picker/-/gradient-picker-0.15.1.tgz#e027d85fdd3cfe25a7ca8366b925bc5c340d7df0"
+  integrity sha512-AIMPFOImgZaomVUx9Pt+7YocXt5FRudEd+srqmKfftL8N/RluNXzjxWQ+4m9NIFxqibXlZRauP343+aGxBERqw==
   dependencies:
-    "@acrodata/color-picker" "^1.4.0"
+    "@acrodata/color-picker" "^1.5.0"
     "@acrodata/gradient-parser" "^1.1.0"
     tslib "^2.3.0"
 

@@ -1,8 +1,8 @@
 @if (type === 'all') {
   <div class="gui-fill-picker-header">
     <mat-button-toggle-group
-      [(ngModel)]="selectedType"
       hideSingleSelectionIndicator
+      [(ngModel)]="selectedType"
       (ngModelChange)="onTypeChange()"
     >
       @for (t of types; track $index) {
@@ -16,9 +16,17 @@
 
 <div class="gui-fill-picker-body">
   @if (selectedType === 'solid') {
-    <color-picker [(ngModel)]="fillValue.solid" (ngModelChange)="onColorChange()" />
+    <color-picker
+      [(ngModel)]="fillValue.solid"
+      (ngModelChange)="onSolidChange()"
+      (valueChangeComplete)="onSolidChangeComplete()"
+    />
   } @else if (selectedType === 'gradient') {
-    <gradient-picker [(ngModel)]="fillValue.gradient" (ngModelChange)="onGradientChange()" />
+    <gradient-picker
+      [(ngModel)]="fillValue.gradient"
+      (ngModelChange)="onGradientChange()"
+      (valueChangeComplete)="onGradientChangeComplete()"
+    />
   } @else if (selectedType === 'image') {
     <gui-file-uploader
       type="image"

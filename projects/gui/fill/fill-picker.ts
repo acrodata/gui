@@ -4,10 +4,12 @@ import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
+  EventEmitter,
   forwardRef,
   inject,
   Input,
   OnChanges,
+  Output,
   SimpleChanges,
   ViewEncapsulation,
 } from '@angular/core';
@@ -49,6 +51,8 @@ export class GuiFillPicker implements ControlValueAccessor, OnChanges {
 
   @Input() disabled = false;
   @Input() type: GuiFillMode = 'all';
+
+  @Output() valueChangeComplete = new EventEmitter<string>();
 
   types = [
     { label: 'Solid', value: 'solid' },
@@ -134,27 +138,34 @@ export class GuiFillPicker implements ControlValueAccessor, OnChanges {
   onTypeChange() {
     if (this.selectedType === 'solid') {
       this.onSolidChange();
+      this.onSolidChangeComplete();
     } else if (this.selectedType === 'gradient') {
       this.onGradientChange();
+      this.onGradientChangeComplete();
     } else if (this.selectedType === 'image') {
       this.onImageChange();
     }
-  }
-
-  onColorChange() {
-    this.onSolidChange();
   }
 
   onSolidChange() {
     this.onChange(this.fillValue.solid);
   }
 
+  onSolidChangeComplete() {
+    this.valueChangeComplete.emit(this.fillValue.solid);
+  }
+
   onGradientChange() {
     this.onChange(this.fillValue.gradient);
+  }
+
+  onGradientChangeComplete() {
+    this.valueChangeComplete.emit(this.fillValue.gradient);
   }
 
   onImageChange() {
     const bgImg = `url("${this.fillValue.image}")`;
     this.onChange(bgImg);
+    this.valueChangeComplete.emit(bgImg);
   }
 }
