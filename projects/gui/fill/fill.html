@@ -1,11 +1,11 @@
 <mat-form-field>
   <ng-container matPrefix>
-    <span class="gui-color-block">
+    <button class="gui-color-block" (click)="openColorPicker($event)">
       <span
         class="gui-color-block-bg"
         [style.background]="value + ' center / contain no-repeat'"
       ></span>
-    </span>
+    </button>
   </ng-container>
 
   <input
@@ -18,9 +18,6 @@
   />
 
   <mtx-colorpicker #cp [content]="customPickerContent" />
-  <gui-icon-button-wrapper matSuffix>
-    <mtx-colorpicker-toggle [for]="cp" />
-  </gui-icon-button-wrapper>
 
   @if (config.parentType === 'inline') {
     <mat-hint>

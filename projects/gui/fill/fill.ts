@@ -7,18 +7,14 @@ import {
   Input,
   OnChanges,
   SimpleChanges,
+  ViewChild,
   ViewEncapsulation,
 } from '@angular/core';
 import { ControlValueAccessor, FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { MatFormField, MatHint, MatPrefix, MatSuffix } from '@angular/material/form-field';
+import { MatFormField, MatHint, MatPrefix } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
-import {
-  MtxColorpicker,
-  MtxColorpickerInput,
-  MtxColorpickerToggle,
-} from '@ng-matero/extensions/colorpicker';
+import { MtxColorpicker, MtxColorpickerInput } from '@ng-matero/extensions/colorpicker';
 import { GuiFieldLabel } from '../field-label/field-label';
-import { GuiIconButtonWrapper } from '../icon-button-wrapper/icon-button-wrapper';
 import { GuiControl, GuiFillMode } from '../interface';
 import { GuiFillPicker } from './fill-picker';
 
@@ -43,18 +39,17 @@ import { GuiFillPicker } from './fill-picker';
     MatFormField,
     MatPrefix,
     MatInput,
-    MatSuffix,
     MatHint,
     MtxColorpickerInput,
     MtxColorpicker,
-    MtxColorpickerToggle,
     GuiFieldLabel,
-    GuiIconButtonWrapper,
     GuiFillPicker,
   ],
 })
 export class GuiFill implements ControlValueAccessor, OnChanges {
   private cdr = inject(ChangeDetectorRef);
+
+  @ViewChild(MtxColorpicker) colorpicker?: MtxColorpicker;
 
   @Input() config: Partial<GuiControl> = {};
   @Input() disabled = false;
@@ -93,5 +88,10 @@ export class GuiFill implements ControlValueAccessor, OnChanges {
 
   onValueChange() {
     this.onChange(this.value);
+  }
+
+  openColorPicker(e: PointerEvent) {
+    e.stopPropagation();
+    this.colorpicker?.open();
   }
 }
