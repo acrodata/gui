@@ -16,6 +16,7 @@ import { ControlValueAccessor, FormsModule, NG_VALUE_ACCESSOR } from '@angular/f
 import { MatIconButton } from '@angular/material/button';
 import { MatHint } from '@angular/material/form-field';
 import { MatIcon } from '@angular/material/icon';
+import { Extension } from '@codemirror/state';
 import { GuiFieldLabel } from '../field-label/field-label';
 import { GuiIconsRegistry } from '../gui-icons';
 import { GuiIconButtonWrapper } from '../icon-button-wrapper/icon-button-wrapper';
@@ -80,6 +81,19 @@ export class GuiCodearea implements ControlValueAccessor {
   }
   private _language = '';
 
+  @Input()
+  get extensions() {
+    const globalExtensions =
+      typeof this.codeareaCfg.extensions === 'function'
+        ? this.codeareaCfg.extensions({ value: this.value, language: this.language })
+        : this.codeareaCfg.extensions;
+    return [...globalExtensions, this._extensions];
+  }
+  set extensions(value: Extension[]) {
+    this._extensions = value;
+  }
+  private _extensions: Extension[] = [];
+
   get languages() {
     return this.codeareaCfg.languages;
   }
@@ -93,13 +107,8 @@ export class GuiCodearea implements ControlValueAccessor {
       value: this.value,
       disabled: this.disabled,
       language: this.language,
+      extensions: this.extensions,
     };
-  }
-
-  get extensions() {
-    return typeof this.codeareaCfg.extensions === 'function'
-      ? this.codeareaCfg.extensions(this.dialogData)
-      : this.codeareaCfg.extensions;
   }
 
   value = '';

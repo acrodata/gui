@@ -13,6 +13,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormsModule } from '@angular/forms';
 import { MatButton, MatIconButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
+import { Extension } from '@codemirror/state';
 import { GuiIconsRegistry } from '../gui-icons';
 import { GuiIconButtonWrapper } from '../icon-button-wrapper/icon-button-wrapper';
 import { GuiCodeareaConfig } from './codearea-config';
@@ -24,6 +25,7 @@ export interface GuiCodeareaDialogData {
   readonly?: boolean;
   language?: string;
   title?: string;
+  extensions?: Extension[];
 }
 
 @Component({
@@ -59,12 +61,6 @@ export class GuiCodeareaDialog {
 
   get theme() {
     return this.codeareaCfg.theme;
-  }
-
-  get extensions() {
-    return typeof this.codeareaCfg.extensions === 'function'
-      ? this.codeareaCfg.extensions(this.data)
-      : this.codeareaCfg.extensions;
   }
 
   langDesc = this.codeareaCfg.languages.find(
