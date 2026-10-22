@@ -84,6 +84,7 @@ export class GuiFileUploader implements ControlValueAccessor, OnChanges {
   fileUpload!: FileUploadContent;
 
   lastPasteFileMeta = { size: 0, type: '' };
+  private pastedFiles = new WeakSet<File>();
 
   private onChange: (value: string) => void = () => {};
   private onTouched: () => void = () => {};
@@ -195,13 +196,9 @@ export class GuiFileUploader implements ControlValueAccessor, OnChanges {
     if (imageFile) {
       e.preventDefault();
 
-      // Avoid uploading duplicate images
-      if (
-        imageFile.size === this.lastPasteFileMeta.size &&
-        imageFile.type === this.lastPasteFileMeta.type
-      ) {
-        return;
-      }
+      // Only suppress a repeated dispatch of the same File object; size/type can collide.
+      if (this.pastedFiles.has(imageFile)) return;
+      this.pastedFiles.add(imageFile);
       this.lastPasteFileMeta = { size: imageFile.size, type: imageFile.type };
 
       this.fileUpload = { data: imageFile, inProgress: false, progress: 0 };
