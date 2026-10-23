@@ -5,7 +5,7 @@
   </mat-slider>
   <mat-form-field>
     @if (config.prefix) {
-      <span matPrefix>{{ config.prefix }}</span>
+      <span matTextPrefix>{{ config.prefix }}</span>
     }
     <input
       matInput
@@ -19,7 +19,7 @@
       (change)="onValueChange()"
     />
     @if (config.suffix) {
-      <span matSuffix>{{ config.suffix }}</span>
+      <span matTextSuffix>{{ config.suffix }}</span>
     }
   </mat-form-field>
 } @else {
@@ -30,7 +30,7 @@
   </mat-slider>
   <mat-form-field>
     @if (config.prefix) {
-      <span matPrefix>{{ config.prefix }}</span>
+      <span matTextPrefix>{{ config.prefix }}</span>
     }
     <input
       matInput
@@ -44,12 +44,12 @@
       (change)="onRangeInputChange()"
     />
     @if (config.suffix) {
-      <span matSuffix>{{ config.suffix }}</span>
+      <span matTextSuffix>{{ config.suffix }}</span>
     }
   </mat-form-field>
   <mat-form-field>
     @if (config.prefix) {
-      <span matPrefix>{{ config.prefix }}</span>
+      <span matTextPrefix>{{ config.prefix }}</span>
     }
     <input
       matInput
@@ -63,7 +63,7 @@
       (change)="onRangeInputChange()"
     />
     @if (config.suffix) {
-      <span matSuffix>{{ config.suffix }}</span>
+      <span matTextSuffix>{{ config.suffix }}</span>
     }
   </mat-form-field>
 }

@@ -1,6 +1,6 @@
 <mat-form-field>
   @if (config.prefix) {
-    <span matPrefix>{{ config.prefix }}</span>
+    <span matTextPrefix>{{ config.prefix }}</span>
   }
   <mat-select
     panelClass="gui-select"
@@ -19,7 +19,7 @@
     }
   </mat-select>
   @if (config.suffix) {
-    <span matSuffix>{{ config.suffix }}</span>
+    <span matTextSuffix>{{ config.suffix }}</span>
   }
   @if (config.parentType === 'inline') {
     <mat-hint>

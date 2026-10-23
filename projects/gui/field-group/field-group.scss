@@ -33,6 +33,14 @@
     min-height: auto;
   }
 
+  .mat-mdc-form-field-text-prefix {
+    margin-inline: -4px 4px;
+  }
+
+  .mat-mdc-form-field-text-suffix {
+    margin-inline: 4px -4px;
+  }
+
   .mat-mdc-form-field-hint-spacer,
   .mat-mdc-form-field-bottom-align::before,
   .mdc-line-ripple {

@@ -1,6 +1,6 @@
 <mat-form-field>
   @if (config.prefix) {
-    <span matPrefix>{{ config.prefix }}</span>
+    <span matTextPrefix>{{ config.prefix }}</span>
   }
   <mtx-select
     panelClass="gui-image-select"
@@ -22,7 +22,7 @@
     </ng-template>
   </mtx-select>
   @if (config.suffix) {
-    <span matSuffix>{{ config.suffix }}</span>
+    <span matTextSuffix>{{ config.suffix }}</span>
   }
   @if (config.parentType === 'inline') {
     <mat-hint>
