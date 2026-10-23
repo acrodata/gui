@@ -11,10 +11,14 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { ControlValueAccessor, FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { MatFormField, MatHint, MatPrefix } from '@angular/material/form-field';
+import { MatIconButton } from '@angular/material/button';
+import { MatFormField, MatHint, MatPrefix, MatSuffix } from '@angular/material/form-field';
+import { MatIcon } from '@angular/material/icon';
 import { MatInput } from '@angular/material/input';
 import { MtxColorpicker, MtxColorpickerInput } from '@ng-matero/extensions/colorpicker';
 import { GuiFieldLabel } from '../field-label/field-label';
+import { GuiIconsRegistry } from '../gui-icons';
+import { GuiIconButtonWrapper } from '../icon-button-wrapper/icon-button-wrapper';
 import { GuiControl, GuiFillMode } from '../interface';
 import { GuiFillPicker } from './fill-picker';
 
@@ -40,10 +44,14 @@ import { GuiFillPicker } from './fill-picker';
     MatPrefix,
     MatInput,
     MatHint,
+    MatIcon,
+    MatIconButton,
+    MatSuffix,
     MtxColorpickerInput,
     MtxColorpicker,
     GuiFieldLabel,
     GuiFillPicker,
+    GuiIconButtonWrapper,
   ],
 })
 export class GuiFill implements ControlValueAccessor, OnChanges {
@@ -55,10 +63,15 @@ export class GuiFill implements ControlValueAccessor, OnChanges {
   @Input() disabled = false;
   @Input() type: GuiFillMode = 'all';
 
-  value = '';
+  value: string | null = '';
 
-  private onChange: (value: string) => void = () => {};
+  private onChange: (value: string | null) => void = () => {};
   private onTouched: () => void = () => {};
+
+  constructor() {
+    const iconsRegistry = inject(GuiIconsRegistry);
+    iconsRegistry.add('clear');
+  }
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['config']) {
@@ -73,7 +86,7 @@ export class GuiFill implements ControlValueAccessor, OnChanges {
     }
   }
 
-  registerOnChange(fn: (value: string) => void) {
+  registerOnChange(fn: (value: string | null) => void) {
     this.onChange = fn;
   }
 
@@ -93,5 +106,10 @@ export class GuiFill implements ControlValueAccessor, OnChanges {
   openColorPicker(e: PointerEvent) {
     e.stopPropagation();
     this.colorpicker?.open();
+  }
+
+  clearValue() {
+    this.value = null;
+    this.onValueChange();
   }
 }

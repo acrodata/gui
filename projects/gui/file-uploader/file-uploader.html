@@ -16,7 +16,14 @@
 
   @if (url) {
     <gui-icon-button-wrapper matSuffix>
-      <button mat-icon-button type="button" color="warn" [disabled]="disabled" (click)="onClear()">
+      <button
+        mat-icon-button
+        type="button"
+        color="warn"
+        [disabled]="disabled"
+        (click)="onClear()"
+        tabindex="-1"
+      >
         <mat-icon svgIcon="clear" />
       </button>
     </gui-icon-button-wrapper>

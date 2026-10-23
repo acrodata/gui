@@ -19,6 +19,21 @@
 
   <mtx-colorpicker #cp [content]="customPickerContent" />
 
+  @if (value) {
+    <gui-icon-button-wrapper matSuffix>
+      <button
+        mat-icon-button
+        type="button"
+        color="warn"
+        [disabled]="disabled"
+        (click)="clearValue()"
+        tabindex="-1"
+      >
+        <mat-icon svgIcon="clear" />
+      </button>
+    </gui-icon-button-wrapper>
+  }
+
   @if (config.parentType === 'inline') {
     <mat-hint>
       <gui-field-label [config]="config" />
