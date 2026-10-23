@@ -5,15 +5,37 @@
   height: 1.5rem;
   padding: 0;
   border: none;
+  border-top-left-radius: var(--mat-form-field-filled-container-shape, var(--mat-sys-corner-extra-small));
+  border-bottom-left-radius: var(--mat-form-field-filled-container-shape, var(--mat-sys-corner-extra-small));
   background-color: #fff;
   background-image: conic-gradient(transparent 25%, #ccc 25% 50%, transparent 50% 75%, #ccc 75%);
   background-size: 0.5rem 0.5rem;
   outline: none;
   cursor: pointer;
+  overflow: hidden;
+
+  [dir='rtl'] & {
+    border-radius: 0;
+    border-top-right-radius: var(--mat-form-field-filled-container-shape, var(--mat-sys-corner-extra-small));
+    border-bottom-right-radius: var(--mat-form-field-filled-container-shape, var(--mat-sys-corner-extra-small));
+  }
+
+  // use the pseudo-elements `::after` to simulate the border for color-block
+  &::after {
+    position: absolute;
+    content: '';
+    display: inline-block;
+    inset: 0;
+    box-sizing: border-box;
+    border: 1px solid #fff;
+    border-radius: inherit;
+    mix-blend-mode: difference;
+    opacity: 0.2;
+  }
 
   &:hover,
   &:focus {
-    .gui-color-block-bg::after {
+    &::after {
       opacity: 0.4;
     }
   }
@@ -23,26 +45,6 @@
   display: inline-block;
   width: 100%;
   height: 100%;
-
-  // use the pseudo-elements `::after` to simulate the border for color-block
-  &::after {
-    content: '';
-    display: inline-block;
-    width: 100%;
-    height: 100%;
-    box-sizing: border-box;
-    border: 1px solid #fff;
-    border-top-left-radius: var(--mat-form-field-filled-container-shape, var(--mat-sys-corner-extra-small));
-    border-bottom-left-radius: var(--mat-form-field-filled-container-shape, var(--mat-sys-corner-extra-small));
-    mix-blend-mode: difference;
-    opacity: 0.2;
-
-    [dir='rtl'] & {
-      border-radius: 0;
-      border-top-right-radius: var(--mat-form-field-filled-container-shape, var(--mat-sys-corner-extra-small));
-      border-bottom-right-radius: var(--mat-form-field-filled-container-shape, var(--mat-sys-corner-extra-small));
-    }
-  }
 }
 
 // fix the vertical alignment for icon
